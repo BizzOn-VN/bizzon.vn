@@ -30,34 +30,48 @@
 <body>
 
   1 - La Xanh Gia Dinh Dau Yeu | Tran Man Nghi ft Bich Tram <br>
-  <audio controls>
+  <audio id="audio1" controls>
     <source src="/music2/laxanh-master.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
   <br><br>
 
   2 - La Xanh Truong Mam Non Em Yeu | Moon Nghi <br>
-  <audio controls>
+  <audio id="audio2" controls>
     <source src="/music2/laxanh-bemoon.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
   <br><br>
 
   3 - La Xanh Truong Man Non Em Yeu | Tran Man Nghi <br>
-  <audio controls>
+  <audio id="audio3" controls>
     <source src="/music2/laxanh-tranmannghi.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
   <br><br>
 
   4 - Vui Den Truong Mam Non La Xanh | Tran Man Nghi<br>
-  <audio controls>
+  <audio id="audio4" controls>
     <source src="/music2/la-xanh-tranmannghiv2.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <!-- Hình ảnh logo -->
   <img src="img/laxanhlogo.jpg" class="logo" alt="Logo">
+
+  <script>
+    const audios = document.querySelectorAll('audio');
+
+    audios.forEach(audio => {
+      audio.addEventListener('play', () => {
+        audios.forEach(a => {
+          if (a !== audio) {
+            a.pause();
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
