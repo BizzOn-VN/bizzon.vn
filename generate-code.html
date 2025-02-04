@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generate Unique Codes</title>
+</head>
+<body>
+<button onclick="generateCodes()">Generate Codes</button>
+
+<script>
+function generateUniqueCodes(numCodes) {
+    const characters = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // Bỏ qua "l", "0", "o", "O", "I", "1"
+    const codeLength = 10;
+    const numCharacters = characters.length;
+    const generatedCodes = new Set();
+
+    while (generatedCodes.size < numCodes) {
+        let code = '';
+        for (let i = 0; i < codeLength; i++) {
+            code += characters.charAt(Math.floor(Math.random() * numCharacters));
+        }
+        generatedCodes.add(code);
+    }
+
+    return Array.from(generatedCodes);
+}
+
+function generateCodes() {
+    const numCodes = 500;
+    const uniqueCodes = generateUniqueCodes(numCodes);
+    
+    const downloadLink = document.createElement('a');
+    const textFile = new Blob([uniqueCodes.join('\n')], {type: 'text/plain'});
+    
+    downloadLink.href = URL.createObjectURL(textFile);
+    downloadLink.download = 'unique_codes.txt';
+    downloadLink.click();
+}
+</script>
+</body>
+</html>
