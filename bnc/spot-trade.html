@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tính Lời Trade Spot Limit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+      max-width: 500px;
+      margin: auto;
+    }
+    h2 {
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>💹 Tính Lợi Nhuận Spot (Limit)</h2>
+
+  <label for="capital">1. Số vốn (USDT):</label>
+  <input type="number" id="capital" placeholder="VD: 1000" />
+
+  <label for="buyPrice">2. Giá mua (USDT/BTC):</label>
+  <input type="number" id="buyPrice" placeholder="VD: 117000" />
+
+  <label for="sellPrice">3. Giá bán (USDT/BTC):</label>
+  <input type="number" id="sellPrice" placeholder="VD: 118000" />
+
+  <button onclick="calculate()">Tính Toán</button>
+
+  <div class="result" id="result" style="display:none;"></div>
+
+  <script>
+    function calculate() {
+      const capital = parseFloat(document.getElementById("capital").value);
+      const buyPrice = parseFloat(document.getElementById("buyPrice").value);
+      const sellPrice = parseFloat(document.getElementById("sellPrice").value);
+
+      if (isNaN(capital) || isNaN(buyPrice) || isNaN(sellPrice) || buyPrice === 0) {
+        alert("Vui lòng nhập đầy đủ và hợp lệ.");
+        return;
+      }
+
+      const btcAmount = capital / buyPrice;
+      const totalRevenue = btcAmount * sellPrice;
+      const profitUSDT = totalRevenue - capital;
+      const profitVND = profitUSDT * 25000;
+
+      document.getElementById("result").style.display = "block";
+      document.getElementById("result").innerHTML = `
+        🔢 <b>Số BTC mua được:</b> ${btcAmount.toFixed(6)} BTC<br>
+        💸 <b>Chi phí:</b> ${capital.toFixed(2)} USDT<br>
+        💰 <b>Lợi nhuận:</b> ${profitUSDT.toFixed(2)} USDT<br>
+        🇻🇳 <b>Quy đổi:</b> ${profitVND.toLocaleString()} VND (25,000đ/USDT)
+      `;
+    }
+  </script>
+
+</body>
+</html>
