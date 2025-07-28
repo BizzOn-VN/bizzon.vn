@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tính Lời Trade Spot Limit</title>
+  <title>Tính Lời Spot Limit (Đã trừ phí)</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background: #f7f7f7;
+      background: #f2f2f2;
       max-width: 500px;
       margin: auto;
     }
@@ -17,17 +17,17 @@
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
       font-weight: bold;
     }
     input {
       width: 100%;
       padding: 8px;
-      margin-top: 5px;
+      margin-top: 6px;
       box-sizing: border-box;
     }
     button {
-      margin-top: 15px;
+      margin-top: 18px;
       padding: 10px 20px;
       background: #007bff;
       color: white;
@@ -35,16 +35,17 @@
       cursor: pointer;
     }
     .result {
-      margin-top: 20px;
+      margin-top: 25px;
       background: #fff;
       padding: 15px;
-      border-radius: 5px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
 
-  <h2>💹 Tính Lợi Nhuận Spot (Limit)</h2>
+  <h2>💹 Tính Lợi Nhuận Spot Limit (sau phí)</h2>
 
   <label for="capital">1. Số vốn (USDT):</label>
   <input type="number" id="capital" placeholder="VD: 1000" />
@@ -60,27 +61,41 @@
   <div class="result" id="result" style="display:none;"></div>
 
   <script>
+    function formatCompactVND(value) {
+      if (value >= 1_000_000_000) return (value / 1_000_000_000).toFixed(1) + " tỷ";
+      if (value >= 1_000_000) return (value / 1_000_000).toFixed(1) + " triệu";
+      if (value >= 1_000) return Math.round(value / 1000) + "k";
+      return Math.round(value);
+    }
+
     function calculate() {
       const capital = parseFloat(document.getElementById("capital").value);
       const buyPrice = parseFloat(document.getElementById("buyPrice").value);
       const sellPrice = parseFloat(document.getElementById("sellPrice").value);
+      const usdtToVnd = 25000;
+      const feeRate = 0.001; // 0.1% mỗi giao dịch
 
       if (isNaN(capital) || isNaN(buyPrice) || isNaN(sellPrice) || buyPrice === 0) {
         alert("Vui lòng nhập đầy đủ và hợp lệ.");
         return;
       }
 
-      const btcAmount = capital / buyPrice;
-      const totalRevenue = btcAmount * sellPrice;
-      const profitUSDT = totalRevenue - capital;
-      const profitVND = profitUSDT * 25000;
+      // Mua BTC (trừ phí)
+      const btcRaw = capital / buyPrice;
+      const btcBought = btcRaw * (1 - feeRate); // phí mua
+
+      // Bán BTC (trừ phí)
+      const usdtReceived = btcBought * sellPrice * (1 - feeRate); // phí bán
+
+      const profitUSDT = usdtReceived - capital;
+      const profitVND = profitUSDT * usdtToVnd;
 
       document.getElementById("result").style.display = "block";
       document.getElementById("result").innerHTML = `
-        🔢 <b>Số BTC mua được:</b> ${btcAmount.toFixed(6)} BTC<br>
+        🔢 <b>Số BTC mua được (sau phí):</b> ${btcBought.toFixed(6)} BTC<br>
         💸 <b>Chi phí:</b> ${capital.toFixed(2)} USDT<br>
-        💰 <b>Lợi nhuận:</b> ${profitUSDT.toFixed(2)} USDT<br>
-        🇻🇳 <b>Quy đổi:</b> ${profitVND.toLocaleString()} VND (25,000đ/USDT)
+        💰 <b>Lợi nhuận (đã trừ phí):</b> ${profitUSDT.toFixed(2)} USDT<br>
+        🇻🇳 <b>Quy đổi:</b> ${formatCompactVND(profitVND)} VND
       `;
     }
   </script>
