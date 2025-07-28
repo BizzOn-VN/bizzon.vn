@@ -8,12 +8,12 @@
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background: #f2f2f2;
-      max-width: 500px;
+      background: #f9f9f9;
+      max-width: 550px;
       margin: auto;
     }
     h2 {
-      color: #333;
+      color: #222;
     }
     label {
       display: block;
@@ -80,21 +80,39 @@
         return;
       }
 
-      // Mua BTC (trừ phí)
+      // Số BTC mua được trước phí
       const btcRaw = capital / buyPrice;
-      const btcBought = btcRaw * (1 - feeRate); // phí mua
 
-      // Bán BTC (trừ phí)
-      const usdtReceived = btcBought * sellPrice * (1 - feeRate); // phí bán
+      // Phí mua (USDT)
+      const buyFee = capital * feeRate;
 
-      const profitUSDT = usdtReceived - capital;
+      // BTC sau khi trừ phí mua
+      const btcAfterBuy = btcRaw * (1 - feeRate);
+
+      // Số USDT nhận được sau khi bán
+      const usdtReceivedRaw = btcAfterBuy * sellPrice;
+
+      // Phí bán (USDT)
+      const sellFee = usdtReceivedRaw * feeRate;
+
+      // Số USDT thực nhận sau khi bán
+      const usdtFinal = usdtReceivedRaw - sellFee;
+
+      // Tổng phí
+      const totalFee = buyFee + sellFee;
+
+      // Lợi nhuận sau phí
+      const profitUSDT = usdtFinal - capital;
       const profitVND = profitUSDT * usdtToVnd;
 
       document.getElementById("result").style.display = "block";
       document.getElementById("result").innerHTML = `
-        🔢 <b>Số BTC mua được (sau phí):</b> ${btcBought.toFixed(6)} BTC<br>
-        💸 <b>Chi phí:</b> ${capital.toFixed(2)} USDT<br>
-        💰 <b>Lợi nhuận (đã trừ phí):</b> ${profitUSDT.toFixed(2)} USDT<br>
+        🔢 <b>Số BTC mua được (sau phí):</b> ${btcAfterBuy.toFixed(6)} BTC<br>
+        💸 <b>Chi phí mua:</b> ${capital.toFixed(2)} USDT<br>
+        📉 <b>Phí mua:</b> ${buyFee.toFixed(4)} USDT<br>
+        📈 <b>Phí bán:</b> ${sellFee.toFixed(4)} USDT<br>
+        🧾 <b>Tổng phí sàn:</b> ${totalFee.toFixed(4)} USDT<br>
+        💰 <b>Lợi nhuận (sau phí):</b> ${profitUSDT.toFixed(2)} USDT<br>
         🇻🇳 <b>Quy đổi:</b> ${formatCompactVND(profitVND)} VND
       `;
     }
