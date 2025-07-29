@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tính Lợi Nhuận ETH/USDT (Đồng ETH)</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 30px; background: #f4f4f4; }
+    h2 { color: #333; }
+    label { display: block; margin: 10px 0 5px; }
+    input { padding: 8px; width: 200px; }
+    button { margin-top: 15px; padding: 10px 20px; }
+    .result { margin-top: 20px; font-size: 16px; background: #fff; padding: 15px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h2>💰 Tính Lợi Nhuận Giao Dịch ETH/USDT</h2>
+  
+  <label>Số vốn (USDT):</label>
+  <input type="number" id="capital" value="550">
+
+  <label>Giá mua ETH (USDT):</label>
+  <input type="number" id="buyPrice" value="3750">
+
+  <label>Giá bán ETH (USDT):</label>
+  <input type="number" id="sellPrice" value="3850">
+
+  <button onclick="calculate()">Tính lợi nhuận</button>
+
+  <div class="result" id="output"></div>
+
+  <script>
+    function formatCompactVND(amount) {
+      return Math.round(amount / 1000) + "k";
+    }
+
+    function calculate() {
+      const capital = parseFloat(document.getElementById("capital").value);
+      const buyPrice = parseFloat(document.getElementById("buyPrice").value);
+      const sellPrice = parseFloat(document.getElementById("sellPrice").value);
+
+      if (!capital || !buyPrice || !sellPrice || buyPrice <= 0 || sellPrice <= 0) {
+        document.getElementById("output").innerHTML = "⚠️ Vui lòng nhập đầy đủ và hợp lệ.";
+        return;
+      }
+
+      const ethAmount = capital / buyPrice;
+      const usdtAfterSell = ethAmount * sellPrice;
+
+      const feeBuy = capital * 0.001;
+      const feeSell = usdtAfterSell * 0.001;
+      const totalFee = feeBuy + feeSell;
+
+      const netProfit = usdtAfterSell - capital - totalFee;
+      const vndProfit = netProfit * 25000;
+
+      document.getElementById("output").innerHTML = `
+        ✅ Số ETH mua được: <b>${ethAmount.toFixed(6)} ETH</b><br>
+        💸 Phí mua: <b>${feeBuy.toFixed(4)} USDT</b><br>
+        💸 Phí bán: <b>${feeSell.toFixed(4)} USDT</b><br>
+        🔧 Tổng phí: <b>${totalFee.toFixed(4)} USDT</b><br><br>
+        💵 Lợi nhuận ròng: <b>${netProfit.toFixed(4)} USDT</b><br>
+        🇻🇳 Quy đổi: <b>${formatCompactVND(vndProfit)}</b> VND
+      `;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tính Lợi Nhuận Giao Dịch Spot (đồng BNB)</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input { margin: 5px 0; padding: 6px; width: 200px; }
+    label { display: block; margin-top: 10px; }
+    button { margin-top: 15px; padding: 8px 12px; }
+    .result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Tính lợi nhuận giao dịch Spot (Limit)</h2>
+
+  <label>Số vốn (USDT):</label>
+  <input type="number" id="vốn" value="550">
+
+  <label>Giá mua vào (USDT):</label>
+  <input type="number" id="giáMua" value="820">
+
+  <label>Giá bán ra (USDT):</label>
+  <input type="number" id="giáBán" value="840">
+
+  <label>Tỷ giá USDT → VND:</label>
+  <input type="number" id="tỷGiá" value="25000">
+
+  <button onclick="tínhLãi()">Tính Toán</button>
+
+  <div class="result" id="output"></div>
+
+  <script>
+    function compactVND(value) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    function tínhLãi() {
+      const vốn = parseFloat(document.getElementById("vốn").value);
+      const giáMua = parseFloat(document.getElementById("giáMua").value);
+      const giáBán = parseFloat(document.getElementById("giáBán").value);
+      const tỷGiá = parseFloat(document.getElementById("tỷGiá").value);
+
+      const bnbMuaĐược = vốn / giáMua;
+      const tiềnBán = bnbMuaĐược * giáBán;
+
+      // Phí sàn
+      const phíKhôngBNB = vốn * 0.001 + tiềnBán * 0.001;
+      const phíCóBNB = vốn * 0.00075 + tiềnBán * 0.00075;
+
+      // Lãi ròng
+      const lãiKhôngBNB = tiềnBán - vốn - phíKhôngBNB;
+      const lãiCóBNB = tiềnBán - vốn - phíCóBNB;
+
+      const vndKhôngBNB = compactVND(lãiKhôngBNB * tỷGiá);
+      const vndCóBNB = compactVND(lãiCóBNB * tỷGiá);
+
+      document.getElementById("output").innerHTML = `
+        <p>BNB mua được: <b>${bnbMuaĐược.toFixed(6)}</b> BNB</p>
+        <p>Phí không dùng BNB: <b>${phíKhôngBNB.toFixed(3)}</b> USDT</p>
+        <p>Lãi ròng (không dùng BNB): <b>${lãiKhôngBNB.toFixed(3)}</b> USDT ≈ <b>${vndKhôngBNB} 🇻🇳</b></p>
+        <hr>
+        <p>Phí dùng BNB: <b>${phíCóBNB.toFixed(3)}</b> USDT</p>
+        <p>Lãi ròng (dùng BNB): <b>${lãiCóBNB.toFixed(3)}</b> USDT ≈ <b>${vndCóBNB} 🇻🇳</b></p>
+      `;
+    }
+  </script>
+</body>
+</html>
