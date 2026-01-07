@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zalo: Trương Quốc Hùng</title>
+    <style>
+        /* CSS để làm cho hình ảnh responsive */
+        .img-responsive {
+            max-width: 100%;  /* Hình sẽ không bao giờ rộng hơn màn hình chứa nó */
+            height: auto;     /* Chiều cao tự động tính toán để giữ đúng tỉ lệ ảnh */
+            display: block;   /* Giúp căn chỉnh dễ hơn và bỏ khoảng trắng thừa bên dưới */
+            
+            /* Tùy chọn thêm: Bo tròn góc nhẹ cho đẹp */
+            border-radius: 8px; 
+            
+            /* Tùy chọn thêm: Đổ bóng nhẹ */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+        }
+
+        /* CSS cho khung chứa (nếu bạn muốn giới hạn chiều rộng tối đa của ảnh trên desktop) */
+        .image-container {
+            width: 100%;
+            max-width: 500px; /* Ảnh sẽ không to quá 800px trên màn hình lớn */
+            margin: 0 auto;   /* Căn giữa khung chứa */
+           
+        
+        }
+    </style>
+</head>
+<body>
+
+    <div class="image-container">
+        <img src="Truong-Quoc-Hung.jpg" 
+             alt="Hình ảnh Trương Quốc Hưng" 
+             class="img-responsive">
+    </div>
+
+</body>
+</html>
