@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hút Hầm Cầu Uy Tín | Có Mặt Sau 15 Phút | Bảo Hành Dài Hạn</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CẤU HÌNH CHUNG --- */
+        :root {
+            --primary-color: #0066cc; /* Màu xanh chủ đạo */
+            --secondary-color: #ff6600; /* Màu cam nổi bật cho nút gọi */
+            --text-color: #333;
+            --bg-light: #f4f4f4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
+        body { line-height: 1.6; color: var(--text-color); }
+        a { text-decoration: none; }
+        ul { list-style: none; }
+        
+        /* --- HEADER & MENU --- */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: #333; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); }
+        
+        /* Nút gọi trên menu */
+        .btn-call-nav {
+            background: var(--secondary-color);
+            color: #fff !important;
+            padding: 8px 15px;
+            border-radius: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            margin-top: 70px;
+        }
+        .hero-content h1 { font-size: 3rem; margin-bottom: 20px; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; }
+        .btn-main {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-main:hover { background: #e65c00; transform: scale(1.05); }
+
+        /* --- DỊCH VỤ --- */
+        .services { padding: 60px 0; background: var(--bg-light); }
+        .section-title { text-align: center; margin-bottom: 40px; color: var(--primary-color); }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .service-card {
+            background: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-card i { font-size: 40px; color: var(--primary-color); margin-bottom: 15px; }
+        .service-card h3 { margin-bottom: 15px; }
+
+        /* --- LÝ DO CHỌN --- */
+        .why-choose { padding: 60px 0; }
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .why-item { text-align: center; }
+        .why-item i { color: var(--secondary-color); font-size: 30px; margin-bottom: 10px; }
+
+        /* --- QUY TRÌNH --- */
+        .process { padding: 60px 0; background: var(--primary-color); color: #fff; }
+        .process .section-title { color: #fff; }
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .step {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .step span { font-size: 40px; font-weight: bold; display: block; margin-bottom: 10px; }
+
+        /* --- CONTACT & FOOTER --- */
+        footer { background: #222; color: #fff; padding: 40px 0; text-align: center; }
+        .footer-info p { margin-bottom: 10px; }
+
+        /* --- NÚT GỌI KHẨN CẤP (MOBILE) --- */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            font-size: 24px;
+        }
+        .zalo-btn { background: #0068ff; }
+        .call-btn { background: #ff0000; animation: pulse 1.5s infinite; }
+
+        /* --- ANIMATION --- */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 102, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0); }
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2rem; }
+            .nav-links { display: none; } /* Đơn giản hóa menu mobile */
+            .logo { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo">MÔI TRƯỜNG XANH</div>
+            <ul class="nav-links">
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#services">Dịch vụ</a></li>
+                <li><a href="#process">Quy trình</a></li>
+                <li><a href="tel:0909123456" class="btn-call-nav"><i class="fas fa-phone-alt"></i> 0909.123.456</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>HÚT HẦM CẦU - THÔNG CỐNG NGHẸT</h1>
+            <p>Uy Tín - Sạch Sẽ 100% - Bảo Hành 5 Năm - Có Mặt Sau 15 Phút</p>
+            <a href="tel:0909123456" class="btn-main"><i class="fas fa-phone"></i> GỌI NGAY: 0909.123.456</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">DỊCH VỤ CỦA CHÚNG TÔI</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <i class="fas fa-toilet"></i>
+                    <h3>Hút Hầm Cầu</h3>
+                    <p>Xe chuyên dụng công nghệ mới, hút sạch 100%, không đục phá, không mùi hôi.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Thông Cống Nghẹt</h3>
+                    <p>Thông tắc bồn cầu, chậu rửa, đường ống thoát nước bị nghẹt dầu mỡ, rác thải.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-wind"></i>
+                    <h3>Khử Mùi Hôi</h3>
+                    <p>Xử lý triệt để mùi hôi nhà vệ sinh, hố ga bằng chế phẩm sinh học an toàn.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Nạo Vét Hố Ga</h3>
+                    <p>Nạo vét hố ga, đường cống rãnh cho hộ gia đình, chung cư, khu công nghiệp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">TẠI SAO CHỌN CHÚNG TÔI?</h2>
+            <div class="why-grid">
+                <div class="why-item">
+                    <i class="fas fa-clock"></i>
+                    <h4>Phục vụ 24/7</h4>
+                    <p>Kể cả lễ tết, đêm khuya.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Có mặt sau 15 phút</h4>
+                    <p>Mạng lưới chi nhánh rộng khắp.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h4>Giá cả minh bạch</h4>
+                    <p>Báo giá trước khi làm.</p>
+                </div>
+                <div class="why-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Bảo hành dài hạn</h4>
+                    <p>Cam kết bảo hành lên đến 5 năm.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="process">
+        <div class="container">
+            <h2 class="section-title">QUY TRÌNH LÀM VIỆC</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <span>1</span>
+                    <p>Tiếp nhận yêu cầu</p>
+                </div>
+                <div class="step">
+                    <span>2</span>
+                    <p>Khảo sát & Báo giá</p>
+                </div>
+                <div class="step">
+                    <span>3</span>
+                    <p>Thi công sạch sẽ</p>
+                </div>
+                <div class="step">
+                    <span>4</span>
+                    <p>Nghiệm thu & Thanh toán</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-info">
+            <h3>CÔNG TY VỆ SINH MÔI TRƯỜNG [TÊN CTY]</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Địa chỉ: Số 123 Đường ABC, Quận X, TP.HCM</p>
+            <p><i class="fas fa-phone"></i> Hotline: 0909.123.456</p>
+            <p><i class="fas fa-envelope"></i> Email: lienhe@domain.com</p>
+            <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2024 Bản quyền thuộc về Công Ty Môi Trường Xanh.</p>
+        </div>
+    </footer>
+
+    <div class="floating-buttons">
+        <a href="https://zalo.me/0909123456" class="float-btn zalo-btn" target="_blank">
+            Z
+        </a>
+        <a href="tel:0909123456" class="float-btn call-btn">
+            <i class="fas fa-phone-alt"></i>
+        </a>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
