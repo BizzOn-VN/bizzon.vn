@@ -1,300 +1,640 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hút Hầm Cầu Uy Tín | Có Mặt Sau 15 Phút | Bảo Hành Dài Hạn</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Dịch Vụ Thông Cống Nghẹt Uy Tín - Môi Trường Sạch</title>
+    
+    <!-- Tailwind CSS (Dùng qua CDN để không phải cài đặt) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons (Thay thế cho Lucide React) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            600: '#2563eb',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        },
+                        yellow: {
+                            400: '#facc15',
+                            500: '#eab308',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* --- CẤU HÌNH CHUNG --- */
-        :root {
-            --primary-color: #0066cc; /* Màu xanh chủ đạo */
-            --secondary-color: #ff6600; /* Màu cam nổi bật cho nút gọi */
-            --text-color: #333;
-            --bg-light: #f4f4f4;
+        /* Hiệu ứng animation đơn giản */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translate3d(0, -20px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Arial', sans-serif; }
-        body { line-height: 1.6; color: var(--text-color); }
-        a { text-decoration: none; }
-        ul { list-style: none; }
-        
-        /* --- HEADER & MENU --- */
-        header {
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
-        .logo { font-size: 24px; font-weight: bold; color: var(--primary-color); }
-        .nav-links { display: flex; gap: 20px; }
-        .nav-links a { color: #333; font-weight: 600; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary-color); }
-        
-        /* Nút gọi trên menu */
-        .btn-call-nav {
-            background: var(--secondary-color);
-            color: #fff !important;
-            padding: 8px 15px;
-            border-radius: 5px;
-            animation: pulse 2s infinite;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 90vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-            margin-top: 70px;
-        }
-        .hero-content h1 { font-size: 3rem; margin-bottom: 20px; }
-        .hero-content p { font-size: 1.2rem; margin-bottom: 30px; }
-        .btn-main {
-            display: inline-block;
-            background: var(--secondary-color);
-            color: #fff;
-            padding: 15px 30px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn-main:hover { background: #e65c00; transform: scale(1.05); }
-
-        /* --- DỊCH VỤ --- */
-        .services { padding: 60px 0; background: var(--bg-light); }
-        .section-title { text-align: center; margin-bottom: 40px; color: var(--primary-color); }
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .service-card {
-            background: #fff;
-            padding: 30px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-        .service-card:hover { transform: translateY(-5px); }
-        .service-card i { font-size: 40px; color: var(--primary-color); margin-bottom: 15px; }
-        .service-card h3 { margin-bottom: 15px; }
-
-        /* --- LÝ DO CHỌN --- */
-        .why-choose { padding: 60px 0; }
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        .why-item { text-align: center; }
-        .why-item i { color: var(--secondary-color); font-size: 30px; margin-bottom: 10px; }
-
-        /* --- QUY TRÌNH --- */
-        .process { padding: 60px 0; background: var(--primary-color); color: #fff; }
-        .process .section-title { color: #fff; }
-        .process-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        .step {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-            width: 200px;
-            text-align: center;
-        }
-        .step span { font-size: 40px; font-weight: bold; display: block; margin-bottom: 10px; }
-
-        /* --- CONTACT & FOOTER --- */
-        footer { background: #222; color: #fff; padding: 40px 0; text-align: center; }
-        .footer-info p { margin-bottom: 10px; }
-
-        /* --- NÚT GỌI KHẨN CẤP (MOBILE) --- */
-        .floating-buttons {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .float-btn {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            font-size: 24px;
-        }
-        .zalo-btn { background: #0068ff; }
-        .call-btn { background: #ff0000; animation: pulse 1.5s infinite; }
-
-        /* --- ANIMATION --- */
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 102, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 102, 0, 0); }
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 2rem; }
-            .nav-links { display: none; } /* Đơn giản hóa menu mobile */
-            .logo { font-size: 20px; }
+        .animate-fade-in-down {
+            animation: fadeInDown 0.3s ease-out;
         }
     </style>
 </head>
-<body>
+<body class="font-sans text-gray-800 antialiased bg-gray-50 relative">
 
-    <header>
-        <div class="container navbar">
-            <div class="logo">MÔI TRƯỜNG XANH</div>
-            <ul class="nav-links">
-                <li><a href="#home">Trang chủ</a></li>
-                <li><a href="#services">Dịch vụ</a></li>
-                <li><a href="#process">Quy trình</a></li>
-                <li><a href="tel:0909123456" class="btn-call-nav"><i class="fas fa-phone-alt"></i> 0909.123.456</a></li>
-            </ul>
+    <!-- HEADER -->
+    <header id="main-header" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#hero" class="flex items-center space-x-2 cursor-pointer group">
+                <div class="bg-blue-600 p-2 rounded-lg group-hover:bg-blue-700 transition">
+                    <i class="fas fa-wrench text-white text-xl"></i>
+                </div>
+                <div>
+                    <h1 id="brand-name" class="text-xl font-bold uppercase leading-none text-blue-900 md:text-white transition-colors">
+                        Môi Trường <span class="text-blue-600 bg-white px-1 rounded">Sạch</span>
+                    </h1>
+                    <p id="brand-slogan" class="text-xs text-gray-600 md:text-gray-200 transition-colors">Dịch vụ Uy tín - Giá rẻ</p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#hero" class="nav-item font-medium text-white shadow-black drop-shadow-md hover:text-blue-500 transition-colors">Trang Chủ</a>
+                <a href="#services" class="nav-item font-medium text-white shadow-black drop-shadow-md hover:text-blue-500 transition-colors">Dịch Vụ</a>
+                <a href="#process" class="nav-item font-medium text-white shadow-black drop-shadow-md hover:text-blue-500 transition-colors">Quy Trình</a>
+                <a href="#pricing" class="nav-item font-medium text-white shadow-black drop-shadow-md hover:text-blue-500 transition-colors">Bảng Giá</a>
+                <a href="#contact" class="nav-item font-medium text-white shadow-black drop-shadow-md hover:text-blue-500 transition-colors">Liên Hệ</a>
+            </nav>
+
+            <!-- Desktop CTA -->
+            <div class="hidden md:block">
+                <a href="tel:0909123456" class="flex items-center space-x-2 bg-yellow-500 hover:bg-yellow-400 text-white px-5 py-2 rounded-full font-bold transition-transform transform hover:scale-105 shadow-lg">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>0909.123.456</span>
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-blue-600 bg-white p-2 rounded shadow">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t animate-fade-in-down">
+            <div class="flex flex-col p-4 space-y-4">
+                <a href="#hero" class="mobile-link text-left font-medium text-gray-700 hover:text-blue-600 border-b pb-2">Trang Chủ</a>
+                <a href="#services" class="mobile-link text-left font-medium text-gray-700 hover:text-blue-600 border-b pb-2">Dịch Vụ</a>
+                <a href="#process" class="mobile-link text-left font-medium text-gray-700 hover:text-blue-600 border-b pb-2">Quy Trình</a>
+                <a href="#pricing" class="mobile-link text-left font-medium text-gray-700 hover:text-blue-600 border-b pb-2">Bảng Giá</a>
+                <a href="#contact" class="mobile-link text-left font-medium text-gray-700 hover:text-blue-600 border-b pb-2">Liên Hệ</a>
+                <a href="tel:0909123456" class="bg-blue-600 text-white text-center py-3 rounded-lg font-bold">
+                    Gọi Ngay: 0909.123.456
+                </a>
+            </div>
         </div>
     </header>
 
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <h1>HÚT HẦM CẦU - THÔNG CỐNG NGHẸT</h1>
-            <p>Uy Tín - Sạch Sẽ 100% - Bảo Hành 5 Năm - Có Mặt Sau 15 Phút</p>
-            <a href="tel:0909123456" class="btn-main"><i class="fas fa-phone"></i> GỌI NGAY: 0909.123.456</a>
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-48 md:pb-32 bg-blue-900 overflow-hidden">
+        <!-- Background Overlay -->
+        <div class="absolute inset-0 z-0 opacity-20">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white" />
+            </svg>
         </div>
-    </section>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <div class="inline-flex items-center bg-blue-800 bg-opacity-50 text-blue-100 px-4 py-1 rounded-full mb-6 border border-blue-400">
+                <i class="far fa-clock mr-2"></i>
+                <span class="text-sm font-semibold">Phục vụ 24/7 - Có mặt sau 15 phút</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                Dịch Vụ Thông Cống Nghẹt <br/>
+                <span class="text-yellow-400">Uy Tín - Không Đục Phá</span>
+            </h1>
+            <p class="text-blue-100 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+                Giải quyết triệt để mọi vấn đề tắc nghẽn bồn cầu, cống thoát nước. 
+                Cam kết giá rẻ nhất thị trường, bảo hành dài hạn lên đến 2 năm.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+                <a href="tel:0909123456" class="w-full md:w-auto bg-yellow-500 hover:bg-yellow-400 text-blue-900 font-bold px-8 py-4 rounded-lg shadow-lg flex items-center justify-center space-x-2 text-lg transform transition hover:-translate-y-1">
+                    <i class="fas fa-phone-volume animate-pulse"></i>
+                    <span>GỌI 0909.123.456</span>
+                </a>
+                <a href="#contact" class="w-full md:w-auto bg-white hover:bg-gray-100 text-blue-900 font-bold px-8 py-4 rounded-lg shadow-lg flex items-center justify-center space-x-2 text-lg">
+                    <span>Đăng Ký Tư Vấn</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
 
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">DỊCH VỤ CỦA CHÚNG TÔI</h2>
-            <div class="service-grid">
-                <div class="service-card">
-                    <i class="fas fa-toilet"></i>
-                    <h3>Hút Hầm Cầu</h3>
-                    <p>Xe chuyên dụng công nghệ mới, hút sạch 100%, không đục phá, không mùi hôi.</p>
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="flex flex-col items-center text-white space-y-2">
+                    <i class="fas fa-shield-alt text-3xl text-yellow-400"></i>
+                    <span class="font-medium">Bảo hành 2 năm</span>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-wrench"></i>
-                    <h3>Thông Cống Nghẹt</h3>
-                    <p>Thông tắc bồn cầu, chậu rửa, đường ống thoát nước bị nghẹt dầu mỡ, rác thải.</p>
+                <div class="flex flex-col items-center text-white space-y-2">
+                    <i class="fas fa-check-circle text-3xl text-yellow-400"></i>
+                    <span class="font-medium">Không đục phá</span>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-wind"></i>
-                    <h3>Khử Mùi Hôi</h3>
-                    <p>Xử lý triệt để mùi hôi nhà vệ sinh, hố ga bằng chế phẩm sinh học an toàn.</p>
+                <div class="flex flex-col items-center text-white space-y-2">
+                    <i class="fas fa-bolt text-3xl text-yellow-400"></i>
+                    <span class="font-medium">Máy móc hiện đại</span>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-truck"></i>
-                    <h3>Nạo Vét Hố Ga</h3>
-                    <p>Nạo vét hố ga, đường cống rãnh cho hộ gia đình, chung cư, khu công nghiệp.</p>
+                <div class="flex flex-col items-center text-white space-y-2">
+                    <i class="fas fa-star text-3xl text-yellow-400"></i>
+                    <span class="font-medium">Giá cả minh bạch</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="why-choose">
-        <div class="container">
-            <h2 class="section-title">TẠI SAO CHỌN CHÚNG TÔI?</h2>
-            <div class="why-grid">
-                <div class="why-item">
-                    <i class="fas fa-clock"></i>
-                    <h4>Phục vụ 24/7</h4>
-                    <p>Kể cả lễ tết, đêm khuya.</p>
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-blue-600 font-bold tracking-widest uppercase mb-2">Dịch vụ của chúng tôi</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Giải Pháp Vệ Sinh Toàn Diện</h3>
+                <div class="w-20 h-1 bg-yellow-500 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-6 bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                            <i class="fas fa-toilet text-2xl text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-gray-900">Thông Tắc Bồn Cầu</h4>
+                        <p class="text-gray-600 mb-6">Xử lý triệt để tắc nghẽn bồn cầu, không đục phá, sạch sẽ 100%.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                            <span class="text-blue-600 font-bold">Từ 150.000đ</span>
+                            <a href="#contact" class="text-sm font-semibold text-gray-500 group-hover:text-blue-600 flex items-center">
+                                Đặt ngay <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="why-item">
-                    <i class="fas fa-bolt"></i>
-                    <h4>Có mặt sau 15 phút</h4>
-                    <p>Mạng lưới chi nhánh rộng khắp.</p>
+
+                <!-- Service 2 -->
+                <div class="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-6 bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                            <i class="fas fa-wrench text-2xl text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-gray-900">Thông Cống Nghẹt</h4>
+                        <p class="text-gray-600 mb-6">Thông tắc đường ống thoát nước, cống ngầm, cống thoát sàn bằng máy lò xo.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                            <span class="text-blue-600 font-bold">Từ 200.000đ</span>
+                            <a href="#contact" class="text-sm font-semibold text-gray-500 group-hover:text-blue-600 flex items-center">
+                                Đặt ngay <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="why-item">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                    <h4>Giá cả minh bạch</h4>
-                    <p>Báo giá trước khi làm.</p>
+
+                 <!-- Service 3 -->
+                 <div class="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-6 bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                            <i class="fas fa-sink text-2xl text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-gray-900">Thông Tắc Chậu Rửa</h4>
+                        <p class="text-gray-600 mb-6">Thông tắc bồn rửa bát, lavabo bị nghẹt do dầu mỡ, rác thải.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                            <span class="text-blue-600 font-bold">Từ 150.000đ</span>
+                            <a href="#contact" class="text-sm font-semibold text-gray-500 group-hover:text-blue-600 flex items-center">
+                                Đặt ngay <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="why-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>Bảo hành dài hạn</h4>
-                    <p>Cam kết bảo hành lên đến 5 năm.</p>
+
+                 <!-- Service 4 -->
+                 <div class="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-6 bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                            <i class="fas fa-map-marker-alt text-2xl text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-gray-900">Nạo Vét Hố Ga</h4>
+                        <p class="text-gray-600 mb-6">Nạo vét, vệ sinh hố ga, bể phốt, vận chuyển bùn thải đúng nơi quy định.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                            <span class="text-blue-600 font-bold">Liên hệ</span>
+                            <a href="#contact" class="text-sm font-semibold text-gray-500 group-hover:text-blue-600 flex items-center">
+                                Đặt ngay <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Service 5 -->
+                 <div class="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-6 bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                            <i class="fas fa-wind text-2xl text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-gray-900">Khử Mùi Hôi</h4>
+                        <p class="text-gray-600 mb-6">Xử lý mùi hôi nhà vệ sinh, cống thoát nước dứt điểm 100%.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                            <span class="text-blue-600 font-bold">Khảo sát</span>
+                            <a href="#contact" class="text-sm font-semibold text-gray-500 group-hover:text-blue-600 flex items-center">
+                                Đặt ngay <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Service 6 -->
+                 <div class="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 duration-500"></div>
+                    <div class="relative z-10">
+                        <div class="mb-6 bg-blue-50 w-16 h-16 rounded-xl flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300">
+                            <i class="fas fa-truck text-2xl text-blue-500 group-hover:text-white transition-colors"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 text-gray-900">Hút Hầm Cầu</h4>
+                        <p class="text-gray-600 mb-6">Xe hút chuyên dụng từ 1 khối đến 20 khối, hút sạch, đúng khối lượng.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+                            <span class="text-blue-600 font-bold">Theo khối</span>
+                            <a href="#contact" class="text-sm font-semibold text-gray-500 group-hover:text-blue-600 flex items-center">
+                                Đặt ngay <i class="fas fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-blue-500/50">
+                <div>
+                    <div class="text-4xl font-bold mb-2">10+</div>
+                    <div class="text-blue-100 text-sm md:text-base">Năm kinh nghiệm</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">5000+</div>
+                    <div class="text-blue-100 text-sm md:text-base">Khách hàng hài lòng</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">15p</div>
+                    <div class="text-blue-100 text-sm md:text-base">Thời gian có mặt</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold mb-2">24/7</div>
+                    <div class="text-blue-100 text-sm md:text-base">Hỗ trợ mọi lúc</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="process" class="process">
-        <div class="container">
-            <h2 class="section-title">QUY TRÌNH LÀM VIỆC</h2>
-            <div class="process-steps">
-                <div class="step">
-                    <span>1</span>
-                    <p>Tiếp nhận yêu cầu</p>
-                </div>
-                <div class="step">
-                    <span>2</span>
-                    <p>Khảo sát & Báo giá</p>
-                </div>
-                <div class="step">
-                    <span>3</span>
-                    <p>Thi công sạch sẽ</p>
-                </div>
-                <div class="step">
-                    <span>4</span>
-                    <p>Nghiệm thu & Thanh toán</p>
+    <!-- PROCESS -->
+    <section id="process" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Quy Trình Làm Việc Chuyên Nghiệp</h3>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Chúng tôi tối ưu hóa quy trình để tiết kiệm thời gian và chi phí cho khách hàng.</p>
+            </div>
+
+            <div class="relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center border-b-4 border-blue-500 md:border-b-0 md:border-t-4 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-lg border-4 border-white">01</div>
+                        <h4 class="text-lg font-bold mb-2">Tiếp Nhận</h4>
+                        <p class="text-sm text-gray-600">Khách hàng gọi điện yêu cầu dịch vụ.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center border-b-4 border-blue-500 md:border-b-0 md:border-t-4 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-lg border-4 border-white">02</div>
+                        <h4 class="text-lg font-bold mb-2">Khảo Sát</h4>
+                        <p class="text-sm text-gray-600">Nhân viên đến tận nơi kiểm tra (Miễn phí).</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center border-b-4 border-blue-500 md:border-b-0 md:border-t-4 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-lg border-4 border-white">03</div>
+                        <h4 class="text-lg font-bold mb-2">Báo Giá</h4>
+                        <p class="text-sm text-gray-600">Tư vấn phương án và báo giá chi tiết.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center border-b-4 border-blue-500 md:border-b-0 md:border-t-4 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-lg border-4 border-white">04</div>
+                        <h4 class="text-lg font-bold mb-2">Thi Công</h4>
+                        <p class="text-sm text-gray-600">Tiến hành xử lý nhanh gọn, sạch sẽ.</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="bg-white p-6 rounded-xl shadow-md text-center border-b-4 border-blue-500 md:border-b-0 md:border-t-4 transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-lg border-4 border-white">05</div>
+                        <h4 class="text-lg font-bold mb-2">Nghiệm Thu</h4>
+                        <p class="text-sm text-gray-600">Khách hàng kiểm tra và thanh toán.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container footer-info">
-            <h3>CÔNG TY VỆ SINH MÔI TRƯỜNG [TÊN CTY]</h3>
-            <p><i class="fas fa-map-marker-alt"></i> Địa chỉ: Số 123 Đường ABC, Quận X, TP.HCM</p>
-            <p><i class="fas fa-phone"></i> Hotline: 0909.123.456</p>
-            <p><i class="fas fa-envelope"></i> Email: lienhe@domain.com</p>
-            <p style="margin-top: 20px; font-size: 0.8rem; color: #aaa;">© 2024 Bản quyền thuộc về Công Ty Môi Trường Xanh.</p>
+    <!-- PRICING -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900">Bảng Giá Tham Khảo</h3>
+                <p class="text-red-500 italic mt-2">* Giá thực tế phụ thuộc vào mức độ tắc nghẽn và vị trí thi công.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-blue-600 text-white">
+                            <th class="p-4 md:p-6 text-sm md:text-lg">Dịch Vụ</th>
+                            <th class="p-4 md:p-6 text-sm md:text-lg">Đơn Giá (VNĐ)</th>
+                            <th class="p-4 md:p-6 text-sm md:text-lg text-center">Bảo Hành</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="p-4 md:p-6 font-medium">Thông tắc bồn cầu</td>
+                            <td class="p-4 md:p-6 text-blue-600 font-bold">150.000 - 350.000</td>
+                            <td class="p-4 md:p-6 text-center text-green-600">6 - 12 Tháng</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 md:p-6 font-medium">Thông chậu rửa bát</td>
+                            <td class="p-4 md:p-6 text-blue-600 font-bold">150.000 - 300.000</td>
+                            <td class="p-4 md:p-6 text-center text-green-600">6 Tháng</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 md:p-6 font-medium">Thông đường ống nước sạch</td>
+                            <td class="p-4 md:p-6 text-blue-600 font-bold">250.000 - 400.000</td>
+                            <td class="p-4 md:p-6 text-center text-green-600">12 Tháng</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 md:p-6 font-medium">Thông cống thoát sàn</td>
+                            <td class="p-4 md:p-6 text-blue-600 font-bold">200.000 - 400.000</td>
+                            <td class="p-4 md:p-6 text-center text-green-600">6 - 12 Tháng</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 md:p-6 font-medium">Hút hầm cầu (theo xe)</td>
+                            <td class="p-4 md:p-6 text-blue-600 font-bold">300.000 - 500.000 / m3</td>
+                            <td class="p-4 md:p-6 text-center text-green-600">2 Năm</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="p-6 bg-gray-50 text-center">
+                    <p class="mb-4 text-gray-600">Nhận báo giá chi tiết và khảo sát miễn phí ngay hôm nay</p>
+                    <a href="tel:0909123456" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition">
+                        Liên hệ Báo Giá
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-20 bg-blue-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-gray-900 mb-12">Khách Hàng Nói Gì Về Chúng Tôi</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- KH 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Dịch vụ rất nhanh, gọi 15 phút là có mặt. Thợ làm nhiệt tình, không đục phá nền nhà."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500 mr-3">H</div>
+                        <div>
+                            <h5 class="font-bold text-gray-900">Anh Hùng</h5>
+                            <span class="text-xs text-gray-500">Quận 1, TP.HCM</span>
+                        </div>
+                    </div>
+                </div>
+                 <!-- KH 2 -->
+                 <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Giá cả hợp lý, đã báo giá là không phát sinh thêm. Rất hài lòng về thái độ phục vụ."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500 mr-3">L</div>
+                        <div>
+                            <h5 class="font-bold text-gray-900">Chị Lan</h5>
+                            <span class="text-xs text-gray-500">Cầu Giấy, Hà Nội</span>
+                        </div>
+                    </div>
+                </div>
+                 <!-- KH 3 -->
+                 <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">"Đã thử tự thông nhưng không được, gọi bên này làm vèo cái xong ngay. Cảm ơn các cháu."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-bold text-gray-500 mr-3">M</div>
+                        <div>
+                            <h5 class="font-bold text-gray-900">Cô Mai</h5>
+                            <span class="text-xs text-gray-500">Đà Nẵng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6">Liên Hệ Ngay</h3>
+                    <p class="text-gray-600 mb-8">Chúng tôi luôn sẵn sàng phục vụ bạn 24/7. Đừng ngần ngại liên hệ khi gặp sự cố.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-900">Hotline</h5>
+                                <p class="text-blue-600 font-bold text-lg">0909.123.456</p>
+                                <p class="text-gray-500 text-sm">Zalo: 0909.123.456</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-900">Địa chỉ văn phòng</h5>
+                                <p class="text-gray-600">123 Đường Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh</p>
+                                <p class="text-gray-600">Chi nhánh: 456 Cầu Giấy, Hà Nội</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-gray-900">Giờ làm việc</h5>
+                                <p class="text-gray-600">Thứ 2 - Chủ Nhật: 24/24</p>
+                                <p class="text-gray-600">Kể cả ngày lễ tết</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-8 rounded-2xl border border-gray-100 shadow-lg">
+                    <h4 class="text-xl font-bold mb-6">Gửi Yêu Cầu Tư Vấn</h4>
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Cảm ơn! Chúng tôi sẽ liên hệ lại ngay.');">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Họ tên</label>
+                            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Nhập họ tên của bạn" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Số điện thoại</label>
+                            <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Nhập số điện thoại" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Địa chỉ / Vấn đề gặp phải</label>
+                            <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="Ví dụ: Bồn cầu bị tắc..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors shadow-md">
+                            Gửi Yêu Cầu
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-400 py-12 pb-24 md:pb-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-gray-800 pb-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4 text-white">
+                        <i class="fas fa-wrench text-xl"></i>
+                        <span class="text-xl font-bold uppercase">Môi Trường Sạch</span>
+                    </div>
+                    <p class="text-sm">Chuyên cung cấp dịch vụ vệ sinh môi trường, thông tắc cống, hút hầm cầu uy tín, chuyên nghiệp hàng đầu.</p>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-4">Dịch Vụ Chính</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-blue-400 transition">Thông tắc bồn cầu</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Hút bể phốt</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Nạo vét hố ga</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Xử lý mùi hôi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-bold mb-4">Cam Kết</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2 text-blue-500"></i> Không đục phá</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2 text-blue-500"></i> Bảo hành dài hạn</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle mr-2 text-blue-500"></i> Phục vụ 24/24</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-sm">
+                © 2024 Công ty Vệ Sinh Môi Trường Sạch. All rights reserved.
+            </div>
         </div>
     </footer>
 
-    <div class="floating-buttons">
-        <a href="https://zalo.me/0909123456" class="float-btn zalo-btn" target="_blank">
-            Z
+    <!-- STICKY MOBILE CALL BUTTONS -->
+    <div class="fixed bottom-0 left-0 w-full z-40 md:hidden bg-white border-t flex shadow-2xl">
+        <a href="tel:0909123456" class="flex-1 bg-blue-600 text-white py-3 flex flex-col items-center justify-center border-r border-blue-500">
+            <i class="fas fa-phone-alt mb-1"></i>
+            <span class="text-xs font-bold uppercase">Gọi Ngay</span>
         </a>
-        <a href="tel:0909123456" class="float-btn call-btn">
-            <i class="fas fa-phone-alt"></i>
+        <a href="https://zalo.me/0909123456" target="_blank" rel="noreferrer" class="flex-1 bg-blue-500 text-white py-3 flex flex-col items-center justify-center">
+            <div class="font-bold text-lg leading-none mb-1">Zalo</div>
+            <span class="text-xs font-bold uppercase">Chat Zalo</span>
         </a>
     </div>
 
+    <!-- JAVASCRIPT (Xử lý hiệu ứng) -->
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        // --- Xử lý Menu Mobile ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuBtn.querySelector('i');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Đổi icon
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            }
+        });
+
+        // Đóng menu khi click vào link bên trong
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
             });
+        });
+
+        // --- Xử lý Header đổi màu khi cuộn ---
+        const header = document.getElementById('main-header');
+        const brandName = document.getElementById('brand-name');
+        const brandSlogan = document.getElementById('brand-slogan');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                // Khi cuộn xuống
+                header.classList.add('bg-white', 'shadow-md', 'py-2');
+                header.classList.remove('bg-transparent', 'py-4');
+                
+                brandName.classList.remove('md:text-white');
+                brandName.classList.add('text-blue-900');
+
+                brandSlogan.classList.remove('md:text-gray-200');
+                brandSlogan.classList.add('text-gray-500');
+
+                navItems.forEach(item => {
+                    item.classList.remove('text-white', 'shadow-black', 'drop-shadow-md');
+                    item.classList.add('text-gray-700');
+                });
+            } else {
+                // Khi ở đầu trang
+                header.classList.remove('bg-white', 'shadow-md', 'py-2');
+                header.classList.add('bg-transparent', 'py-4');
+
+                brandName.classList.add('md:text-white');
+                brandName.classList.remove('text-blue-900');
+
+                brandSlogan.classList.add('md:text-gray-200');
+                brandSlogan.classList.remove('text-gray-500');
+
+                navItems.forEach(item => {
+                    item.classList.add('text-white', 'shadow-black', 'drop-shadow-md');
+                    item.classList.remove('text-gray-700');
+                });
+            }
         });
     </script>
 </body>
