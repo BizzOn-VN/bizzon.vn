@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Bảng Thu Phí (4 Phiếu)</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Input Section -->
+        <div class="input-section">
+            <h1>Nhập Thông Tin</h1>
+
+            <div class="tabs">
+                <button class="tab-btn active" data-index="0">Phiếu 1</button>
+                <button class="tab-btn" data-index="1">Phiếu 2</button>
+                <button class="tab-btn" data-index="2">Phiếu 3</button>
+                <button class="tab-btn" data-index="3">Phiếu 4</button>
+                <button class="tab-btn" data-index="4">Phiếu 5</button>
+                <button class="tab-btn" data-index="5">Phiếu 6</button>
+            </div>
+
+            <div id="form-content">
+                <div class="form-group">
+                    <label for="studentName">Tên Cháu:</label>
+                    <input type="text" id="studentName" placeholder="Ví dụ: Gia Hưng">
+                </div>
+
+                <div class="form-group">
+                    <label for="month">Tháng:</label>
+                    <input type="text" id="month" placeholder="Ví dụ: 2">
+                </div>
+
+                <div class="section-container fee-section">
+                    <h3>Các Khoản Thu</h3>
+                    <div id="fee-items">
+                        <!-- Dynamic Fee Items will be added here -->
+                    </div>
+                    <button id="add-fee-btn" class="btn-secondary">+ Thêm Khoản Thu</button>
+                </div>
+
+                <div class="section-container deduction-section-input">
+                    <h3>Ghi Chú / Khấu Trừ</h3>
+                    <div id="deduction-items">
+                        <!-- Dynamic Deduction Items will be added here -->
+                    </div>
+                    <button id="add-deduction-btn" class="btn-secondary">+ Thêm Mục Ghi Chú</button>
+                </div>
+
+                <div class="form-group" style="margin-top: 20px;">
+                    <label for="teacherName">Tên Cô Giáo / Người Thu:</label>
+                    <input type="text" id="teacherName" value="Cô Nhi">
+                </div>
+
+                <div class="form-group">
+                    <label for="bankInfo">Thông Tin Chuyển Khoản:</label>
+                    <textarea id="bankInfo" rows="3">Số TK: Nguyễn Thị Ái Nhi
+9931514009. Vietcombank</textarea>
+                </div>
+            </div>
+
+            <button id="print-btn" class="btn-primary">In 6 Phiếu (Print A4)</button>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="preview-section">
+            <div class="receipt-grid">
+                <!-- 4 Receipts will be generated here -->
+                <div class="receipt" id="receipt-0"></div>
+                <div class="receipt" id="receipt-1"></div>
+                <div class="receipt" id="receipt-2"></div>
+                <div class="receipt" id="receipt-3"></div>
+                <div class="receipt" id="receipt-4"></div>
+                <div class="receipt" id="receipt-5"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for Receipt Structure (Hidden) -->
+    <template id="receipt-template">
+        <div class="receipt-body">
+            <div class="receipt-header">
+                <h2>BẢNG THU PHÍ</h2>
+                <img src="laxanh-logo-oke.png" class="school-logo" alt="Logo">
+            </div>
+
+            <p>Kính gửi Ba Mẹ của Cháu:</p>
+            <p class="student-name-display">......................................................</p>
+
+            <p>Kính mời Ba Mẹ đóng tiền tháng <span class="display-month">...</span>:</p>
+
+            <table class="fee-table">
+                <tbody class="display-fee-items"></tbody>
+                <tbody class="display-deduction-items deduction-section"></tbody>
+                <tfoot>
+                    <tr class="total-row">
+                        <td class="total-label">TC:</td>
+                        <td class="total-amount">0</td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <p class="footer-note"><span class="display-teacherName">Cô Nhi</span> cám ơn sự cộng tác của Ba Mẹ</p>
+
+            <div class="bank-section">
+                <div class="bank-info display-bankInfo">
+                    Số TK: Nguyễn Thị Ái Nhi<br>
+                    9931514009. Vietcombank
+                </div>
+                <img src="qr-code.jpg" class="qr-code" alt="QR Code">
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
