@@ -215,6 +215,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Intl.NumberFormat('vi-VN').format(num);
     }
 
+    function formatName(str) {
+        if (!str) return '';
+        return str
+            .toLowerCase()
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    }
+
     function updatePreview(index) {
         const data = receipts[index];
         const container = document.getElementById(`receipt-${index}`);
@@ -222,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!container) return;
 
         // Update Text
-        container.querySelector('.student-name-display').textContent = data.studentName || '......................................................';
+        container.querySelector('.student-name-display').textContent = formatName(data.studentName) || '......................................................';
         container.querySelector('.display-month').textContent = data.month || '...';
         container.querySelector('.display-teacherName').textContent = data.teacherName || 'Cô Nhi';
         container.querySelector('.display-bankInfo').innerHTML = (data.bankInfo || '').replace(/\n/g, '<br>');
