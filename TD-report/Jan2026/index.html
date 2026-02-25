@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Bảo Trì Hệ Thống RIS - Tháng 01/2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #06b6d4;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .company-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            color: var(--text-main);
+            background: linear-gradient(135deg, var(--primary), var(--info));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .report-month {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .section-card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 40px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .section-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            color: var(--primary-dark);
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 32px;
+            background: var(--primary);
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-align: left;
+            padding: 15px;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 15px;
+            vertical-align: top;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-processed {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .status-checked {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-normal {
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+
+        .status-none {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-done {
+            background-color: #fef9c3;
+            color: #854d0e;
+        }
+
+        .details-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .details-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .details-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .image-item {
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.2s;
+        }
+
+        .image-item:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            background-color: #ffffff;
+            padding: 10px;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            color: var(--text-main);
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        footer {
+            margin-top: 80px;
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 60px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .signature-block {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .signature-block h3 {
+            margin-top: 0;
+            color: var(--info);
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .signature-space {
+            height: 80px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        .signer-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .date-location {
+            text-align: right;
+            margin-bottom: 40px;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .section-card {
+                padding: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal styling for images */
+        #imageModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .modal-wrapper {
+            position: relative;
+            display: inline-block;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        #imageModal img {
+            display: block;
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--danger);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1001;
+            transition: all 0.2s ease;
+            border: 2px solid white;
+        }
+
+        .close-modal:hover {
+            transform: scale(1.1) rotate(90deg);
+            background: #b91c1c;
+        }
+
+        .category-header {
+            background-color: #f8fafc;
+            padding: 10px 15px;
+            margin: 20px -30px 10px -30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="company-name">CÔNG TY TNHH GIẢI PHÁP TRỰC TUYẾN BIZZON</div>
+            <h1>Báo Cáo Bảo Trì Hệ Thống RIS</h1>
+            <div class="report-month">Tháng 01 / Năm 2026</div>
+        </header>
+
+        <div class="date-location">TP. Hồ Chí Minh, ngày 22 tháng 01 năm 2026</div>
+
+        <!-- Section 1: Database -->
+        <div class="section-card">
+            <h2 class="section-title">1. Bảo Trì Database</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%">Yêu cầu / Đối tượng</th>
+                            <th style="width: 15%">Ngày thực hiện</th>
+                            <th style="width: 15%">Tình trạng</th>
+                            <th style="width: 45%">Chi tiết xử lý</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>NSNA, SBTD</strong></td>
+                            <td>09/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>
+                                <ul class="details-list">
+                                    <li>Tối ưu function lấy danh sách chỉ định:
+                                        <code>FUNCTION public.patients_diagnotics_getdiagnoticsbypatientid(input json)</code>
+                                    </li>
+                                    <li>Danh sách lấy nhanh hơn và chiếm ít tài nguyên hơn</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>NDTL, NKPB, NPCH, SA29, SBQ1, SDCN, SKCP, SKMD, SKQH, SNGM, STDK, SVHC, TKQH,
+                                    TOLP</strong></td>
+                            <td>19/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>Tối ưu function lấy danh sách chỉ định (FUNCTION
+                                public.patients_diagnotics_getdiagnoticsbypatientid(
+                                input json))
+                                Danh sách lấy nhanh hơn và chiếm ít tài nguyên hơn</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SCHD, SYKD</strong></td>
+                            <td>20/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>Tối ưu function lấy danh sách chỉ định (FUNCTION
+                                public.patients_diagnotics_getdiagnoticsbypatientid(
+                                input json))
+                                Danh sách lấy nhanh hơn và chiếm ít tài nguyên hơn</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SBTD</strong></td>
+                            <td>09/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>Chỉnh lại tên cột hiển thị trong cơ sở dữ liệu để đảm bảo tính nhất quán.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kiểm tra Backup</strong></td>
+                            <td>22/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>
+                                Đầy đủ các khách hàng (25 DB)
+                                <div class="image-gallery">
+                                    <div class="image-item" onclick="openModal('images/image30.png')">
+                                        <img src="images/image30.png" alt="Backup check">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Restore ngẫu nhiên</strong></td>
+                            <td>22/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã restore</span></td>
+                            <td>
+                                DB: NDTL, NSNA, SBQ1.
+                                <div class="image-gallery">
+                                    <div class="image-item" onclick="openModal('images/image32.png')">
+                                        <img src="images/image32.png" alt="Restore check">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kiểm tra Connection</strong></td>
+                            <td>20/01/2026</td>
+                            <td><span class="status-badge status-normal">Bình thường</span></td>
+                            <td>
+                                <ul class="details-list">
+                                    <li>Query các connection trong hệ thống</li>
+                                    <li>Xóa các connection idle</li>
+                                </ul>
+                                <div class="image-gallery">
+                                    <div class="image-item" onclick="openModal('images/image31.png')">
+                                        <img src="images/image31.png" alt="Connection 1">
+                                    </div>
+                                    <div class="image-item" onclick="openModal('images/image34.png')">
+                                        <img src="images/image34.png" alt="Connection 2">
+                                    </div>
+                                    <div class="image-item" onclick="openModal('images/image33.png')">
+                                        <img src="images/image33.png" alt="Connection 3">
+                                    </div>
+                                    <div class="image-item" onclick="openModal('images/image36.png')">
+                                        <img src="images/image36.png" alt="Connection 4">
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: Software -->
+        <div class="section-card">
+            <h2 class="section-title">2. Bảo Trì Phần Mềm</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 25%">Mô tả chi tiết</th>
+                            <th style="width: 15%">Ngày thực hiện</th>
+                            <th style="width: 15%">Tình trạng xử lý</th>
+                            <th style="width: 45%">Chi tiết xử lý</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>NSNA, SBTD, SDCN</strong></td>
+                            <td>09/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>
+                                <ul class="details-list">
+                                    <li>Tối ưu code realtime lấy danh sách chỉ định</li>
+                                    <li>Cập nhật code search autocomplete trong mapping, assign</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>NDTL</strong></td>
+                            <td>20/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>
+                                <ul class="details-list">
+                                    <li>- Tối ưu code realtime lấy danh sách chỉ định</li>
+                                    <li>- Cập nhật code search autocomplete trong mapping, assign</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>NKVA, NPCH, S315, SA29, SBQ1, SKCP, SKMD, SNGM, STDK</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>
+                                <ul class="details-list">
+                                    <li>- Tối ưu code realtime lấy danh sách chỉ định</li>
+                                    <li>- Cập nhật code search autocomplete trong mapping, assign</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>SVHC, TKQH, TOLP, SCHD, SYKD, TKTP</strong></td>
+                            <td>22/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>
+                                <ul class="details-list">
+                                    <li>- Tối ưu code realtime lấy danh sách chỉ định</li>
+                                    <li>- Cập nhật code search autocomplete trong mapping, assign</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>NPCH</strong></td>
+                            <td>09/01/2026</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>Xóa bớt ảnh DICOM con edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NDTL</strong></td>
+                            <td>20/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NKPB</strong></td>
+                            <td>20/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NKVA</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NPCH</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>NSNA</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>S315</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SA29</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SBQ1</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SBTD</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SDCN</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SKCP</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SKMD</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SNGM</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>STDK</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SVHC</strong></td>
+                            <td>21/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TKQH</strong></td>
+                            <td>22/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TOLP</strong></td>
+                            <td>22/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SCHD</strong></td>
+                            <td>22/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SYKD</strong></td>
+                            <td>22/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TKTP</strong></td>
+                            <td>22/01/2026</td>
+                            <td><span class="status-badge status-checked">Đã kiểm tra</span></td>
+                            <td>- Kiểm tra API, Web, RIS-Service, Database edge</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="category-header">Kiểm tra hạ tầng Edge (API, Web, RIS-Service, DB)</div>
+            <div class="image-gallery">
+                <div class="image-item" onclick="openModal('images/image35.png')">
+                    <img src="images/image35.png" alt="NDTL">
+                    <div class="image-caption">NDTL - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image38.png')">
+                    <img src="images/image38.png" alt="NDTL">
+                    <div class="image-caption">NDTL - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image37.png')">
+                    <img src="images/image37.png" alt="NKPB">
+                    <div class="image-caption">NKPB - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image41.png')">
+                    <img src="images/image41.png" alt="NKPB">
+                    <div class="image-caption">NKPB - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image39.png')">
+                    <img src="images/image39.png" alt="NKVA">
+                    <div class="image-caption">NKVA - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image40.png')">
+                    <img src="images/image40.png" alt="NKVA">
+                    <div class="image-caption">NKVA - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image42.png')">
+                    <img src="images/image42.png" alt="NKVA">
+                    <div class="image-caption">NKVA - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image43.png')">
+                    <img src="images/image43.png" alt="NKVA">
+                    <div class="image-caption">NKVA - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image44.png')">
+                    <img src="images/image44.png" alt="NPCH">
+                    <div class="image-caption">NPCH - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image45.png')">
+                    <img src="images/image45.png" alt="NPCH">
+                    <div class="image-caption">NPCH - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image46.png')">
+                    <img src="images/image46.png" alt="NSNA">
+                    <div class="image-caption">NSNA - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image47.png')">
+                    <img src="images/image47.png" alt="NSNA">
+                    <div class="image-caption">NSNA - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image48.png')">
+                    <img src="images/image48.png" alt="S315">
+                    <div class="image-caption">S315 - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image49.png')">
+                    <img src="images/image49.png" alt="S315">
+                    <div class="image-caption">S315 - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image20.png')">
+                    <img src="images/image20.png" alt="SA29">
+                    <div class="image-caption">SA29 - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image21.png')">
+                    <img src="images/image21.png" alt="SA29">
+                    <div class="image-caption">SA29 - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image22.png')">
+                    <img src="images/image22.png" alt="SA29">
+                    <div class="image-caption">SA29 - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image23.png')">
+                    <img src="images/image23.png" alt="SBQ1">
+                    <div class="image-caption">SBQ1 - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image24.png')">
+                    <img src="images/image24.png" alt="SBQ1">
+                    <div class="image-caption">SBQ1 - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image25.png')">
+                    <img src="images/image25.png" alt="SBTD">
+                    <div class="image-caption">SBTD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image26.png')">
+                    <img src="images/image26.png" alt="SBTD">
+                    <div class="image-caption">SBTD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image27.png')">
+                    <img src="images/image27.png" alt="SBTD">
+                    <div class="image-caption">SBTD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image28.png')">
+                    <img src="images/image28.png" alt="SDCN">
+                    <div class="image-caption">SDCN - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image29.png')">
+                    <img src="images/image29.png" alt="SDCN">
+                    <div class="image-caption">SDCN - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image10.png')">
+                    <img src="images/image10.png" alt="SKCP">
+                    <div class="image-caption">SKCP - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image11.png')">
+                    <img src="images/image11.png" alt="SKCP">
+                    <div class="image-caption">SKCP - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image12.png')">
+                    <img src="images/image12.png" alt="SKMD">
+                    <div class="image-caption">SKMD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image13.png')">
+                    <img src="images/image13.png" alt="SKMD">
+                    <div class="image-caption">SKMD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image14.png')">
+                    <img src="images/image14.png" alt="SNGM">
+                    <div class="image-caption">SNGM - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image15.png')">
+                    <img src="images/image15.png" alt="SNGM">
+                    <div class="image-caption">SNGM - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image16.png')">
+                    <img src="images/image16.png" alt="STDK">
+                    <div class="image-caption">STDK - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image17.png')">
+                    <img src="images/image17.png" alt="STDK">
+                    <div class="image-caption">STDK - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image18.png')">
+                    <img src="images/image18.png" alt="SVHC">
+                    <div class="image-caption">SVHC - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image19.png')">
+                    <img src="images/image19.png" alt="SVHC">
+                    <div class="image-caption">SVHC - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image1.png')">
+                    <img src="images/image1.png" alt="TKQH">
+                    <div class="image-caption">TKQH - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image2.png')">
+                    <img src="images/image2.png" alt="TOLP">
+                    <div class="image-caption">TOLP - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image3.png')">
+                    <img src="images/image3.png" alt="TOLP">
+                    <div class="image-caption">TOLP - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image4.png')">
+                    <img src="images/image4.png" alt="SCHD">
+                    <div class="image-caption">SCHD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image5.png')">
+                    <img src="images/image5.png" alt="SCHD">
+                    <div class="image-caption">SCHD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image6.png')">
+                    <img src="images/image6.png" alt="SYKD">
+                    <div class="image-caption">SYKD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image7.png')">
+                    <img src="images/image7.png" alt="SYKD">
+                    <div class="image-caption">SYKD - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image8.png')">
+                    <img src="images/image8.png" alt="TKTP">
+                    <div class="image-caption">TKTP - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+                <div class="image-item" onclick="openModal('images/image9.png')">
+                    <img src="images/image9.png" alt="TKTP">
+                    <div class="image-caption">TKTP - Kiểm tra API, Web, RIS-Service, Database edge</div>
+                </div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px; font-style: italic;">* Xem thêm chi
+                tiết trong thư mục images của báo cáo.</p>
+        </div>
+
+        <!-- Section 3, 4: Updates & Backup Systems -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px;">
+            <div class="section-card">
+                <h2 class="section-title">3. Cập Nhật Hệ Thống</h2>
+                <p><span class="status-badge status-none">Không có phát sinh</span></p>
+            </div>
+            <div class="section-card">
+                <h2 class="section-title">4. Sao Lưu & Khôi Phục</h2>
+                <p><span class="status-badge status-none">Không có phát sinh mới</span></p>
+            </div>
+        </div>
+
+        <!-- Section 5: Features -->
+        <div class="section-card">
+            <h2 class="section-title">5. Cập Nhật Tính Năng</h2>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%">Đơn vị</th>
+                            <th style="width: 20%">Thời gian</th>
+                            <th style="width: 15%">Tình trạng</th>
+                            <th style="width: 45%">Mô tả tính năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>STDK</strong></td>
+                            <td>03/01/2026</td>
+                            <td><span class="status-badge status-done">Hoàn thành</span></td>
+                            <td>Thêm chức năng xuất excel; Thêm trường tìm kiếm trong worklist (Thực hiện trong 2 giờ).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>NKVA</strong></td>
+                            <td>03/01/2026</td>
+                            <td><span class="status-badge status-done">Hoàn thành</span></td>
+                            <td>Chỉnh lại thông tin hiển thị trên report (Thực hiện trong 1 giờ).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>URA</strong></td>
+                            <td>14/01 - 15/01</td>
+                            <td><span class="status-badge status-processed">Đã xử lý</span></td>
+                            <td>Cấu hình font khi xuất PDF report (Thực hiện trong 16 giờ).</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 6: Support -->
+        <div class="section-card">
+            <h2 class="section-title">6. Hỗ Trợ Kỹ Thuật</h2>
+            <p style="margin-bottom: 20px; font-weight: 500;">Hỗ trợ kiểm tra và xử lý qua Telegram</p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 20%">Đơn vị</th>
+                            <th style="width: 20%">Thời gian</th>
+                            <th style="width: 60%">Nội dung hỗ trợ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>S315</strong></td>
+                            <td>08/01/2026</td>
+                            <td>Hỗ trợ kiểm tra chữ ký số với hệ thống HIS.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SBTD</strong></td>
+                            <td>08/01 - 09/01</td>
+                            <td>Hỗ trợ kiểm tra message HL7 gửi thêm nơi chỉ định.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TKTP</strong></td>
+                            <td>19/01/2026</td>
+                            <td>Hỗ trợ kiểm tra message HL7 mà phía HIS gửi sang.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="signature-block">
+                <h3>Đơn vị tiếp nhận</h3>
+                <div class="signature-space"></div>
+                <div class="signer-name">CÔNG TY TNHH KỸ THUẬT Y TẾ TOÀN DIỆN</div>
+            </div>
+            <div class="signature-block">
+                <h3>Đơn vị thực hiện</h3>
+                <div class="signature-space"></div>
+                <div class="signer-name">CÔNG TY TNHH GIẢI PHÁP TRỰC TUYẾN BIZZON</div>
+            </div>
+            <div class="signature-block">
+                <h3>Người lập báo cáo</h3>
+                <div class="signature-space"></div>
+                <div class="signer-name">Nguyễn Thanh Sử</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for images -->
+    <div id="imageModal">
+        <div class="modal-wrapper">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img id="modalImg" src="" alt="Zoomed view">
+        </div>
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('imageModal').style.display = 'flex';
+            document.getElementById('modalImg').src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close on click outside image
+        window.onclick = function (event) {
+            let modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+
+</html>
