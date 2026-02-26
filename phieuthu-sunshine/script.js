@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             studentName: '',
             month: '2',
             teacherName: 'Sunshine',
-            bankInfo: 'Số TK: Doan Ngoc Lieu | 19050920815012 | Techcombank',
+            bankInfo: 'Số TK: Doan Ngoc Lieu | 19050920815012 | Techcombank | Ba mẹ vui lòng KHÔNG ghi nội dung chuyển khoản',
             fees: [
                 { desc: 'Học + tiền tiểu học', amount: 1900000 },
                 { desc: 'Sách tập kỳ 2', amount: 100000 },
