@@ -981,94 +981,78 @@
         }
     </script>
 
-    <script>
-(function () {
-  var correctPassword = "TD@2026";
 
-  document.addEventListener("DOMContentLoaded", function () {
-    var overlay = document.createElement("div");
+<script>
+(function() {
+  const PASSWORD = "TD@2026";
+  const KEY = "td_access_granted";
+
+  if (localStorage.getItem(KEY) === "true") return;
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const style = document.createElement("style");
+    style.innerHTML = `
+      #td-lock-screen{
+        position:fixed; inset:0; background:#f5f5f7;
+        display:flex; align-items:center; justify-content:center;
+        z-index:999999; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      }
+      #td-lock-box{
+        background:white; padding:40px 36px; border-radius:16px;
+        box-shadow:0 10px 30px rgba(0,0,0,0.08);
+        text-align:center; max-width:360px; width:90%;
+      }
+      #td-lock-box h2{
+        font-size:20px; margin-bottom:16px; font-weight:600; color:#1d1d1f;
+      }
+      #td-pass{
+        width:100%; padding:12px 14px; border-radius:10px;
+        border:1px solid #d2d2d7; outline:none; font-size:15px;
+        margin-bottom:12px;
+      }
+      #td-btn{
+        width:100%; padding:12px; border-radius:10px;
+        border:none; background:#0071e3; color:white;
+        font-weight:600; cursor:pointer;
+      }
+      #td-btn:hover{ background:#0062c7; }
+      #td-error{ color:#d93025; font-size:13px; margin-top:8px; display:none; }
+    `;
+    document.head.appendChild(style);
+
+    const overlay = document.createElement("div");
+    overlay.id = "td-lock-screen";
     overlay.innerHTML = `
-      <div style="
-        position:fixed;
-        inset:0;
-        background:rgba(255,255,255,0.85);
-        backdrop-filter:blur(8px);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        z-index:999999;
-        font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;
-      ">
-        <div style="
-          width:360px;
-          background:#fff;
-          border-radius:18px;
-          box-shadow:0 10px 40px rgba(0,0,0,0.08);
-          padding:32px;
-          text-align:center;
-        ">
-          <div style="font-size:22px;font-weight:600;margin-bottom:6px;">
-            Restricted Access
-          </div>
-          <div style="font-size:14px;color:#666;margin-bottom:22px;">
-            Vui lòng nhập mật khẩu để truy cập
-          </div>
-
-          <input id="site-password"
-            type="password"
-            placeholder="Nhập mật khẩu"
-            style="
-              width:100%;
-              padding:12px 14px;
-              border-radius:10px;
-              border:1px solid #ddd;
-              outline:none;
-              font-size:14px;
-              margin-bottom:14px;
-            "
-          />
-
-          <button id="unlock-btn"
-            style="
-              width:100%;
-              padding:12px;
-              border:none;
-              border-radius:10px;
-              background:#000;
-              color:#fff;
-              font-weight:600;
-              cursor:pointer;
-              font-size:14px;
-            ">
-            Mở khóa
-          </button>
-
-          <div id="error-msg" style="color:#d00;font-size:13px;margin-top:10px;display:none;">
-            Sai mật khẩu
-          </div>
-        </div>
+      <div id="td-lock-box">
+        <h2>Nhập mật khẩu để truy cập</h2>
+        <input type="password" id="td-pass" placeholder="Mật khẩu">
+        <button id="td-btn">Truy cập</button>
+        <div id="td-error">Mật khẩu không đúng</div>
       </div>
     `;
-
     document.body.appendChild(overlay);
 
-    function checkPassword() {
-      var input = document.getElementById("site-password").value;
-      if (input === correctPassword) {
+    const input = document.getElementById("td-pass");
+    const btn = document.getElementById("td-btn");
+    const error = document.getElementById("td-error");
+
+    function check() {
+      if (input.value === PASSWORD) {
+        localStorage.setItem(KEY, "true");
         overlay.remove();
       } else {
-        document.getElementById("error-msg").style.display = "block";
+        error.style.display = "block";
       }
     }
 
-    document.getElementById("unlock-btn").onclick = checkPassword;
-
-    document.getElementById("site-password").addEventListener("keypress", function(e){
-      if (e.key === "Enter") checkPassword();
+    btn.onclick = check;
+    input.addEventListener("keypress", function(e){
+      if (e.key === "Enter") check();
     });
   });
 })();
 </script>
+
 </body>
 
 </html>
