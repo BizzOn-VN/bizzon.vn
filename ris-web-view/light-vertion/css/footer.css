@@ -1,0 +1,28 @@
+/* footer
+ -----------------------------------------------------*/
+.page-hospital table .status {
+  position: relative;
+  color: #4EC903;
+  padding-left: 12px;
+}
+.page-hospital table .status:before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  background: #4EC903;
+  top: 50%;
+  left: 0px;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.page-hospital table .status.locked {
+  color: #FF9900;
+}
+.page-hospital table .status.locked:before {
+  background: #FF9900;
+}

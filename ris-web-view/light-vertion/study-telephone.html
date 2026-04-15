@@ -1,0 +1,2902 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="ja"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example</title>
+  <link  href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link  href="vendor/semantic/semantic.min.css" rel="stylesheet" type="text/css">
+  <link  href="vendor/semantic/semantic.min.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.min.css"> 
+  <link rel="stylesheet" href="./vendor/scrollbar/OverlayScrollbars.min.css"> 
+  <link rel="stylesheet" href="./vendor/fancybox/jquery.fancybox.min.css"> 
+  <link rel="stylesheet" href="./vendor/mCustomScrollbar/jquery.mCustomScrollbar.min.css"> 
+  <link rel="stylesheet" href="./vendor/select-2/select2.min.css"> 
+  <link href="./vendor/quill/quill.snow.css" rel="stylesheet">
+<link href="./vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="./vendor/quill/quill.core.css" rel="stylesheet">
+  <link href="./vendor/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link  href="css/style.css" rel="stylesheet" media="screen">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="page-header page-header-hlc">
+  <div class="logo logo-hl">
+  	<a href="#">
+  		<img src="./images/logo.png" alt="">
+  		<h1>Bringing you the simplest experience</h1>
+  	</a>
+  	<div class="ico-close-sidebar">
+  		<img src="./images/icon-breadcrumb.png" alt="">
+  	</div>
+  </div>
+  <div class="fl-right">
+  	<!-- <div class="form-search">
+  		<form action="">
+  			<div class="md-row">
+  				<input class="input-search" type="search" placeholder="Tìm kiếm...">
+  				<input class="input-submit" type="submit" value="">
+  			</div>
+  		</form>
+  	</div> -->
+  	<div class="right-meta">
+      <div class="chart-bar smd-ico smd_sub_meta_header">
+        <div class="ico-chart-bar" onclick="open_sub_meta_header(this)">
+            <img src="./images/icon-chart-bar.png" alt="">
+        </div>
+        <ul class="ul-analytics sub_meta_header">
+            <li class="lbt_analytics" style="">
+                <a href="/ReportPages/StudyAnalytics.aspx" title="Thống kê số ca chụp">
+                    <i class="icon-graph"></i>
+                    Thống kê số ca chụp
+                </a>
+            </li>
+            <li class="lbt_activityanalytics" style="">
+                <a href="/ReportPages/ActivityAnalytics.aspx" title="Thống kê hoạt động">
+                    <i class="icon-pie-chart"></i>
+                    Thống kê hoạt động
+                </a>
+            </li>
+            <li class="lbt_useranalytics" style="">
+                <a href="/ReportPages/UserAnalytics.aspx" title="Thống kê cá nhân">
+                    <i class="icon-pie-chart"></i>
+                    Thống kê cá nhân
+                </a>
+            </li>
+            <li class="lbt_print_log" style="display: none;">
+                <a href="/Pages/PrintingLog.aspx" title="Thống kê số phim chụp">
+                    <i class="icon-printer"></i>
+                    Thống kê số phim chụp
+                </a>
+            </li>
+            <li class="lbt_consumable_supplies" style="display: none;">
+                <a href="/Pages/ConsumableSuppliesReport.aspx" title="Thống kê vật tư tiêu hao">
+                    <i class="icon-printer"></i>
+                    Thống kê vật tư tiêu hao
+                </a>
+            </li>
+            <li class="lbt_user_log" style="display: none;">
+                <a href="/Pages/EditStudyLog.aspx" title="Hoạt động sửa thông tin ca chụp">
+                    <i class="icon-list"></i>
+                    Hoạt động sửa thông tin ca chụp
+                </a>
+            </li>
+        </ul>
+      </div>
+  		<div class="notification">
+  			<div class="ico-bell" onclick="open_sub_notification(this)">
+  				<img src="./images/ico-bell.png" alt="">
+  				<div class="had-notification"></div>
+  			</div>
+        <div class="sub-notification">
+          <div class="noti-top clearfix">
+               <span id="noti-view" class="pull-left"><span>78</span>Thông báo</span>
+               <a class="pull-right" onclick="readAllNotification();">Đánh dấu tất cả đã đọc</a>
+           </div>
+           <div class="content-noti">
+            <div class="md-scroll-xy" style="max-height: calc(100vh - 170px)">
+               <ul>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.Bạn có 1 bệnh nhân (Trịnh Nam Thao)</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="" checked>
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                   <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo2" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo3" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo4" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo5" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo6" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo7" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo8" name="" value="">
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="noti-bottom">
+              <a id="view-all" class="pull-left" href="/notification-detail.html" target="_blank">Xem tất cả</a>
+            </div>
+             
+           </div>
+        </div>
+  		</div>
+      <div class="select-language">
+        <div class="ui compact selection dropdown">
+          <i class="dropdown icon"></i>
+          <div class="text"><img src="./images/en-flag.png" alt=""></div>
+          <div class="menu">
+            <div class="item"><a href="#"><img src="./images/vn-flag.png" alt=""></a></div>
+            <div class="item"><a href="#"><img src="./images/en-flag.png" alt=""></a></div>
+          </div>
+        </div>
+      </div>
+  		<div class="account" onclick="account_click(this)">
+        <div class="text">
+          <span>Welcome,<strong>Thiên Lý</strong></span>
+        </div>
+        <div class="avatar">
+          <img src="./images/avatar.jpg" alt="">
+        </div>
+         <ul class="menu-content">
+          <li><a href="#">Thông tin tài khoản</a></li>
+          <li><a href="#">Đổi mật khẩu</a></li>
+          <li class="log-out"><a href="#">Đăng xuất</a></li>
+        </ul>
+      </div>
+  	</div>
+  </div>
+</header>
+<!-- /.page-header -->
+<div class="sidebar-worklist" id="sidebar-worklist">
+	<div class="inner">
+		<div class="icon-logo">
+			<a href="#">
+				<img src="./images/icon-logo.png" alt="">
+			</a>
+		</div>
+		<div class="navbar-link">
+			<ul>
+				<li><a class="nav-ge" href="#">GE</a></li>
+				<li><a class="text-revert active"href="#">Worklist</a></li>
+				<li><a class="text-revert" href="#">Reporting</a></li>
+				<li><a class="text-revert" href="#">Dashboard</a></li>
+        <li><a class="text-revert" href="#">Setting</a></li>
+			</ul>
+		</div>
+	</div>
+	
+</div>
+<main class="page-main page-nomal page-listing page-work-list page-reporting page-work-list-2 page-study-telephone">
+	<div class="blk-worklist" id="blk-worklist">
+		<div class="top-title">
+			<img class="icon" src="./images/icon-worklist.png" alt="">
+			<span>Worklist</span>
+		</div>
+		<div class="item">
+			<div class="control active" onclick="slide_toggle_item_blk_worklist(this)">
+				<img class="icon" src="./images/icon-management.png" alt="">
+				<span>Management</span>
+			</div>
+			<ul>
+				<li><a class="active" href="#">User</a></li>
+				<li><a href="#">Patients</a></li>
+				<li><a href="#">Doctors</a></li>
+				<li><a href="#">Chỉ định</a></li>
+				<li><a href="#">Technicians</a></li>
+				<li><a href="#">Modality</a></li>
+				<li><a href="#">Hospital</a></li>
+				<li><a href="#">Level Address</a></li>
+			</ul>
+		</div>
+		<div class="item">
+			<div class="control" onclick="slide_toggle_item_blk_worklist(this)">
+				<img class="icon" src="./images/icon-setting.png" alt="">
+				<span>Setting</span>
+			</div>
+			<ul>
+				<li><a href="#">Template Report</a></li>
+				<li><a href="#">Setting Report</a></li>
+				<li><a href="#">Parameters</a></li>
+				<li><a href="#">Settings</a></li>
+				<li><a href="#">Connection Service</a></li>
+				<li><a href="#">Setting server</a></li>
+			</ul>
+		</div>
+		<!-- <div class="ico-close-sidebar">
+			<img src="./images/icon-breadcrumb.png" alt="">
+		</div> -->
+	</div>
+	<div class="blk-table-admin padding-hl" id="blk-table-admin">
+		<div class="meta-top clearfix">
+			<div class="blk-control mrg-bt md-blk-control padding-hl" style="min-width: 500px">
+        <div class="fl-left">
+          <select class="ui dropdown smd-dropdown-nomal text-ellipsis">
+            <option value="">10</option>
+            <option value="1">1</option>
+            <option value="0">2</option>
+            <option value="1">3</option>
+            <option value="1">4</option>
+            <option value="1">5</option>
+            <option value="1">6</option>
+            <option value="1">7</option>
+            <option value="1">8</option>
+            <option value="1">9</option>
+            <option value="1">10</option>
+          </select>
+          <!-- <div class="blk-checkbox" style="display: inline-block;">
+            <div class="ui checkbox checkbox-1">
+              <input type="checkbox" id="example-id" class="hidden">
+              <label for="example-id" style="padding-left: 25px;">Ca của tôi</label>
+            </div>
+          </div> -->
+        </div>
+        <div class="blk-pagination" style="padding: 0px;">
+          <div class="md-pagination">
+            
+            <a class="hl" href="#">&laquo;</a>
+            <a class="hl" href="#">&laquo;</a>
+            <a class="active" href="#">100</a>
+            <a href="#">10</a>
+            <a href="#">102</a>
+            <a href="#">103</a>
+            <a href="#">104</a>
+            <a href="#">125</a>
+            <a class="hl" href="#">&raquo;</a>
+            <a class="hl" href="#">&raquo;</a>
+          </div>
+        </div>
+       <!--  <div class="fl-right">
+          <div class="blk-checkbox">
+          </div>
+          <div class="md-addnew">
+            <a data-popup="#them-chi-dinh">Thêm chỉ định</a>
+          </div>  
+            <div class="md-addnew md-addnew-show">
+            <a href="#" class="item" data-src="#popup-custom-filer-modal" data-toggle="modal" data-target="#popup-custom-filer-modal">Hiển thị</a>
+          </div>  
+        </div> -->
+      </div>
+		</div>
+		<div class="table-telephone">
+			<div class="tab-content panel-top" style="width: 100%;">
+				<div class="tab-pane active" id="tabs-1" role="tabpanel">
+					<div class="tele-table md-scroll-xy">
+						<table class="resizable table table-fixed table-detail has-click table-tl table-study-telephone" id="" style="width: calc(100% - 3px) !important;">
+						  <thead>
+						    <tr>
+						      <th class="text-center"  scope="col" style="width: 50px;vertical-align: top;">
+                    <div class="text-cm">
+                      <p>#</p>
+                    </div>
+                    
+                  </th>
+						      <th  scope="col" style="width: 170px">
+                    <div class="text-cm">
+                      <p>Date Created</p>
+                    </div>
+                    <div class="select-cm">
+                      <select >
+                        <option value="">Templates Type</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                    </div>
+                   
+                  </th>
+						      <th  scope="col" style="width: 130px">
+                    <div class="text-cm">
+                      <p>ACC No</p>
+                    </div>
+                    
+                    
+                     <div class="dropdown-hl dropdown-check-list" >
+                         <label class="dropdown-label">Select Options</label>
+                         
+                         <div class="dropdown-list">
+                        <!--    <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group-all" class="check-all checkbox-custom" id="checkbox-main"/>
+                             <label for="checkbox-main" class="checkbox-custom-label">Selection All</label>
+                           </div> -->
+                           
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-01"/>
+                             <label for="checkbox-01" class="checkbox-custom-label">Selection 1</label>
+                           </div>
+                           
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-custom_02"/>
+                             <label for="checkbox-custom_02" class="checkbox-custom-label">Selection 2</label>
+                           </div>
+                           
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-custom_03"/>
+                             <label for="checkbox-custom_03" class="checkbox-custom-label">Selection 3</label>
+                           </div>
+                           
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-custom_04"/>
+                             <label for="checkbox-custom_04" class="checkbox-custom-label">Selection 4</label>
+                           </div>
+
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-05"/>
+                             <label for="checkbox-05" class="checkbox-custom-label">Selection 5</label>
+                           </div>
+                           
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-custom_06"/>
+                             <label for="checkbox-custom_06" class="checkbox-custom-label">Selection 6</label>
+                           </div>
+                           
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-custom_07"/>
+                             <label for="checkbox-custom_07" class="checkbox-custom-label">Selection 7</label>
+                           </div>
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-custom_08"/>
+                             <label for="checkbox-custom_08" class="checkbox-custom-label">Selection 8</label>
+                           </div>
+                           <div class="checkbox">
+                             <input type="checkbox" name="dropdown-group" class="check checkbox-custom" id="checkbox-09"/>
+                             <label for="checkbox-09" class="checkbox-custom-label">Selection 9 Selection 9 Selection9</label>
+                           </div>
+                         </div>
+                       </div>
+                   
+                  </th>
+						      <th  scope="col" style="width: 100px">
+                    <div class="text-cm">
+                      <p>Họ và tên</p>
+                    </div>
+                    <div class="select-cm">
+                      <select class="bg-white" >
+                        <option value="">Templates Type</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                    </div>
+                  </th>
+						      <th class="text-center"  scope="col" style="width: 70px">
+                    <div class="text-cm">
+                      <p>Năm sinh</p>
+                    </div>
+                    <div class="select-cm">
+                      <select class="bg-white" >
+                        <option value="">Templates Type</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                    </div>
+                  </th>
+						      <th  scope="col" style="width: 200px">
+                    <div class="text-cm">
+                      <p>Bác sĩ chỉ định</p>
+                    </div>
+                     <div class="select-cm">
+                      <input type="text" placeholder="Bác sĩ chỉ định">
+                    </div>
+                  </th>
+						      <th  scope="col" style="width: 200px">
+                    <div class="text-cm">
+                      <p>Chuẩn đoán</p>
+                    </div>
+                     <div class="select-cm">
+                       <input class="bg-white" type="text" placeholder="Bác sĩ chỉ định">
+                    </div>
+                  </th>
+						      <th  scope="col" style="width: 100px">
+                     <div class="text-cm">
+                      <p>Chỉ định</p>
+                    </div>
+                     <div class="select-cm">
+                      <select class="bg-white" >
+                        <option value="">Templates Type</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                    </div>
+                  </th>
+						      <th class="text-center"  scope="col" style="width: 70px">
+                     <div class="text-cm">
+                      <p>AE Title</p>
+                    </div>
+                     <div class="select-cm">
+                      <select class="bg-white" >
+                        <option value="">Templates Type</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                    </div>
+                  </th>
+						      <th class="text-center"  scope="col" style="width: 80px">
+                     <div class="text-cm">
+                      <p>Modality</p>
+                    </div>
+                     <div class="select-cm">
+                      <select class="bg-white" >
+                        <option value="">Templates Type</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                    </div>
+                    
+                  </th>
+						      <th  scope="col" style="width: 120px">
+                     <div class="text-cm">
+                      <p>Trạng thái</p>
+                    </div>
+                     <div class="select-cm">
+                      <select class="bg-white" >
+                        <option value="">Templates Type</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                      </select>
+                    </div>
+                    
+                  </th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center">
+                    <p>1</p>
+                  <!--   <div class="menu-rpt-tb">
+                      <a href="">menu</a>
+                      <a href="">menu</a>
+                      <a href="">menu</a>
+                      <a href="">menu</a>
+                    </div> -->
+                  </th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr class="active" onclick="active_tr(this)">
+						      <th class="text-center"><p>2</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-cho-chup"><p><img class="status-nomal" src="./images/icon-camera.png" alt=""><img class="status-on-click" src="./images/icon-camera-light-silver.png" alt="">Chờ chụp</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>3</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-cho-duyet"><p><img class="status-nomal" src="./images/icon-ourglasshigh.png" alt=""><img class="status-on-click" src="./images/icon-ourglasshigh-light-sivler.png" alt="">Chờ duyệt</p></td>
+						    </tr>
+						     <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>4</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						   	<tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>4</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						   	<tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>4</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						   	<tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						    <tr onclick="active_tr(this)">
+						      <th class="text-center"><p>5</p></th>
+						      <td><p>10-08-2021 01:26</p></td>
+						      <td><p>20210807120</p></td>
+						      <td><p>Lục Kiều Hoài An</p></td>
+						      <td class="text-center" ><p>2001</p></td>
+						      <td><p>BS. Nguyễn Văn Thanh</p></td>
+						      <td><p>Gãy xương chân</p></td>
+						      <td><p>Chụp Xquang xương bàn</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="text-center" ><p>AR</p></td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						    </tr>
+						  </tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="blk-info panel-bottom clearfix">
+				<div class="loading-data" style="display: none;">
+					<div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+</main>
+<!-- /.page-main -->
+
+<div class="bg-opacity"></div>
+<div id="them-chi-dinh" class="md-modal md-modal-nomal smd-popup">  
+	<div class="scroll-popup">
+		<div class="smd-popup-close"><img src="./images/icon-close.png" alt=""></div>             
+	    <div class="content-popup">
+	        <div class="top-title">Thêm chỉ định</div>
+	        <div class="md-form form-add-report">
+	    	    <div class="top-meta">
+	    	    	<div class="smd-search">
+	    				<div class="fl-left">
+	    					<form action="">
+	    	    				<input class="input-search" type="search">
+	    	    				<input class="input-submit" type="submit" value="">
+	    					</form>
+	    				</div>
+	    				<div class="add">
+	    					<img src="./images/icon-add.png" alt="">
+	    				</div>
+	    	    	</div>
+	    	    	<div class="smd-show-info">
+	    	    		<table>
+	    	    			<tbody>
+	    	    				<tr>
+	    	    					<td><span>Họ tên</span> <span class="color-while">Trịnh Nam Thao</span></td>
+	    	    					<td><span>Mã số</span> <span class="color-while">20210807120</span></td>
+	    	    					<td><span>Giới tính</span> <span class="color-while">Nam</span></td>
+	    	    					<td><span>Tuổi</span> <span class="color-while">29</span></td>
+	    	    				</tr>
+	    	    				<tr>
+	    	    					<td colspan="4"><span>Địa chỉ</span> <span class="color-while">Số 179, đường Nguyễn Văn Thương, P. 25, Q. Bình Thạnh, TP.HCM</span></td>
+	    	    				</tr>
+	    	    			</tbody>
+	    	    		</table>
+	    	    	</div>
+	    	    </div>
+	        	<form action="" class="form-nomal">	
+	        		<input type="text" style="width: 0px;height: 0px;overflow: hidden; padding: 0px;border:none;">
+	        		<div class="md-row clearfix">
+	        			<div class="fl-left">
+	        				<label for="">Loại bệnh nhân <span class="required-text">(*)</span></label>
+	        				<select class="ui dropdown search">
+	        				  <option value="">- Chọn loại bệnh nhân -  </option>
+	        				  <option value="1">- Loại user - </option>
+	        				  <option value="0">- Loại user - </option>
+	        				</select>
+	        				<p class="error">Vui lòng chọn bệnh nhân</p>
+	        			</div>
+	        		</div>
+	        		<div class="md-row clearfix">
+	        			<div class="fl-left">
+	        				<label for="">BS chỉ định <span class="required-text">(*)</span></label>
+	        				<select class="ui dropdown smd-dropdown-nomal">
+	        				  <option value=""> - Chọn BS chỉ định - </option>
+	        				  <option value="1">- Loại user - </option>
+	        				  <option value="0">- Loại user - </option>
+	        				</select>
+	        				<p class="error">Vui lòng chọn BS chỉ định</p>
+	        			</div>
+	        			<div class="fl-right">
+	        				<label for="">Chỉ định <span class="required-text">(*)</span></label>
+	        				<select class="ui search dropdown">
+							  <option value="Chọn chỉ định">- Chọn chỉ định - </option>
+							  <option value="chỉ định1">chỉ định1</option>
+							  <option value="Không riệu bia">Không riệu bia</option>
+							  <option value="Không rieu bia">Không</option>
+							  <option value="1">b</option>
+							  <option value="1">c</option>
+							  <option value="1">d</option>
+							  <option value="1">e</option>
+							  <option value="1">f</option>
+							</select>
+							<p class="error">Vui lòng chọn chỉ định</p>
+	        			</div>
+	        		</div>
+	        		<div class="md-row clearfix">
+	        			<div class="fl-left">
+	        				<label for="">Máy chụp <span class="required-text">(*)</span></label>
+	        				<select class="ui dropdown smd-dropdown-nomal">
+	        				  <option value="">- Chọn máy chụp - </option>
+	        				  <option value="1">- Loại user - </option>
+	        				  <option value="0">- Loại user - </option>
+	        				</select>
+	        				<p class="error">Vui lòng chọn loại máy chụp</p>
+	        			</div>
+	        			<div class="fl-right">
+	        				<label for="">Bộ phận chụp <span class="required-text">(*)</span></label>
+	        				<select class="ui dropdown smd-dropdown-nomal">
+							  <option value="">- Chọn bộ phận chụp - </option>
+							  <option value="1">- Loại user - </option>
+							  <option value="0">- Loại user - </option>
+							</select>
+							<p class="error">Vui lòng chọn bộ phận chụp</p>
+	        			</div>
+	        		</div>
+	        		<div class="md-row clearfix">
+	        			<div class="fl-left">
+	        				<label for="">Chẩn đoán <span class="required-text">(*)</span></label>
+	        				<textarea name="" id="" cols="30" rows="10" placeholder="Đây là text area muốn nhập gì thì nhập nha..."></textarea>
+	        				<p class="error">Vui lòng thêm chuẩn đoán</p>
+	        			</div>
+	        			<div class="fl-right">
+	        				<label for="">Chẩn đoán <span class="required-text">(*)</span></label>
+	        				<textarea placeholder="Đây là text area muốn nhập gì thì nhập nha..." name="" id="" cols="30" rows="10"></textarea>
+	        				<p class="error">Vui lòng thêm chuẩn đoán</p>
+	        			</div>
+	        		</div>
+	        		<div class="md-row">
+	        			<div class="smd-input-submit">
+	        				<input type="button" value="Hoàn tất chỉ định" onclick="close_smd_popup(this)" data-popup="#add-benh-nhan">
+	        				<!-- <a class="button-close-popup"  onclick="close_smd_popup(this)"  data-popup="#add-benh-nhan">Hoàn tất chỉ định</a> -->
+	        			</div>
+	        		</div>
+	        	</form>
+	        </div>
+	    </div>
+	</div>
+	
+</div>
+
+
+<div id="add-benh-nhan" class="md-modal md-modal-nomal smd-popup">
+	<div class="scroll-popup">
+		<div class="smd-popup-close"><img src="./images/icon-close.png" alt=""></div>                 
+	    <div class="content-popup">
+	        <div class="top-title">Thêm bệnh nhân</div>
+	        
+	    	<form class="form-nomal" action="">
+	    		<input type="text" style="width: 0px;height: 0px;overflow: hidden; padding: 0px;border:none;">
+
+
+	    		<div class="md-row clearfix">
+	    			<label for="">Bệnh viện<span class="required-text">(*)</span></label>
+	    			<select class="ui dropdown smd-dropdown-nomal">
+					  <option value="">- Loại user - </option>
+					  <option value="1">- Loại user - </option>
+					  <option value="0">- Loại user - </option>
+					</select>
+					<p class="error">Vui lòng chọn bệnh viện</p>
+	    		</div>
+	    		<div class="md-row clearfix">
+	    			<div class="fl-left">
+	    				<input class="input_text" type="text">
+	    				<p class="error">Vui lòng chọn bệnh viện</p>
+	    			</div>
+	    			<div class="fl-right">
+	    				<input class="input_text" type="text">
+	    				<p class="error">Vui lòng chọn bệnh viện</p>
+	    			</div>
+	    		</div>	
+	    		<div class="md-row clearfix">
+	    			<label for="">Họ và tên<span class="required-text">(*)</span></label>
+	    			<select class="ui dropdown smd-dropdown-nomal">
+					  <option value="">- Loại user - </option>
+					  <option value="1">- Loại user - </option>
+					  <option value="0">- Loại user - </option>
+					</select>
+					<p class="error">Vui lòng thêm họ tên</p>
+	    		</div>
+	    		<div class="md-row group-select">
+	    			<div class="item">
+	    				<label for="">Ngày sinh<span class="required-text">(*)</span></label>
+	        			<select class="ui dropdown smd-dropdown-nomal">
+	    				  <option value="">- Loại user - </option>
+	    				  <option value="1">- Loại user - </option>
+	    				  <option value="0">- Loại user - </option>
+	    				</select>
+	    				<p class="error">Vui lòng chọn ngày</p>
+	    			</div>
+	    			<div class="item">
+	    				<label for="">Tháng<span class="required-text">(*)</span></label>
+	        			<select class="ui dropdown smd-dropdown-nomal">
+	    				  <option value="">- Loại user - </option>
+	    				  <option value="1">- Loại user - </option>
+	    				  <option value="0">- Loại user - </option>
+	    				</select>
+	    				<p class="error">Vui lòng chọn tháng</p>
+	    			</div>
+	    			<div class="item">
+	    				<label for="">Năm sinh<span class="required-text">(*)</span>/label>
+	        			<select class="ui dropdown smd-dropdown-nomal">
+	    				  <option value="">- Loại user - </option>
+	    				  <option value="1">- Loại user - </option>
+	    				  <option value="0">- Loại user - </option>
+	    				</select>
+	    				<p class="error">Vui lòng chọn năm</p>
+	    			</div>
+	    		</div>
+	    		<div class="md-row clearfix">
+	    			<label for="">Giới tính<span class="required-text">(*)</span></label>
+	    			<select class="ui dropdown smd-dropdown-nomal">
+					  <option value="">- Chọn Giới tính - </option>
+					  <option value="1">- Loại user - </option>
+					  <option value="0">- Loại user - </option>
+					</select>
+					<p class="error">Vui lòng chọn Giới tính</p>
+	    		</div>
+	    		<div class="md-row clearfix">
+	    			<label for="">Địa chỉ<span class="required-text">(*)</span></label>
+	    			<input type="text">
+					<p class="error">Vui lòng chọn Địa chỉ</p>
+	    		</div>
+	    		<div class="md-row group-select">
+	    			<div class="item">
+	    				<label for="">Phường/Xa<span class="required-text">(*)</span></label>
+	        			<select class="ui search dropdown">
+				            <option>Districts</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				        </select>
+				        <p class="error">Vui lòng chọn Phường/Xa</p>
+	    			</div>
+	    			<div class="item">
+	    				<label for="">Quận/Huyện<span class="required-text">(*)</span></label>
+	        			<select class="ui search dropdown">
+				            <option>Districts</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				        </select>
+				        <p class="error">Vui lòng chọn Quận/Huyện</p>
+	    			</div>
+	    			<div class="item">
+	    				<label for="">Tỉnh/TP<span class="required-text">(*)</span></label>
+	        			<select class="ui search dropdown">
+				            <option>Districts</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				            <option>Chọn Tỉnh/TP</option>
+				            <option>Quang Tri</option>
+				            <option>Hue</option>
+				            <option>Da Nang</option>
+				        </select>
+				        <p class="error">Vui lòng chọn Tỉnh/TP</p>
+	    			</div>
+	    		</div>
+	    		<div class="md-row">
+	    			<div class="smd-input-submit">
+	    				<input class="button-close-popup" data-popup-close="" type="button" value="Hoàn tất chỉ định" onclick="close_smd_popup(this)" data-popup="#popup-chup-that-bai">
+	    				<!-- <a class="button-close-popup"  onclick="close_smd_popup(this)" href="#add-benh-nhan" data-popup="#add-benh-nhan">Complete</a> -->
+	    			</div>
+	    		</div>
+	    	</form>
+	       
+	    </div>
+	</div>
+	
+</div>
+
+
+<div id="modal-gan-ca-chup" class="md-modal md-modal-nomal smd-popup">
+	<div class="scroll-popup">
+		<div class="smd-popup-close"><img src="./images/icon-close.png" alt=""></div>                
+	    <div class="content-popup content-popup-pd">
+	        <div class="top-title">gan ca chup</div>
+	        <div class="md-form form-add-report">
+	    	    <div class="top-meta">
+	    	    	<div class="md-row search-gr clearfix">
+	    	    		<div class="fl-item">
+	    			    	<div class="smd-search">
+								<form action="">
+				    				<input class="input-search" type="search">
+				    				<input class="input-submit" type="submit" value="">
+								</form>
+	    			    	</div>
+	    	    		</div>
+	    	    		<div class="fl-item">
+	    			    	<div class="smd-search">
+								<form action="">
+				    				<input class="input-search" type="search">
+				    				<input class="input-submit" type="submit" value="">
+								</form>
+	    			    	</div>
+	    	    		</div>
+	    	    	</div>
+	    	    	<div class="md-scroll-xy md-scroll-table" style="width: 900px;max-height: 100px;margin-bottom: 15px;">
+	    	    		<table class="w-100 md-row has-click">
+	    	    		  <thead>
+	    	    		    <tr>
+	    	    		      <th  scope="col" style="width: 120px">Tên bệnh nhân</th>
+	    	    		      <th  scope="col" style="width: 120px">Mã bệnh nhân</th>
+	    	    		      <th  scope="col" style="width: 50px">Giới tính</th>
+	    	    		      <th  scope="col" style="width: 100px">Ngày sinh</th>
+	    	    		      <th  scope="col" style="width: 300px">Địa chỉ</th>
+	    	    		      <th  scope="col" style="width: 100px">Ngày sinh</th>
+	    	    		      <th  scope="col" style="width: 300px">Địa chỉ</th>
+	    	    		      <th  scope="col" style="width: 100px">Ngày sinh</th>
+	    	    		      <th  scope="col" style="width: 300px">Địa chỉ</th>
+	    	    		    </tr>
+	    	    		  </thead>
+	    	    		  <tbody>
+	    	    		    <tr onclick="active_tr_hasclick(this)">
+	    	    		      <td>Trương Văn Bằng</td>
+	    	    		      <td>5903449992</td>
+	    	    		      <td>Nam</td>
+	    	    		      <td>20/08/1991</td>
+	    	    		      <td>Hà Nội Phường Cầu Kho Quận 1 Tp. HCM</td>
+	    	    		      <td>5903449992</td>
+	    	    		      <td>Nam</td>
+	    	    		      <td>20/08/1991</td>
+	    	    		      <td>Hà Nội Phường Cầu Kho Quận 1 Tp. HCM</td>
+	    	    		    </tr>
+	    	    		    <tr class="active" onclick="active_tr_hasclick(this)">
+	    	    		      <td>Trương Văn Bằng</td>
+	    	    		      <td>5903449992</td>
+	    	    		      <td>Nam</td>
+	    	    		      <td>20/08/1991</td>
+	    	    		      <td>Hà Nội Phường Cầu Kho Quận 1 Tp. HCM</td>
+	    	    		      <td>5903449992</td>
+	    	    		      <td>Nam</td>
+	    	    		      <td>20/08/1991</td>
+	    	    		      <td>Hà Nội Phường Cầu Kho Quận 1 Tp. HCM</td>
+	    	    		    </tr>
+	    	    		    <tr onclick="active_tr_hasclick(this)">
+	    	    		      <td>Trương Văn Bằng</td>
+	    	    		      <td>5903449992</td>
+	    	    		      <td>Nam</td>
+	    	    		      <td>20/08/1991</td>
+	    	    		      <td>Số 179, đường Nguyễn Văn Thương, P. 25, Q. Bình Thạnh, TP.HCM</td>
+	    	    		      <td>5903449992</td>
+	    	    		      <td>Nam</td>
+	    	    		      <td>20/08/1991</td>
+	    	    		      <td>Hà Nội Phường Cầu Kho Quận 1 Tp. HCM</td>
+	    	    		    </tr>
+	    	    		  </tbody>
+	    	    		</table>
+	    	    	</div>
+					<div class="md-scroll-xy md-scroll-table" style="width: 900px;max-height: 100px;margin-bottom: 15px;">
+						<table class="w-100 md-row has-click">
+						  <thead>
+						    <tr>
+						      <th  scope="col" style="width: 120px">Ngày tạo</th>
+						      <th  scope="col" style="width: 130px">BS chỉ định</th>
+						      <th  scope="col" style="width: 200px">Chuẩnđoán</th>
+						      <th  scope="col" style="width: 200px">Chỉ định</th>
+						      <th  scope="col" style="width: 100px">Trạng thái</th>
+						      <th  scope="col" style="width: 200px">Chỉ định</th>
+						      <th  scope="col" style="width: 100px">Trạng thái</th>
+						      <th  scope="col" style="width: 200px">Chỉ định</th>
+						      <th  scope="col" style="width: 100px">Trạng thái</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr onclick="active_tr_hasclick(this)">
+						      <td>10-08-2021 01:26</td>
+						      <td>BS. Lục Trà Xanh</td>
+						      <td>Gãy xương chân, 2 chân</td>
+						      <td>Chụp Xquang xương bàn</td>
+						      <td class="status status-da-duyet"><p><img class="status-nomal" src="./images/ico-check-green.png" alt=""><img class="status-on-click" src="./images/ico-check-light-silver.png" alt="">Đã duyệt</p></td>
+						      <td>Gãy xương chân, 2 chân</td>
+						      <td>Chụp Xquang xương bàn</td>
+						      <td>Gãy xương chân, 2 chân</td>
+						      <td>Chụp Xquang xương bàn</td>
+						    </tr>
+						    <tr class="active" onclick="active_tr_hasclick(this)">
+						      <td>Trương Văn Bằng</td>
+						      <td>5903449992</td>
+						      <td>Nam</td>
+						      <td>20/08/1991</td>
+						      <td class="status status-da-chup color-purple"><p><img class="status-nomal"  src="./images/icon-camera.png" alt=""><img class="status-on-click"  src="./images/icon-camera-light-silver.png" alt="">Đã chụp</p></td>
+						      <td>Gãy xương chân, 2 chân</td>
+						      <td>Chụp Xquang xương bàn</td>
+						      <td>Gãy xương chân, 2 chân</td>
+						      <td>Chụp Xquang xương bàn</td>
+						      
+						    </tr>
+						  </tbody>
+						</table>
+					</div>	
+					
+	    	    	<table class="w-100 md-row table-ilc">
+					  <thead>
+					    <tr>
+					      <th  scope="col" style="width: 120px"></th>
+					      <th  scope="col" style="width: 130px"><div class="smd-coppy"><p>Thông tin gốc</p><p><img src="./images/ico-copy.png" alt=""><span>Copy</span></div></p></th>
+					      <th  scope="col" style="width: 130px"><div class="smd-coppy"><p>Thông tin mới </p><p><img src="./images/ico-copy.png" alt=""><span>Copy</span></div></p></th>
+					      <th  scope="col" style="width: 200px">Cập nhật thông tin</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <th>Tên bệnh nhân </th>
+					      <td>Truong Van Bang</td>
+					      <td>Trương Văn Bằng</td>
+					      <td><input type="text" value="Trương Văn Bằng"> </td>
+					    </tr>
+					    <tr>
+					      <th>Mã số</th>
+					      <td>590344</td>
+					      <td>5903449992</td>
+					      <td><input type="text" value="5903449992"> </td>
+					    </tr>
+					    <tr>
+					      <th>Ngày sinh</th>
+					      <td>2281991</td>
+					      <td>20/08/1991</td>
+					      <td><input type="text" value="02/02/1991"> </td>
+					    </tr>
+					    <tr>
+					      <th>Giới tính</th>
+					      <td>Nam</td>
+					      <td>Nam</td>
+					      <td>
+		      	    			<select class="ui dropdown smd-dropdown-nomal larger-border-radius">
+		      					  <option value="">Nam</option>
+		      					  <option value="1">- Loại user - </option>
+		      					  <option value="0">- Loại user - </option>
+		      					</select>
+					      </td>
+					    </tr>
+					    <tr>
+					      <th>Địa chỉ</th>
+					      <td>-</td>
+					      <td>Hà Nội Phường Cầu Kho Quận 1 Tp. HCM</td>
+					      <td><input type="text" value="Hà Nội Phường Cầu Kho Quận 1 Tp. HCM"> </td>
+					    </tr>
+					    <tr>
+					      <th>BS Chỉ định</th>
+					      <td>-</td>
+					      <td>BS Minh Hảo</td>
+					      <td>
+		      	    			<select class="ui dropdown smd-dropdown-nomal larger-border-radius">
+		      					  <option value="">BS Minh Hảo </option>
+		      					  <option value="1">- Loại user - </option>
+		      					  <option value="0">- Loại user - </option>
+		      					</select>
+					      </td>
+					    </tr>
+					    <tr>
+					      <th>Chỉ định</th>
+					      <td>-</td>
+					      <td>Viêm khớp</td>
+					      <td>
+		      	    			<select class="ui dropdown smd-dropdown-nomal larger-border-radius">
+		      					  <option value="">Viêm khớp</option>
+		      					  <option value="1">- Loại user - </option>
+		      					  <option value="0">- Loại user - </option>
+		      					</select>
+					      </td>
+					    </tr>
+					    <tr>
+					      <th>Máy chụp</th>
+					      <td>AE</td>
+					      <td>AE</td>
+					      <td>
+		      	    			<select class="ui dropdown smd-dropdown-nomal larger-border-radius">
+		      					  <option value="">AE</option>
+		      					  <option value="1">- Loại user - </option>
+		      					  <option value="0">- Loại user - </option>
+		      					</select>
+					      </td>
+					    </tr>
+					    <tr>
+					      <th>Mô tả chỉ định</th>
+					      <td>-</td>
+					      <td>Chụp cắt lớp điện tử</td>
+					      <td><input type="text" value="Chụp cắt lớp điện tử"> </td>
+					    </tr>
+					    <tr>
+					      <th>Chuẩn đoán</th>
+					      <td>-</td>
+					      <td>Chấn thương lưng</td>
+					      <td><input type="text" value="Chấn thương lưng"> </td>
+					    </tr>
+					  </tbody>
+					</table>
+					<div class="md-row">
+	        			<div class="smd-input-submit">
+	        				<input class="button-close-popup" type="button" value="Hoàn tất gán ca" onclick="close_smd_popup(this)">
+	        			</div>
+	        		</div>
+	    	    </div>
+	        </div>
+	    </div>
+	</div>    
+</div>
+<div id="popup-chup-that-bai" class="md-modal md-modal-nomal">
+	<div class="scroll-popup">   
+		<div class="smd-popup-close"><img src="./images/icon-close.png" alt=""></div>             
+	    <div class="content-popup">
+	        <div class="top-title">Set trạng thái ca chụp thất bại</div>
+	        <div class="content-chup-that-bai">
+	        	<h3 class="title">Bạn có chắc chắc muốn set trạng thái ca chụp thất bại?</h3>
+	        	<table>
+	        		<tbody>
+	        			<tr>
+	        				<th style="width: 120px">Accession Number</th>
+	        				<td>20210830135</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Bệnh nhân</th>
+	        				<td>Nguyen Phuc Chau, Male, 37 tuổi</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Ngày sinh</th>
+	        				<td>09/03/1984</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Địa chỉ</th>
+	        				<td>146/72 Nguyen Dinh Chieu, Phường Cầu Kho, Quận 3, Tp. Hồ Chí Minh</td>
+	        			</tr>
+	        			<tr>
+	        				<th>BS chỉ định</th>
+	        				<td>Minh Hảo</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Thời gian chỉ định</th>
+	        				<td>30-08-2021 15:04</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Chỉ định:</th>
+	        				<td>Cột sống, thắt lưng cận cảnh</td>
+	        			</tr>
+	        			<tr>
+	        				<th>Chẩn đoán:</th>
+	        				<td>COPD - Phì đại TLT - Nhiễm trùng tiểu</td>
+	        			</tr>
+	        		</tbody>
+	        	</table>
+	        	<form action="">
+	        		<label>Lý do thất bại</label>
+	        		<input type="text" placeholder="Nhập lí do...">
+	        		<p class="error">Vui lòng nhập thông tin</p>
+	        	</form>
+	        	<div class="md-row">
+	    			<div class="smd-input-submit">
+	    				<input class="button-close-popup" type="button" value="Hoàn tất" onclick="close_smd_popup(this)">
+	    			</div>
+	    		</div>
+	        </div>
+	    </div>
+	</div>    
+</div>
+<div id="popup-lich-su-ca-chup" class="md-modal md-modal-nomal">               
+    <div class="content-popup">
+        <div class="top-title">Add Template Report</div>
+        <div class="lich-su-ca-chup" style="min-height: 300px">
+          <div class="row-info clearfix" onclick="row_info_click(this)">
+            <div class="fl-left">
+              <p><span class="name">Nguyen Van Thanh: </span>Sét chụp thành công <span class="hl">[Nội dung]</span></p>
+            </div>
+            <div class="date">
+              <img src="./images/icon-clock.png" alt=""><span>25/9/2012 21:38</span>
+            </div>
+          </div>
+          <div class="info active">
+            <p>Lý do: máy đã chụp xong</p>
+          </div>
+          <div class="row-info clearfix">
+            <div class="fl-left">
+              <p><span class="name">Nguyen Van Thanh: </span>Tạo ca chụp</p>
+            </div>
+            <div class="date">
+              <img src="./images/icon-clock.png" alt=""><span>25/9/2012 21:38</span>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+<div id="popup-luu-moi-mau-bao-cao" class="popup-luu-moi-mau-bao-cao md-modal md-modal-nomal">               
+    <div class="content-popup ">
+        <div class="top-title" style="color: red">Lưu mới mẫu báo cáo</div>
+        <form class="form-luu-mau-bao-cao">
+          <div class="md-row">
+            <label style="color: green">Tên</label>
+            <input type="text" name="">
+          </div>
+          <div class="md-row">
+            <button class="button-tbm"> Thực hiện</button>
+          </div>
+        </form>
+    </div>
+</div>
+<div id="modal-print-report" class="modal modal-print-report fade in has-resize has-draggable popup-bootstrap" data-keyboard="false" data-backdrop="static">  
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="header-pop-up">
+        <h5 class="modal-title" id="exampleModalLongTitle">IN BÁO CÁO</h5>    
+        <div  class="right-button">
+            <div class="close ico-gr" aria-hidden="true" data-dismiss="modal" aria-label="Close">
+                <div class="ico">
+                    <img src="./images/ico-close.png" alt="">
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-body">
+          <div id="">               
+              <div class="content-popup">
+                  <div class="print-report">
+                    <div class="left-content md-scroll-y">
+                      <h2 style="font-size: 12px; text-align: center; margin: 8px 0 0 0; color: #f66843; text-transform: uppercase; text-shadow: 0 2px 4px #2b2929; font-weight: bold;">Chọn mẫu báo cáo</h2>
+                      <ul id="ulMasterTemplate">   
+                              <li class="item-report-template border-green active" onclick="chooseMasterTemplate(this);">
+                                <a href="#">
+                                  <em class="fa fa-fw fa-file"></em>
+                                  <span>Kết quả</span>
+                                </a>
+                              </li>
+                              <li class="item-report-template border-green" onclick="chooseMasterTemplate(this);">
+                                <a href="#">
+                                  <em class="fa fa-fw fa-file"></em>
+                                  <span>Kết quả</span>
+                                </a>
+                              </li>
+                              <li class="item-report-template border-green" onclick="chooseMasterTemplate(this);">
+                                <a href="#">
+                                  <em class="fa fa-fw fa-file"></em>
+                                  <span>Kết quả</span>
+                                </a>
+                              </li>
+                              <li class="item-report-template border-green" onclick="chooseMasterTemplate(this);">
+                                <a href="#">
+                                  <em class="fa fa-fw fa-file"></em>
+                                  <span>Kết quả</span>
+                                </a>
+                              </li>
+                          </ul>
+                          <div class="ui checkbox checkbox-1">
+                            <input type="checkbox" id="example-id" class="hidden">
+                            <label for="example-id">Không in header</label>
+                          </div>
+                          <div class="print_action clearfix">
+                            <div class="group-icon clearfix">
+                              <a class="btn green btn-print"><span class="fa fa-print fa-fw"></span></a>
+                              <a class="btn btn-primary"><span class="fa fa-image fa-fw"></span></a>
+                              <a class="btn btn-primary" title="Lưu file PDF"><span class="fa fa-file-pdf-o fa-fw"></span></a>
+                              <a class="btn fa fa-times-circle">  </a>
+                            </div>
+                          </div>
+                          <div class="view-report-ct">
+                            <div class="content-report-hl">
+                            <table class="table table-header">
+                              <tbody>
+                                <tr>
+                                  <td style="width: 120px"><img src="./images/logo-in-cih.png" alt="" style="height: 75px"></td>
+                                  <td>
+                                    <p><strong class="title">BỆNH VIỆN QUỐC TẾ Z00</strong></p>
+                                    <p>Địa chỉ: Số 3, Đường 17A, P.Bình Trị Đông B, Q. Bình Tân, TP. Hồ Chí Minh</p>
+                                    <p><span >ĐT: (8428) 6280 3333</span><span class="ng-binding ng-scope">- Fax: (8428) 6290 8800</span></p>
+                                    <p>
+                                        <span >ĐT: (8428) 6280 3333</span><span>- Fax: (8428) 6290 8800</span>
+                                    </p> 
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <h3 style="text-transform: uppercase;color: #000; text-align: center; font-size: 25px; margin: 0px 0px 29px">radiograph result sheet</h3>
+                            <!-- <div class="rp-header mt5">
+                                <table class="table border-less">
+                                    <thead>
+                                        <tr>
+                                            <td style="width: 120px"></td>
+                                            <td style="width: auto"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <img style="height: 38px; width: auto" src="./images/barcode.gif">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+
+                            <div class="rp-detail">
+                              <table class="table border-less border-white mbn">
+                                  <thead>
+                                      <tr>
+                                          <td style="width: 15%"></td>
+                                          <td style="width: 35%"></td>
+                                          <td style="width: 15%"></td>
+                                          <td style="width: 20%"></td>
+                                          <td style="width: 15%"></td>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td class="rp-label">Họ và tên:</td>
+                                          <td class="rp-text ng-binding">admin benh nhan sunt</td>
+                                          <td class="rp-label">Năm sinh:</td>
+                                          <td class="rp-text ng-binding">2000 (21 tuổi)</td>
+                                          <td class="rp-text ng-binding">Male</td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Địa chỉ:</td>
+                                          <td class="rp-text" colspan="4"><div>Lac thien Phường Giảng Võ Quận Ba Đình Cần Thơ</div>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Nơi chỉ định:</td>
+                                          <td class="rp-text" colspan="4">
+                                             
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Chẩn đoán:</td>
+                                          <td class="rp-text" colspan="4">
+                                            <div>test</div>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Chỉ định:</td>
+                                          <td class="rp-text" colspan="4">
+                                            
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+
+
+
+                            <div class="rp-body clearfix" style="max-width: 736px">
+                              <button type="button" class="btn__choose__image" data-src="#modal-print-img" data-toggle="modal" data-target="#modal-print-img"><i class="fa fa-pencil"></i></button>
+                              <div class="split-sprint clearfix">
+                                <div class="panel-print-left panel">
+                                  <div class="line-inner">
+                              <div class="cell-inner">
+                                      <h3 class="rp-box-title">MÔ TẢ</h3>
+                                      <div class="info">
+                                        this is my voice
+                                      </div>
+                                    </div>
+                                  </div>
+                            
+                                </div>
+                                <div class="panel-print-right panel">
+                                  <div class="line-inner">
+                                    <div class="md-scroll-xy">
+                                      <ul class="gallery-firm">
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="rp-more-content mt5">
+                  
+                                <div class="table-container">
+                                <div class="table-row">
+                                    <div class="table-cell" style="width: 80%;">
+                                        <h3 class="rp-box-title" style="margin-right: 10px;">KẾT LUẬN</h3>
+                                        <div class="rp-box-content">
+                                           <div><p>KẾT LUẬN CA CHỤP</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell" style="width: 20%;">
+                                        <h3 class="rp-box-title text-center">GHI CHÚ</h3>
+                                        <div class="rp-box-content">
+                                           <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                           
+                            
+                            <div class="rp-footer">
+                               <div class="table-container">
+                                   <div class="table-row">
+                                       <div class="table-cell text-center" style="width: 50%;">
+                                           <p class="ng-binding">Ngày 14 tháng 06 năm 2021</p>
+                                           <p><b>BÁC SĨ CHỈ ĐỊNH</b></p>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <p><b class="ng-binding">NGUYỄN VĂN THANH</b></p>
+                                       </div>
+                                       <div class="table-cell text-center" style="width: 50%;">
+                                           <p class="ng-binding"></p>
+                                           <p><b>BÁC SĨ THỰC HIỆN</b></p>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <p><b class="ng-binding">NGUYỄN VĂN THANH</b></p>
+                                       </div>
+                                   </div>
+                               </div>
+                            </div> 
+                            <div class="rp-line-h"></div> 
+                            <div class="rp-qr-code clearfix">
+                              <div class="qr-code">
+                                <img src="./images/qr-code.png" alt="">
+                              </div>
+                              <div class="text">
+                                <p>Bạn có thể quét qr-code để vào trực tiếp  hoặc đăng nhập vào cổng thông tin bệnh nhân với thông tin sau:</p>
+                                <p>Link :<a href="http://patient.precisionmed.vn/z000/vi/PatientPortal/Login">http://patient.precisionmed.vn/z000/vi/PatientPortal/Login</a></p>
+                                <p>ID bệnh nhân:Z000R22123</p>
+                                <p>Passcode:fEtPP2BPv</p>
+                              </div>
+                            </div>        
+                        </div>
+                          </div>
+                          <div id="pageInfo">Số trang: 1</div>
+                    </div> 
+
+
+                    <div id="report-content" class="md-scroll md-scroll-y">
+                        <div class="content-report-hl">
+                            <table class="table table-header">
+                              <tbody>
+                                <tr>
+                                  <td style="width: 120px"><img src="./images/logo-in-cih.png" alt="" style="height: 75px"></td>
+                                  <td>
+                                    <p><strong class="title">BỆNH VIỆN QUỐC TẾ Z00</strong></p>
+                                    <p>Địa chỉ: Số 3, Đường 17A, P.Bình Trị Đông B, Q. Bình Tân, TP. Hồ Chí Minh</p>
+                                    <p><span >ĐT: (8428) 6280 3333</span><span class="ng-binding ng-scope">- Fax: (8428) 6290 8800</span></p>
+                                    <p>
+                                        <span >ĐT: (8428) 6280 3333</span><span>- Fax: (8428) 6290 8800</span>
+                                    </p> 
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <h3 style="text-transform: uppercase;color: #000; text-align: center; font-size: 25px; margin: 0px 0px 29px">radiograph result sheet</h3>
+                            <!-- <div class="rp-header mt5">
+                                <table class="table border-less">
+                                    <thead>
+                                        <tr>
+                                            <td style="width: 120px"></td>
+                                            <td style="width: auto"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <img style="height: 38px; width: auto" src="./images/barcode.gif">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+
+                            <div class="rp-detail">
+                              <table class="table border-less border-white mbn">
+                                  <thead>
+                                      <tr>
+                                          <td style="width: 15%"></td>
+                                          <td style="width: 35%"></td>
+                                          <td style="width: 15%"></td>
+                                          <td style="width: 20%"></td>
+                                          <td style="width: 15%"></td>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td class="rp-label">Họ và tên:</td>
+                                          <td class="rp-text ng-binding">admin benh nhan sunt</td>
+                                          <td class="rp-label">Năm sinh:</td>
+                                          <td class="rp-text ng-binding">2000 (21 tuổi)</td>
+                                          <td class="rp-text ng-binding">Male</td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Địa chỉ:</td>
+                                          <td class="rp-text" colspan="4"><div>Lac thien Phường Giảng Võ Quận Ba Đình Cần Thơ</div>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Nơi chỉ định:</td>
+                                          <td class="rp-text" colspan="4">
+                                             
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Chẩn đoán:</td>
+                                          <td class="rp-text" colspan="4">
+                                            <div>test</div>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Chỉ định:</td>
+                                          <td class="rp-text" colspan="4">
+                                            
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+
+
+
+                            <div class="rp-body clearfix" style="max-width: 736px">
+                              <button type="button" class="btn__choose__image" data-src="#modal-print-img" data-toggle="modal" data-target="#modal-print-img"><i class="fa fa-pencil"></i></button>
+                              <div class="split-sprint clearfix">
+                                <div class="panel-print-left panel">
+                                  <div class="line-inner">
+                              <div class="cell-inner">
+                                      <h3 class="rp-box-title">MÔ TẢ</h3>
+                                      <div class="info">
+                                        this is my voice
+                                      </div>
+                                    </div>
+                                  </div>
+                            
+                                </div>
+                                <div class="panel-print-right panel">
+                                  <div class="line-inner">
+                                    <div class="md-scroll-xy">
+                                      <ul class="gallery-firm">
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                        <li>
+                                          <img src="./images/firm.png" alt="">
+                                        </li>
+                                      </ul>
+                                    </div>
+                                  </div>  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="rp-more-content mt5">
+                  
+                                <div class="table-container">
+                                <div class="table-row">
+                                    <div class="table-cell" style="width: 80%;">
+                                        <h3 class="rp-box-title" style="margin-right: 10px;">KẾT LUẬN</h3>
+                                        <div class="rp-box-content">
+                                           <div><p>KẾT LUẬN CA CHỤP</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell" style="width: 20%;">
+                                        <h3 class="rp-box-title text-center">GHI CHÚ</h3>
+                                        <div class="rp-box-content">
+                                           <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                           
+                            
+                            <div class="rp-footer">
+                               <div class="table-container">
+                                   <div class="table-row">
+                                       <div class="table-cell text-center" style="width: 50%;">
+                                           <p class="ng-binding">Ngày 14 tháng 06 năm 2021</p>
+                                           <p><b>BÁC SĨ CHỈ ĐỊNH</b></p>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <p><b class="ng-binding">NGUYỄN VĂN THANH</b></p>
+                                       </div>
+                                       <div class="table-cell text-center" style="width: 50%;">
+                                           <p class="ng-binding"></p>
+                                           <p><b>BÁC SĨ THỰC HIỆN</b></p>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <p><b class="ng-binding">NGUYỄN VĂN THANH</b></p>
+                                       </div>
+                                   </div>
+                               </div>
+                            </div>  
+                            <div class="rp-line-h"></div>
+                            <div class="rp-qr-code clearfix">
+                              <div class="qr-code">
+                                <img src="./images/qr-code.png" alt="">
+                              </div>
+                              <div class="text">
+                                <p>Bạn có thể quét qr-code để vào trực tiếp  hoặc đăng nhập vào cổng thông tin bệnh nhân với thông tin sau:</p>
+                                <p>Link :<a href="http://patient.precisionmed.vn/z000/vi/PatientPortal/Login">http://patient.precisionmed.vn/z000/vi/PatientPortal/Login</a></p>
+                                <p>ID bệnh nhân:Z000R22123</p>
+                                <p>Passcode:fEtPP2BPv</p>
+                              </div>
+                            </div>        
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="modal-print-report-1" class="modal modal-print-report  fade in has-resize has-draggable popup-bootstrap" data-keyboard="false" data-backdrop="static">  
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="header-pop-up">
+        <h5 class="modal-title" id="exampleModalLongTitle">IN BÁO CÁO</h5>    
+        <div  class="right-button">
+            <div class="close ico-gr" aria-hidden="true" data-dismiss="modal" aria-label="Close">
+                <div class="ico">
+                    <img src="./images/ico-close.png" alt="">
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-body">
+          <div id="">               
+              <div class="content-popup">
+                  <div class="print-report">
+                    <div class="left-content md-scroll-y">
+                      <h2 style="font-size: 12px; text-align: center; margin: 8px 0 0 0; color: #f66843; text-transform: uppercase; text-shadow: 0 2px 4px #2b2929; font-weight: bold;">Chọn mẫu báo cáo</h2>
+                      <ul id="ulMasterTemplate">   
+                              <li class="item-report-template border-green active" onclick="chooseMasterTemplate(this);">
+                                <a href="#">
+                                  <em class="fa fa-fw fa-file"></em>
+                                  <span>Kết quả</span>
+                                </a>
+                              </li>
+                              <li class="item-report-template border-green" onclick="chooseMasterTemplate(this);">
+                                <a href="#">
+                                  <em class="fa fa-fw fa-file"></em>
+                                  <span>Kết quả</span>
+                                </a>
+                              </li>
+                              <li class="item-report-template border-green" onclick="chooseMasterTemplate(this);">
+                                <a href="#">
+                                  <em class="fa fa-fw fa-file"></em>
+                                  <span>Kết quả</span>
+                                </a>
+                              </li>
+                              <li class="item-report-template border-green" onclick="chooseMasterTemplate(this);">
+                                <a href="#">
+                                  <em class="fa fa-fw fa-file"></em>
+                                  <span>Kết quả</span>
+                                </a>
+                              </li>
+                          </ul>
+                          <div class="ui checkbox checkbox-1">
+                            <input type="checkbox" id="example-id" class="hidden">
+                            <label for="example-id">Không in header</label>
+                          </div>
+                          <div class="print_action clearfix">
+                            <div class="group-icon clearfix">
+                              <a class="btn green btn-print"><span class="fa fa-print fa-fw"></span></a>
+                              <a class="btn btn-primary"><span class="fa fa-image fa-fw"></span></a>
+                              <a class="btn btn-primary" title="Lưu file PDF"><span class="fa fa-file-pdf-o fa-fw"></span></a>
+                              <a class="btn fa fa-times-circle">  </a>
+                            </div>
+                          </div>
+                          <div class="view-report-ct">
+                            <div class="content-report-hl">
+                            <table class="table table-header">
+                              <tbody>
+                                <tr>
+                                  <td style="width: 120px"><img src="./images/logo-in-cih.png" alt="" style="height: 75px"></td>
+                                  <td>
+                                    <p><strong class="title">BỆNH VIỆN QUỐC TẾ Z00</strong></p>
+                                    <p>Địa chỉ: Số 3, Đường 17A, P.Bình Trị Đông B, Q. Bình Tân, TP. Hồ Chí Minh</p>
+                                    <p><span >ĐT: (8428) 6280 3333</span><span class="ng-binding ng-scope">- Fax: (8428) 6290 8800</span></p>
+                                    <p>
+                                        <span >ĐT: (8428) 6280 3333</span><span>- Fax: (8428) 6290 8800</span>
+                                    </p> 
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <h3 style="text-transform: uppercase;color: #000; text-align: center; font-size: 25px; margin: 0px 0px 29px">radiograph result sheet</h3>
+                            <!-- <div class="rp-header mt5">
+                                <table class="table border-less">
+                                    <thead>
+                                        <tr>
+                                            <td style="width: 120px"></td>
+                                            <td style="width: auto"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <img style="height: 38px; width: auto" src="./images/barcode.gif">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+
+                            <div class="rp-detail">
+                              <table class="table border-less border-white mbn">
+                                  <thead>
+                                      <tr>
+                                          <td style="width: 15%"></td>
+                                          <td style="width: 35%"></td>
+                                          <td style="width: 15%"></td>
+                                          <td style="width: 20%"></td>
+                                          <td style="width: 15%"></td>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td class="rp-label">Họ và tên:</td>
+                                          <td class="rp-text ng-binding">admin benh nhan sunt</td>
+                                          <td class="rp-label">Năm sinh:</td>
+                                          <td class="rp-text ng-binding">2000 (21 tuổi)</td>
+                                          <td class="rp-text ng-binding">Male</td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Địa chỉ:</td>
+                                          <td class="rp-text" colspan="4"><div>Lac thien Phường Giảng Võ Quận Ba Đình Cần Thơ</div>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Nơi chỉ định:</td>
+                                          <td class="rp-text" colspan="4">
+                                             
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Chẩn đoán:</td>
+                                          <td class="rp-text" colspan="4">
+                                            <div>test</div>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Chỉ định:</td>
+                                          <td class="rp-text" colspan="4">
+                                            
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+
+
+
+                            <div class="rp-body clearfix" style="max-width: 736px">
+                              <button type="button" class="btn__choose__image" data-src="#modal-print-img" data-toggle="modal" data-target="#modal-print-img"><i class="fa fa-pencil"></i></button>
+                              <div class="split-sprint clearfix">
+                                <div class="panel-print-left panel" style="width: 100% !important; max-width: 100% !important">
+                                  <div class="line-inner">
+                              <div class="cell-inner">
+                                      <h3 class="rp-box-title">MÔ TẢ</h3>
+                                      <div class="info">
+                                        this is my voice
+                                      </div>
+                                    </div>
+                                  </div>
+                            
+                                </div>
+                                
+                              </div>
+                            </div>
+                            <div class="rp-more-content mt5">
+                  
+                                <div class="table-container">
+                                <div class="table-row">
+                                    <div class="table-cell" style="width: 80%;">
+                                        <h3 class="rp-box-title" style="margin-right: 10px;">KẾT LUẬN</h3>
+                                        <div class="rp-box-content">
+                                           <div><p>KẾT LUẬN CA CHỤP</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell" style="width: 20%;">
+                                        <h3 class="rp-box-title text-center">GHI CHÚ</h3>
+                                        <div class="rp-box-content">
+                                           <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                           
+                            
+                            <div class="rp-footer">
+                               <div class="table-container">
+                                   <div class="table-row">
+                                       <div class="table-cell text-center" style="width: 50%;">
+                                           <p class="ng-binding">Ngày 14 tháng 06 năm 2021</p>
+                                           <p><b>BÁC SĨ CHỈ ĐỊNH</b></p>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <p><b class="ng-binding">NGUYỄN VĂN THANH</b></p>
+                                       </div>
+                                       <div class="table-cell text-center" style="width: 50%;">
+                                           <p class="ng-binding"></p>
+                                           <p><b>BÁC SĨ THỰC HIỆN</b></p>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <p><b class="ng-binding">NGUYỄN VĂN THANH</b></p>
+                                       </div>
+                                   </div>
+                               </div>
+                            </div> 
+                            <div class="rp-line-h"></div> 
+                            <div class="rp-qr-code clearfix">
+                              <div class="qr-code">
+                                <img src="./images/qr-code.png" alt="">
+                              </div>
+                              <div class="text">
+                                <p>Bạn có thể quét qr-code để vào trực tiếp  hoặc đăng nhập vào cổng thông tin bệnh nhân với thông tin sau:</p>
+                                <p>Link :<a href="http://patient.precisionmed.vn/z000/vi/PatientPortal/Login">http://patient.precisionmed.vn/z000/vi/PatientPortal/Login</a></p>
+                                <p>ID bệnh nhân:Z000R22123</p>
+                                <p>Passcode:fEtPP2BPv</p>
+                              </div>
+                            </div>        
+                        </div>
+                          </div>
+                          <div id="pageInfo">Số trang: 1</div>
+                    </div> 
+
+
+                    <div id="report-content" class="md-scroll md-scroll-y">
+                        <div class="content-report-hl">
+                            <table class="table table-header">
+                              <tbody>
+                                <tr>
+                                  <td style="width: 120px"><img src="./images/logo-in-cih.png" alt="" style="height: 75px"></td>
+                                  <td>
+                                    <p><strong class="title">BỆNH VIỆN QUỐC TẾ Z00</strong></p>
+                                    <p>Địa chỉ: Số 3, Đường 17A, P.Bình Trị Đông B, Q. Bình Tân, TP. Hồ Chí Minh</p>
+                                    <p><span >ĐT: (8428) 6280 3333</span><span class="ng-binding ng-scope">- Fax: (8428) 6290 8800</span></p>
+                                    <p>
+                                        <span >ĐT: (8428) 6280 3333</span><span>- Fax: (8428) 6290 8800</span>
+                                    </p> 
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <h3 style="text-transform: uppercase;color: #000; text-align: center; font-size: 25px; margin: 0px 0px 29px">radiograph result sheet</h3>
+                            <!-- <div class="rp-header mt5">
+                                <table class="table border-less">
+                                    <thead>
+                                        <tr>
+                                            <td style="width: 120px"></td>
+                                            <td style="width: auto"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">
+                                                <img style="height: 38px; width: auto" src="./images/barcode.gif">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+
+                            <div class="rp-detail">
+                              <table class="table border-less border-white mbn">
+                                  <thead>
+                                      <tr>
+                                          <td style="width: 15%"></td>
+                                          <td style="width: 35%"></td>
+                                          <td style="width: 15%"></td>
+                                          <td style="width: 20%"></td>
+                                          <td style="width: 15%"></td>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      <tr>
+                                          <td class="rp-label">Họ và tên:</td>
+                                          <td class="rp-text ng-binding">admin benh nhan sunt</td>
+                                          <td class="rp-label">Năm sinh:</td>
+                                          <td class="rp-text ng-binding">2000 (21 tuổi)</td>
+                                          <td class="rp-text ng-binding">Male</td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Địa chỉ:</td>
+                                          <td class="rp-text" colspan="4"><div>Lac thien Phường Giảng Võ Quận Ba Đình Cần Thơ</div>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Nơi chỉ định:</td>
+                                          <td class="rp-text" colspan="4">
+                                             
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Chẩn đoán:</td>
+                                          <td class="rp-text" colspan="4">
+                                            <div>test</div>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td class="rp-label">Chỉ định:</td>
+                                          <td class="rp-text" colspan="4">
+                                            
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+
+
+
+                            <div class="rp-body clearfix" style="max-width: 736px">
+                              <button type="button" class="btn__choose__image" data-src="#modal-print-img" data-toggle="modal" data-target="#modal-print-img"><i class="fa fa-pencil"></i></button>
+                              <div class="split-sprint clearfix">
+                                <div class="panel-print-left panel" style="width: 100% !important; max-width: 100% !important">
+                                  <div class="line-inner">
+                              <div class="cell-inner">
+                                      <h3 class="rp-box-title">MÔ TẢ</h3>
+                                      <div class="info">
+                                        this is my voice
+                                      </div>
+                                    </div>
+                                  </div>
+                            
+                                </div>
+                              </div>
+                            </div>
+                            <div class="rp-more-content mt5">
+                  
+                                <div class="table-container">
+                                <div class="table-row">
+                                    <div class="table-cell" style="width: 80%;">
+                                        <h3 class="rp-box-title" style="margin-right: 10px;">KẾT LUẬN</h3>
+                                        <div class="rp-box-content">
+                                           <div><p>KẾT LUẬN CA CHỤP</p></div>
+                                        </div>
+                                    </div>
+                                    <div class="table-cell" style="width: 20%;">
+                                        <h3 class="rp-box-title text-center">GHI CHÚ</h3>
+                                        <div class="rp-box-content">
+                                           <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                           
+                            
+                            <div class="rp-footer">
+                               <div class="table-container">
+                                   <div class="table-row">
+                                       <div class="table-cell text-center" style="width: 50%;">
+                                           <p class="ng-binding">Ngày 14 tháng 06 năm 2021</p>
+                                           <p><b>BÁC SĨ CHỈ ĐỊNH</b></p>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <p><b class="ng-binding">NGUYỄN VĂN THANH</b></p>
+                                       </div>
+                                       <div class="table-cell text-center" style="width: 50%;">
+                                           <p class="ng-binding"></p>
+                                           <p><b>BÁC SĨ THỰC HIỆN</b></p>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <br>
+                                           <p><b class="ng-binding">NGUYỄN VĂN THANH</b></p>
+                                       </div>
+                                   </div>
+                               </div>
+                            </div>  
+                            <div class="rp-line-h"></div>
+                            <div class="rp-qr-code clearfix">
+                              <div class="qr-code">
+                                <img src="./images/qr-code.png" alt="">
+                              </div>
+                              <div class="text">
+                                <p>Bạn có thể quét qr-code để vào trực tiếp  hoặc đăng nhập vào cổng thông tin bệnh nhân với thông tin sau:</p>
+                                <p>Link :<a href="http://patient.precisionmed.vn/z000/vi/PatientPortal/Login">http://patient.precisionmed.vn/z000/vi/PatientPortal/Login</a></p>
+                                <p>ID bệnh nhân:Z000R22123</p>
+                                <p>Passcode:fEtPP2BPv</p>
+                              </div>
+                            </div>        
+                        </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade in has-resize has-draggable popup-bootstrap" id="modal-print-img" data-keyboard="false" data-backdrop="static">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+         <div class="header-pop-up">
+            <h5 class="modal-title" id="exampleModalLongTitle">CHỌN ẢNH ĐỂ IN</h5>        
+            <div  class="right-button">
+                <div class="ico-minus ico-gr">
+                    <div class="ico">
+                         <img src="./images/ico-minus.png" alt="">
+                    </div>
+                </div>
+                <div class="close ico-gr" aria-hidden="true" data-dismiss="modal" aria-label="Close">
+                    <div class="ico">
+                        <img src="./images/ico-close.png" alt="">
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div class="modal-body">
+            <div id="">               
+                <div class="content-popup">
+
+
+                <div class="detail-filter" style="color: #f66843;">
+                    <select class="dialog-sl-series" style="float: right; max-width: 120px !important;">
+                        <option value="251630">1 - HINH DINH VI</option>
+                        <option value="251631">2 - 5MM NHU MO</option>
+                        <option value="251632">3 - Dose Record</option>
+                        <option value="251633">4 - Dose Report</option>
+                        <option value="251634">5 - 5MM XUONG</option>
+                    </select>
+                    Series:
+                </div>
+                <div class="scrollable">
+                    <div class="content-wrapper">
+                        <div class="content clearfix">
+                            <div class="horizontal-line"></div>
+                            <div class="horizontal-line-1"></div>
+                            <ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+                                <li class="ui-widget-content ui-corner-tr">
+                                  <img src="https://jqueryui.com/resources/demos/droppable/images/high_tatras_min.jpg" alt="The peaks of High Tatras">
+                                </li>
+                                <li class="ui-widget-content ui-corner-tr">
+                                  <img src="https://jqueryui.com/resources/demos/droppable/images/high_tatras_min.jpg" alt="The peaks of High Tatras">
+                                </li>
+                                <li class="ui-widget-content ui-corner-tr">
+                                  <img src="https://jqueryui.com/resources/demos/droppable/images/high_tatras_min.jpg" alt="The peaks of High Tatras">
+                                </li>
+                                <li class="ui-widget-content ui-corner-tr">
+                                  <img src="https://jqueryui.com/resources/demos/droppable/images/high_tatras_min.jpg" alt="The peaks of High Tatras">
+                                </li>
+                                <li class="ui-widget-content ui-corner-tr">
+                                  <img src="https://jqueryui.com/resources/demos/droppable/images/high_tatras_min.jpg" alt="The peaks of High Tatras">
+                                </li>
+                                <li class="ui-widget-content ui-corner-tr">
+                                  <img src="https://jqueryui.com/resources/demos/droppable/images/high_tatras_min.jpg" alt="The peaks of High Tatras">
+                                </li>
+                                <li class="ui-widget-content ui-corner-tr">
+                                  <img src="https://jqueryui.com/resources/demos/droppable/images/high_tatras_min.jpg" alt="The peaks of High Tatras">
+                                </li>
+                                <li class="ui-widget-content ui-corner-tr">
+                                  <img src="https://jqueryui.com/resources/demos/droppable/images/high_tatras_min.jpg" alt="The peaks of High Tatras">
+                                </li>
+                            </ul>
+                            <div class="right-content ">
+                              <div class="md-scroll-xy">
+                                <span class="ui-widget-header">
+                                  DANH SÁCH SLIDE ẢNH ĐƯỢC CHỌN IN : <span id="items">0</span>
+                                </span>
+
+                                
+                                <!-- <div class="k-grid-content k-auto-scrollable"> -->
+
+                                    <div id="trash" class="ui-widget-content ui-state-default">
+                                        
+                                    </div>
+                                <!-- </div> --> 
+                              </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline popup-footer popup-enlarge">
+                    <div class="dialog-footer-right" style="float: right !important;">
+                        <div class="form-group">
+                            <button id="btn-save-print-image"  class="k-button">Lưu thay đổi</button>
+                            <button class="k-button" role="button" aria-disabled="false" >Bỏ qua</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div id="popup-custom-filer-modal" class="modal  fade in has-resize has-draggable popup-bootstrap" data-keyboard="false" data-backdrop="static" style="height: 100%">  
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="header-pop-up">
+        <h5 class="modal-title" id="exampleModalLongTitle">IN BÁO CÁO</h5>    
+        <div  class="right-button">
+            <div class="close ico-gr" aria-hidden="true" data-dismiss="modal" aria-label="Close">
+                <div class="ico">
+                    <img src="./images/ico-close.png" alt="">
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-body">
+          <div id="">               
+              <div class="content-popup">
+                 <div id="custom-column-modal" style="min-height: 0px !important; visibility: visible; display: block;" class="custom-column-modal k-window-content k-content km-widget km-native-scroller">
+                     <div class="popup-content" style="color: #FFF;">
+                         <div role="application" class="custom-column-fileds">
+                             <div class="demo-section k-content ">
+                                 <table style="width: 100%;">
+                                     <tbody><tr>
+                                         <td>Các cột chưa hiển thị</td>
+                                         <td>Các cột đang hiển thị</td>
+                                     </tr>
+                                     </tbody>
+                                 </table>
+                                 <div class="clearfix">
+                                     <ul class=" connected-sortable droppable-area2" role="listbox" tabindex="0">
+                                         <li class="draggable-item">Item 1</li>
+                                        <li class="draggable-item">Item 2</li>
+                                        <li class="draggable-item">Item 3</li>
+                                     </ul>
+                                     <ul class=" connected-sortable droppable-area1" role="listbox" tabindex="0">
+                                        <li class="draggable-item">Item 1</li>
+                                        <li class="draggable-item">Item 2</li>
+                                        <li class="draggable-item">Item 3</li>
+                                        <li class="draggable-item">Item 4</li>
+                                        <li class="draggable-item">Item 5</li>
+                                        <li class="draggable-item">Item 6</li>
+                                        <li class="draggable-item">Item 7</li>
+                                        <li class="draggable-item">Item 1</li>
+                                        <li class="draggable-item">Item 2</li>
+                                        <li class="draggable-item">Item 3</li>
+                                        <li class="draggable-item">Item 4</li>
+                                        <li class="draggable-item">Item 5</li>
+                                        <li class="draggable-item">Item 6</li>
+                                        <li class="draggable-item">Item 7</li>
+                                        <li class="draggable-item">Item 1</li>
+                                        <li class="draggable-item">Item 2</li>
+                                        <li class="draggable-item">Item 3</li>
+                                        <li class="draggable-item">Item 4</li>
+                                        <li class="draggable-item">Item 5</li>
+                                        <li class="draggable-item">Item 6</li>
+                                        <li class="draggable-item">Item 7</li>
+                                     </ul>
+                                 </div>
+                             </div>
+                             <div class="bt-meta clearfix">
+                                 <span class="tips">Tips: Kéo thả để tùy biến cột hiển thị.</span>
+                                 <img src="images/arrow-left2right.png" alt="drag-indicator" class="arrow">
+                             </div>
+                                 
+                             </div>
+                             <table style="width: 100%; display: none;" id="table_custom_column_hidden">
+                                 <tbody><tr>
+                                     <td>
+                                         <input type="checkbox" id="cbHiddenSTT">
+                                         <span>Ẩn cột STT</span>
+                                     </td>
+                                     <td>
+                                         <input type="checkbox" id="cbHiddenStatusText">
+                                         <span>Chỉ hiển thị icon trên cột trạng thái</span>
+                                     </td>
+                                 </tr>
+                             </tbody></table>
+                         </div>
+                     </div>
+                     <div class="form-inline popup-footer popup-enlarge clearfix">
+                         <div class="dialog-footer-right" style="float: right !important;">
+                             <div class="form-group">
+                                 <!-- <select id="slExportTemplate">
+                                     <option value="0">--Mặc định--</option>
+                                     <option value="0">--2--</option>
+                                  </select> -->
+                                 <button  class="k-button">Lưu</button>
+
+                                <!--  <button class="k-button">
+                                     <span class="fa fa-fw fa-file-excel-o"></span>
+                                     Export now
+                                 </button> -->
+                             </div>
+                         </div>
+                     </div>
+                 </div>       
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
+ <div class="popup-viewer">
+  <div class="ctn-inner">
+    <div class="top-header clearfix">
+      <div class="right_panel">
+                <a class="cursor">
+                    <i class="fa fa-download"></i>
+                </a>
+                <a class="cursor">
+                    <i class="fa fa-folder-open-o"></i>
+                </a>
+                <a class="cursor">
+                    <i class="fa fa-save"></i>
+                </a>
+                <a class="cursor">
+                    <i class="fa fa-cogs"></i>
+                </a>
+                <!--  <a class="btn" id="btnUpload" data-toggle="modal" data-target="#popup-upload-modal">
+                    <span class="fa fa-fw fa-upload"></span>
+                </a> -->
+                <a class="cursor">
+                    <i class="fa fa-times-circle-o"></i>
+                </a>
+                <a title="" class="cursor" onclick="close_popup_view(this)">
+                    <i class="fa fa-table"></i>
+                </a>
+            </div>
+    </div>
+    <div id="main_renderer" style="height: calc(100vh - 44px);">
+      <iframe src="" frameborder="0" style="width: 100%;height: 100%"></iframe>
+    </div>
+  </div>
+</div>
+
+<div id="popup-report-tele" class="modal fade in  popup-rh308  popup-tele" data-keyboard="false" data-backdrop="static" style="height: 100%">  
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+     <div class="header-pop-up">
+        <h5 class="modal-title" id="exampleModalLongTitle">IN BÁO CÁO</h5>    
+        <div  class="right-button">
+            <div class="close ico-gr" aria-hidden="true" data-dismiss="modal" aria-label="Close">
+                <div ql-editor="ico">
+                    <img src="./images/ico-close.png" alt="">
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="modal-body">
+          <div class="blk-right-rpt" style="width: 100%">
+            <div class="top-blk">
+                <!-- <a href="#" class="floppy-disk gallery-icon-view" onclick="open_popup_view(this)"><img src="./images/icon-arrows-out.png" alt=""></a> -->
+                <div class="tab-content tab-reporting">
+                  <div class="tab-pane active" id="thong-tin-ca-benh-1" role="tabpanel">
+                    <div class="gglc-group clearfix">
+
+                      <div class="right-meta">
+                        <div class="bt-group button-gglc">
+                          <a href="#" class="clearfix"><img src="./images/eyes-white.png" alt="">View</a>
+                          <a href="#" class="clearfix"><img src="./images/icon-plus-1.png" alt="">Tạo</a>
+                          <a href="#" class="clearfix"><img src="./images/icon-x.png" alt="">Huỷ</a>
+                          <a href="#" class="clearfix"><img src="./images/icon-floppy-disk.png" alt="">Lưu</a>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="top-content clearfix" >
+                      <div class="clearfix">
+                         
+                          <div class="tab-content">
+                            <div class="tab-pane tab-pane fade show active" id="tab-id-1" role="tabpanel">
+                              <span>mô tả </span>
+                              <div class="quill-tele-1" style="height: 150px">
+                                <p>- day là tab 1</p>
+                                <p>- Nghe nói mũi 2 đỡ mệt hơn mũi 1</p>
+                              </div>
+                              <span>kết luận</span>
+                              <div class="quill-tele-2" style="height: 150px">
+                                <p>- day là tab 1</p>
+                                <p>- Nghe nói mũi 2 đỡ mệt hơn mũi 1</p>
+                              </div>
+                            </div>
+                          </div>
+                          
+                      </div>
+                    </div>
+
+                    <div class="group-button">
+                      <div class="meta-bottom-reporting clearfix">
+                            <div class="meta-left">
+                              <a href="#" class="item" data-fancybox="" data-src="#popup-lich-su-ca-chup"><img src="./images/icon-clock.png" alt=""><span>Lịch sử</span> <span class="number">(2)</span></a>
+
+                               <a href="#" class="item" data-fancybox="" data-src="#popup-luu-moi-mau-bao-cao"><img src="./images/icon-printer.png" alt=""><span>Lưu mới mẩu báo cáo</span></a>
+
+                              <a href="#" class="item" data-src="#modal-print-report" data-toggle="modal" data-target="#modal-print-report"><img src="./images/icon-printer.png" alt=""><span>In</span></a>
+                            </div>
+                            <div class="meta-right">
+                              <span class="text-left">Chọn mẫu báo cáo </span>
+                                <select class="ui dropdown smd-dropdown-nomal larger-border-radius">
+                                <option value="">- Hệ thống -</option>
+                                <option value="1">- Loại user - </option>
+                                <option value="0">- Loại user - </option>
+                              </select>
+                              <select class="ui dropdown smd-dropdown-nomal larger-border-radius">
+                                <option value="">- Mẫu riêng -</option>
+                                <option value="1">- Loại user - </option>
+                                <option value="0">- Loại user - </option>
+                              </select>
+                              <a href="#" class="button-tbm">Tải bản mẩu</a>
+                            </div>
+                          </div>
+                    </div>  
+                  </div>
+                </div>
+                
+            </div>
+            <div class="bottom-content-reporting clearfix">
+              
+            </div>
+          </div>
+         <!--  <div class="wrapper-gallery-firm">
+            <div class="gallery-firm md-scroll-xy">
+              <ul>
+                <li class="item">
+                  <img src="./images/firm.png" alt="">
+                  <div class="ui checkbox">
+                    <input type="checkbox" checked="" id="example-demo-1" class="hidden">
+                  </div>
+                </li>
+                <li class="item">
+                  <img src="./images/firm.png" alt="">
+                  <div class="ui checkbox">
+                    <input type="checkbox" checked="" id="example-demo-2" class="hidden">
+                  </div>
+                </li>
+                <li class="item">
+                  <img src="./images/firm.png" alt="">
+                  <div class="ui checkbox">
+                    <input type="checkbox" checked="" id="example-demo-2" class="hidden">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<a href="#" class="trigger-click-popup-tele" data-src="#popup-report-tele" data-toggle="modal" data-target="#popup-report-tele" style="position: absolute; width: 0px; height: 0px; overflow: hidden;z-index: 0;"></a>
+
+
+<div id="popup-success" class="md-modal popup-alert">               
+    <div class="inner">
+    	<div class="img-icon">
+    		<img  src="./images/icon-success.png" alt="" style="width: 70px;">
+    	</div>
+   		<div class="info">
+   			<h3>Thành công</h3>
+   			<div class="content">
+   				<p>Bạn đã đăng ký thành công</p>
+   			</div>
+   			<div class="btn">
+   				<button class="button-close" data-fancybox-close="">Đóng</button>
+   			</div>
+   		</div>
+    </div>
+</div>
+<div id="popup-wrong" class="md-modal popup-alert">               
+    <div class="inner">
+    	<div class="img-icon">
+    		<img  src="./images/icon-wrong.png" alt="" style="width: 45px;">
+    	</div>
+   		<div class="info">
+   			<h3>Không thành công</h3>
+   			<div class="content">
+   				<p>Vui lòng kiểm tra lại thông tin</p>
+   			</div>
+   			<div class="btn">
+   				<button class="button-close" data-fancybox-close="">Đóng</button>
+   			</div>
+   		</div>
+    </div>
+</div>
+
+<!-- /.page-footer -->
+
+<script src="vendor/jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="./vendor/resize-table/jquery.resizableColumns.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="vendor/semantic/semantic.min.js" type="text/javascript"></script>
+<!-- <script src="./vendor/kendo-split/popper.min.js"></script> -->
+<script src="./vendor/scrollbar/OverlayScrollbars.js"></script>
+<script src="./vendor/fancybox/jquery.fancybox.min.js"></script>
+<!-- <script src="./vendor/kendo-split/kendo.all.min.js"></script> -->
+<script src="./vendor/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- <script src="./vendor/select-2/select2.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.9.2/tinymce.min.js"></script> -->
+<!-- <script src="./vendor/tiny/tinymce.min.js"></script> -->
+<script src="./vendor/quill/quill.js"></script>
+<script src="./vendor/quill/quill.min.js"></script>
+<script src="scripts/an.js" type="text/javascript"></script>
+</body>
+</html>
+
+<script>
+  // if ($(".page-main").hasClass("page-reporting")) {
+    var quill=new Quill('.quill-tele-1',{
+      modules:{
+        toolbar:toolbarOptions
+      },
+      theme:"snow"
+    })
+    var quill=new Quill('.quill-tele-2',{
+      modules:{
+        toolbar:toolbarOptions
+      },
+      theme:"snow"
+    })
+     
+    $(".table-tl tbody tr").click(function(){
+      $(".trigger-click-popup-tele").trigger( "click" );
+    })
+     $(document).ready(function () {
+      $(".table-study-telephone th").resizable({
+        minWidth: 25,
+        handles: 'e',
+        resize: function (event, ui) {
+          resizableGrid("#tableId-1");
+        }
+      });
+    });
+
+
+     function checkboxDropdown(el) {
+       var $el = $(el)
+
+       function updateStatus(label, result) {
+         if(!result.length) {
+           label.html('Select Options');
+         }
+       };
+       
+       $el.each(function(i, element) {
+         var $list = $(this).find('.dropdown-list'),
+           $label = $(this).find('.dropdown-label'),
+           $checkAll = $(this).find('.check-all'),
+           $inputs = $(this).find('.check'),
+           defaultChecked = $(this).find('input[type=checkbox]:checked'),
+           result = [];
+         
+         updateStatus($label, result);
+         if(defaultChecked.length) {
+           defaultChecked.each(function () {
+             result.push($(this).next().text());
+             $label.html(result.join(", "));
+           });
+         }
+         
+         $(this).on('click', ()=> {
+           $(this).toggleClass('open');
+         });
+
+         $checkAll.on('change', function() {
+           var checked = $(this).is(':checked');
+           var checkedText = $(this).next().text();
+           result = [];
+           if(checked) {
+             result.push(checkedText);
+             $label.html(result);
+             $inputs.prop('checked', false);
+           }else{
+             $label.html(result);
+           }
+             updateStatus($label, result);
+         });
+
+         $inputs.on('change', function() {
+           var checked = $(this).is(':checked');
+           var checkedText = $(this).next().text();
+           if($checkAll.is(':checked')) {
+             result = [];
+           }
+           if(checked) {
+             result.push(checkedText);
+             $label.html(result.join(", "));
+             $checkAll.prop('checked', false);
+           }else{
+             let index = result.indexOf(checkedText);
+             if (index >= 0) {
+               result.splice(index, 1);
+             }
+             $label.html(result.join(", "));
+           }
+           updateStatus($label, result);
+         });
+
+         $(document).on('click touchstart', e => {
+           if(!$(e.target).closest($(this)).length) {
+             $(this).removeClass('open');
+           }
+         });
+       });
+     };
+
+     checkboxDropdown('.dropdown-hl');
+</script>

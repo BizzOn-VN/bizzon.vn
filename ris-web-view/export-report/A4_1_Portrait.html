@@ -1,0 +1,465 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="ja"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja"><![endif]-->
+<!--[if gt IE 8]><!-->
+<!--794px-->
+<html lang="en" style="width: 698px;margin: 0 auto;">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Example</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-rendering: auto;
+            font-family: "Open Sans", sans-serif;
+            font-size: 12px;
+            color: #EEEEEE;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .portrait-1 table {
+            width: auto !important;
+            color: #EEEEEE;
+            table-layout: fixed;
+            border-collapse: collapse;
+            overflow: inherit !important;
+        }
+
+            .portrait-1 table th p, table td p {
+                white-space: nowrap;
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: inline-block;
+                margin-bottom: 0px;
+                word-wrap: break-word;
+            }
+
+        .portrait-1 {
+            font-size: 14px;
+            width: 698px;
+            display: table;
+            margin: 0 auto;
+            color: #333;
+            font-family: Arial, Helvetica, sans-serif;
+            /*padding: 48px;*/
+        }
+
+            .portrait-1 p {
+                margin: 0px;
+            }
+
+            .portrait-1 strong.title {
+                margin-bottom: 5px;
+                display: block;
+                text-align: center;
+                padding: 0px;
+                font-size: 13px;
+                text-transform: uppercase;
+                font-weight: 700;
+                color: #000;
+            }
+
+            .portrait-1 .kl-chuan-doan {
+                margin-bottom: 20px;
+            }
+
+                .portrait-1 .kl-chuan-doan .title {
+                    font-size: 18px;
+                    text-decoration: underline;
+                    text-align: left;
+                    margin-bottom: 5px;
+                    display: block;
+                }
+
+            .portrait-1 .kq-chuan-doan {
+                margin-bottom: 20px;
+            }
+
+            .portrait-1 .hl-bt {
+                float: right;
+                text-align: center;
+                width: 366px;
+                padding-top: 30px;
+            }
+
+            .portrait-1 table {
+                width: 100% !important;
+                margin: 0px 0px 0px;
+            }
+
+                .portrait-1 table th, .portrait-1 table td {
+                    border: none;
+                    color: #000;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+
+                    .portrait-1 table th p, .portrait-1 table td p {
+                        line-height: 1.3em;
+                    }
+
+            .portrait-1 .rp-header table td {
+                padding: 0 5px;
+            }
+
+            .portrait-1 .rp-detail table tr td {
+                padding: 0px 0.45rem;
+                border: 1px solid #FFF;
+            }
+
+            .portrait-1 .rp-detail table .rp-label {
+                color: #000;
+                font-weight: 700;
+            }
+
+            .portrait-1 .rp-body {
+                position: relative;
+            }
+
+            .portrait-1 .rp-footer img {
+                width: 100%;
+            }
+
+            .portrait-1 .rp-body .btn__choose__image {
+                width: 26px;
+                height: 26px;
+                line-height: 22px;
+                position: absolute;
+                border-radius: 50%;
+                background: #FFF;
+                -webkit-box-shadow: 0 2px 10px #eee;
+                box-shadow: 0 2px 10px #eee;
+                border: 1px solid #ebebeb;
+                background-color: #fff;
+                top: -9px;
+                right: -9px;
+                z-index: 999;
+                outline: none;
+            }
+
+            .portrait-1 .rp-body .split-sprint {
+                width: 100%;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                /*display: flex;*/
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -webkit-flex-direction: row;
+                -ms-flex-direction: row;
+                flex-direction: row;
+                xtouch-action: none;
+                max-width: 100%;
+            }
+
+                .portrait-1 .rp-body .split-sprint .ui-resizable-s {
+                    display: none !important;
+                }
+
+                .portrait-1 .rp-body .split-sprint .ui-resizable-se {
+                    display: none !important;
+                }
+
+
+                .portrait-1 .rp-body .split-sprint .panel-print-left {
+                    /*width: 100%;*/
+                    -webkit-box-flex: 0;
+                    -webkit-flex: 0 0 auto;
+                    -ms-flex: 0 0 auto;
+                    flex: 0 0 auto;
+                    /* only manually resize */
+                    min-height: 200px;
+                    min-width: 200px;
+                }
+
+                    .portrait-1 .rp-body .split-sprint .panel-print-left .rp-box-title {
+                        color: #25468a;
+                        border-bottom: 2px solid #e8e8e8;
+                        padding-bottom: 3px;
+                        font-weight: bold;
+                        margin-bottom: 5px;
+                    }
+
+                .portrait-1 .rp-body .split-sprint .panel-print-right {
+                    max-width: -webkit-calc(100% - 200px);
+                    max-width: calc(100% - 200px);
+                    min-width: 30px;
+                    -webkit-box-flex: 1;
+                    -webkit-flex: 1 1 auto;
+                    -ms-flex: 1 1 auto;
+                    flex: 1 1 auto;
+                    z-index: 120;
+                }
+
+                    .portrait-1 .rp-body .split-sprint .panel-print-right .md-scroll-xy {
+                        height: 100%;
+                        max-width: 100%;
+                        margin-top: 15px;
+                        max-height: -webkit-calc(100% - 10px);
+                        max-height: calc(100% - 10px);
+                    }
+
+                    .portrait-1 .rp-body .split-sprint .panel-print-right ul {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                        .portrait-1 .rp-body .split-sprint .panel-print-right ul li {
+                            margin-bottom: 15px;
+                            width: 100%;
+                        }
+
+                            .portrait-1 .rp-body .split-sprint .panel-print-right ul li img {
+                                width: 250px;
+                                /*height: 250px;*/
+                            }
+
+            .portrait-1 .rp-more-content .rp-box-title {
+                color: #25468a;
+                border-bottom: 2px solid #e8e8e8;
+                font-weight: bold;
+                margin-bottom: 5px;
+                padding-bottom: 3px;
+                font-size: 13px;
+            }
+
+            .portrait-1 .rp-footer {
+                margin: 15px 0px 35px;
+            }
+
+                .portrait-1 .rp-footer table {
+                    text-align: center;
+                    color: #000;
+                }
+
+            .portrait-1 .table-row {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+            }
+
+            .portrait-1 .text-center {
+                text-align: center !important;
+            }
+
+            .portrait-1 .rp-line-h {
+                width: 100%;
+                height: 2px;
+                display: table;
+                margin: 0 auto 20px auto;
+                background: #e8e8e8;
+            }
+
+            .portrait-1 .rp-qr-code {
+                margin-bottom: 30px;
+            }
+
+        .rp-qr-code .qr-code {
+            width: 180px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .portrait-1 ul li {
+            list-style: none;
+        }
+
+        .portrait-1 .table th p, .table td p {
+            display: block !important;
+        }
+
+        .portrait-1 strong.title2 {
+            display: inline-block;
+            padding: 0px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .portrait-1 .gallery-firm {
+            min-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="md-scroll md-scroll-y">
+        <div class="content-report-hl portrait-1">
+            <table class="table-header">
+                <tbody>
+                    <tr>
+                        <td style="width: 120px"><img src="[HospitalLogo]" alt="" style="width: 100%;max-width: 95%; max-height: 75px"></td>
+                        <td>
+                            <p style="width:100%; line-height: 2em;"><strong class="title" style="text-align:left; font-size:24px">[HospitalName]</strong></p>
+                            <p><strong class="title2" style="text-align:left">Địa chỉ:</strong> [HospitalAddress]</p>
+                            <p><strong class="title2" style="text-align:left">Điện thoại:</strong> [HospitalPhone]</p>
+                            <p><strong class="title2" style="text-align:left">Website:</strong> [HospitalWebsite]</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="rp-header mt5">
+                <table class="table border-less">
+                    <thead>
+                        <tr>
+                            <td style="width: auto; text-align:center; padding-bottom:20px">
+                                <strong class="text-uppercase ng-binding" style="font-size: 25px; margin-bottom: 30px;">[TitleIn]</strong>
+                            </td>
+                        </tr>
+                    </thead>
+
+                </table>
+            </div>
+            <div class="rp-detail">
+                <table class="table border-less border-white mbn">
+                    <thead>
+                        <tr>
+                            <td style="width: 17%"></td>
+                            <td style="width: 35%"></td>
+                            <td style="width: 15%"></td>
+                            <td style="width: 18%"></td>
+                            <td style="width: 15%"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rp-label">Họ và tên:</td>
+                            <td class="rp-text ng-binding">[PatientName]</td>
+                            <td class="rp-label">Năm sinh:</td>
+                            <td class="rp-text ng-binding">[YearOfBirth] ([Age] tuổi)</td>
+                            <td class="rp-text ng-binding">[Gender]</td>
+                        </tr>
+                        <tr>
+                            <td class="rp-label">Địa chỉ:</td>
+                            <td class="rp-text" colspan="4">
+                                [Address]
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="rp-label">Chẩn đoán:</td>
+                            <td class="rp-text" colspan="4">
+                                [ChanDoan]
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="rp-label">Chỉ định:</td>
+                            <td class="rp-text" colspan="4">
+                                [ChiDinh]
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="rp-label">Bác sĩ chỉ định:</td>
+                            <td class="rp-text" colspan="4">
+                                [BacSiChiDinh]
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="rp-body " style="max-width: 698px;">
+                <div class="split-sprint " style="page-break-inside: auto;">
+                    <div class="panel-print-left panel" style="width: [WidthPrintLeft]px;float:left;">
+                        <div class="line-inner">
+                            <div class="cell-inner">
+                                <h3 class="rp-box-title">MÔ TẢ</h3>
+                                <div class="info">
+                                    [Description]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Panel_Print_Right" class="panel-print-right panel" style="float: left; margin-left: 10px; width: 248px;">
+                        <div class="line-inner" style="padding-right: 0px;">
+                            <div class="">
+                                <ul class="gallery-firm" style="height: auto; " id="FalleryFirmIn">
+                                    [ImagesIn]
+                                    [ImagesIn]
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rp-more-content mt5">
+
+                <div class="table-container">
+                    <div class="table-row">
+                        <div class="table-cell" style="width: 80%;">
+                            <h3 class="rp-box-title" style="margin-right: 10px;">KẾT LUẬN</h3>
+                            <div class="rp-box-content">
+                                [Conclusion]
+                            </div>
+                        </div>
+                        <div class="table-cell" style="width: 20%;">
+                            <h3 class="rp-box-title text-center">GHI CHÚ</h3>
+                            <div class="rp-box-content">
+                                <div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="rp-footer">
+                <div class="table-container">
+                    <div class="table-row">
+                        <div class="table-cell text-center" style="width: 50%;">
+
+                        </div>
+                        <div class="table-cell text-center" style="width: 50%;">
+                            <p class="ng-binding">[NgayBacSiDoc]</p>
+                            <p><b>Bác sĩ đọc</b></p>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <p><b class="ng-binding">[BacSiDoc]</b></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="rp-line-h"></div>
+
+            <div class="rp-footer" style="margin-top: 0px !important;">
+                <div class="table-container">
+                    <div class="table-row">
+                        <div class="table-cell text-center" style="width: 180px;">
+                            <div style="float:left">
+                                <div id="qrcode" style="width:150px; height:150px; margin-right:30px">
+                                    <img style="display: block;" src="data:image/png;base64,[ImageQRCode]">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-cell text-center" style="width: calc(100%);">
+                            <div style="text-align:left; padding-top:15px">
+                                <p>Bạn có thể quét qr-code để vào trực tiếp hoặc đăng nhập vào cổng thông tin bệnh nhân với thông tin sau:</p>
+                            </div>
+                            <br />
+                            <div style="float: left; width: 100%; text-align: left">
+                                <p>Link: [LinkPatientPortal]</p>
+                            </div>
+                            <br />
+                            <div style="float: left; width: 100%; text-align: left">
+                                <p>Id Bệnh nhân: [PatientId]</p>
+                            </div>
+                            <br />
+                            <div style="float: left; width: 100%; text-align: left">
+                                <p>Passcode: [PassCode]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

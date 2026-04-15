@@ -1,0 +1,669 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="ja"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example</title>
+  <link  href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link  href="vendor/semantic/semantic.min.css" rel="stylesheet" type="text/css">
+  <link  href="vendor/semantic/semantic.min.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.min.css"> 
+  <link rel="stylesheet" href="./vendor/scrollbar/OverlayScrollbars.min.css"> 
+  <link rel="stylesheet" href="./vendor/fancybox/jquery.fancybox.min.css"> 
+  <link rel="stylesheet" href="./vendor/mCustomScrollbar/jquery.mCustomScrollbar.min.css"> 
+  <link rel="stylesheet" href="./vendor/select-2/select2.min.css"> 
+  <link href="./vendor/quill/quill.snow.css" rel="stylesheet">
+<link href="./vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="./vendor/quill/quill.core.css" rel="stylesheet">
+  <link href="./vendor/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link  href="css/style.css" rel="stylesheet" media="screen">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="page-header">
+  <div class="logo">
+  	<a href="#">
+  		<img src="./images/logo.png" alt="">
+  		<h1>Bringing you the simplest experience</h1>
+  	</a>
+  </div>
+  <div class="fl-right">
+  	<div class="form-search">
+  		<form action="">
+  			<div class="md-row">
+  				<input class="input-search" type="search" placeholder="Tìm kiếm...">
+  				<input class="input-submit" type="submit" value="">
+  			</div>
+  		</form>
+  	</div>
+  	<div class="right-meta">
+  		<div class="notification">
+  			<div class="ico-bell" onclick="open_sub_notification(this)">
+  				<img src="./images/ico-bell.png" alt="">
+  				<div class="had-notification"></div>
+  			</div>
+        <div class="sub-notification">
+          <div class="noti-top clearfix">
+               <span id="noti-view" class="pull-left"><span>78</span>Thông báo</span>
+               <a class="pull-right" onclick="readAllNotification();">Đánh dấu tất cả đã đọc</a>
+           </div>
+           <div class="content-noti">
+            <div class="md-scroll-xy" style="max-height: calc(100vh - 170px)">
+               <ul>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.Bạn có 1 bệnh nhân (Trịnh Nam Thao)</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="" checked>
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                   <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo2" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo3" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo4" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo5" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo6" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo7" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo8" name="" value="">
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="noti-bottom">
+              <a id="view-all" class="pull-left" href="/notification-detail.html" target="_blank">Xem tất cả</a>
+            </div>
+             
+           </div>
+        </div>
+  		</div>
+      <div class="select-language">
+        <div class="ui compact selection dropdown">
+          <i class="dropdown icon"></i>
+          <div class="text"><img src="./images/en-flag.png" alt=""></div>
+          <div class="menu">
+            <div class="item"><a href="#"><img src="./images/vn-flag.png" alt=""></a></div>
+            <div class="item"><a href="#"><img src="./images/en-flag.png" alt=""></a></div>
+          </div>
+        </div>
+      </div>
+  		<div class="account" onclick="account_click(this)">
+        <div class="text">
+          <span>Welcome,<strong>Thiên Lý</strong></span>
+        </div>
+        <div class="avatar">
+          <img src="./images/avatar.jpg" alt="">
+        </div>
+         <ul class="menu-content">
+          <li><a href="#">Thông tin tài khoản</a></li>
+          <li><a href="#">Đổi mật khẩu</a></li>
+          <li class="log-out"><a href="#">Đăng xuất</a></li>
+        </ul>
+      </div>
+  	</div>
+  </div>
+</header>
+<!-- /.page-header -->
+
+<main class="page-main page-nomal page-listing page-patient">
+	<div class="blk-worklist">
+		<div class="top-title">
+			<img class="icon" src="./images/icon-worklist.png" alt="">
+			<span>Worklist</span>
+		</div>
+		<div class="item">
+			<div class="control active" onclick="slide_toggle_item_blk_worklist(this)">
+				<img class="icon" src="./images/icon-management.png" alt="">
+				<span>Management</span>
+			</div>
+			<ul>
+				<li><a class="active" href="#">User</a></li>
+				<li><a href="#">Patients</a></li>
+				<li><a href="#">Doctors</a></li>
+				<li><a href="#">Chỉ định</a></li>
+				<li><a href="#">Technicians</a></li>
+				<li><a href="#">Modality</a></li>
+				<li><a href="#">Hospital</a></li>
+				<li><a href="#">Level Address</a></li>
+			</ul>
+		</div>
+		<div class="item">
+			<div class="control" onclick="slide_toggle_item_blk_worklist(this)">
+				<img class="icon" src="./images/icon-setting.png" alt="">
+				<span>Setting</span>
+			</div>
+			<ul>
+				<li><a href="#">Template Report</a></li>
+				<li><a href="#">Setting Report</a></li>
+				<li><a href="#">Parameters</a></li>
+				<li><a href="#">Settings</a></li>
+				<li><a href="#">Connection Service</a></li>
+				<li><a href="#">Setting server</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="blk-billing">
+		<div>
+			<select class="ui dropdown smd-dropdown-nomal  text-ellipsis dropdown_glc">
+			  <option value="">Bệnh viện / Phòng khám</option>
+			  <option value="1">Male</option>
+			  <option value="0">Female</option>
+			</select>
+		</div>
+		<div class="return-to-billing">
+			<a href="#">
+				<img src="./images/arrow-return-to-bling.png" alt="">
+				<div class="text">
+					<span>Return to Billing History</span>
+				</div>
+			</a>
+			
+		</div>
+		<div class="table-billing">
+			<table class="table" style="width: 100%">
+			  <!-- <thead>
+			    <tr>
+			      <th scope="col">
+			      	<p>Estimated costs for this billing period</p>
+			      	<p>2.123.000 VND</p>
+			      </th>
+			      <th scope="col" style="text-align: right; width: 200px;padding-right: 15px">
+			      	<p style="display: block;">Download: PDF  . CSV </p>
+			      	<p class="expand-all">Expand All</p>
+			      </th>
+			    </tr>
+			  </thead> -->
+			  <tbody>
+          <tr>
+            <td colspan="4" style="padding: 0px !important; border:none !important;">
+              <table class="table table-olc" style="width: 100%!important">
+              <thead>
+                <tr>
+                  <th scope="col">KHÁCH HÀNG</th>
+                  <th scope="col" colspan="2">BỆNH VIỆN QUỐC TẾ CITY </th>
+                  <th scope="col">
+                    <div class="download-ll3">
+                      <span>Tải:</span>
+                      <a href="#">PDF</a>
+                      <a href="#">CSV</a>
+                      <a href="#">VAT</a>
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Mã hoá đơn</th>
+                  <td colspan="3">LLLACB</td>
+                </tr>
+                <tr>
+                  <th scope="row">Số hợp đồng</th>
+                  <td>N3NDCC</td>
+                  <td><Strong>Gói DV</Strong></td>
+                  <td>Gói 2</td>
+                </tr>
+                <tr>
+                  <th scope="row"><strong>HD VAT</strong></th>
+                  <td colspan="3">Tên file HD</td>
+                </tr>
+                <tr>
+                  <th scope="row"><strong>Trạng thái</strong></th>
+                  <td colspan="3">
+                    <ul class="list-unstyled multi-steps">
+                      <li id="step-1" class="is-active">
+                        <span class="caption-lc">Tạm tính </span>
+                        <div class="progress-bar">
+                        </div>
+                      </li>
+                      <li id="step-2">
+                        <span class="caption-lc">Đã duyệt </span>
+                        <div class="progress-bar">
+                        </div>  
+                       </li>
+                      <li id="step-3">
+                        <span class="caption-lc">Đã thanh toán</span>
+                        <div class="progress-bar">
+                        </div>
+                      </li>
+                      <li id="step-4"><span class="caption-lc">Xuất hoá đơn</span></li>
+                    </ul>
+                    <button class="button-step btn btn-primary"  data-step="#step-1" data-toggle="modal" data-target="#exampleModalCenter">Bước tiếp </button>
+                  </td>
+                </tr>
+                <tr class="padding_0 tr-status">
+                  <th scope="row" colspan="4">
+                    <button class="btn_yellow_gl">Cập nhật{{trạng thái}}</button>
+                    <button class="btn_yellow_gl">Gởi email thông báo phí</button>
+                    <button class="btn_yellow_gl">Gởi email nhắc phí</button>
+                    <button class="btn_yellow_gl">Tải lên hoá đơn VAT</button>
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+            </td>
+          </tr>
+			    <tr class="chu-ky-billing">
+			      <td colspan="2">25/03/2022 - 24/04/2022 (Chu kỳ 1)<img class="img-chu-ky-billing active-img" src="./images/chevron-down.png" alt=""> </td>
+			      <td  colspan="2" style="text-align: right; width: 200px;padding-right: 15px">2.000.000 VND</td>
+			    </tr>
+			    
+			    
+			    <tr>
+			    	<table class="table-sub" style="width: calc(100% - 80px); margin-left: 67px">
+						<tr>
+			    			<td>Phí trả cố định hàng tháng</td>
+			    			<td style="width: 200px">2</td>
+			    			<td>5000</td>
+			    			<td>5.000.000 VND</td>
+			    		</tr>
+						<tr>
+			    			<td>Phí ca chụp phát sinh</td>
+			    			<td style="width: 200px">2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+						<tr>
+			    			<td>Số tạo mới trong tháng</td>
+			    			<td style="width: 200px">2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    		<tr>
+			    			<td>Số tạo mới trong tháng</td>
+			    			<td style="width: 200px">2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    		<tr>
+			    			<td>Số ca đăng ký Patient Portal</td>
+			    			<td>2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    		<tr>
+			    			<td>Số ca mở bằng phần mềm AW</td>
+			    			<td>2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    		<tr>
+			    			<td>Khuyến mãi</td>
+			    			<td>2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    	</table>
+			    </tr>
+			    
+			    <tr>
+			    	<table class="table-sub hide-content" style="width: calc(100% - 80px); margin-left: 67px">
+			    		<tr>
+			    			<td>Phí trả cố định hàng tháng</td>
+			    			<td style="width: 200px">2</td>
+			    			<td></td>
+			    			<td>5.000.000 VND</td>
+			    		</tr>
+						<tr>
+			    			<td>Phí ca chụp phát sinh</td>
+			    			<td style="width: 200px">2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+						<tr>
+			    			<td>Số tạo mới trong tháng</td>
+			    			<td style="width: 200px">2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    		<tr>
+			    			<td>Số tạo mới trong tháng</td>
+			    			<td style="width: 200px">2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    		<tr>
+			    			<td>Số ca đăng ký Patient Portal</td>
+			    			<td>2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    		<tr>
+			    			<td>Số ca mở bằng phần mềm AW</td>
+			    			<td>2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    		<tr>
+			    			<td>Khuyến mãi</td>
+			    			<td>2</td>
+			    			<td>50000</td>
+			    			<td>100.000 VND</td>
+			    		</tr>
+			    	</table>
+			    </tr>
+			    
+			    <tr>
+			    	<table class="table-total">
+			    		<tr>
+			    			<td>VAT</td>
+			    			<td style="text-align: right; padding-left: 15px;padding-right: 15px">200.000 VND</td>
+			    		</tr>
+						<tr>
+			    			<td>Total</td>
+			    			<td style="text-align: right;padding-left: 15px;padding-right: 15px">2.000.000 VND</td>
+			    		</tr>
+			    	</table>
+			    </tr>
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</main>
+<!-- /.page-main -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" onClick=next()>Hoàn thành</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="popup-success" class="md-modal popup-alert">               
+    <div class="inner">
+    	<div class="img-icon">
+    		<img  src="./images/icon-success.png" alt="" style="width: 70px;">
+    	</div>
+   		<div class="info">
+   			<h3>Thành công</h3>
+   			<div class="content">
+   				<p>Bạn đã đăng ký thành công</p>
+   			</div>
+   			<div class="btn">
+   				<button class="button-close" data-fancybox-close="">Đóng</button>
+   			</div>
+   		</div>
+    </div>
+</div>
+<div id="popup-wrong" class="md-modal popup-alert">               
+    <div class="inner">
+    	<div class="img-icon">
+    		<img  src="./images/icon-wrong.png" alt="" style="width: 45px;">
+    	</div>
+   		<div class="info">
+   			<h3>Không thành công</h3>
+   			<div class="content">
+   				<p>Vui lòng kiểm tra lại thông tin</p>
+   			</div>
+   			<div class="btn">
+   				<button class="button-close" data-fancybox-close="">Đóng</button>
+   			</div>
+   		</div>
+    </div>
+</div>
+
+<!-- /.page-footer -->
+
+<script src="vendor/jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="./vendor/resize-table/jquery.resizableColumns.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="vendor/semantic/semantic.min.js" type="text/javascript"></script>
+<!-- <script src="./vendor/kendo-split/popper.min.js"></script> -->
+<script src="./vendor/scrollbar/OverlayScrollbars.js"></script>
+<script src="./vendor/fancybox/jquery.fancybox.min.js"></script>
+<!-- <script src="./vendor/kendo-split/kendo.all.min.js"></script> -->
+<script src="./vendor/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- <script src="./vendor/select-2/select2.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.9.2/tinymce.min.js"></script> -->
+<!-- <script src="./vendor/tiny/tinymce.min.js"></script> -->
+<script src="./vendor/quill/quill.js"></script>
+<script src="./vendor/quill/quill.min.js"></script>
+<script src="scripts/an.js" type="text/javascript"></script>
+</body>
+</html>
+
+<script>
+  $(".img-month-billing").click(function(){
+
+    if($(this).hasClass("active-img")){
+      $(this).removeClass('active-img');
+        $(this).closest("table").next(".table-sub").addClass("hide-content");
+    }else{
+      $(this).addClass('active-img');
+        $(this).closest("table").next(".table-sub").removeClass("hide-content");
+    }
+    if($(this).closest(".table-billing").find(".img-month-billing").hasClass("active-img")){
+      $(this).closest(".table-inner").prev(".table").find(".chu-ky-billing").find(".img-chu-ky-billing").addClass('active-img');
+    }else{
+      $(this).closest(".table-inner").prev(".table").find(".chu-ky-billing").find(".img-chu-ky-billing").removeClass('active-img');
+    }
+  })
+  $(".img-chu-ky-billing").click(function(){
+    if($(this).hasClass("active-img")){
+      $(this).removeClass("active-img");
+      $(this).closest(".table-billing").find(".img-month-billing").removeClass('active-img');
+      $(this).closest(".table-billing") .find(".table-sub").addClass("hide-content");
+    }else{
+      $(this).addClass("active-img");
+      $(this).closest(".table-billing").find(".img-month-billing").addClass('active-img');
+      $(this).closest(".table-billing") .find(".table-sub").removeClass("hide-content");
+    }
+    if($(".img-chu-ky-billing").hasClass("active-img")){
+      $(this).closest(".blk-billing").find(".expand-all").addClass('active-expand-all');
+    }else{
+      $(this).closest(".blk-billing").find(".expand-all").removeClass('active-expand-all');
+    }
+  })
+  $(".expand-all").click(function(){
+    if($(this).hasClass("active-expand-all")){
+      $(this).removeClass("active-expand-all");
+      $(".img-month-billing").removeClass('active-img');
+      $(".img-chu-ky-billing").removeClass('active-img');
+      $(".table-sub").addClass("hide-content");
+      
+    }else{
+      $(this).addClass("active-expand-all");
+      $(".img-month-billing").addClass('active-img');
+      $(".img-chu-ky-billing").addClass('active-img');
+      $(".table-sub").removeClass("hide-content");
+    }
+  })
+
+
+
+
+  let step = 'step1';
+
+  const step1 = document.getElementById('step-1');
+  const step2 = document.getElementById('step-2');
+  const step3 = document.getElementById('step-3');
+  const step4 = document.getElementById('step-4');
+
+  function next() {
+    if (step === 'step1') {
+      step = 'step2';
+     $(step1).find('.progress-bar').addClass("progress-bar--success");
+      step1.classList.remove("is-active");
+      $(step1).find('.progress-bar__bar').css('transform','translateX(100%)'); 
+      $(step1).find('.progress-bar__bar').css('-webkit-transform','translateX(100%)');
+      step2.classList.add("is-active");
+    } else if (step === 'step2') {
+      step = 'step3';
+      $(step2).find('.progress-bar').addClass("progress-bar--success");
+      step2.classList.remove("is-active");
+      $(step2).find('.progress-bar__bar').css('transform','translateX(100%)');
+      $(step2).find('.progress-bar__bar').css('-webkit-transform','translateX(100%)');
+      step3.classList.add("is-active"); 
+    } else if (step === 'step3') {
+
+      step = 'step4';
+      $(step3).find('.progress-bar').addClass("progress-bar--success");
+      step3.classList.remove("is-active");
+      $(step3).find('.progress-bar__bar').css('-webkit-transform','translateX(100%)');
+      step4.classList.add("is-active");
+    } else if (step === 'step4') {
+      step = 'complete';
+      step4.classList.remove("is-active");
+    }
+  }
+</script>
+
+
+
+

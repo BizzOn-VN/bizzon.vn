@@ -1,0 +1,507 @@
+.page-patient-hl {
+  background: #FFF;
+  font-size: 16px;
+  color: #333333;
+  min-width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .page-patient-hl {
+    font-size: 14px;
+  }
+}
+
+.patient-left {
+  border-right: 1px solid #EEEEEE;
+  float: left;
+  width: 250px;
+  height: 100%;
+}
+.patient-left ul {
+  padding: 15px 12px;
+}
+.patient-left ul li {
+  margin-bottom: 30px;
+  display: block;
+  padding: 10px 10px;
+  border-radius: 16px;
+}
+.patient-left ul li:hover {
+  background: #D9F4FF;
+  -webkit-transition-duration: 0.5s;
+       -o-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+.patient-left ul li.active {
+  background: #D9F4FF;
+}
+.patient-left ul li:last-child {
+  margin-bottom: 0px;
+}
+.patient-left ul li a {
+  font-weight: 700;
+  color: #333333;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.patient-left ul li a img {
+  width: 24px;
+  margin-right: 10px;
+}
+
+.patient-right {
+  float: right;
+  width: -webkit-calc(100% - 250px);
+  width: calc(100% - 250px);
+}
+.patient-right .blk-content {
+  padding: 0px 3%;
+}
+.patient-right .img-top {
+  height: 120px;
+  background: url(../images/mask-group.jpg) no-repeat;
+  -webkit-background-size: cover;
+          background-size: cover;
+  width: 100%;
+}
+.patient-right .info-user {
+  margin-bottom: 20px;
+  margin-top: -85px;
+}
+.patient-right .info-user .avatar {
+  float: left;
+  -webkit-box-align: bottom;
+  -webkit-align-items: bottom;
+      -ms-flex-align: bottom;
+          align-items: bottom;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.patient-right .info-user .avatar img {
+  width: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.patient-right .info-user .right-meta {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 97px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  width: -webkit-calc(100% - 160px);
+  width: calc(100% - 160px);
+  float: left;
+}
+.patient-right .info-user .right-meta .info .md-row {
+  width: 100%;
+  display: block;
+}
+.patient-right .info-user .right-meta .info .md-row span.name {
+  font-size: 20px;
+  font-weight: 600;
+}
+.patient-right .info-user .right-meta .info .md-row p {
+  display: inline-block;
+  margin-bottom: 0px;
+  margin-right: 20px;
+}
+.patient-right .info-user .right-meta .info .md-row p:last-child {
+  margin-right: 0px;
+}
+.patient-right .info-user .right-meta .dowload-pdf {
+  min-width: 183px;
+}
+.patient-right .info-user .right-meta .dowload-pdf a {
+  display: inline-block;
+  border-radius: 111px;
+  padding: 9px 20px 9px 10px;
+  background: #02A4E5;
+  font-weight: bold;
+  color: #EEEEEE;
+}
+.patient-right .info-user .right-meta .dowload-pdf a img {
+  margin-right: 5px;
+}
+
+.patient-contact {
+  border-top: 1px solid #EEEEEE;
+  padding: 0px 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.patient-contact .left-logo {
+  padding: 10px;
+}
+.patient-contact .right-content strong.hl-title {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+  color: #02A4E5;
+}
+.patient-contact .right-content ul li {
+  display: inline-block;
+  padding-left: 8px;
+  position: relative;
+  margin-right: 5px;
+}
+.patient-contact .right-content ul li:last-child {
+  margin-right: 0px;
+}
+.patient-contact .right-content ul li:first-child {
+  padding-left: 0px;
+}
+.patient-contact .right-content ul li:first-child:before {
+  display: none;
+}
+.patient-contact .right-content ul li:before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  display: block;
+  border-radius: 50%;
+  background: #222;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.patient-contact .right-content ul li span {
+  color: #999999;
+}
+.patient-contact .right-content ul li span.hl {
+  color: #222;
+}
+
+.describer {
+  padding: 15px 0px 0px 5%;
+  border-top: 1px solid #EEEEEE;
+  display: block;
+}
+.describer .describer-content {
+  display: inline-block;
+  width: -webkit-calc(100% - 320px);
+  width: calc(100% - 320px);
+  float: left;
+}
+.describer .describer-content strong.hl-title {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 700;
+  color: #151515;
+}
+.describer .describer-content ul {
+  margin-bottom: 20px;
+}
+.describer .describer-content ul li {
+  display: block;
+  position: relative;
+}
+.describer .describer-content .has-doted {
+  padding-left: 10px;
+}
+.describer .describer-content .has-doted li {
+  padding-left: 10px;
+}
+.describer .describer-content .has-doted li:before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  display: block;
+  border-radius: 50%;
+  background: #222;
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.describer .describer-images {
+  display: inline-block;
+  width: 320px;
+}
+.describer .describer-images ul li {
+  margin-bottom: 7px;
+}
+.describer .describer-images ul li img {
+  width: 100%;
+}
+
+.scroll-list-of-results {
+  height: 300px;
+}
+
+.list-of-results {
+  width: 100%;
+  overflow-x: hidden;
+  padding: 25px 25px 10px 25px;
+}
+.list-of-results .top-results {
+  text-align: center;
+  width: 150px;
+  height: 150px;
+  display: table;
+  border-radius: 50%;
+  background: #E6F8F3;
+  margin: 0 auto 15px auto;
+  line-height: 150px;
+}
+.list-of-results .top-results span {
+  font-weight: 700;
+  font-size: 32px;
+  color: #0ABB87;
+}
+.list-of-results .content span {
+  display: block;
+}
+.list-of-results .content .info {
+  font-size: 16px;
+  color: #151515;
+  font-weight: bold;
+}
+.list-of-results ul {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.list-of-results ul li {
+  padding: 15px 15px 15px 15px;
+  border-radius: 20px;
+  border: 1px solid #EEEEEE;
+  width: -webkit-calc(33% - 21px);
+  width: calc(33% - 21px);
+  margin: 0px 10px 35px 10px;
+  display: inline-block;
+  text-align: center;
+}
+@media screen and (min-width: 1440px) {
+  .list-of-results ul li {
+    width: -webkit-calc(25% - 30px);
+    width: calc(25% - 30px);
+  }
+}
+
+.blk-dowload-result-mb {
+  margin-bottom: 15px;
+  display: none;
+  width: 100%;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  clear: both;
+}
+.blk-dowload-result-mb .hl-title {
+  color: #02A4E5;
+}
+.blk-dowload-result-mb .dowload-pdf a {
+  color: #151515;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 992px) {
+  .page-patient-hl {
+    height: auto !important;
+    min-height: -webkit-calc(100% - 55px);
+    min-height: calc(100% - 55px);
+  }
+  .page-patient-hl .patient-left {
+    display: none;
+  }
+  .page-patient-hl .patient-right {
+    width: 100%;
+  }
+  .blk-dowload-result-mb {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .patient-right .info-user .avatar {
+    display: table;
+    margin: 0 auto 10px auto;
+    float: none;
+  }
+  .patient-right .info-user .right-meta {
+    margin: 0px;
+    width: 100%;
+    display: block;
+  }
+  .patient-right .info-user .right-meta .dowload-pdf {
+    display: block;
+    text-align: center;
+    margin-top: 50px;
+  }
+  .patient-right .info-user .right-meta .dowload-pdf a {
+    margin: 0 auto;
+  }
+  .patient-right .info-user .right-meta .info .md-row {
+    text-align: center;
+  }
+  .patient-right .info-user .right-meta .info .md-row .name {
+    margin-bottom: 15px;
+    display: block;
+    text-align: center;
+  }
+  .patient-contact {
+    display: block;
+    padding: 0px;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 20px 0px;
+    margin-bottom: 20px;
+  }
+  .patient-contact .left-logo {
+    display: none;
+  }
+  .patient-contact .right-content {
+    width: 100%;
+  }
+  .patient-contact .right-content ul li {
+    float: left;
+    display: inline-block;
+    width: 50%;
+    margin: 0px;
+    margin-bottom: 2px;
+    padding: 0px;
+  }
+  .patient-contact .right-content ul li:before {
+    display: none;
+  }
+  .patient-contact .right-content ul li span {
+    display: block;
+  }
+  .describer {
+    padding: 0px;
+    border-top: none;
+  }
+  .describer .describer-content {
+    width: -webkit-calc(100% - 220px);
+    width: calc(100% - 220px);
+  }
+  .describer .describer-content .md-scroll-xy {
+    height: auto !important;
+  }
+  .describer .describer-images {
+    height: auto !important;
+    max-height: 500px;
+    width: 220px;
+  }
+  .list-of-results .top-results {
+    width: 120px;
+    height: 120px;
+    line-height: 120px;
+  }
+  .list-of-results .top-results span {
+    display: block;
+  }
+  .list-of-results ul li {
+    padding: 8px;
+    margin: 0px 10px 25px 10px;
+  }
+  .list-of-results .content .info {
+    font-size: 14px;
+  }
+  .scroll-list-of-results {
+    height: auto !important;
+  }
+}
+@media screen and (max-width: 768px) {
+  .describer {
+    display: block;
+    padding: 0px;
+    border-top: none;
+  }
+  .describer .describer-content {
+    width: 100%;
+  }
+  .describer .describer-images {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .list-of-results .top-results {
+    height: 100px;
+    width: 100px;
+    line-height: 100px;
+  }
+}
+@media screen and (max-width: 576px) {
+  .patient-right .img-top {
+    height: 80px;
+  }
+  .patient-right .info-user {
+    margin-top: -40px;
+  }
+  .patient-right .info-user .avatar {
+    width: 80px;
+    height: 80px;
+  }
+  .patient-right .info-user .avatar img {
+    width: 80px;
+  }
+  .patient-right .info-user .right-meta .info .md-row p {
+    margin: 0px 0px 5px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .patient-right .info-user .right-meta .dowload-pdf {
+    text-align: right;
+  }
+  .list-of-results ul li {
+    width: -webkit-calc(50% - 18px);
+    width: calc(50% - 18px);
+  }
+  .list-of-results .top-results span {
+    font-size: 28px;
+  }
+  .list-of-results ul li {
+    margin: 0px 8px 16px 8px;
+  }
+  .list-of-results {
+    padding: 18px;
+  }
+}
+@media screen and (max-width: 420px) {
+  .list-of-results .top-results {
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
+  }
+  .list-of-results .content .info {
+    font-size: 12px;
+  }
+  .list-of-results .top-results span {
+    font-size: 23px;
+  }
+}

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TD-RIS | Ris Web</title>
+    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-family: 'Open Sans', sans-serif;
+            padding: 50px 20px;
+        }
+
+        .hub-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hub-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hub-header img {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .hub-header h1 {
+            font-size: 2.5rem;
+            color: #d4af37;
+            /* Gold color from the logo */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .category-card {
+            background: #252525;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #d4af37;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .page-link {
+            background: #333;
+            color: #fff;
+            padding: 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            border: 1px solid transparent;
+        }
+
+        .page-link:hover {
+            background: #d4af37;
+            color: #1a1a1a;
+            transform: translateY(-3px);
+            text-decoration: none;
+        }
+
+        .page-link i {
+            margin-right: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- /.page-header -->
+    <div class="sidebar-worklist" id="sidebar-worklist">
+        <div class="inner">
+            <div class="icon-logo">
+                <a href="work-list.html">
+                    <img src="./images/icon-logo.png" alt="">
+                </a>
+            </div>
+            <div class="navbar-link">
+                <ul>
+                    <li><a class="nav-ge" href="#">GE</a></li>
+                    <li><a class="text-revert " href="work-list.html">Worklist</a></li>
+                    <li><a class="text-revert " href="analytic.html">Reporting</a></li>
+                    <li><a class="text-revert " href="ActivityAnalytics.html">Dashboard</a></li>
+                    <li><a class="text-revert " href="admin-tab.html">Setting</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="hub-container">
+        <div class="hub-header">
+            <img src="./images/logo.png" alt="TD-RIS Logo">
+            <h1>TD-RIS System Page list</h1>
+        </div>
+
+        <div class="category-card">
+            <div class="category-title">Các module chính</div>
+            <div class="page-grid">
+                <a href="work-list.html" class="page-link">Worklist Dashboard</a>
+                <a href="analytic.html" class="page-link">Reporting & Analytics</a>
+                <a href="ActivityAnalytics.html" class="page-link">Activity Dashboard</a>
+                <a href="admin-tab.html" class="page-link">System Settings</a>
+            </div>
+        </div>
+
+        <div class="category-card">
+            <div class="category-title">Quản lý (Management)</div>
+            <div class="page-grid">
+                <a href="user-listing.html" class="page-link">User Listing</a>
+                <a href="patient-listing.html" class="page-link">Patient Listing</a>
+                <a href="docter-analytic.html" class="page-link">Doctor Analytics</a>
+                <a href="hospital.html" class="page-link">Hospital Management</a>
+                <a href="address.html" class="page-link">Address Settings</a>
+                <a href="study.html" class="page-link">Study Listing</a>
+            </div>
+        </div>
+
+        <div class="category-card">
+            <div class="category-title">Nghiệp vụ & Billing</div>
+            <div class="page-grid">
+                <a href="biliing.html" class="page-link">Billing Main</a>
+                <a href="billing-2.html" class="page-link">Billing Variation</a>
+                <a href="billing-2-new.html" class="page-link">New Billing Style</a>
+                <a href="permission.html" class="page-link">Permissions</a>
+                <a href="study-2.html" class="page-link">Study Details</a>
+                <a href="study-telephone.html" class="page-link">Tele-Medicine Study</a>
+            </div>
+        </div>
+
+        <div class="category-card">
+            <div class="category-title">Tài khoản & Hệ thống</div>
+            <div class="page-grid">
+                <a href="profile.html" class="page-link">User Profile</a>
+                <a href="notification-detail.html" class="page-link">Notifications Center</a>
+                <a href="login.html" class="page-link">Login Page</a>
+                <a href="forgot-passwork.html" class="page-link">Forgot Password</a>
+            </div>
+        </div>
+
+        <div class="footer">
+        </div>
+    </div>
+</body>
+
+</html>

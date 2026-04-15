@@ -1,0 +1,1961 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ja"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="ja"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ja"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example</title>
+  <link  href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link  href="vendor/semantic/semantic.min.css" rel="stylesheet" type="text/css">
+  <link  href="vendor/semantic/semantic.min.css" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.min.css"> 
+  <link rel="stylesheet" href="./vendor/scrollbar/OverlayScrollbars.min.css"> 
+  <link rel="stylesheet" href="./vendor/fancybox/jquery.fancybox.min.css"> 
+  <link rel="stylesheet" href="./vendor/mCustomScrollbar/jquery.mCustomScrollbar.min.css"> 
+  <link rel="stylesheet" href="./vendor/select-2/select2.min.css"> 
+  <link href="./vendor/quill/quill.snow.css" rel="stylesheet">
+<link href="./vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="./vendor/quill/quill.core.css" rel="stylesheet">
+  <link href="./vendor/font-awesome/css/font-awesome.css" rel="stylesheet">
+  <link  href="css/style.css" rel="stylesheet" media="screen">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="page-header page-header-white">
+  <div class="logo">
+  	<a href="#">
+  		<img src="./images/logo.png" alt="">
+  		<h1>Bringing you the simplest experience</h1>
+  	</a>
+  </div>
+  <div class="fl-right">
+  	<div class="form-search">
+  		<form action="">
+  			<div class="md-row">
+  				<input class="input-search" type="search" placeholder="Tìm kiếm...">
+  				<input class="input-submit" type="submit" value="">
+  			</div>
+  		</form>
+  	</div>
+  	<div class="right-meta">
+      <div class="changer-layout" onclick="open_sub_layout(this)">
+        <img class="icon" src="./images/ico-changer-layout.png">
+        <div class="sub-ct">
+          <a href="#">Layout trắng</a>
+          <a href="#">Layout đen</a>
+        </div>
+      </div>
+  		<div class="notification">
+  			<div class="ico-bell" onclick="open_sub_notification(this)">
+  				<img src="./images/ico-bell.png" alt="">
+  				<div class="had-notification"></div>
+  			</div>
+        <div class="sub-notification">
+          <div class="noti-top clearfix">
+               <span id="noti-view" class="pull-left"><span>78</span>Thông báo</span>
+               <a class="pull-right" onclick="readAllNotification();">Đánh dấu tất cả đã đọc</a>
+           </div>
+           <div class="content-noti">
+            <div class="md-scroll-xy" style="max-height: calc(100vh - 170px)">
+               <ul>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.Bạn có 1 bệnh nhân (Trịnh Nam Thao)</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="" checked>
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                   <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo1" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo2" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo3" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo4" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                 <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo5" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo6" name="" value="">
+                  </div>
+                </li>
+                 <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo7" name="" value="">
+                  </div>
+                </li>
+                <li onclick="active_checkbox(this);">
+                  <label for="">
+                    <div class="info">Bạn có 1 bệnh nhân (Trịnh Nam Thao) chờ duyệt.</div>
+                    <div class="blk-date">
+                       <span>11/9/2019 14:46</span>
+                    </div>
+                  </label>
+                  <div class="check-box">
+                    <input type="radio" id="demo8" name="" value="">
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="noti-bottom">
+              <a id="view-all" class="pull-left" href="/notification-detail.html" target="_blank">Xem tất cả</a>
+            </div>
+             
+           </div>
+        </div>
+  		</div>
+      <div class="select-language">
+        <div class="ui compact selection dropdown">
+          <i class="dropdown icon"></i>
+          <div class="text"><img src="./images/en-flag.png" alt=""></div>
+          <div class="menu">
+            <div class="item"><a href="#"><img src="./images/vn-flag.png" alt=""></a></div>
+            <div class="item"><a href="#"><img src="./images/en-flag.png" alt=""></a></div>
+          </div>
+        </div>
+      </div>
+  		<div class="account" onclick="account_click(this)">
+        <div class="text">
+          <span>Welcome,<strong>Thiên Lý</strong></span>
+        </div>
+        <div class="avatar">
+          <img src="./images/avatar.jpg" alt="">
+        </div>
+         <ul class="menu-content">
+          <li><a href="#">Thông tin tài khoản</a></li>
+          <li><a href="#">Đổi mật khẩu</a></li>
+          <li class="log-out"><a href="#">Đăng xuất</a></li>
+        </ul>
+      </div>
+  	</div>
+  </div>
+</header>
+<!-- /.page-header -->
+
+<main class="page-main page-nomal page-listing">
+	<div class="blk-worklist">
+		<div class="top-title">
+			<img class="icon" src="./images/icon-worklist.png" alt="">
+			<span>Worklist</span>
+		</div>
+		<div class="item">
+			<div class="control" onclick="slide_toggle_item_blk_worklist(this)">
+				<img class="icon" src="./images/icon-management.png" alt="">
+				<span>Management</span>
+			</div>
+			<ul>
+				<li><a href="#">User</a></li>
+				<li><a href="#">Patients</a></li>
+				<li><a href="#">Doctors</a></li>
+				<li><a href="#">Chỉ định</a></li>
+				<li><a href="#">Technicians</a></li>
+				<li><a href="#">Modality</a></li>
+				<li><a href="#">Hospital</a></li>
+				<li><a href="#">Level Address</a></li>
+			</ul>
+		</div>
+		<div class="item">
+			<div class="control active" onclick="slide_toggle_item_blk_worklist(this)">
+				<img class="icon" src="./images/icon-setting.png" alt="">
+				<span>Setting</span>
+			</div>
+			<ul>
+				<li><a class="active" href="#">Template Report</a></li>
+				<li><a href="#">Setting Report</a></li>
+				<li><a href="#">Parameters</a></li>
+				<li><a href="#">Settings</a></li>
+				<li><a href="#">Connection Service</a></li>
+				<li><a href="#">Setting server</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="blk-table-admin">
+		<div class="top-content clearfix">
+			<h3>Permission</h3>
+			<div class="md-addnew">
+				<a href="#" data-fancybox="add-template-report" data-src="#add-template-report">Add new</a>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="w-48 float-left">
+				<div class="meta-top clearfix">
+					<div class="blk-control mrg-bt">
+						<ul class="nav nav-tabs" >
+							<li class="nav-item">
+								<a class="nav-link clearfix"><span class="text">Total</span><span class="number">16</span></a></a>
+							</li>
+						</ul>
+						<div class="right-select">
+							<select class="ui dropdown smd-dropdown-nomal">
+							  <option value="">Templates Type</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="tab-content">
+					<div class="tab-pane active">
+						<div class="blk-table md-scroll-xy">
+							<table class="resizable table table-fixed table-detail min-width-100" id="tableId-1">
+							  <thead>
+							    <tr>
+							      <th  scope="col" style="width: 120px"><p>#</p></th>
+							      <th  scope="col" style="width: 120px"><p>Type</p></th>
+							      <th  scope="col" style="width: 200px"><p>Address</p></th>
+							      <th class="align-center"  scope="col" style="width: 60px"><p>Action</p></th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+				    		    <tr class="tr-more">
+				    		      <td colspan="4">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+				    		    <tr class="tr-more">
+				    		      <td colspan="4">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+				    		    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+				    		    <tr class="tr-more">
+				    		      <td colspan="4">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+				    		    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+				    		    <tr class="tr-more">
+				    		      <td colspan="4">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+				    		    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+				    		    <tr class="tr-more">
+				    		      <td colspan="4">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-48 float-right">
+				<div class="meta-top clearfix">
+					<div class="blk-control mrg-bt">
+						<ul class="nav nav-tabs" >
+							<li class="nav-item">
+								<a class="nav-link clearfix"><span class="text">Total</span><span class="number">16</span></a></a>
+							</li>
+						</ul>
+						<div class="right-select">
+							<select class="ui dropdown smd-dropdown-nomal">
+							  <option value="">Templates</option>
+							  <option value="1">Male</option>
+							  <option value="0">Female</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="tab-content">
+					<div class="tab-pane active">
+						<div class="blk-table md-scroll-xy">
+							<table class="resizable table table-fixed table-detail min-width-100" id="tableId-1">
+							  <thead>
+							    <tr>
+							      <th  scope="col" style="width: 30px"><p>#</p></th>
+							      <th  scope="col" style="width: 120px"><p>Date Created</p></th>
+							      <th  scope="col" style="width: 60px"><p>Type</p></th>
+							      <th  scope="col" style="width: 120px"><p>Templates</p></th>
+							      <th class="align-center" scope="col" style="width: 60px"><p>Action</p></th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							   <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							    <tr class="tr-more">
+				    		      <td colspan="5">
+				    		      	<div class="table-more">
+				          		      	<table class="table table-bordered">
+				          					<thead>
+				          					    <tr>
+				          					      <th style="width: 120px"><p>Accession Number</p></th>
+				          					      <th style="width: 120px"><p>Patient Id</p></th>
+				          					      <th style="width: 300px"><p>Modality / Modality Id</p></th>
+				          					      <th style="width: 200px"><p>Bộ phận chụp</p></th>
+				          					      <th style="width: 100px"><p>Mô tả</p></th>
+				          					    </tr>
+				          					</thead>
+				          					<tbody>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <th rowspan="2"><p>20210807119</p></th>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          						<tr>
+				          						  <td><p>2021080738</p></td>
+				          						  <td><p>CT / CT1</p></td>
+				          						  <td><p>Abdomen</p></td>
+				          						  <th><p>Chụp cắt lớp điện toán đa lát cắt</p></th>
+				          						</tr>
+				          					</tbody>	
+				          		      	</table>
+				    		      	</div>
+				    		      </td>
+				    		    </tr>
+							    <tr>
+							      <th onclick="expand_tr_more(this)"><p>1</p></th>
+							      <td onclick="expand_tr_more(this)"><p>21.07.2021</p></td>
+							      <td onclick="expand_tr_more(this)"><p>MRI</p></td>
+							      <td onclick="expand_tr_more(this)"><p>Kỹ thuật chụp mạch máu số hóa</p></td>
+							      <th class="align-center">
+	      					      	<div class="table-action">
+	      					      		<img class="icon" src="./images/table-action.png" alt="" onclick="table_action(this)">
+			      					    <ul class="sub-action">
+							      			<li><a href="#" data-fancybox="" data-src="#popup-edit">Edit</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-permission-group">Permissons</a></li>
+							      			<li><a href="#" data-fancybox="" data-src="#popup-data-permission">Data permissions</a></li>
+							      		</ul>
+	      					      	</div>	
+	      					      </th>
+							    </tr>
+							  </tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>
+<!-- /.page-main -->
+<div id="add-template-report" class="md-modal md-modal-nomal">               
+    <div class="content-popup">
+        <div class="top-title">Add Template Report</div>
+        <div class="form-add-report">
+        	<form class="form-nomal" action="">
+        		<input type="text" style="width: 0px;height: 0px;overflow: hidden; padding: 0px;border:none;">
+        		<div class="md-row clearfix">
+        			<label for="">User name <span class="required-text">(*)</span></label>
+        			<input type="text" placeholder="Nguyễn Văn An">
+        			<p class="error">Vui lòng nhập đúng</p>
+        		</div>
+        		<div class="md-row clearfix">
+        			<div class="fl-left">
+        				<label for="">Password <span class="required-text">(*)</span></label>
+        				<div class="hl">
+        				    <input class="password" type="text" placeholder="">
+        				    <img class="eyes" src="./images/eyes-1.png" alt="">
+        				</div>
+        				<p class="error">Vui lòng nhập đúng password</p>
+        			</div>
+        			<div class="fl-right">
+        				<label for="">Confirm password<span class="required-text">(*)</span></label>
+        				<div class="hl">
+        				    <input class="password" type="text" placeholder="">
+        				    <img class="eyes" src="./images/eyes-1.png" alt="">
+        				</div>
+        				<p class="error">Vui lòng nhập đúng password</p>
+        			</div>
+        		</div>
+        		<div class="md-row clearfix">
+        			<div class="group-select-permission active">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>KTV</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Doctor</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        			<div class="group-select-permission active">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>KTV</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Doctor</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        			<div class="group-select-permission active">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>KTV</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Doctor</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        			<div class="group-select-permission">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        		</div>
+        		<div class="md-row clearfix">
+        			<label for="">Email<span class="required-text">(*)</span></label>
+        			<input type="Email" placeholder="nguyenvana@gmail.com">
+        			<p class="error">Vui lòng nhập đúng địa chỉ email</p>
+        		</div>
+        		<div class="md-row clearfix ">
+        			<div class="fl-left">
+        				<label for="">Type<span class="required-text">(*)</span></label>
+        				<select class="ui dropdown smd-dropdown-nomal">
+        				  <option value="">- Loại user - </option>
+        				  <option value="1">- Loại user - </option>
+        				  <option value="0">- Loại user - </option>
+        				</select>
+        				<p class="error">Vui lòng chọn kiểu</p>
+        			</div>
+        			<div class="fl-right">
+        				<label for="">Type<span class="required-text">(*)</span></label>
+        				<select class="ui dropdown smd-dropdown-nomal">
+						  <option value="">- Loại user - </option>
+						  <option value="1">- Loại user - </option>
+						  <option value="0">- Loại user - </option>
+						</select>
+						<p class="error">Vui lòng chọn kiểu</p>
+        			</div>
+        		</div>
+        		<div class="md-row">
+        			<div class="smd-input-submit">
+        				<input type="button" value="Complete">
+        			</div>
+        		</div>
+        	</form>
+        </div>
+    </div>
+</div>
+<div id="popup-permission-group" class="md-modal md-modal-nomal smd-popup-permission">               
+    <div class="content-popup">
+        <div class="top-title">Permission group</div>
+        <div class="form">
+        	<form class="form-nomal" action="">
+        		<input type="text" style="width: 0px;height: 0px;overflow: hidden; padding: 0px;border:none;">
+        		<div class="md-row clearfix">
+        			<label for="">User name <span class="required-text">(*)</span></label>
+        			<input type="text" placeholder="Nguyễn Văn An">
+        			<p class="error">Vui lòng nhập đúng</p>
+        		</div>
+        		<div class="md-row clearfix">
+        			<div class="group-select-permission active">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>KTV</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Doctor</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        			<div class="group-select-permission active">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>KTV</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Doctor</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        			<div class="group-select-permission active">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>KTV</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Doctor</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        			<div class="group-select-permission">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        		</div>
+        		<div class="md-row">
+	    			<div class="smd-input-submit">
+	    				<input class="button-close-popup" type="button" value="Hoàn tất" onclick="close_smd_popup(this)">
+	    			</div>
+	    		</div>
+        	</form>
+        </div>
+    </div>
+</div>
+<div id="popup-data-permission" class="md-modal md-modal-nomal smd-popup-permission">               
+    <div class="content-popup">
+        <div class="top-title">Permission group</div>
+        <div class="form">
+        	<form class="form-nomal" action="">
+        		<div class="md-row clearfix">
+        			<input type="text" style="width: 0px;height: 0px;overflow: hidden; padding: 0px;border:none;">
+        			<div class="fl-left">
+        				<label for="">Username <span class="required-text">(*)</span></label>
+        				<input type="text" placeholder="Quang Trần">
+        				<p class="error">Vui lòng nhập đúng password</p>
+        			</div>
+        			<div class="fl-right">
+        				<label for="">Hospital<span class="required-text">(*)</span></label>
+        				<select class="ui dropdown smd-dropdown-nomal">
+        				  <option value="">- Loại Hospital -</option>
+        				  <option value="1">- Loại user - </option>
+        				  <option value="0">- Loại user - </option>
+        				</select>
+        				<p class="error">Vui lòng chọn kiểu</p>
+        			</div>
+        		</div>
+        		<div class="md-row clearfix">
+        			<div class="fl-left">
+        				<label for="">Facility<span class="required-text">(*)</span></label>
+        				<select class="ui dropdown smd-dropdown-nomal">
+        				  <option value="">- Loại Facility -  </option>
+        				  <option value="1">- Loại user - </option>
+        				  <option value="0">- Loại user - </option>
+        				</select>
+        				<p class="error">Vui lòng chọn kiểu</p>
+        			</div>
+        			<div class="fl-right">
+        				<label for="">Modality<span class="required-text">(*)</span></label>
+        				<select class="ui dropdown smd-dropdown-nomal">
+        				  <option value="">- Loại Modality -</option>
+        				  <option value="1">- Loại user - </option>
+        				  <option value="0">- Loại user - </option>
+        				</select>
+        				<p class="error">Vui lòng chọn kiểu</p>
+        			</div>
+        		</div>
+        		<div class="md-row clearfix">
+        			<div class="group-select-permission active">
+        				<div class="title-top" onclick="expand_select_permission(this)">
+        					<img class="icon" src="./images/icon-management.png" alt="">
+        					<span>Group 1</span>
+        				</div>
+        				<ul>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Admin</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>thao test new group 1</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Quản lý ca chụp</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>KTV</label>
+        						</div>
+        					</li>
+        					<li>
+        						<div class="ui checkbox">
+        						  <input type="checkbox" name="example">
+        						  <label>Doctor</label>
+        						</div>
+        					</li>
+        				</ul>
+        			</div>
+        		</div>
+        		<div class="md-row">
+	    			<div class="smd-input-submit">
+	    				<input class="button-close-popup" type="button" value="Hoàn tất" onclick="close_smd_popup(this)">
+	    			</div>
+	    		</div>
+        	</form>
+        </div>
+    </div>
+</div>
+<div id="popup-edit" class="md-modal md-modal-nomal">               
+    <div class="content-popup">
+        <div class="top-title">Edit</div>
+        <div class="form-add-report">
+        	<form class="form-nomal" action="">
+        		<input type="text" style="width: 0px;height: 0px;overflow: hidden; padding: 0px;border:none;">
+        		<div class="md-row clearfix">
+        			<label for="">User name <span class="required-text">(*)</span></label>
+        			<input type="text" placeholder="Nguyễn Văn An">
+        			<p class="error">Vui lòng nhập đúng</p>
+        		</div>
+        		<div class="md-row clearfix">
+        			<div class="fl-left">
+        				<label for="">Password <span class="required-text">(*)</span></label>
+        				<div class="hl">
+        				    <input class="password" type="text" placeholder="">
+        				    <img class="eyes" src="./images/eyes-1.png" alt="">
+        				</div>
+        				<p class="error">Vui lòng nhập đúng password</p>
+        			</div>
+        			<div class="fl-right">
+        				<label for="">Confirm password<span class="required-text">(*)</span></label>
+        				<div class="hl">
+        				    <input class="password" type="text" placeholder="">
+        				    <img class="eyes" src="./images/eyes-1.png" alt="">
+        				</div>
+        				<p class="error">Vui lòng nhập đúng password</p>
+        			</div>
+        		</div>
+        		<div class="md-row clearfix">
+        			<label for="">Email<span class="required-text">(*)</span></label>
+        			<input type="Email" placeholder="nguyenvana@gmail.com">
+        			<p class="error">Vui lòng nhập đúng địa chỉ email</p>
+        		</div>
+        		<div class="md-row clearfix ">
+        			<div class="fl-left">
+        				<label for="">Type<span class="required-text">(*)</span></label>
+        				<select class="ui dropdown smd-dropdown-nomal">
+        				  <option value="">- Loại user - </option>
+        				  <option value="1">- Loại user - </option>
+        				  <option value="0">- Loại user - </option>
+        				</select>
+        				<p class="error">Vui lòng chọn kiểu</p>
+        			</div>
+        			<div class="fl-right">
+        				<label for="">Type<span class="required-text">(*)</span></label>
+        				<select class="ui dropdown smd-dropdown-nomal">
+						  <option value="">- Loại user - </option>
+						  <option value="1">- Loại user - </option>
+						  <option value="0">- Loại user - </option>
+						</select>
+						<p class="error">Vui lòng chọn kiểu</p>
+        			</div>
+        		</div>
+        		<div class="md-row">
+        			<div class="smd-input-submit">
+        				<input type="button" value="Complete">
+        			</div>
+        		</div>
+        	</form>
+        </div>
+    </div>
+</div>
+
+<div id="popup-success" class="md-modal popup-alert">               
+    <div class="inner">
+    	<div class="img-icon">
+    		<img  src="./images/icon-success.png" alt="" style="width: 70px;">
+    	</div>
+   		<div class="info">
+   			<h3>Thành công</h3>
+   			<div class="content">
+   				<p>Bạn đã đăng ký thành công</p>
+   			</div>
+   			<div class="btn">
+   				<button class="button-close" data-fancybox-close="">Đóng</button>
+   			</div>
+   		</div>
+    </div>
+</div>
+<div id="popup-wrong" class="md-modal popup-alert">               
+    <div class="inner">
+    	<div class="img-icon">
+    		<img  src="./images/icon-wrong.png" alt="" style="width: 45px;">
+    	</div>
+   		<div class="info">
+   			<h3>Không thành công</h3>
+   			<div class="content">
+   				<p>Vui lòng kiểm tra lại thông tin</p>
+   			</div>
+   			<div class="btn">
+   				<button class="button-close" data-fancybox-close="">Đóng</button>
+   			</div>
+   		</div>
+    </div>
+</div>
+
+<!-- /.page-footer -->
+
+<script src="vendor/jquery/jquery-3.4.1.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="./vendor/resize-table/jquery.resizableColumns.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="vendor/semantic/semantic.min.js" type="text/javascript"></script>
+<!-- <script src="./vendor/kendo-split/popper.min.js"></script> -->
+<script src="./vendor/scrollbar/OverlayScrollbars.js"></script>
+<script src="./vendor/fancybox/jquery.fancybox.min.js"></script>
+<!-- <script src="./vendor/kendo-split/kendo.all.min.js"></script> -->
+<script src="./vendor/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<!-- <script src="./vendor/select-2/select2.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.9.2/tinymce.min.js"></script> -->
+<!-- <script src="./vendor/tiny/tinymce.min.js"></script> -->
+<script src="./vendor/quill/quill.js"></script>
+<script src="./vendor/quill/quill.min.js"></script>
+<script src="scripts/an.js" type="text/javascript"></script>
+</body>
+</html>
+
