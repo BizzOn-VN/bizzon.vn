@@ -174,6 +174,11 @@
             color: #854d0e;
         }
 
+        .status-inprogress {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+
         .details-list {
             list-style: none;
             padding: 0;
@@ -685,9 +690,9 @@
             </div>
         </div>
 
-        <!-- Section 3: Cập nhật hệ thống -->
+        <!-- Section 3: Cập nhật hệ thống & Bảo mật -->
         <div class="section-card">
-            <h2 class="section-title">3. Cập nhật hệ thống</h2>
+            <h2 class="section-title">3. Cập nhật hệ thống &amp; Bảo mật</h2>
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -700,10 +705,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Không có</strong></td>
-                            <td>-</td>
-                            <td><span class="status-badge status-none">Không có</span></td>
-                            <td>-</td>
+                            <td><strong>Tất cả khách hàng</strong></td>
+                            <td>18/06/2026 - 19/06/2026</td>
+                            <td><span class="status-badge status-done">Đã vá</span></td>
+                            <td>
+                                <ul class="details-list">
+                                    <li>Vá lỗ hổng bảo mật: phát hiện lỗi xác thực (authentication) tại chức năng upload file trong RIS-Web editor, đã gỡ bỏ chức năng này để loại bỏ rủi ro.</li>
+                                    <li>Thực hiện trong 8 giờ</li>
+                                </ul>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -750,17 +760,6 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Tất cả khách hàng</strong></td>
-                            <td>18/06/2026 - 19/06/2026</td>
-                            <td><span class="status-badge status-done">Đã xong</span></td>
-                            <td>
-                                <ul class="details-list">
-                                    <li>RIS-Web: Bỏ upload file trong editor, do lỗi xác thực.</li>
-                                    <li>Thực hiện trong 8 giờ</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
                             <td><strong>HoanMy</strong></td>
                             <td>22/06/2026 - 23/06/2026</td>
                             <td><span class="status-badge status-done">Đã xong</span></td>
@@ -777,19 +776,18 @@
                             <td><span class="status-badge status-done">Đã xong</span></td>
                             <td>
                                 <ul class="details-list">
-                                    <li>Edge: Thông báo qua Telegram khi có instance DICOM gửi lên PACS bị lỗi 10 lần và tự động cấu hình gửi lại.</li>
+                                    <li>Edge: Thông báo qua Telegram khi có instance DICOM gửi lên PACS bị lỗi 10 lần.</li>
                                     <li>Thực hiện trong 8 giờ</li>
                                 </ul>
                             </td>
                         </tr>
                         <tr>
-                            <td><strong>STDK</strong></td>
+                            <td><strong>Tất cả khách hàng</strong></td>
                             <td>30/06/2026</td>
-                            <td><span class="status-badge status-done">Đã xong</span></td>
+                            <td><span class="status-badge status-inprogress">Đang triển khai</span></td>
                             <td>
                                 <ul class="details-list">
-                                    <li>RIS-Web: Bật chức năng tìm kiếm với cột "Chẩn Đoán" trên lưới</li>
-                                    <li>Thực hiện trong 0.5 giờ</li>
+                                    <li>Edge: Tự động cấu hình gửi lại DICOM sau khi cycle gửi trước đó thất bại — đang bổ sung điều kiện dừng vòng lặp, chưa hoàn chỉnh.</li>
                                 </ul>
                             </td>
                         </tr>
@@ -876,6 +874,17 @@
                                 <ul class="details-list">
                                     <li>Gửi report qua HIS, nội dung có ký tự NBSP thì HIS trả về lỗi chữ ký, nên thay thế ký tự NBSP bằng khoảng trắng trước khi gửi</li>
                                     <li>Thực hiện trong 2 giờ</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>STDK</strong></td>
+                            <td>30/06/2026</td>
+                            <td><span class="status-badge status-done">Đã xong</span></td>
+                            <td>
+                                <ul class="details-list">
+                                    <li>RIS-Web: Bật chức năng tìm kiếm với cột "Chẩn Đoán" trên lưới theo yêu cầu khách hàng (tính năng có sẵn, chỉ bật thêm)</li>
+                                    <li>Thực hiện trong 0.5 giờ</li>
                                 </ul>
                             </td>
                         </tr>
