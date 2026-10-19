@@ -1,0 +1,2462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Toyota Việt Nam | TSS Safety Driver - Thử Thách Lái Xe An Toàn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       TOYOTA BRAND GUIDELINES COLOR PALETTE (from brand-guildline.md)
+       - Toyota Red: #EB0A1E (Primary / Brand)
+       - Black:      #000000 (Text / Background)
+       - White:      #FFFFFF (Background)
+       - Dark Gray:  #333333 (Text)
+       - Light Gray: #F2F2F2 (Section background)
+       ========================================================================== */
+    :root {
+      --toyota-red: #EB0A1E;
+      --toyota-red-hover: #C80818;
+      --toyota-red-soft: rgba(235, 10, 30, 0.08);
+      --toyota-black: #000000;
+      --toyota-white: #FFFFFF;
+      --toyota-dark-gray: #333333;
+      --toyota-mid-gray: #666666;
+      --toyota-light-gray: #F2F2F2;
+      --toyota-border: #E0E0E0;
+      --safe-green: #008A4B;
+      --safe-green-bright: #00C86F;
+      --warn-amber: #F59E0B;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--toyota-white);
+      color: var(--toyota-dark-gray);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    /* ==========================================================================
+       1. OFFICIAL TOYOTA.COM.VN HEADER NAVIGATION
+       ========================================================================== */
+    .tmv-header {
+      background: var(--toyota-white);
+      border-bottom: 1px solid var(--toyota-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .tmv-header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toyota-logo-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--toyota-black);
+    }
+
+    .toyota-logo-svg {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+
+    .toyota-wordmark {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 2.5px;
+      color: var(--toyota-black);
+    }
+
+    .tmv-nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .tmv-nav li a {
+      text-decoration: none;
+      color: var(--toyota-dark-gray);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 24px 0;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .tmv-nav li a:hover,
+    .tmv-nav li a.active {
+      color: var(--toyota-red);
+    }
+
+    .tmv-nav li a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--toyota-red);
+    }
+
+    .header-cta {
+      background: var(--toyota-red);
+      color: var(--toyota-white);
+      border: none;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 2px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+
+    .header-cta:hover {
+      background: var(--toyota-red-hover);
+    }
+
+    /* Breadcrumb */
+    .tmv-breadcrumb {
+      background: var(--toyota-light-gray);
+      border-bottom: 1px solid var(--toyota-border);
+      padding: 8px 24px;
+      font-size: 12px;
+      color: var(--toyota-mid-gray);
+    }
+
+    .tmv-breadcrumb-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tmv-breadcrumb span.current {
+      color: var(--toyota-black);
+      font-weight: 700;
+    }
+
+    /* ==========================================================================
+       2. HERO BANNER & TSS ECOSYSTEM TREE
+       ========================================================================== */
+    .hero-section {
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+      position: relative;
+      overflow: hidden;
+      padding: 36px 24px 32px;
+      border-bottom: 4px solid var(--toyota-red);
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 30%, rgba(235, 10, 30, 0.24), transparent 55%),
+        linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0.85) 60%, rgba(17, 17, 17, 0.7) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--toyota-red);
+      color: var(--toyota-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      color: var(--toyota-white);
+    }
+
+    .hero-title span {
+      color: var(--toyota-red);
+    }
+
+    .hero-slogan {
+      font-size: 16px;
+      color: #E0E0E0;
+      font-weight: 500;
+      margin-bottom: 20px;
+      border-left: 3px solid var(--toyota-red);
+      padding-left: 12px;
+    }
+
+    /* TSS Architecture Pills from brand-guildline.md */
+    .tss-tree-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .tss-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #CCCCCC;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tss-pill.active {
+      background: var(--toyota-red);
+      border-color: var(--toyota-red);
+      color: var(--toyota-white);
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(235, 10, 30, 0.45);
+    }
+
+    .hero-visual-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 6px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .hero-visual-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .hero-visual-imgs img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: #1a1a1a;
+    }
+
+    .hero-model-selector {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .model-chip-group {
+      display: flex;
+      gap: 6px;
+    }
+
+    .model-chip {
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .model-chip.active {
+      background: var(--toyota-white);
+      color: var(--toyota-black);
+      border-color: var(--toyota-white);
+    }
+
+    /* ==========================================================================
+       3. MAIN WORKSPACE: 5-STEP INTERACTIVE SIMULATION
+       ========================================================================== */
+    .main-section {
+      background: var(--toyota-light-gray);
+      padding: 32px 24px 48px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* 5-Step Journey Stepper */
+    .journey-stepper {
+      background: var(--toyota-white);
+      border: 1px solid var(--toyota-border);
+      border-radius: 4px;
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 4px;
+      border-bottom: 3px solid var(--toyota-border);
+      opacity: 0.55;
+      transition: all 0.25s;
+    }
+
+    .step-item.active {
+      opacity: 1;
+      border-bottom-color: var(--toyota-red);
+      background: var(--toyota-red-soft);
+    }
+
+    .step-item.done {
+      opacity: 0.9;
+      border-bottom-color: var(--toyota-black);
+    }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--toyota-light-gray);
+      color: var(--toyota-dark-gray);
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-item.active .step-num {
+      background: var(--toyota-red);
+      color: var(--toyota-white);
+    }
+
+    .step-item.done .step-num {
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+    }
+
+    .step-text-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--toyota-mid-gray);
+      letter-spacing: 0.4px;
+    }
+
+    .step-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--toyota-black);
+      line-height: 1.25;
+    }
+
+    /* Simulation Console Grid */
+    .sim-console {
+      background: var(--toyota-white);
+      border: 1px solid var(--toyota-border);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Top Control & Telemetry Dashboard (Veloz Cross MID + Brake Formula) */
+    .telemetry-bar {
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+      padding: 16px 24px;
+      display: grid;
+      grid-template-columns: 1.1fr 1.2fr 1.7fr;
+      gap: 20px;
+      align-items: center;
+      border-bottom: 2px solid var(--toyota-red);
+    }
+
+    /* Cluster 1: Speed & Sensor */
+    .telemetry-cluster {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .speed-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .speed-box .lbl {
+      font-size: 10px;
+      color: #999999;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .speed-box .val-row {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .speed-box .val {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--toyota-white);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .speed-box .unit {
+      font-size: 12px;
+      color: #CCCCCC;
+      font-weight: 600;
+    }
+
+    .speed-range-tag {
+      font-size: 10px;
+      color: #00E5FF;
+      background: rgba(0, 229, 255, 0.12);
+      padding: 2px 6px;
+      border-radius: 2px;
+      margin-top: 2px;
+      display: inline-block;
+    }
+
+    /* Cluster 2: Veloz Cross MID Multi-Information Display ("BRAKE!") */
+    .mid-display {
+      background: #141414;
+      border: 2px solid #333333;
+      border-radius: 6px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+
+    .mid-display.brake-alert {
+      background: var(--toyota-red);
+      border-color: #FFFFFF;
+      animation: midFlash 0.35s infinite alternate;
+    }
+
+    @keyframes midFlash {
+      from { background: #EB0A1E; box-shadow: 0 0 20px rgba(235, 10, 30, 0.8); }
+      to   { background: #90000D; box-shadow: 0 0 4px rgba(235, 10, 30, 0.3); }
+    }
+
+    .mid-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mid-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #AAAAAA;
+    }
+
+    .mid-display.brake-alert .mid-title {
+      color: #FFFFFF;
+    }
+
+    .mid-status {
+      font-size: 15px;
+      font-weight: 800;
+      color: #00E5FF;
+      letter-spacing: 0.5px;
+    }
+
+    .mid-display.brake-alert .mid-status {
+      color: #FFFFFF;
+      font-size: 18px;
+      letter-spacing: 1.5px;
+    }
+
+    .mid-icon-badge {
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.1);
+      color: #FFF;
+    }
+
+    /* Cluster 3: PCS Brake Force Formula Bar */
+    .formula-box {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .formula-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .formula-equation {
+      color: #DDDDDD;
+    }
+
+    .formula-equation b.drv { color: var(--warn-amber); }
+    .formula-equation b.pcs { color: #00E5FF; }
+    .formula-equation b.tot { color: var(--safe-green-bright); }
+
+    .brake-meter-track {
+      width: 100%;
+      height: 12px;
+      background: #262626;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid #444;
+    }
+
+    .brake-fill-driver {
+      height: 100%;
+      width: 0%;
+      background: var(--warn-amber);
+      transition: width 0.3s ease;
+    }
+
+    .brake-fill-pcs {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #00E5FF, #00C86F);
+      transition: width 0.3s ease;
+    }
+
+    /* Canvas Stage Container */
+    .stage-viewport {
+      position: relative;
+      width: 100%;
+      height: 430px;
+      background: #1B1D24;
+      overflow: hidden;
+    }
+
+    canvas#pcsCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Step 1 / Start Overlay */
+    .start-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.72);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      z-index: 30;
+      transition: opacity 0.3s;
+    }
+
+    .start-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .scenario-card-intro {
+      background: var(--toyota-white);
+      color: var(--toyota-dark-gray);
+      max-width: 560px;
+      width: 100%;
+      border-radius: 4px;
+      border-top: 5px solid var(--toyota-red);
+      padding: 28px 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      text-align: left;
+    }
+
+    .intro-badge {
+      display: inline-block;
+      background: var(--toyota-light-gray);
+      color: var(--toyota-red);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+    }
+
+    .scenario-card-intro h2 {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--toyota-black);
+      margin-bottom: 10px;
+    }
+
+    .scenario-card-intro p {
+      font-size: 14px;
+      color: var(--toyota-dark-gray);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .pcs-3steps-mini {
+      background: var(--toyota-light-gray);
+      padding: 12px 14px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .pcs-3steps-mini div strong {
+      color: var(--toyota-red);
+    }
+
+    .btn-primary-toyota {
+      width: 100%;
+      background: var(--toyota-red);
+      color: var(--toyota-white);
+      border: none;
+      padding: 14px 24px;
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn-primary-toyota:hover {
+      background: var(--toyota-red-hover);
+    }
+
+    /* Step 3: Driver Decision Overlay (Shows when Step 1 Warning triggers) */
+    .decision-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(5px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 35;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s;
+    }
+
+    .decision-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .decision-box {
+      background: var(--toyota-white);
+      color: var(--toyota-black);
+      max-width: 680px;
+      width: 100%;
+      border-radius: 4px;
+      border-top: 5px solid var(--toyota-red);
+      padding: 24px 28px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    }
+
+    .decision-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .step1-triggered-pill {
+      background: var(--toyota-red);
+      color: var(--toyota-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      animation: pulseAlert 0.6s infinite alternate;
+    }
+
+    @keyframes pulseAlert {
+      from { opacity: 1; }
+      to   { opacity: 0.7; }
+    }
+
+    .countdown-pill {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--toyota-red);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .decision-box h3 {
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--toyota-black);
+    }
+
+    .decision-box p.sub {
+      font-size: 13px;
+      color: var(--toyota-mid-gray);
+      margin-bottom: 16px;
+    }
+
+    .timer-bar-wrap {
+      width: 100%;
+      height: 6px;
+      background: var(--toyota-light-gray);
+      margin-bottom: 18px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .timer-bar-fill {
+      height: 100%;
+      width: 100%;
+      background: var(--toyota-red);
+      transition: width 0.05s linear;
+    }
+
+    .decision-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .decision-btn {
+      background: var(--toyota-white);
+      border: 2px solid var(--toyota-black);
+      border-radius: 4px;
+      padding: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      position: relative;
+    }
+
+    .decision-btn:hover {
+      border-color: var(--toyota-red);
+      background: var(--toyota-red-soft);
+      transform: translateY(-2px);
+    }
+
+    .decision-btn .opt-step {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--toyota-red);
+      letter-spacing: 0.5px;
+    }
+
+    .decision-btn .opt-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--toyota-black);
+    }
+
+    .decision-btn .opt-desc {
+      font-size: 12px;
+      color: var(--toyota-mid-gray);
+      line-height: 1.4;
+    }
+
+    /* Step 4 Outcome Floating Action Bar */
+    .outcome-action-bar {
+      background: var(--toyota-white);
+      border-top: 1px solid var(--toyota-border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .outcome-summary-text {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--toyota-dark-gray);
+    }
+
+    .step-badge-active {
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .action-btn-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-outline-toyota {
+      background: var(--toyota-white);
+      color: var(--toyota-black);
+      border: 2px solid var(--toyota-black);
+      padding: 9px 18px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline-toyota:hover {
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+    }
+
+    .btn-red-small {
+      background: var(--toyota-red);
+      color: var(--toyota-white);
+      border: 2px solid var(--toyota-red);
+      padding: 9px 18px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-red-small:hover {
+      background: var(--toyota-red-hover);
+    }
+
+    /* ==========================================================================
+       4. PCS 3-STEP TECHNICAL BREAKDOWN (ACCORDING TO TOYOTA BRIEF)
+       ========================================================================== */
+    .pcs-knowledge-section {
+      background: var(--toyota-white);
+      border: 1px solid var(--toyota-border);
+      border-radius: 4px;
+      padding: 28px;
+    }
+
+    .section-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--toyota-light-gray);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-header-bar h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--toyota-black);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-header-bar h3::before {
+      content: '';
+      width: 6px;
+      height: 22px;
+      background: var(--toyota-red);
+      display: inline-block;
+    }
+
+    .speed-spec-pill {
+      background: var(--toyota-light-gray);
+      border-left: 4px solid var(--toyota-red);
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--toyota-dark-gray);
+    }
+
+    .pcs-3steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .pcs-step-card {
+      background: var(--toyota-light-gray);
+      border: 1px solid var(--toyota-border);
+      border-top: 4px solid var(--toyota-black);
+      border-radius: 4px;
+      padding: 20px;
+      transition: all 0.25s;
+      position: relative;
+    }
+
+    .pcs-step-card.highlighted {
+      border-top-color: var(--toyota-red);
+      background: var(--toyota-white);
+      box-shadow: 0 8px 24px rgba(235, 10, 30, 0.12);
+      transform: translateY(-3px);
+    }
+
+    .step-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .step-card-tag {
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 10px;
+      text-transform: uppercase;
+    }
+
+    .pcs-step-card.highlighted .step-card-tag {
+      background: var(--toyota-red);
+    }
+
+    .step-card-cond {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--toyota-red);
+    }
+
+    .pcs-step-card h4 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--toyota-black);
+      margin-bottom: 8px;
+    }
+
+    .pcs-step-card p {
+      font-size: 13px;
+      color: var(--toyota-dark-gray);
+      margin-bottom: 12px;
+    }
+
+    .formula-callout {
+      background: var(--toyota-white);
+      border: 1px dashed var(--toyota-red);
+      padding: 8px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--toyota-black);
+      border-radius: 3px;
+    }
+
+    /* ==========================================================================
+       5. GAMIFICATION & VIRAL MECHANICS (CERTIFICATE + LEADERBOARD + DEALER QR)
+       ========================================================================== */
+    .gamification-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+    }
+
+    /* Digital Family Driver Certificate & Dealer QR */
+    .cert-card {
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+      border-radius: 4px;
+      border-top: 5px solid var(--toyota-red);
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 20px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-badge-top {
+      display: inline-block;
+      background: var(--toyota-red);
+      color: var(--toyota-white);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .cert-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--toyota-white);
+    }
+
+    .cert-score-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 12px 0;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.07);
+      border-left: 3px solid var(--safe-green-bright);
+    }
+
+    .cert-score-num {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--safe-green-bright);
+    }
+
+    .cert-input-group {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .cert-input {
+      flex: 1;
+      padding: 9px 12px;
+      border: 1px solid #444;
+      background: #1A1A1A;
+      color: #FFF;
+      font-size: 12px;
+      border-radius: 2px;
+      font-family: inherit;
+    }
+
+    .qr-voucher-box {
+      background: var(--toyota-white);
+      color: var(--toyota-black);
+      padding: 16px;
+      border-radius: 4px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qr-voucher-box .qr-title {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--toyota-red);
+      text-transform: uppercase;
+    }
+
+    .qr-svg-wrap {
+      width: 108px;
+      height: 108px;
+      padding: 6px;
+      border: 2px solid var(--toyota-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-voucher-box p {
+      font-size: 11px;
+      color: var(--toyota-dark-gray);
+      line-height: 1.35;
+    }
+
+    /* Leaderboard Card (From Q&A #5) */
+    .leaderboard-card {
+      background: var(--toyota-white);
+      border: 1px solid var(--toyota-border);
+      border-radius: 4px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .leaderboard-card h4 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--toyota-black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lb-live-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--safe-green);
+      background: rgba(0, 138, 75, 0.1);
+      padding: 3px 8px;
+      border-radius: 10px;
+    }
+
+    .lb-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .lb-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--toyota-light-gray);
+      border-radius: 3px;
+      font-size: 12px;
+    }
+
+    .lb-row.me {
+      background: var(--toyota-red-soft);
+      border: 1px solid var(--toyota-red);
+      font-weight: 700;
+    }
+
+    .lb-rank {
+      width: 22px;
+      height: 22px;
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+      font-size: 11px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .lb-row:nth-child(1) .lb-rank { background: var(--toyota-red); }
+
+    /* Footer */
+    footer.tmv-footer {
+      background: var(--toyota-black);
+      color: #999999;
+      padding: 28px 24px;
+      font-size: 12px;
+      border-top: 3px solid var(--toyota-red);
+    }
+
+    .tmv-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Disclaimer Modal Blocking Popup */
+    body.disclaimer-locked {
+      overflow: hidden;
+    }
+
+    .disclaimer-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.86);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+
+    .disclaimer-modal-backdrop.closed {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .disclaimer-modal-card {
+      background: var(--toyota-white);
+      color: var(--toyota-dark-gray);
+      max-width: 540px;
+      width: 100%;
+      border-radius: 4px;
+      border-top: 6px solid var(--toyota-red);
+      padding: 32px 30px 28px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.65);
+      text-align: center;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .disclaimer-modal-backdrop.closed .disclaimer-modal-card {
+      transform: translateY(16px);
+    }
+
+    .disclaimer-icon-circle {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--toyota-red-soft);
+      color: var(--toyota-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 24px;
+      font-weight: 800;
+      border: 2px solid rgba(235, 10, 30, 0.25);
+    }
+
+    .disclaimer-tag {
+      display: inline-block;
+      background: var(--toyota-black);
+      color: var(--toyota-white);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+      margin-bottom: 12px;
+    }
+
+    .disclaimer-modal-card h2 {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--toyota-black);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .disclaimer-highlight-box {
+      background: var(--toyota-light-gray);
+      border-left: 4px solid var(--toyota-red);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 13.5px;
+      color: var(--toyota-black);
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .disclaimer-desc {
+      font-size: 13px;
+      color: var(--toyota-mid-gray);
+      text-align: left;
+      line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    .btn-accept-disclaimer {
+      width: 100%;
+      background: var(--toyota-red);
+      color: var(--toyota-white);
+      border: none;
+      padding: 14px 24px;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-accept-disclaimer:hover {
+      background: var(--toyota-red-hover);
+    }
+
+    .btn-accept-disclaimer:active {
+      transform: scale(0.99);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 960px) {
+      .hero-inner,
+      .telemetry-bar,
+      .pcs-3steps-grid,
+      .gamification-grid,
+      .cert-card {
+        grid-template-columns: 1fr;
+      }
+      .journey-stepper {
+        grid-template-columns: 1fr 1fr;
+      }
+      .decision-options {
+        grid-template-columns: 1fr;
+      }
+      .tmv-nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="disclaimer-locked">
+
+  <!-- ========================================================================
+       0. DISCLAIMER MODAL POPUP (MUST CLICK "ĐÃ HIỂU" TO ENTER)
+       ======================================================================== -->
+  <div class="disclaimer-modal-backdrop" id="disclaimerModal">
+    <div class="disclaimer-modal-card">
+      <div class="disclaimer-icon-circle">!</div>
+      <span class="disclaimer-tag">THÔNG BÁO LƯU Ý (DISCLAIMER)</span>
+      <h2>Bản Demo Phục Vụ Đấu Thầu Dự Án</h2>
+      <div class="disclaimer-highlight-box">
+        Đây <u>không phải</u> là website chính thức thuộc hệ thống của Công ty Ô tô Toyota Việt Nam (TMV).
+      </div>
+      <p class="disclaimer-desc">
+        Trang web này là <strong>bản Prototype / Demo minh họa ý tưởng & giải pháp kỹ thuật</strong> từ phía <strong>Agency</strong> nhằm mục đích tham gia đấu thầu (Pitching Proposal) cho dự án <em>Nâng cấp trải nghiệm Toyota Safety Sense (TSS)</em>. Mọi hình ảnh, nhận diện thương hiệu và thông tin mô phỏng chỉ được sử dụng cho mục đích trình bày đề xuất dự thầu.
+      </p>
+      <button class="btn-accept-disclaimer" onclick="acceptDisclaimer()">
+        ✓ ĐÃ HIỂU & VÀO XEM DEMO
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       1. OFFICIAL TOYOTA VIETNAM HEADER (toyota.com.vn style)
+       ======================================================================== -->
+  <header class="tmv-header">
+    <div class="tmv-header-inner">
+      <a href="#" class="toyota-logo-link">
+        <!-- Official Toyota 3-Oval Emblem SVG in #EB0A1E -->
+        <svg class="toyota-logo-svg" viewBox="0 0 100 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="50" cy="33" rx="46" ry="29" stroke="#EB0A1E" stroke-width="5.5"/>
+          <ellipse cx="50" cy="24" rx="38" ry="13.5" stroke="#EB0A1E" stroke-width="5"/>
+          <ellipse cx="50" cy="33" rx="13.5" ry="27.5" stroke="#EB0A1E" stroke-width="5"/>
+        </svg>
+        <span class="toyota-wordmark">TOYOTA</span>
+      </a>
+
+      <ul class="tmv-nav">
+        <li><a href="#">Sản phẩm</a></li>
+        <li><a href="#" class="active">Công nghệ & An toàn (TSS)</a></li>
+        <li><a href="#">Dịch vụ</a></li>
+        <li><a href="#">Tin tức & Khuyến mãi</a></li>
+        <li><a href="#">Đăng ký lái thử</a></li>
+      </ul>
+
+      <button class="header-cta" onclick="startSimulation()">Chơi Thử Thách TSS</button>
+    </div>
+  </header>
+
+  <div class="tmv-breadcrumb">
+    <div class="tmv-breadcrumb-inner">
+      <span>Trang chủ</span> &rsaquo; <span>Công nghệ</span> &rsaquo; <span class="current">Toyota Safety Sense (TSS) — Trải nghiệm Mô phỏng Tương tác</span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       2. HERO BANNER & TOYOTA SAFETY SENSE ECOSYSTEM
+       ======================================================================== -->
+  <section class="hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag">TOYOTA SAFETY SENSE (TSS)</div>
+        <h1 class="hero-title">TSS Safety Driver – <span>Thử Thách Lái Xe An Toàn</span></h1>
+        <p class="hero-slogan">“Một giây xao nhãng – TSS đồng hành bảo vệ gia đình bạn”</p>
+
+        <!-- TSS Hierarchy Tree from brand-guildline.md -->
+        <div class="tss-tree-bar">
+          <div class="tss-pill active" title="Pre-Collision System">● PCS – Cảnh báo tiền va chạm (Đang mở Demo)</div>
+          <div class="tss-pill" title="Front Departure Alert">FDA – Cảnh báo xe trước khởi hành</div>
+          <div class="tss-pill" title="Lane Departure Alert">LDA – Cảnh báo chệch làn</div>
+          <div class="tss-pill" title="Lane Tracing Assist">LTA – Hỗ trợ giữ làn</div>
+          <div class="tss-pill" title="Dynamic Radar Cruise Control">DRCC – Ga tự động thích ứng</div>
+          <div class="tss-pill" title="Automatic High Beam">AHB – Đèn pha tự động</div>
+          <div class="tss-pill" title="Pedal Misoperation Control / Proactive Driving Assist">PMC / PDA – Kiểm soát chân ga</div>
+        </div>
+      </div>
+
+      <div class="hero-visual-card">
+        <div class="hero-visual-imgs">
+          <img src="https://www.toyota.com.vn/images/technology/image-tss-1.png" alt="Toyota Safety Sense Radar & Camera" onerror="this.style.background='#222'">
+          <img src="https://www.toyota.com.vn/images/technology/image-tss-2.png" alt="Toyota Safety Sense Protection" onerror="this.style.background='#222'">
+        </div>
+        <div class="hero-model-selector">
+          <span>Dòng xe trang bị tiêu biểu:</span>
+          <div class="model-chip-group">
+            <span class="model-chip active" onclick="selectCarModel(this, 'Veloz Cross')">Veloz Cross</span>
+            <span class="model-chip" onclick="selectCarModel(this, 'Yaris Cross')">Yaris Cross</span>
+            <span class="model-chip" onclick="selectCarModel(this, 'Corolla Cross')">Corolla Cross</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       3. INTERACTIVE SIMULATION WORKSPACE (5-STEP MECHANIC + SPLIT SCREEN)
+       ======================================================================== -->
+  <section class="main-section">
+    <div class="container">
+
+      <!-- 5-Step Journey Progress Bar -->
+      <div class="journey-stepper">
+        <div class="step-item active" id="stepNav1">
+          <div class="step-num">1</div>
+          <div class="step-text-wrap">
+            <span class="step-label">Bước 1</span>
+            <span class="step-name">Tình huống thực tế</span>
+          </div>
+        </div>
+        <div class="step-item" id="stepNav2">
+          <div class="step-num">2</div>
+          <div class="step-text-wrap">
+            <span class="step-label">Bước 2 (PCS Bước 1)</span>
+            <span class="step-name">Nhận diện & Báo "BRAKE!"</span>
+          </div>
+        </div>
+        <div class="step-item" id="stepNav3">
+          <div class="step-num">3</div>
+          <div class="step-text-wrap">
+            <span class="step-label">Bước 3</span>
+            <span class="step-name">Quyết định người lái</span>
+          </div>
+        </div>
+        <div class="step-item" id="stepNav4">
+          <div class="step-num">4</div>
+          <div class="step-text-wrap">
+            <span class="step-label">Bước 4 (PCS Bước 2/3)</span>
+            <span class="step-name">So sánh Có & Không TSS</span>
+          </div>
+        </div>
+        <div class="step-item" id="stepNav5">
+          <div class="step-num">5</div>
+          <div class="step-text-wrap">
+            <span class="step-label">Bước 5</span>
+            <span class="step-name">Đúc kết & Chứng nhận</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Simulation Console -->
+      <div class="sim-console">
+
+        <!-- Telemetry HUD Bar -->
+        <div class="telemetry-bar">
+          <!-- Speed & Distance -->
+          <div class="telemetry-cluster">
+            <div class="speed-box">
+              <span class="lbl">Vận tốc (<span id="activeModelLabel">Veloz Cross</span>)</span>
+              <div class="val-row">
+                <span class="val" id="hudSpeed">45</span>
+                <span class="unit">km/h</span>
+              </div>
+              <span class="speed-range-tag">Dải PCS chuẩn: 4 – 120 km/h</span>
+            </div>
+
+            <div class="speed-box">
+              <span class="lbl">Khoảng cách Camera Stereo</span>
+              <div class="val-row">
+                <span class="val" id="hudDist">24.0</span>
+                <span class="unit">mét</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Veloz Cross MID Multi-Information Display -->
+          <div class="mid-display" id="midDisplay">
+            <div class="mid-left">
+              <span class="mid-title">Màn hình đa thông tin (MID)</span>
+              <span class="mid-status" id="midStatusText">PCS: ĐANG QUÉT ĐƯỜNG</span>
+            </div>
+            <div class="mid-icon-badge" id="midStepBadge">CHẾ ĐỘ AN TOÀN</div>
+          </div>
+
+          <!-- Brake Force Equation Meter -->
+          <div class="formula-box">
+            <div class="formula-header">
+              <span class="formula-equation">
+                Lực phanh = <b class="drv">Người lái (<span id="drvForceTxt">0%</span>)</b> + <b class="pcs">Hỗ trợ PCS (<span id="pcsForceTxt">0%</span>)</b> = <b class="tot" id="totForceTxt">0%</b>
+              </span>
+            </div>
+            <div class="brake-meter-track">
+              <div class="brake-fill-driver" id="barDriverForce"></div>
+              <div class="brake-fill-pcs" id="barPcsForce"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Canvas Viewport -->
+        <div class="stage-viewport">
+          <canvas id="pcsCanvas"></canvas>
+
+          <!-- Intro Start Card -->
+          <div class="start-overlay" id="startOverlay">
+            <div class="scenario-card-intro">
+              <span class="intro-badge">KỊCH BẢN MÔ PHỎNG PCS – PHỐ ĐÔNG GIỜ CAO ĐIỂM</span>
+              <h2>Trải nghiệm 3 Bước Bảo Vệ của Hệ thống Cảnh báo Tiền va chạm (PCS)</h2>
+              <p>
+                Bạn đang cầm lái chiếc <strong>Toyota Veloz Cross (45 km/h)</strong> đưa gia đình đi qua khu phố đông đúc. Bất ngờ chiếc xe phía trước phanh gấp vì chướng ngại vật!
+              </p>
+              <div class="pcs-3steps-mini">
+                <div><strong>• Bước 1 (Warning):</strong> Camera Stereo phát hiện rủi ro &rarr; Báo âm thanh <em>Bíp-Bíp</em> + nháy đỏ <strong>"BRAKE!"</strong>.</div>
+                <div><strong>• Bước 2 (Brake Assist):</strong> Nếu bạn <em>CÓ đạp phanh nhưng nhẹ</em> &rarr; PCS tự động bù thêm lực phanh tối đa.</div>
+                <div><strong>• Bước 3 (Automatic Braking):</strong> Nếu bạn <em>KHÔNG kịp đạp phanh</em> &rarr; PCS chủ động phanh tự động khẩn cấp.</div>
+              </div>
+              <button class="btn-primary-toyota" onclick="startSimulation()">
+                <span>▶ BẮT ĐẦU TRẢI NGHIỆM TÌNH HUỐNG</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Driver Decision Modal (Triggered after Step 1 Warning) -->
+          <div class="decision-overlay" id="decisionOverlay">
+            <div class="decision-box">
+              <div class="decision-header">
+                <span class="step1-triggered-pill">⚠ PCS BƯỚC 1 ĐÃ KÍCH HOẠT: CẢNH BÁO "BRAKE!"</span>
+                <span class="countdown-pill" id="countdownText">Phản xạ: 3.5s</span>
+              </div>
+              <h3>Xe phía trước phanh gấp ở khoảng cách 14m! Bạn phản ứng thế nào?</h3>
+              <p class="sub">Hãy chọn 1 trong 2 tình huống phản xạ thực tế của người lái để xem sự khác biệt trên màn hình chia đôi (Split-Screen):</p>
+
+              <div class="timer-bar-wrap">
+                <div class="timer-bar-fill" id="decisionTimerFill"></div>
+              </div>
+
+              <div class="decision-options">
+                <!-- Option A -> Triggers PCS Step 2 (Brake Assist) -->
+                <button class="decision-btn" onclick="chooseDriverReaction('BRAKE_ASSIST')">
+                  <span class="opt-step">Kịch bản A &rarr; Kích hoạt PCS Bước 2</span>
+                  <span class="opt-title">🦶 CÓ ĐẠP PHANH (Nhưng lực đạp nhẹ 50%)</span>
+                  <span class="opt-desc">
+                    Giật mình rà phanh nhưng đạp chưa đủ mạnh. Xem hệ thống <strong>Hỗ trợ phanh tiền va chạm (Brake Assist)</strong> tự động bù thêm +50% lực phanh!
+                  </span>
+                </button>
+
+                <!-- Option B -> Triggers PCS Step 3 (Automatic Emergency Braking) -->
+                <button class="decision-btn" onclick="chooseDriverReaction('AUTO_BRAKE')">
+                  <span class="opt-step">Kịch bản B &rarr; Kích hoạt PCS Bước 3</span>
+                  <span class="opt-title">😮 XAO NHÃNG / KHÔNG KỊP ĐẠP PHANH (0%)</span>
+                  <span class="opt-desc">
+                    Đang quay lại nhắc con nhỏ nên hoàn toàn không kịp chạm bàn đạp phanh. Xem hệ thống <strong>Phanh tự động (Automatic Braking)</strong> tự ghì đứng xe!
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Action & Outcome Bar -->
+        <div class="outcome-action-bar">
+          <div class="outcome-summary-text">
+            <span class="step-badge-active" id="statusBadgeBottom">SẴN SÀNG</span>
+            <span id="statusDescBottom">Nhấn "Bắt đầu trải nghiệm" để kiểm chứng khả năng bảo vệ của Camera Stereo trên Toyota Veloz Cross.</span>
+          </div>
+          <div class="action-btn-group">
+            <button class="btn-outline-toyota" onclick="chooseDriverReaction('BRAKE_ASSIST')">Thử Bước 2 (Có đạp phanh)</button>
+            <button class="btn-outline-toyota" onclick="chooseDriverReaction('AUTO_BRAKE')">Thử Bước 3 (Không đạp phanh)</button>
+            <button class="btn-red-small" onclick="startSimulation()">↻ Chạy lại từ đầu</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ====================================================================
+           4. PCS 3-STEP TECHNICAL REFERENCE CARDS (Highlights dynamically)
+           ==================================================================== -->
+      <div class="pcs-knowledge-section">
+        <div class="section-header-bar">
+          <h3>Nguyên lý 3 Bước Xử Lý của Hệ thống Cảnh báo Tiền va chạm (PCS)</h3>
+          <div class="speed-spec-pill">
+            ⚙ Dải tốc độ hoạt động PCS trên <strong>Veloz Cross & Yaris Cross</strong>: Tối ưu từ <strong>4 km/h – 120 km/h</strong>
+          </div>
+        </div>
+
+        <div class="pcs-3steps-grid">
+          <!-- Step 1 Card -->
+          <div class="pcs-step-card" id="cardPcsStep1">
+            <div class="step-card-header">
+              <span class="step-card-tag">Bước 1: Warning</span>
+              <span class="step-card-cond">Phát hiện nguy cơ</span>
+            </div>
+            <h4>Phát hiện nguy cơ & Cảnh báo tiền va chạm</h4>
+            <p>
+              Khi <strong>Camera Stereo phía trước</strong> nhận diện nguy cơ va chạm trực diện với phương tiện hoặc người đi bộ, hệ thống phát âm thanh cảnh báo (tiếng <em>bíp</em>) đồng thời nhấp nháy chữ <strong>"BRAKE!"</strong> trên màn hình đa thông tin (MID).
+            </p>
+            <div class="formula-callout">
+              Mục tiêu: Nhắc nhở người lái chủ động đạp phanh sớm nhất.
+            </div>
+          </div>
+
+          <!-- Step 2 Card -->
+          <div class="pcs-step-card" id="cardPcsStep2">
+            <div class="step-card-header">
+              <span class="step-card-tag">Bước 2: Brake Assist</span>
+              <span class="step-card-cond">Khi người lái CÓ đạp phanh</span>
+            </div>
+            <h4>Hỗ trợ phanh tiền va chạm</h4>
+            <p>
+              Người lái nhận biết cảnh báo và bắt đầu nhấn bàn đạp phanh, nhưng lực đạp chưa đủ mạnh. Hệ thống lập tức kích hoạt <strong>Hỗ trợ phanh (BA)</strong> để tự động bổ sung thêm lực phanh.
+            </p>
+            <div class="formula-callout">
+              Công thức: Lực phanh thực tế = Lực đạp người lái + Lực phanh hỗ trợ từ hệ thống
+            </div>
+          </div>
+
+          <!-- Step 3 Card -->
+          <div class="pcs-step-card" id="cardPcsStep3">
+            <div class="step-card-header">
+              <span class="step-card-tag">Bước 3: Automatic Braking</span>
+              <span class="step-card-cond">Khi người lái KHÔNG đạp phanh</span>
+            </div>
+            <h4>Phanh tiền va chạm tự động (AEB)</h4>
+            <p>
+              Khi nguy cơ va chạm ở mức rất cao mà người lái hoàn toàn không đạp phanh trong thời gian quy định, PCS sẽ <strong>chủ động phanh tự động</strong> để tránh va chạm hoặc giảm thiểu tối đa thiệt hại.
+            </p>
+            <div class="formula-callout">
+              Công thức: Hệ thống tự động can thiệp 100% lực phanh khẩn cấp.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           5. GAMIFICATION: DIGITAL CERTIFICATE + LEADERBOARD + DEALER QR
+           ==================================================================== -->
+      <div class="gamification-grid">
+        <!-- Certificate + O2O QR Code -->
+        <div class="cert-card">
+          <div>
+            <span class="cert-badge-top">CHỨNG NHẬN HOÀN THÀNH THỬ THÁCH</span>
+            <h3>Danh hiệu: Tài Xế Gia Đình An Toàn</h3>
+            <p style="font-size: 12px; color: #CCCCCC;">
+              Chúc mừng bạn đã nắm vững cơ chế bảo vệ 3 bước của công nghệ Toyota Safety Sense (PCS).
+            </p>
+            <div class="cert-score-row">
+              <div class="cert-score-num" id="certScoreVal">980</div>
+              <div style="font-size: 12px;">
+                <div style="font-weight: 700; color: #FFF;">Điểm Phản Xạ & Thấu Hiểu TSS</div>
+                <div style="color: #AAAAAA;" id="certRankComment">Đã trải nghiệm: Bảo vệ gia đình an toàn 100%</div>
+              </div>
+            </div>
+            <div class="cert-input-group">
+              <input type="text" class="cert-input" id="playerNameInput" placeholder="Nhập tên của bạn để lưu Bảng xếp hạng...">
+              <button class="btn-red-small" onclick="saveToLeaderboard()">Lưu Điểm</button>
+            </div>
+          </div>
+
+          <div class="qr-voucher-box">
+            <span class="qr-title">Quà Tặng Lái Thử Đại Lý</span>
+            <div class="qr-svg-wrap">
+              <!-- Stylized Clean SVG QR Code -->
+              <svg width="88" height="88" viewBox="0 0 88 88" fill="#000">
+                <rect x="4" y="4" width="24" height="24" fill="none" stroke="#000" stroke-width="4"/>
+                <rect x="10" y="10" width="12" height="12"/>
+                <rect x="60" y="4" width="24" height="24" fill="none" stroke="#000" stroke-width="4"/>
+                <rect x="66" y="10" width="12" height="12"/>
+                <rect x="4" y="60" width="24" height="24" fill="none" stroke="#000" stroke-width="4"/>
+                <rect x="10" y="66" width="12" height="12"/>
+                <rect x="36" y="8" width="6" height="6"/><rect x="46" y="8" width="6" height="12"/>
+                <rect x="36" y="22" width="16" height="6"/><rect x="8" y="36" width="12" height="6"/>
+                <rect x="28" y="36" width="16" height="16" fill="#EB0A1E"/>
+                <rect x="50" y="36" width="6" height="14"/><rect x="64" y="36" width="18" height="6"/>
+                <rect x="36" y="58" width="12" height="6"/><rect x="54" y="56" width="10" height="10"/>
+                <rect x="70" y="52" width="12" height="16"/><rect x="36" y="72" width="18" height="10"/>
+                <rect x="60" y="74" width="22" height="8"/>
+              </svg>
+            </div>
+            <p>Quét mã QR khi đến <strong>Đại lý Toyota</strong> để nhận Voucher phụ kiện & lái thử Veloz Cross.</p>
+          </div>
+        </div>
+
+        <!-- Leaderboard (Q&A #5) -->
+        <div class="leaderboard-card">
+          <h4>
+            <span>🏆 Bảng Xếp Hạng Tài Xế An Toàn</span>
+            <span class="lb-live-tag">● Toàn quốc (Online & Sự kiện)</span>
+          </h4>
+          <div class="lb-list" id="leaderboardList">
+            <div class="lb-row">
+              <span><span class="lb-rank">1</span> Nguyễn Minh Tuấn (Hà Nội)</span>
+              <strong>995 điểm</strong>
+            </div>
+            <div class="lb-row">
+              <span><span class="lb-rank">2</span> Trần Hoàng Nam (TP.HCM)</span>
+              <strong>990 điểm</strong>
+            </div>
+            <div class="lb-row me" id="lbMyRow">
+              <span><span class="lb-rank">3</span> <span id="lbMyName">Bạn (Tài xế Veloz Cross)</span></span>
+              <strong id="lbMyScore">980 điểm</strong>
+            </div>
+            <div class="lb-row">
+              <span><span class="lb-rank">4</span> Lê Thu Hương (Đà Nẵng)</span>
+              <strong>960 điểm</strong>
+            </div>
+            <div class="lb-row">
+              <span><span class="lb-rank">5</span> Phạm Quốc Khánh (Bình Dương)</span>
+              <strong>945 điểm</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Official Footer -->
+  <footer class="tmv-footer">
+    <div class="tmv-footer-inner">
+      <div><strong>CÔNG TY Ô TÔ TOYOTA VIỆT NAM</strong> | Dự án Nâng cấp Trải nghiệm Toyota Safety Sense (TSS)</div>
+      <div>Người lái luôn giữ trách nhiệm chính về an toàn và tuân thủ luật giao thông đường bộ.</div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       6. INTERACTIVE SPLIT-SCREEN SIMULATION & AUDIO ENGINE
+       ======================================================================== -->
+  <script>
+    // --- WEB AUDIO SYNTHESIZER (Toyota Warning Beep, Brake & Impact) ---
+    const SoundFX = {
+      ctx: null,
+      init() {
+        if (!this.ctx) {
+          const AC = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AC();
+        }
+      },
+      playBrakeWarningBeeps() {
+        try {
+          this.init();
+          [0, 0.14, 0.28, 0.42].forEach(delay => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(1050, this.ctx.currentTime + delay);
+            gain.gain.setValueAtTime(0.14, this.ctx.currentTime + delay);
+            gain.gain.exponentialRampToValueAtTime(0.008, this.ctx.currentTime + delay + 0.1);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(this.ctx.currentTime + delay);
+            osc.stop(this.ctx.currentTime + delay + 0.1);
+          });
+        } catch (e) {}
+      },
+      playBrakeIntervention() {
+        try {
+          this.init();
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(320, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(90, this.ctx.currentTime + 0.45);
+          gain.gain.setValueAtTime(0.15, this.ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.45);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.45);
+        } catch (e) {}
+      },
+      playSafeChime() {
+        try {
+          this.init();
+          [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, this.ctx.currentTime + i * 0.09);
+            gain.gain.setValueAtTime(0.16, this.ctx.currentTime + i * 0.09);
+            gain.gain.exponentialRampToValueAtTime(0.005, this.ctx.currentTime + i * 0.09 + 0.35);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start(this.ctx.currentTime + i * 0.09);
+            osc.stop(this.ctx.currentTime + i * 0.09 + 0.35);
+          });
+        } catch (e) {}
+      }
+    };
+
+    // --- SIMULATION STATE ---
+    const canvas = document.getElementById('pcsCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let sim = {
+      modelName: 'Veloz Cross',
+      phase: 'IDLE', // 'IDLE', 'DRIVING', 'STEP1_WARNING', 'SPLIT_COMPARISON', 'DONE'
+      selectedMode: 'BRAKE_ASSIST', // 'BRAKE_ASSIST' (Step 2) or 'AUTO_BRAKE' (Step 3)
+      speedKmh: 45,
+      distMeters: 24.0,
+      roadDashOffset: 0,
+      carSingleX: 90,
+      leadCarX: 580,
+      // Split-screen comparison positions
+      noTssCarX: 90,
+      withTssCarX: 90,
+      splitObstacleX: 600,
+      noTssCrashed: false,
+      withTssStopped: false,
+      radarPulse: 0,
+      decisionTimer: null,
+      warningTimeout: null,
+      animFrame: null
+    };
+
+    function resizeCanvas() {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function selectCarModel(el, modelName) {
+      document.querySelectorAll('.model-chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      sim.modelName = modelName;
+      document.getElementById('activeModelLabel').textContent = modelName;
+    }
+
+    function updateStepperUI(activeStep) {
+      for (let i = 1; i <= 5; i++) {
+        const el = document.getElementById('stepNav' + i);
+        el.classList.remove('active', 'done');
+        if (i < activeStep) el.classList.add('done');
+        if (i === activeStep) el.classList.add('active');
+      }
+    }
+
+    function highlightPcsCard(stepNum) {
+      ['cardPcsStep1', 'cardPcsStep2', 'cardPcsStep3'].forEach((id, idx) => {
+        document.getElementById(id).classList.toggle('highlighted', idx + 1 === stepNum);
+      });
+    }
+
+    function setBrakeFormulaUI(driverPct, pcsPct) {
+      const total = Math.min(100, driverPct + pcsPct);
+      document.getElementById('drvForceTxt').textContent = driverPct + '%';
+      document.getElementById('pcsForceTxt').textContent = pcsPct + '%';
+      document.getElementById('totForceTxt').textContent = total + '%';
+      document.getElementById('barDriverForce').style.width = driverPct + '%';
+      document.getElementById('barPcsForce').style.width = pcsPct + '%';
+    }
+
+    // --- STEP 1: START DRIVING SCENARIO ---
+    function startSimulation() {
+      clearTimeout(sim.warningTimeout);
+      clearInterval(sim.decisionTimer);
+
+      document.getElementById('startOverlay').classList.add('hidden');
+      document.getElementById('decisionOverlay').classList.remove('active');
+
+      sim.phase = 'DRIVING';
+      sim.speedKmh = 45;
+      sim.distMeters = 24.0;
+      sim.carSingleX = canvas.width * 0.12;
+      sim.leadCarX = canvas.width * 0.68;
+
+      // Reset HUD
+      document.getElementById('hudSpeed').textContent = '45';
+      document.getElementById('hudDist').textContent = '24.0';
+      const mid = document.getElementById('midDisplay');
+      mid.classList.remove('brake-alert');
+      document.getElementById('midStatusText').textContent = 'PCS: ĐANG QUÉT ĐƯỜNG';
+      document.getElementById('midStepBadge').textContent = 'CAMERA STEREO ON';
+      setBrakeFormulaUI(0, 0);
+
+      updateStepperUI(1);
+      highlightPcsCard(0);
+
+      document.getElementById('statusBadgeBottom').textContent = 'BƯỚC 1: ĐANG DI CHUYỂN';
+      document.getElementById('statusDescBottom').textContent = 'Xe đang lưu thông ở vận tốc 45 km/h. Camera Stereo phía trước liên tục đo khoảng cách với xe phía trước.';
+
+      // Trigger Step 1 Warning after 2.0 seconds
+      sim.warningTimeout = setTimeout(() => {
+        triggerPcsStep1Warning();
+      }, 2000);
+    }
+
+    // --- STEP 2: PCS STEP 1 (WARNING "BRAKE!") ---
+    function triggerPcsStep1Warning() {
+      sim.phase = 'STEP1_WARNING';
+      sim.distMeters = 14.2;
+      document.getElementById('hudDist').textContent = '14.2';
+
+      // Flash MID "BRAKE!"
+      const mid = document.getElementById('midDisplay');
+      mid.classList.add('brake-alert');
+      document.getElementById('midStatusText').textContent = '⚠ BRAKE! PHANH NGAY!';
+      document.getElementById('midStepBadge').textContent = 'PCS BƯỚC 1: WARNING';
+
+      SoundFX.playBrakeWarningBeeps();
+      updateStepperUI(2);
+      highlightPcsCard(1);
+
+      document.getElementById('statusBadgeBottom').textContent = 'PCS BƯỚC 1: CẢNH BÁO';
+      document.getElementById('statusDescBottom').textContent = 'Phát hiện xe phía trước phanh gấp! Hệ thống phát âm thanh Bíp-Bíp và nháy chữ "BRAKE!" trên màn hình đa thông tin.';
+
+      // Show Step 3 Decision Modal after brief moment
+      setTimeout(() => {
+        updateStepperUI(3);
+        document.getElementById('decisionOverlay').classList.add('active');
+        startDecisionCountdown();
+      }, 450);
+    }
+
+    function startDecisionCountdown() {
+      let duration = 6000; // 6s so user can read comfortably or click immediately
+      const start = performance.now();
+      const fill = document.getElementById('decisionTimerFill');
+      const txt = document.getElementById('countdownText');
+
+      clearInterval(sim.decisionTimer);
+      sim.decisionTimer = setInterval(() => {
+        const elapsed = performance.now() - start;
+        const remain = Math.max(0, 1 - elapsed / duration);
+        fill.style.width = (remain * 100) + '%';
+        txt.textContent = 'Phản xạ: ' + (remain * 6).toFixed(1) + 's';
+
+        if (remain <= 0) {
+          clearInterval(sim.decisionTimer);
+          // Default to Step 3 Automatic Braking if user doesn't press anything!
+          chooseDriverReaction('AUTO_BRAKE');
+        }
+      }, 40);
+    }
+
+    // --- STEP 3 & 4: DRIVER DECISION -> SPLIT-SCREEN OUTCOME (WITH vs WITHOUT TSS) ---
+    function chooseDriverReaction(mode) {
+      clearTimeout(sim.warningTimeout);
+      clearInterval(sim.decisionTimer);
+      document.getElementById('startOverlay').classList.add('hidden');
+      document.getElementById('decisionOverlay').classList.remove('active');
+
+      sim.selectedMode = mode;
+      sim.phase = 'SPLIT_COMPARISON';
+
+      // Set up Split-Screen coordinates
+      sim.noTssCarX = canvas.width * 0.10;
+      sim.withTssCarX = canvas.width * 0.10;
+      sim.splitObstacleX = canvas.width * 0.72;
+      sim.noTssCrashed = false;
+      sim.withTssStopped = false;
+      sim.speedKmh = 45;
+
+      SoundFX.playBrakeIntervention();
+      updateStepperUI(4);
+
+      const mid = document.getElementById('midDisplay');
+      mid.classList.add('brake-alert');
+
+      if (mode === 'BRAKE_ASSIST') {
+        // PCS STEP 2: Driver brakes 50% + PCS Brake Assist adds 50% = 100%
+        setBrakeFormulaUI(50, 50);
+        highlightPcsCard(2);
+        document.getElementById('midStatusText').textContent = 'PCS BƯỚC 2: BRAKE ASSIST';
+        document.getElementById('midStepBadge').textContent = 'BÙ LỰC PHANH +50%';
+        document.getElementById('statusBadgeBottom').textContent = 'PCS BƯỚC 2: HỖ TRỢ LỰC PHANH';
+        document.getElementById('statusDescBottom').textContent = 'Bạn đạp phanh 50% lực → Hệ thống PCS tự động bổ sung +50% lực phanh hỗ trợ (Tổng = 100%), rút ngắn tối đa quãng đường phanh!';
+        document.getElementById('certScoreVal').textContent = '990';
+        document.getElementById('lbMyScore').textContent = '990 điểm';
+        document.getElementById('certRankComment').textContent = 'Đã kiểm chứng PCS Bước 2: Hỗ trợ phanh tiền va chạm (Brake Assist)';
+      } else {
+        // PCS STEP 3: Driver 0% brake + PCS Automatic Braking adds 100% = 100%
+        setBrakeFormulaUI(0, 100);
+        highlightPcsCard(3);
+        document.getElementById('midStatusText').textContent = 'PCS BƯỚC 3: AUTO BRAKING';
+        document.getElementById('midStepBadge').textContent = 'PHANH TỰ ĐỘNG 100%';
+        document.getElementById('statusBadgeBottom').textContent = 'PCS BƯỚC 3: PHANH TỰ ĐỘNG (AEB)';
+        document.getElementById('statusDescBottom').textContent = 'Người lái không kịp đạp phanh (0%) → Hệ thống PCS chủ động kích hoạt 100% Phanh tự động khẩn cấp, dừng xe an toàn trước vật cản!';
+        document.getElementById('certScoreVal').textContent = '980';
+        document.getElementById('lbMyScore').textContent = '980 điểm';
+        document.getElementById('certRankComment').textContent = 'Đã kiểm chứng PCS Bước 3: Phanh tiền va chạm tự động (AEB)';
+      }
+    }
+
+    // --- MAIN ANIMATION LOOP ---
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      if (sim.phase === 'SPLIT_COMPARISON' || sim.phase === 'DONE') {
+        renderSplitScreenComparison();
+      } else {
+        renderSingleLaneScene();
+      }
+
+      sim.animFrame = requestAnimationFrame(animate);
+    }
+
+    // Preload Real Toyota Veloz Cross PNG Image
+    const velozSprite = new Image();
+    velozSprite.src = 'toyota-veloz-cross-2024-toyota.png';
+
+    // Render Single Scene (Step 1 & Step 2)
+    function renderSingleLaneScene() {
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // Sky / City backdrop
+      ctx.fillStyle = '#181A20';
+      ctx.fillRect(0, 0, w, h * 0.35);
+
+      // Asphalt Road
+      const roadY = h * 0.35;
+      const roadH = h * 0.65;
+      ctx.fillStyle = '#252830';
+      ctx.fillRect(0, roadY, w, roadH);
+
+      // Road markings
+      if (sim.phase === 'DRIVING') {
+        sim.roadDashOffset = (sim.roadDashOffset - 6) % 60;
+      } else if (sim.phase === 'STEP1_WARNING') {
+        sim.roadDashOffset = (sim.roadDashOffset - 2) % 60;
+        if (sim.leadCarX > sim.carSingleX + 245) {
+          sim.leadCarX -= 1.8; // Lead car suddenly slows/stops closer
+        }
+      }
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.lineWidth = 4;
+      ctx.setLineDash([32, 28]);
+      ctx.lineDashOffset = sim.roadDashOffset;
+      ctx.beginPath();
+      ctx.moveTo(0, roadY + roadH * 0.5);
+      ctx.lineTo(w, roadY + roadH * 0.5);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      const carY = roadY + roadH * 0.42;
+      const isUsingVelozPng = (sim.modelName === 'Veloz Cross' && velozSprite.complete && velozSprite.naturalWidth > 0);
+      const camOffsetX = isUsingVelozPng ? 142 : 128;
+
+      // Draw Stereo Camera & Radar Cone from Veloz Cross
+      drawStereoCameraCone(sim.carSingleX + camOffsetX, carY + 20, sim.leadCarX - (sim.carSingleX + camOffsetX), sim.phase === 'STEP1_WARNING');
+
+      // Draw Our Toyota Veloz Cross (Real PNG or fallback model)
+      drawVelozCar(sim.carSingleX, carY, '#EB0A1E', sim.modelName.toUpperCase(), sim.phase === 'STEP1_WARNING', true);
+
+      // Draw Lead Car / Obstacle braking ahead
+      drawLeadObstacle(sim.leadCarX, carY, sim.phase === 'STEP1_WARNING');
+    }
+
+    // Render Step 4 Split-Screen (Top: WITHOUT TSS vs Bottom: WITH TSS)
+    function renderSplitScreenComparison() {
+      const w = canvas.width;
+      const h = canvas.height;
+      const halfH = h / 2;
+      const isUsingVelozPng = (sim.modelName === 'Veloz Cross' && velozSprite.complete && velozSprite.naturalWidth > 0);
+      const carFrontWidth = isUsingVelozPng ? 148 : 128;
+
+      // Update vehicle physics in split screen
+      const stopTargetWithTSS = sim.splitObstacleX - (carFrontWidth + 38); // Safe 0.8-1.2m margin
+      const crashTargetNoTSS = sim.splitObstacleX - (carFrontWidth - 10);  // Collision point
+
+      // Top lane: WITHOUT TSS (Either 50% weak brake or 0% no brake -> crashes!)
+      if (sim.noTssCarX < crashTargetNoTSS) {
+        const noTssStep = sim.selectedMode === 'BRAKE_ASSIST' ? 4.2 : 5.6;
+        sim.noTssCarX = Math.min(crashTargetNoTSS, sim.noTssCarX + noTssStep);
+      } else {
+        sim.noTssCrashed = true;
+      }
+
+      // Bottom lane: WITH TSS (Step 2 Brake Assist or Step 3 Auto Brake -> stops safely!)
+      if (sim.withTssCarX < stopTargetWithTSS) {
+        const remain = stopTargetWithTSS - sim.withTssCarX;
+        const step = Math.max(0.8, remain * 0.09);
+        sim.withTssCarX = Math.min(stopTargetWithTSS, sim.withTssCarX + step);
+        const curSpeed = Math.max(0, Math.round((remain / (stopTargetWithTSS - w * 0.1)) * 45));
+        document.getElementById('hudSpeed').textContent = curSpeed;
+        const curDist = Math.max(0.9, (remain / w) * 20).toFixed(1);
+        document.getElementById('hudDist').textContent = curDist;
+      } else if (!sim.withTssStopped) {
+        sim.withTssStopped = true;
+        sim.phase = 'DONE';
+        document.getElementById('hudSpeed').textContent = '0';
+        document.getElementById('hudDist').textContent = sim.selectedMode === 'BRAKE_ASSIST' ? '1.2' : '0.8';
+        document.getElementById('midDisplay').classList.remove('brake-alert');
+        SoundFX.playSafeChime();
+        updateStepperUI(5);
+      }
+
+      // --- LANE 1 (TOP): KHÔNG CÓ TSS ---
+      ctx.fillStyle = '#231C1E';
+      ctx.fillRect(0, 0, w, halfH);
+
+      // Top Lane Header Label
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
+      ctx.fillRect(16, 12, 390, 30);
+      ctx.fillStyle = '#FF3B30';
+      ctx.fillRect(16, 12, 5, 30);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 12px "Be Vietnam Pro", sans-serif';
+      const topReason = sim.selectedMode === 'BRAKE_ASSIST'
+        ? 'KHÔNG CÓ TSS: Đạp phanh 50% không đủ lực → Trượt dài & Va chạm!'
+        : 'KHÔNG CÓ TSS: Không kịp đạp phanh (0%) → Đâm trực diện!';
+      ctx.fillText(topReason, 30, 31);
+
+      const topCarY = halfH * 0.48;
+      drawVelozCar(sim.noTssCarX, topCarY, '#555555', 'KHÔNG TSS', sim.selectedMode === 'BRAKE_ASSIST', false);
+      drawLeadObstacle(sim.splitObstacleX, topCarY, true);
+
+      if (sim.noTssCrashed) {
+        // Draw Impact Crash Burst
+        ctx.save();
+        ctx.fillStyle = '#EB0A1E';
+        ctx.beginPath();
+        ctx.arc(sim.noTssCarX + carFrontWidth - 4, topCarY + 24, 22, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 11px "Be Vietnam Pro", sans-serif';
+        ctx.fillText('VA CHẠM!', sim.noTssCarX + carFrontWidth - 34, topCarY - 12);
+        ctx.restore();
+      }
+
+      // --- DIVIDER LINE ---
+      ctx.fillStyle = '#EB0A1E';
+      ctx.fillRect(0, halfH - 2, w, 4);
+
+      // --- LANE 2 (BOTTOM): CÓ TOYOTA SAFETY SENSE (PCS) ---
+      ctx.fillStyle = '#182422';
+      ctx.fillRect(0, halfH, w, halfH);
+
+      // Bottom Lane Header Label
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.78)';
+      ctx.fillRect(16, halfH + 12, 470, 30);
+      ctx.fillStyle = '#00C86F';
+      ctx.fillRect(16, halfH + 12, 5, 30);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 12px "Be Vietnam Pro", sans-serif';
+      const botReason = sim.selectedMode === 'BRAKE_ASSIST'
+        ? 'CÓ TSS (PCS BƯỚC 2 - BRAKE ASSIST): Bù +50% lực phanh → Dừng cách 1.2m An Toàn!'
+        : 'CÓ TSS (PCS BƯỚC 3 - AUTO BRAKING): Tự động phanh 100% → Dừng cách 0.8m An Toàn!';
+      ctx.fillText(botReason, 30, halfH + 31);
+
+      const botCarY = halfH + halfH * 0.48;
+
+      // Draw Active Stereo Camera + Braking Force Zone
+      drawStereoCameraCone(sim.withTssCarX + carFrontWidth - 6, botCarY + 20, sim.splitObstacleX - (sim.withTssCarX + carFrontWidth - 6), true);
+
+      drawVelozCar(sim.withTssCarX, botCarY, '#EB0A1E', sim.modelName.toUpperCase(), true, true);
+      drawLeadObstacle(sim.splitObstacleX, botCarY, true);
+
+      if (sim.withTssStopped) {
+        // Draw Safe Distance Shield Callout
+        ctx.save();
+        const gapX = sim.withTssCarX + carFrontWidth + 2;
+        const gapW = Math.max(16, sim.splitObstacleX - gapX);
+        ctx.fillStyle = 'rgba(0, 200, 111, 0.28)';
+        ctx.fillRect(gapX, botCarY - 2, gapW, 48);
+        ctx.strokeStyle = '#00C86F';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(gapX, botCarY - 2, gapW, 48);
+
+        ctx.fillStyle = '#00C86F';
+        ctx.font = 'bold 12px "Be Vietnam Pro", sans-serif';
+        ctx.fillText('✓ AN TOÀN TUYỆT ĐỐI', sim.withTssCarX + 18, botCarY - 14);
+        ctx.restore();
+      }
+    }
+
+    function drawStereoCameraCone(originX, originY, distPx, isAlert) {
+      ctx.save();
+      const length = Math.max(40, distPx);
+      const grad = ctx.createLinearGradient(originX, originY, originX + length, originY);
+      if (isAlert) {
+        grad.addColorStop(0, 'rgba(235, 10, 30, 0.55)');
+        grad.addColorStop(1, 'rgba(0, 229, 255, 0.25)');
+      } else {
+        grad.addColorStop(0, 'rgba(0, 229, 255, 0.40)');
+        grad.addColorStop(1, 'rgba(0, 229, 255, 0.05)');
+      }
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(originX, originY - 10);
+      ctx.lineTo(originX + length, originY - 28);
+      ctx.lineTo(originX + length, originY + 24);
+      ctx.closePath();
+      ctx.fill();
+
+      // Radar wave arcs
+      sim.radarPulse = (sim.radarPulse + 3) % length;
+      ctx.strokeStyle = isAlert ? '#EB0A1E' : '#00E5FF';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(originX, originY, sim.radarPulse, -0.22, 0.22);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function drawVelozCar(x, y, bodyColor, labelText, isBraking, hasStereoCam) {
+      ctx.save();
+      ctx.translate(x, y);
+
+      // Use real toyota-veloz-cross-2024-toyota.png when Veloz Cross is active
+      if (sim.modelName === 'Veloz Cross' && velozSprite.complete && velozSprite.naturalWidth > 0) {
+        const iw = velozSprite.naturalWidth;
+        const ih = velozSprite.naturalHeight;
+        // Crop empty transparent space around the car in the square PNG
+        const sx = iw * 0.06;
+        const sy = ih * 0.34;
+        const sw = iw * 0.88;
+        const sh = ih * 0.37;
+
+        const targetW = 152;
+        const targetH = 64;
+
+        if (!hasStereoCam) {
+          ctx.filter = 'brightness(0.78) contrast(0.95)';
+        }
+        ctx.drawImage(velozSprite, sx, sy, sw, sh, 0, -10, targetW, targetH);
+        ctx.filter = 'none';
+
+        // Stereo Camera Sensor glowing dot on top of Veloz Cross windshield
+        if (hasStereoCam) {
+          ctx.fillStyle = '#00E5FF';
+          ctx.beginPath();
+          ctx.arc(98, 5, 3.8, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = 'rgba(0, 229, 255, 0.35)';
+          ctx.beginPath();
+          ctx.arc(98, 5, 8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Glowing Red Tail Light Flare when braking
+        if (isBraking) {
+          ctx.fillStyle = '#FF1E1E';
+          ctx.beginPath();
+          ctx.arc(7, 17, 4, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.fillStyle = 'rgba(255, 30, 30, 0.52)';
+          ctx.beginPath();
+          ctx.arc(7, 17, 15, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Model Badge Tag
+        ctx.fillStyle = hasStereoCam ? 'rgba(235, 10, 30, 0.9)' : 'rgba(51, 51, 51, 0.85)';
+        ctx.fillRect(34, 21, 66, 13);
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = 'bold 8px "Be Vietnam Pro", sans-serif';
+        ctx.fillText(labelText, 39, 30);
+
+        ctx.restore();
+        return;
+      }
+
+      // Fallback Vector Car for Yaris Cross & Corolla Cross
+      // Ground shadow
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+      ctx.beginPath();
+      ctx.ellipse(64, 46, 66, 8, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // B-MPV / SUV Body
+      ctx.fillStyle = bodyColor;
+      ctx.beginPath();
+      ctx.moveTo(0, 36);
+      ctx.lineTo(8, 18);
+      ctx.lineTo(28, 6);
+      ctx.lineTo(74, 6);
+      ctx.lineTo(102, 18);
+      ctx.lineTo(128, 26);
+      ctx.lineTo(128, 42);
+      ctx.lineTo(0, 42);
+      ctx.closePath();
+      ctx.fill();
+
+      // Cabin Windows
+      ctx.fillStyle = '#1E222A';
+      ctx.beginPath();
+      ctx.moveTo(28, 18);
+      ctx.lineTo(36, 9);
+      ctx.lineTo(94, 9);
+      ctx.lineTo(100, 18);
+      ctx.closePath();
+      ctx.fill();
+
+      // Stereo Camera Sensor dot on top of windshield
+      if (hasStereoCam) {
+        ctx.fillStyle = '#00E5FF';
+        ctx.beginPath();
+        ctx.arc(94, 11, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Brake Tail Light
+      if (isBraking) {
+        ctx.fillStyle = '#FF1E1E';
+        ctx.fillRect(0, 20, 5, 10);
+        ctx.fillStyle = 'rgba(255, 30, 30, 0.45)';
+        ctx.beginPath();
+        ctx.arc(0, 25, 16, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Wheels
+      [26, 102].forEach(wx => {
+        ctx.fillStyle = '#111111';
+        ctx.beginPath();
+        ctx.arc(wx, 42, 10, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#CCCCCC';
+        ctx.beginPath();
+        ctx.arc(wx, 42, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Label on side of car
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = 'bold 9px "Be Vietnam Pro", sans-serif';
+      ctx.fillText(labelText, 34, 32);
+
+      ctx.restore();
+    }
+
+    function drawLeadObstacle(x, y, isBrakingHard) {
+      ctx.save();
+      ctx.translate(x, y);
+
+      // Shadow
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+      ctx.beginPath();
+      ctx.ellipse(52, 46, 54, 8, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Lead Sedan / Hatchback body
+      ctx.fillStyle = '#D8DCE6';
+      ctx.beginPath();
+      ctx.moveTo(0, 36);
+      ctx.lineTo(10, 18);
+      ctx.lineTo(30, 10);
+      ctx.lineTo(72, 10);
+      ctx.lineTo(94, 22);
+      ctx.lineTo(108, 28);
+      ctx.lineTo(108, 42);
+      ctx.lineTo(0, 42);
+      ctx.closePath();
+      ctx.fill();
+
+      // Rear brake lights glowing when braking hard
+      ctx.fillStyle = isBrakingHard ? '#EB0A1E' : '#880000';
+      ctx.fillRect(0, 22, 5, 9);
+      if (isBrakingHard) {
+        ctx.fillStyle = 'rgba(235, 10, 30, 0.4)';
+        ctx.beginPath();
+        ctx.arc(0, 26, 15, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Target detection bracket by Stereo Camera
+        ctx.strokeStyle = '#00E5FF';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(-6, 4, 118, 44);
+      }
+
+      // Wheels
+      [22, 86].forEach(wx => {
+        ctx.fillStyle = '#111111';
+        ctx.beginPath();
+        ctx.arc(wx, 42, 9.5, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      ctx.fillStyle = '#222222';
+      ctx.font = 'bold 9px "Be Vietnam Pro", sans-serif';
+      ctx.fillText('XE PHÍA TRƯỚC', 20, 32);
+
+      ctx.restore();
+    }
+
+    // --- DISCLAIMER MODAL HANDLER ---
+    function acceptDisclaimer() {
+      const modal = document.getElementById('disclaimerModal');
+      if (modal) {
+        modal.classList.add('closed');
+      }
+      document.body.classList.remove('disclaimer-locked');
+      SoundFX.init();
+    }
+
+    // --- SAVE NAME TO LEADERBOARD ---
+    function saveToLeaderboard() {
+      const input = document.getElementById('playerNameInput');
+      const name = input.value.trim();
+      if (name) {
+        document.getElementById('lbMyName').textContent = name + ' (' + sim.modelName + ')';
+        input.value = '';
+        SoundFX.playSafeChime();
+      }
+    }
+
+    // Initialize loop
+    window.onload = () => {
+      animate();
+    };
+  </script>
+</body>
+</html>
