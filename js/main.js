@@ -191,18 +191,19 @@ if (slides && dots) {
 
 const ofType = (type) => (type === 'all' ? PROJECTS : PROJECTS.filter((p) => p[2] === type));
 
-// Filter chips above a project grid. pick(type) returns the projects to show for that chip.
-const setupFilters = (filters, grid, pick, showCount) => {
+// Filter chips above a project grid. pick(type) returns the projects to show for that chip;
+// start is the chip selected when the page loads.
+const setupFilters = (filters, grid, pick, showCount, start = 'all') => {
   const options = [['all', t.all], ...Object.entries(t.types)];
   filters.innerHTML = options
     .map(
-      ([value, label], i) =>
-        `<button type="button" data-filter="${value}" aria-pressed="${i === 0}">${label}${showCount ? ` <span>${ofType(value).length}</span>` : ''}</button>`,
+      ([value, label]) =>
+        `<button type="button" data-filter="${value}" aria-pressed="${value === start}">${label}${showCount ? ` <span>${ofType(value).length}</span>` : ''}</button>`,
     )
     .join('');
 
   const show = (type) => (grid.innerHTML = pick(type).map(projectCard).join(''));
-  show('all');
+  show(start);
 
   filters.addEventListener('click', (event) => {
     const button = event.target.closest('button');
@@ -212,12 +213,16 @@ const setupFilters = (filters, grid, pick, showCount) => {
   });
 };
 
-// Homepage: the featured six, or the newest six of the chosen type
+// Homepage: opens on agency campaign sites; "All" shows the featured six, other chips the newest six of that type
 const featured = document.querySelector('[data-featured]');
 const featuredFilters = featured && featured.parentElement.querySelector('[data-filters]');
 if (featured && featuredFilters) {
-  setupFilters(featuredFilters, featured, (type) =>
-    type === 'all' ? FEATURED.map((id) => PROJECTS.find((p) => p[0] === id)) : ofType(type).slice(0, 6),
+  setupFilters(
+    featuredFilters,
+    featured,
+    (type) => (type === 'all' ? FEATURED.map((id) => PROJECTS.find((p) => p[0] === id)) : ofType(type).slice(0, 6)),
+    false,
+    'campaign',
   );
 }
 
