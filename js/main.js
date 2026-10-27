@@ -139,14 +139,19 @@ const t = TEXT[document.documentElement.lang] || TEXT.vi;
 // Image paths are resolved from this script's location so pages in /en/ work too
 const ASSETS = new URL('../assets/img/', document.currentScript.src).href;
 
-// Each thumbnail exists at 600, 800 and 1200px wide; the browser picks the smallest that fits the card
-const projectCard = ([image, site, type]) => {
+// Cards are never wider than ~400px, so the 600 and 800px thumbnails cover every screen (800 for retina);
+// sizes tells the browser each grid's card width so it fetches the smallest one that fits
+const SIZES = {
+  featured: '(min-width: 1024px) 400px, 50vw',
+  all: '(min-width: 1024px) 300px, (min-width: 640px) 50vw, 100vw',
+};
+
+const projectCard = (sizes) => ([image, site, type]) => {
   const src = `${ASSETS}projects/${image}`;
   return `
   <figure class="project" data-type="${type}">
     <div class="project-img">
-      <img src="${src}-600.webp" srcset="${src}-600.webp 600w, ${src}-800.webp 800w, ${src}.webp 1200w"
-        sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+      <img src="${src}-600.webp" srcset="${src}-600.webp 600w, ${src}-800.webp 800w" sizes="${sizes}"
         alt="${t.website} ${site}" width="1200" height="750" loading="lazy" decoding="async" />
     </div>
     <figcaption><strong>${site.replace(/([./])/g, "$1<wbr>")}</strong><span>${t.types[type]}</span></figcaption>
@@ -202,7 +207,8 @@ const setupFilters = (filters, grid, pick, showCount, start = 'all') => {
     )
     .join('');
 
-  const show = (type) => (grid.innerHTML = pick(type).map(projectCard).join(''));
+  const card = projectCard(grid.hasAttribute('data-featured') ? SIZES.featured : SIZES.all);
+  const show = (type) => (grid.innerHTML = pick(type).map(card).join(''));
   show(start);
 
   filters.addEventListener('click', (event) => {
