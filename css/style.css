@@ -1138,27 +1138,90 @@ ul {
   color: var(--deep);
 }
 
-.cta-links {
+/* Contact lines: tap one to copy it; "Copied" shows in place of the label */
+.contact-list {
+  display: grid;
+  gap: 10px;
+  flex: 1 1 340px;
+  max-width: 460px;
+}
+
+.contact-item {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.35);
+  transition: background 0.2s;
 }
 
-.cta-links .btn {
-  justify-content: space-between;
-  gap: 24px;
-  min-height: 60px;
-  font-size: 1.125rem;
+.contact-item:hover {
+  background: rgba(255, 255, 255, 0.55);
 }
 
-.cta-links .btn-outline {
-  border: 1.5px solid rgba(19, 36, 10, 0.4);
+.contact-copy {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: copy;
 }
 
-.cta-links .btn-outline:hover {
-  border-color: var(--on-accent);
-  color: var(--on-accent);
-  background: rgba(255, 255, 255, 0.25);
+.contact-copy small,
+.contact-copy strong {
+  display: block;
+}
+
+.contact-copy small {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--deep);
+}
+
+.contact-copy strong {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.contact-copy[data-copied] small {
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.contact-show {
+  flex: none;
+  min-height: 40px;
+  margin-right: 6px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--on-accent);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+.contact-show:hover {
+  background: var(--deep);
+}
+
+.copy-inline {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: copy;
 }
 
 /* Projects page */

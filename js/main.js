@@ -40,11 +40,13 @@ const CLIENTS = [
 const TEXT = {
   vi: {
     all: 'Tất cả',
+    copied: 'Đã copy ✓',
     website: 'Website',
     types: { campaign: 'Campaign site', business: 'Doanh nghiệp / Tổ chức', education: 'Giáo dục', others: 'Khác' },
   },
   en: {
     all: 'All',
+    copied: 'Copied ✓',
     website: 'Website',
     types: { campaign: 'Agency campaign sites', business: 'Business/Organization sites', education: 'Education sites', others: 'Others' },
   },
@@ -226,15 +228,53 @@ if (grid && filters) {
   setupFilters(filters, grid, ofType, true);
 }
 
-// Phone numbers are written as "0986 *** 660" and kept reversed in data-phone so scrapers can't read them;
-// the first tap reveals the full number and turns the link into a real tel: link
+// Phone numbers are written as "0986 *** 660" and kept reversed in the HTML so scrapers can't read them
+const phoneFrom = (reversed) => {
+  const digits = [...reversed].reverse().join('');
+  return { digits, text: `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}` };
+};
+
+// Footer: the first tap reveals the full number and turns the link into a real tel: link
 document.querySelectorAll('[data-phone]').forEach((link) => {
   link.addEventListener('click', (event) => {
     if (link.href.startsWith('tel:')) return;
     event.preventDefault();
-    const digits = [...link.dataset.phone].reverse().join('');
-    link.textContent = `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`;
+    const { digits, text } = phoneFrom(link.dataset.phone);
+    link.textContent = text;
     link.href = `tel:${digits}`;
+  });
+});
+
+// Contact lines copy their value; the label briefly reads "Copied"
+const copy = async (button, value) => {
+  try {
+    await navigator.clipboard.writeText(value);
+  } catch {
+    return;
+  }
+  const label = button.querySelector('small') || button;
+  const original = label.dataset.label || label.textContent;
+  label.dataset.label = original;
+  label.textContent = t.copied;
+  button.setAttribute('data-copied', '');
+  clearTimeout(button.copyTimer);
+  button.copyTimer = setTimeout(() => {
+    label.textContent = original;
+    button.removeAttribute('data-copied');
+  }, 1600);
+};
+
+document.querySelectorAll('[data-copy]').forEach((button) =>
+  button.addEventListener('click', () => copy(button, button.dataset.copy)),
+);
+
+document.querySelectorAll('[data-copy-phone]').forEach((button) => {
+  const phone = phoneFrom(button.dataset.copyPhone);
+  button.addEventListener('click', () => copy(button, phone.text));
+  const show = button.parentElement.querySelector('[data-show-phone]');
+  show?.addEventListener('click', () => {
+    button.querySelector('strong').textContent = phone.text;
+    show.hidden = true;
   });
 });
 
