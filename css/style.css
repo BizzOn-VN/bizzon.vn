@@ -1197,19 +1197,25 @@ ul {
   font-weight: 600;
 }
 
+/* Eye icon that reveals the full phone number */
 .contact-show {
+  display: flex;
   flex: none;
-  min-height: 40px;
-  margin-right: 6px;
-  padding: 0 16px;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: 4px;
+  padding: 0;
   border: 0;
-  border-radius: 999px;
+  border-radius: 50%;
   background: var(--on-accent);
-  font: inherit;
-  font-size: 0.8125rem;
-  font-weight: 600;
   color: #fff;
   cursor: pointer;
+}
+
+.contact-show[hidden] {
+  display: none;
 }
 
 .contact-show:hover {

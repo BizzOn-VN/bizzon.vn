@@ -228,22 +228,45 @@ if (grid && filters) {
   setupFilters(filters, grid, ofType, true);
 }
 
-// Phone numbers are written as "0986 *** 660" and kept reversed in the HTML so scrapers can't read them
-const phoneFrom = (reversed) => {
-  const digits = [...reversed].reverse().join('');
+// Phone numbers are written as "0986 *** 660"; the real digits sit in the HTML reversed and base64-encoded,
+// so neither plain scrapers nor a phone-number pattern search can find them
+const phoneFrom = (encoded) => {
+  const digits = [...atob(encoded)].reverse().join('');
   return { digits, text: `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}` };
 };
 
-// Footer: the first tap reveals the full number and turns the link into a real tel: link
-document.querySelectorAll('[data-phone]').forEach((link) => {
+const phoneLinks = document.querySelectorAll('[data-phone]');
+const phoneCopies = document.querySelectorAll('[data-copy-phone]');
+
+const revealLink = (link) => {
+  const { digits, text } = phoneFrom(link.dataset.phone);
+  link.textContent = text;
+  link.href = `tel:${digits}`;
+};
+
+const revealCopy = (button) => {
+  button.querySelector('strong').textContent = phoneFrom(button.dataset.copyPhone).text;
+  const show = button.parentElement.querySelector('[data-show-phone]');
+  if (show) show.hidden = true;
+};
+
+// Bots load the page but rarely touch, move a mouse or type, so the number appears on the first
+// such interaction; the eye button (and tapping the footer number) reveals it too
+const revealOnInteraction = ['pointermove', 'pointerdown', 'touchstart', 'keydown', 'wheel'];
+const revealAll = () => {
+  phoneLinks.forEach(revealLink);
+  phoneCopies.forEach(revealCopy);
+  revealOnInteraction.forEach((type) => removeEventListener(type, revealAll));
+};
+revealOnInteraction.forEach((type) => addEventListener(type, revealAll, { passive: true }));
+
+phoneLinks.forEach((link) =>
   link.addEventListener('click', (event) => {
     if (link.href.startsWith('tel:')) return;
     event.preventDefault();
-    const { digits, text } = phoneFrom(link.dataset.phone);
-    link.textContent = text;
-    link.href = `tel:${digits}`;
-  });
-});
+    revealLink(link);
+  }),
+);
 
 // Contact lines copy their value; the label briefly reads "Copied"
 const copy = async (button, value) => {
@@ -268,14 +291,9 @@ document.querySelectorAll('[data-copy]').forEach((button) =>
   button.addEventListener('click', () => copy(button, button.dataset.copy)),
 );
 
-document.querySelectorAll('[data-copy-phone]').forEach((button) => {
-  const phone = phoneFrom(button.dataset.copyPhone);
-  button.addEventListener('click', () => copy(button, phone.text));
-  const show = button.parentElement.querySelector('[data-show-phone]');
-  show?.addEventListener('click', () => {
-    button.querySelector('strong').textContent = phone.text;
-    show.hidden = true;
-  });
+phoneCopies.forEach((button) => {
+  button.addEventListener('click', () => copy(button, phoneFrom(button.dataset.copyPhone).text));
+  button.parentElement.querySelector('[data-show-phone]')?.addEventListener('click', () => revealCopy(button));
 });
 
 document.querySelectorAll('[data-year]').forEach((el) => (el.textContent = new Date().getFullYear()));
