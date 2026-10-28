@@ -377,8 +377,8 @@ ul {
 }
 
 .hero h1 {
-  font-size: clamp(2.75rem, 5.2vw, 4.75rem);
-  line-height: 1.02;
+  font-size: clamp(2.125rem, 4vw, 3.625rem);
+  line-height: 1.06;
   letter-spacing: -0.035em;
 }
 
