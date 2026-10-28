@@ -386,6 +386,11 @@ ul {
   color: var(--accent);
 }
 
+/* Stacked Vietnamese accents need more room between lines */
+.hero h1:lang(vi) {
+  line-height: 1.16;
+}
+
 .hero .lead {
   margin-top: 32px;
   max-width: 600px;
