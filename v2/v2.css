@@ -1,0 +1,729 @@
+/* BizzOn v2 — Build. Run. Grow. Loaded after ../css/style.css: reuses its tokens, buttons, header,
+   logos, project grid, contact list and footer, and adds only the new sections. */
+
+:root {
+  --surface: #fff;
+  --muted: var(--ink-mute);
+  --border: rgba(22, 32, 15, 0.1);
+  --success: #2f6418;
+  --error: #b42318;
+}
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  z-index: 50;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--night);
+  color: #fff;
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--forest);
+  outline-offset: 3px;
+}
+
+.hero :focus-visible,
+.why :focus-visible,
+.split-dark :focus-visible {
+  outline-color: var(--accent);
+}
+
+/* Hero */
+.v2-hero {
+  align-items: center;
+}
+
+.v2-hero h1 {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+}
+
+.hero-sub {
+  margin-top: 20px;
+  max-width: 560px;
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--accent);
+}
+
+.v2-hero .lead {
+  margin-top: 24px;
+}
+
+/* Lifecycle diagram: stages hang off one vertical line */
+.cycle {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding-left: 28px;
+}
+
+.cycle::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  left: 7px;
+  width: 2px;
+  background: linear-gradient(var(--accent), rgba(140, 203, 79, 0.15));
+}
+
+.cycle li {
+  position: relative;
+  display: grid;
+  gap: 4px;
+  padding: 18px 20px;
+  border: 1px solid rgba(242, 247, 234, 0.14);
+  border-radius: 16px;
+  background: rgba(242, 247, 234, 0.04);
+}
+
+.cycle li::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: -26px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--deep);
+}
+
+.cycle-tag {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.cycle strong {
+  font-size: 1.0625rem;
+}
+
+.cycle li > span:last-child {
+  font-size: 0.875rem;
+  color: var(--on-dark-soft);
+}
+
+.cycle .cycle-loop {
+  padding: 8px 20px;
+  border-style: dashed;
+  background: none;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--on-dark-soft);
+}
+
+.cycle .cycle-loop::before {
+  top: 12px;
+  border-style: dashed;
+}
+
+/* A soft pulse moves Build → Run → Grow, one stage at a time */
+.js .cycle li:not(.cycle-loop)::before {
+  animation: stage 6s ease-in-out infinite;
+}
+
+.js .cycle li:nth-child(2)::before {
+  animation-delay: 2s;
+}
+
+.js .cycle li:nth-child(3)::before {
+  animation-delay: 4s;
+}
+
+@keyframes stage {
+  0%, 30%, 100% { background: var(--deep); box-shadow: none; }
+  10%, 20% { background: var(--accent); box-shadow: 0 0 0 6px rgba(140, 203, 79, 0.2); }
+}
+
+/* Proof numbers */
+.proof {
+  padding-top: 24px;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--border);
+}
+
+.facts div {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 24px;
+  background: var(--surface);
+}
+
+.facts dd {
+  margin: 0;
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.facts dt {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+@media (min-width: 768px) {
+  .facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* What BizzOn does: story beside a plain fact sheet */
+.intro {
+  display: grid;
+  gap: 48px;
+}
+
+.intro .lead + .lead,
+.growth .lead + .lead,
+.partner .lead + .lead {
+  margin-top: 12px;
+}
+
+.glance {
+  margin: 0;
+  border-top: 1px solid var(--border);
+}
+
+.glance div {
+  display: grid;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.glance dt {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.glance dd {
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .intro {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .glance div {
+    grid-template-columns: 140px 1fr;
+    gap: 24px;
+  }
+}
+
+/* Build / Run / Grow: three related cards, each a shade deeper */
+.brg {
+  display: grid;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+@media (min-width: 900px) {
+  .brg {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.brg-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px 28px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+}
+
+.brg-run {
+  border-color: transparent;
+  background: var(--tint);
+}
+
+.brg-grow {
+  border-color: transparent;
+  background: var(--deep);
+  color: var(--on-dark);
+}
+
+.brg-step {
+  font-size: clamp(2.5rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--forest);
+}
+
+.brg-grow .brg-step {
+  color: var(--accent);
+}
+
+.brg-card h3 {
+  font-size: 1.25rem;
+  line-height: 1.35;
+}
+
+.brg-card .link-arrow {
+  margin-top: auto;
+}
+
+/* Checklist with small green ticks */
+.ticks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 16px;
+  font-size: 0.9375rem;
+}
+
+.ticks li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.ticks li::before {
+  content: '';
+  position: absolute;
+  top: 0.55em;
+  left: 2px;
+  width: 9px;
+  height: 5px;
+  border-left: 2px solid var(--forest);
+  border-bottom: 2px solid var(--forest);
+  rotate: -45deg;
+}
+
+.brg-grow .ticks li::before,
+.split-dark .ticks li::before {
+  border-color: var(--accent);
+}
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--forest);
+}
+
+.link-arrow::after {
+  content: '→';
+  transition: translate 0.2s;
+}
+
+.link-arrow:hover::after {
+  translate: 4px 0;
+}
+
+.brg-grow .link-arrow {
+  color: var(--accent);
+}
+
+/* Services: expandable rows */
+.services {
+  display: grid;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+@media (min-width: 900px) {
+  .services {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+.service {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--surface);
+  transition: border-color 0.2s;
+}
+
+.service:hover,
+.service[open] {
+  border-color: rgba(47, 100, 24, 0.35);
+}
+
+.service summary {
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding: 24px 56px 24px 24px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.service summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Plus sign that turns into a minus when open */
+.service summary::after {
+  content: '';
+  position: absolute;
+  top: 30px;
+  right: 24px;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(var(--forest), var(--forest)) center / 14px 2px no-repeat,
+    linear-gradient(var(--forest), var(--forest)) center / 2px 14px no-repeat;
+  transition: rotate 0.2s;
+}
+
+.service[open] summary::after {
+  background: linear-gradient(var(--forest), var(--forest)) center / 14px 2px no-repeat;
+}
+
+.service .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+}
+
+.service summary strong {
+  display: block;
+  font-size: 1.1875rem;
+}
+
+.service summary > span:last-child > span {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink-soft);
+}
+
+.service dl {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0 24px 24px 84px;
+}
+
+.service dt {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.service dd {
+  margin: 2px 0 0;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 639px) {
+  .service dl {
+    padding-left: 24px;
+  }
+}
+
+/* Why BizzOn: five numbered principles on the darkest green */
+.why {
+  margin-top: 112px;
+  padding: 112px 0;
+  background: var(--night);
+  color: var(--on-dark);
+}
+
+.why .eyebrow {
+  color: var(--accent);
+}
+
+.why-copy {
+  flex: 1 1 420px;
+  display: grid;
+  gap: 12px;
+  font-size: 1.125rem;
+  color: var(--on-dark-soft);
+}
+
+.principles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 0 32px;
+  margin-top: 56px;
+  counter-reset: principle;
+}
+
+.principles li {
+  display: grid;
+  gap: 8px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(242, 247, 234, 0.16);
+  counter-increment: principle;
+}
+
+.principles li::before {
+  content: counter(principle, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+
+.principles strong {
+  font-size: 1.25rem;
+}
+
+.principles span {
+  color: var(--on-dark-soft);
+}
+
+@media (max-width: 639px) {
+  .why {
+    margin-top: 80px;
+    padding: 80px 0;
+  }
+}
+
+/* Brands & Agencies split */
+.split {
+  display: grid;
+  gap: 16px;
+  margin-top: 48px;
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.split-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--surface);
+}
+
+.split-dark {
+  border-color: transparent;
+  background: var(--deep);
+  color: var(--on-dark);
+}
+
+.split-card h3 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.split-lead {
+  font-size: 1.125rem;
+  color: var(--ink-soft);
+}
+
+.split-dark .split-lead {
+  color: var(--on-dark-soft);
+}
+
+.split-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* Engineering + marketing: a chain of steps from technology to growth */
+.growth,
+.partner {
+  display: grid;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .growth,
+  .partner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.chain {
+  display: grid;
+  gap: 8px;
+}
+
+.chain li {
+  position: relative;
+  padding: 14px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  font-weight: 600;
+}
+
+/* Each step a little greener, ending in the brand accent */
+.chain li:nth-child(2) { margin-left: 4%; }
+.chain li:nth-child(3) { margin-left: 8%; background: var(--mist); }
+.chain li:nth-child(4) { margin-left: 12%; background: var(--tint); }
+.chain li:nth-child(5) { margin-left: 16%; background: #d6ebbf; border-color: transparent; }
+.chain li:nth-child(6) { margin-left: 20%; background: var(--accent); border-color: transparent; color: var(--on-accent); }
+
+.chain li + li::before {
+  content: '↓';
+  position: absolute;
+  top: -15px;
+  left: 18px;
+  font-size: 0.75rem;
+  color: var(--forest);
+}
+
+.stack {
+  margin-top: 56px;
+}
+
+.stack .tech {
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+}
+
+.list-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* Partnership timeline: steps on one line that wraps on small screens */
+.timeline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 8px;
+  padding: 32px;
+  border-radius: 28px;
+  background: var(--deep);
+  color: var(--on-dark);
+}
+
+.timeline li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid rgba(242, 247, 234, 0.2);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.timeline li:not(:last-child)::after {
+  content: '→';
+  margin-right: -2px;
+  color: var(--accent);
+}
+
+.timeline li:last-child {
+  border-color: transparent;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.timeline li:last-child::after {
+  content: '↺';
+}
+
+/* CTA */
+.cta-secondary {
+  margin-top: 28px;
+  border-color: rgba(19, 36, 10, 0.3);
+}
+
+.cta-secondary:hover {
+  border-color: var(--on-accent);
+  color: var(--on-accent);
+}
+
+/* Footer: brand line plus three link columns */
+.v2-footer .container {
+  gap: 32px;
+}
+
+.footer-tagline {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.footer-title {
+  margin-bottom: 12px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--forest);
+}
+
+.v2-footer nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.v2-footer nav a:hover {
+  color: var(--forest);
+}
+
+@media (min-width: 768px) {
+  .v2-footer .container {
+    grid-template-columns: minmax(0, 1.6fr) repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .v2-footer .container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Sections fade up once as they enter the screen (only when JS runs and motion is allowed) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    translate: 0 16px;
+    transition: opacity 0.6s ease, translate 0.6s ease;
+  }
+
+  .js .reveal.is-in {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .cycle li::before {
+    animation: none;
+  }
+}
