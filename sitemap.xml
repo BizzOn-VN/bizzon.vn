@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.bizzon.vn/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bizzon.vn/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.bizzon.vn/vi.html" />
+  </url>
+  <url>
+    <loc>https://www.bizzon.vn/vi.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bizzon.vn/" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.bizzon.vn/vi.html" />
+  </url>
+  <url>
+    <loc>https://www.bizzon.vn/en/projects.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bizzon.vn/en/projects.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.bizzon.vn/du-an.html" />
+  </url>
+  <url>
+    <loc>https://www.bizzon.vn/du-an.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bizzon.vn/en/projects.html" />
+    <xhtml:link rel="alternate" hreflang="vi" href="https://www.bizzon.vn/du-an.html" />
+  </url>
+</urlset>
