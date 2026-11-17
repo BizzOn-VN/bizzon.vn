@@ -1,920 +1,568 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pycom AI — Autonomous Enterprise Platform | Nền Tảng Agentic AI & Tự Động Hóa Doanh Nghiệp</title>
-  <meta name="description" content="Đừng trả tiền cho phần mềm bắt nhân viên gõ phím. Hãy để Pycom AI Agent tự động vận hành doanh nghiệp của bạn qua Zalo, RAG và MCP." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Pycom AI | Dịch vụ AI Agent và tự động hóa doanh nghiệp</title>
+  <meta name="description" content="Pycom AI triển khai AI Agent tư vấn và chốt đơn qua Zalo, trợ lý tri thức nội bộ và tự động hóa nhập liệu, kết nối thẳng vào phần mềm bạn đang dùng." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="vi_VN" />
+  <meta property="og:title" content="Pycom AI | Dịch vụ AI Agent và tự động hóa doanh nghiệp" />
+  <meta property="og:description" content="Khách nhắn Zalo, AI tự kiểm kho, tạo đơn, đặt lịch. Triển khai trọn gói trong 5 ngày làm việc." />
+  <meta property="og:image" content="logo.png" />
+  <meta name="theme-color" content="#070b12" />
+  <link rel="icon" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-slate-950 text-slate-300 bg-dot-matrix antialiased selection:bg-cyan-500 selection:text-slate-950 relative">
+<body>
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
 
-  <div class="ambient-glow-top"></div>
-
-  <!-- =====================================================================
-       SECTION 1: HEADER & NAVIGATION BAR
-  ====================================================================== -->
-  <header class="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-xl border-b border-slate-800/80">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-      <!-- Logo + Badge -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="bg-white/95 px-3 py-1.5 rounded-xl shadow-[0_0_20px_rgba(6,182,212,0.25)] flex items-center gap-2 border border-white">
-          <img src="logo.png" alt="Pycom AI Logo" class="h-7 w-auto object-contain" />
-        </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-2">
-            <span class="text-white font-extrabold text-lg tracking-tight">Pycom AI</span>
-            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-              Autonomous Enterprise Platform
-            </span>
-          </div>
-          <span class="text-[11px] text-slate-400 sm:hidden">Autonomous Enterprise Platform</span>
-        </div>
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Pycom AI, về đầu trang">
+        <span class="brand-chip"><img src="logo.png" alt="" width="64" height="36" /></span>
+        <span class="brand-text">
+          <strong>Pycom AI</strong>
+          <small>Autonomous Enterprise Platform</small>
+        </span>
       </a>
 
-      <!-- Menu Links -->
-      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#giai-phap" class="hover:text-cyan-400 transition-colors">Giải Pháp</a>
-        <a href="#nganh-ung-dung" class="hover:text-cyan-400 transition-colors">Ngành Ứng Dụng</a>
-        <a href="#so-sanh" class="hover:text-cyan-400 transition-colors">So Sánh</a>
-        <a href="#bang-gia" class="hover:text-cyan-400 transition-colors">Bảng Giá</a>
-        <a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a>
+      <nav class="site-nav" id="site-nav" aria-label="Điều hướng chính">
+        <a href="#dich-vu">Dịch vụ</a>
+        <a href="#chat-ra-viec">Chat ra việc</a>
+        <a href="#nganh">Ngành ứng dụng</a>
+        <a href="#bang-gia">Bảng giá</a>
+        <a href="#faq">FAQ</a>
       </nav>
 
-      <!-- Header CTA Button -->
-      <div class="flex items-center gap-3">
-        <a href="#zalo-simulation" class="btn-glow px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm inline-flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-slate-950 animate-ping"></span>
-          <span>Trải Nghiệm Demo Zalo</span>
-        </a>
+      <div class="header-actions">
+        <a class="btn btn-primary btn-sm" href="#dang-ky">Nhận demo riêng</a>
+        <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Mở menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
 
-  <main class="relative z-10">
-    <!-- =====================================================================
-         SECTION 2: HERO SECTION (GÂY ẤN TƯỢNG VÀ THU HÚT)
-    ====================================================================== -->
-    <section class="pt-16 pb-20 lg:pt-24 lg:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-      <!-- Top Pill / Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/40 text-cyan-300 text-xs sm:text-sm font-semibold mb-8 shadow-[0_0_25px_rgba(6,182,212,0.18)]">
-        <span>⚡ Thế Hệ Phần Mềm Vận Hành Tự Động Mới Nhất</span>
-      </div>
-
-      <!-- Headline (H1) -->
-      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] max-w-5xl mx-auto mb-6">
-        Đừng Trả Tiền Cho Phần Mềm Bắt Nhân Viên Gõ Phím.
-        <span class="block mt-2 bg-gradient-to-r from-emerald-400 via-cyan-400 to-sky-400 bg-clip-text text-transparent">
-          Hãy Để AI Agent Tự Động Vận Hành Doanh Nghiệp Của Bạn.
-        </span>
-      </h1>
-
-      <!-- Sub-headline -->
-      <p class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10">
-        Cắt giảm tới <strong class="text-emerald-400 font-bold">80% chi phí trực chat và nhập liệu</strong>. Trợ lý AI thế hệ mới tự tư vấn khách hàng qua <strong class="text-white font-semibold">Zalo</strong>, tra cứu quy trình nội bộ chính xác 100% và <strong class="text-cyan-300 font-semibold">tự kết nối cơ sở dữ liệu</strong> để tạo đơn, đặt lịch mà không cần con người can thiệp.
-      </p>
-
-      <!-- CTA Group -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-        <a href="#dang-ky-demo" class="w-full sm:w-auto btn-glow px-8 py-4 rounded-2xl text-base inline-flex items-center justify-center gap-2">
-          <span>Đăng Ký Nhận Bản Demo Riêng (Miễn Phí)</span>
-        </a>
-        <a href="#zalo-simulation" class="w-full sm:w-auto btn-outline-glass px-8 py-4 rounded-2xl text-base font-bold inline-flex items-center justify-center gap-2">
-          <span>Nhắn Thử Với AI Trên Zalo ➔</span>
-        </a>
-      </div>
-
-      <!-- Trust Badges -->
-      <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs sm:text-sm font-medium text-slate-300 pt-6 border-t border-slate-800/80 max-w-3xl mx-auto">
-        <div class="flex items-center gap-2">
-          <span class="text-emerald-400 font-bold">✓</span>
-          <span>Triển khai thần tốc trong 48 giờ</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="text-emerald-400 font-bold">✓</span>
-          <span>Bảo mật &amp; phân vùng dữ liệu riêng biệt</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="text-emerald-400 font-bold">✓</span>
-          <span>Kết nối trực tiếp Zalo OA, CRM, ERP có sẵn</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         SECTION 3: SOCIAL PROOF & METRICS (CON SỐ BIẾT NÓI)
-    ====================================================================== -->
-    <section class="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <!-- Metric 1 -->
-        <div class="surface-card p-6 sm:p-7 text-center relative overflow-hidden group">
-          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500"></div>
-          <div class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-2 group-hover:text-emerald-400 transition-colors">
-            -80%
-          </div>
-          <p class="text-sm text-slate-300 font-medium">
-            Chi phí nhân sự trực ca &amp; gõ phím thủ công
+  <main id="main">
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span>Dịch vụ AI Agent và tự động hóa cho doanh nghiệp Việt</p>
+          <h1>
+            Đừng trả lương cho những việc lặp đi lặp lại mỗi ngày.
+            <span class="grad">Hãy giao phần đó cho AI Agent.</span>
+          </h1>
+          <p class="lead">
+            Trả lời khách, tra cứu thông tin, nhập liệu, lên lịch, làm báo cáo: AI Agent làm thay những việc đó suốt 24/7, theo đúng tài liệu và quy trình của doanh nghiệp bạn, ngay trên Zalo và phần mềm bạn đang dùng. Cắt giảm tới <strong>80% chi phí trực chat và nhập liệu</strong>.
           </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#dang-ky">Đăng ký nhận demo riêng (miễn phí)</a>
+            <a class="btn btn-ghost" href="#dang-ky" data-contact="zalo">Nhắn thử với AI trên Zalo <span aria-hidden="true">→</span></a>
+          </div>
+          <ul class="trust">
+            <li>Dùng cho bán lẻ, dịch vụ, phân phối, giáo dục</li>
+            <li>Nối với Zalo và phần mềm bạn đang dùng</li>
+            <li>Dữ liệu từng doanh nghiệp tách riêng</li>
+          </ul>
         </div>
 
-        <!-- Metric 2 -->
-        <div class="surface-card p-6 sm:p-7 text-center relative overflow-hidden group">
-          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-cyan-500 to-sky-500"></div>
-          <div class="text-4xl sm:text-5xl font-extrabold text-cyan-400 tracking-tight mb-2">
-            3 Giây
-          </div>
-          <p class="text-sm text-slate-300 font-medium">
-            Thời gian phản hồi khách &amp; kiểm tra tồn kho
-          </p>
-        </div>
-
-        <!-- Metric 3 -->
-        <div class="surface-card p-6 sm:p-7 text-center relative overflow-hidden group">
-          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-400"></div>
-          <div class="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-2 group-hover:text-cyan-400 transition-colors">
-            24/7/365
-          </div>
-          <p class="text-sm text-slate-300 font-medium">
-            Phục vụ xuyên suốt không nghỉ lễ tết
-          </p>
-        </div>
-
-        <!-- Metric 4 -->
-        <div class="surface-card p-6 sm:p-7 text-center relative overflow-hidden group">
-          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-amber-400 to-emerald-400"></div>
-          <div class="text-4xl sm:text-5xl font-extrabold text-emerald-400 tracking-tight mb-2">
-            0%
-          </div>
-          <p class="text-sm text-slate-300 font-medium">
-            Nguy cơ tư vấn sai lệch chính sách, giá bán
-          </p>
+        <div class="hero-visual">
+          <div class="chat" id="hero-chat" data-scenario="retail" aria-label="Mô phỏng hội thoại Zalo giữa khách và AI Agent"></div>
+          <p class="visual-note">Hội thoại mô phỏng. <button class="link-btn" type="button" data-replay="hero-chat">Xem lại</button></p>
         </div>
       </div>
     </section>
 
-    <!-- =====================================================================
-         SECTION 4: PROBLEM VS SOLUTION (BÓC TÁCH NỖI ĐAU)
-    ====================================================================== -->
-    <section id="so-sanh" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-500/15 text-rose-400 border border-rose-500/30 mb-3">
-          Problem vs. Solution
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Tại sao phần mềm quản lý cũ (CRUD) đang làm chậm doanh nghiệp của bạn?
-        </h2>
+    <!-- ============================== METRICS ============================== -->
+    <section class="metrics" aria-label="Số liệu chính">
+      <div class="container metrics-grid">
+        <div class="metric">
+          <div class="metric-value">Tới 80%</div>
+          <p>Chi phí trực chat và nhập liệu có thể cắt giảm</p>
+        </div>
+        <div class="metric">
+          <div class="metric-value">3 giây</div>
+          <p>Để trả lời khách và tra xong thông tin trong hệ thống</p>
+        </div>
+        <div class="metric">
+          <div class="metric-value">24/7</div>
+          <p>Làm việc cả ban đêm, cuối tuần, lễ tết</p>
+        </div>
+        <div class="metric">
+          <div class="metric-value">5 ngày</div>
+          <p>Từ lúc nhận tài liệu đến khi chạy thật</p>
+        </div>
       </div>
+    </section>
 
-      <!-- Comparison Grid -->
-      <div class="surface-card overflow-hidden border border-slate-800 shadow-2xl">
-        <!-- Table Header -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 border-b border-slate-800 bg-slate-900/90">
-          <div class="p-5 sm:p-6 flex items-center gap-3 border-b lg:border-b-0 lg:border-r border-slate-800">
-            <span class="w-8 h-8 rounded-lg bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center font-bold">✕</span>
-            <h3 class="text-base sm:text-lg font-bold text-rose-300">Vấn Đề Của Phần Mềm Truyền Thống</h3>
-          </div>
-          <div class="p-5 sm:p-6 flex items-center gap-3 bg-emerald-950/20">
-            <span class="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center font-bold">✓</span>
-            <h3 class="text-base sm:text-lg font-bold text-emerald-300">Giải Pháp Đột Phá Của Pycom AI Agent</h3>
-          </div>
+    <!-- ============================== DỊCH VỤ ============================== -->
+    <section class="section" id="dich-vu">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Dịch vụ</p>
+          <h2>Bốn việc Pycom AI nhận làm trọn gói</h2>
+          <p>Bạn không phải tự cấu hình công cụ. Đội kỹ sư nạp dữ liệu, nối hệ thống, chạy thử cùng bạn rồi mới bàn giao.</p>
         </div>
 
-        <!-- Row 1 -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 border-b border-slate-800/80 hover:bg-slate-900/40 transition-colors">
-          <div class="p-6 lg:border-r border-slate-800/80 text-slate-300 text-sm sm:text-base">
-            <strong class="text-white block mb-1.5">1. Nhân viên làm "nô lệ" nhập liệu:</strong>
-            Khách nhắn Zalo <span class="text-rose-400 font-bold">→</span> nhân sự copy <span class="text-rose-400 font-bold">→</span> mở web gõ đơn <span class="text-rose-400 font-bold">→</span> chụp màn hình gửi kế toán.
-          </div>
-          <div class="p-6 bg-emerald-950/10 text-slate-200 text-sm sm:text-base">
-            <strong class="text-emerald-400 block mb-1.5">⚡ Tự động khép kín chu trình:</strong>
-            Khách chốt trên Zalo <span class="text-emerald-400 font-bold">→</span> AI tự kiểm tra kho qua API <span class="text-emerald-400 font-bold">→</span> tự tạo đơn <span class="text-emerald-400 font-bold">→</span> tự bắn bill về Zalo kế toán.
-          </div>
+        <div class="service-grid">
+          <article class="card service">
+            <span class="service-no">01</span>
+            <h3>AI Agent tư vấn và chốt đơn qua Zalo</h3>
+            <p>Trả lời công dụng, giá, tồn kho; tự tạo đơn hoặc đặt lịch ngay trong hội thoại, kể cả lúc 11 giờ đêm.</p>
+            <ul class="ticks">
+              <li>Chạy trên Zalo OA khách đang dùng</li>
+              <li>Gửi ảnh sản phẩm, hiểu tin nhắn thoại</li>
+              <li>Chuyển cho nhân viên khi cần người thật</li>
+            </ul>
+          </article>
+
+          <article class="card service">
+            <span class="service-no">02</span>
+            <h3>Trợ lý tri thức nội bộ</h3>
+            <p>Nạp quy chế, bảng giá, hợp đồng, sổ tay đang nằm rải rác trong Word, Excel, PDF. Nhân viên hỏi là có câu trả lời kèm trích dẫn.</p>
+            <ul class="ticks">
+              <li>Trích đúng điều khoản từ văn bản gốc</li>
+              <li>Nhân viên mới bớt phải hỏi sếp</li>
+              <li>Báo lại những câu tài liệu còn thiếu</li>
+            </ul>
+          </article>
+
+          <article class="card service">
+            <span class="service-no">03</span>
+            <h3>Tự động hóa nhập liệu và quy trình</h3>
+            <p>AI tự kiểm kho, tạo đơn, đối soát hóa đơn, gửi sao kê công nợ bằng cách gọi thẳng vào phần mềm bạn đã mua.</p>
+            <ul class="ticks">
+              <li>Kết nối MySQL, PostgreSQL, SQL Server, Google Sheets</li>
+              <li>Nối ERP, CRM, phần mềm kế toán qua API</li>
+              <li>Quy trình xử lý theo đúng cách công ty bạn làm</li>
+            </ul>
+          </article>
+
+          <article class="card service">
+            <span class="service-no">04</span>
+            <h3>Triển khai riêng cho doanh nghiệp lớn</h3>
+            <p>Máy chủ độc lập hoặc đặt tại chỗ, đồ thị tri thức cho dữ liệu phức tạp, tích hợp sâu với SAP, Bravo, MISA.</p>
+            <ul class="ticks">
+              <li>Private Server hoặc On-Premise</li>
+              <li>Ký NDA, hỗ trợ kỹ sư theo SLA</li>
+              <li>Khảo sát và báo giá theo hiện trạng</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CHAT RA VIỆC ============================== -->
+    <section class="section section-alt" id="chat-ra-viec">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">AI chat ra việc</p>
+          <h2>Chatbot chỉ biết nói. AI Agent nhắn xong là việc đã xong.</h2>
+          <p>Mỗi hội thoại kết thúc bằng một kết quả ghi thẳng vào hệ thống của bạn: một đơn hàng, một file sao kê, một phiếu nhập, hoặc một ca bàn giao cho nhân viên.</p>
         </div>
 
-        <!-- Row 2 -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 border-b border-slate-800/80 hover:bg-slate-900/40 transition-colors">
-          <div class="p-6 lg:border-r border-slate-800/80 text-slate-300 text-sm sm:text-base">
-            <strong class="text-white block mb-1.5">2. Tư vấn sai do tài liệu tản mát:</strong>
-            Quy chế, bảng giá nằm rải rác trên file Word/Excel/PDF khiến nhân viên nhớ nhớ quên quên.
-          </div>
-          <div class="p-6 bg-emerald-950/10 text-slate-200 text-sm sm:text-base">
-            <strong class="text-emerald-400 block mb-1.5">🎯 Kiến thức đồng nhất 100%:</strong>
-            AI được nạp toàn bộ tài liệu doanh nghiệp (RAG), trích dẫn chuẩn chỉ từng điều khoản, không bịa đặt.
-          </div>
+        <div class="scenario-tabs" role="tablist" aria-label="Tình huống mẫu">
+          <button class="tab is-active" type="button" role="tab" aria-selected="true" data-scenario="retail">
+            <span class="tab-who">Khách lẻ</span>Chat ra đơn hàng
+          </button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-scenario="b2b">
+            <span class="tab-who">Đại lý</span>Chat ra sao kê công nợ
+          </button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-scenario="owner">
+            <span class="tab-who">Chủ doanh nghiệp</span>Chat ra báo cáo
+          </button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-scenario="handoff">
+            <span class="tab-who">Khiếu nại</span>Chat ra ca bàn giao
+          </button>
         </div>
 
-        <!-- Row 3 -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 border-b border-slate-800/80 hover:bg-slate-900/40 transition-colors">
-          <div class="p-6 lg:border-r border-slate-800/80 text-slate-300 text-sm sm:text-base">
-            <strong class="text-white block mb-1.5">3. Chi phí phình to theo quy mô:</strong>
-            Càng đông khách càng phải tuyển thêm nhân viên trực ca, chi phí lương ngốn hết lợi nhuận.
-          </div>
-          <div class="p-6 bg-emerald-950/10 text-slate-200 text-sm sm:text-base">
-            <strong class="text-emerald-400 block mb-1.5">🚀 Scale không giới hạn:</strong>
-            1 hay 1.000 khách nhắn cùng lúc, AI vẫn xử lý tức thì với chi phí token rẻ hơn tiền ly cà phê.
-          </div>
+        <div class="demo-grid">
+          <div class="chat" id="demo-chat" aria-live="polite" aria-label="Mô phỏng hội thoại"></div>
+
+          <aside class="trace" aria-label="Những việc AI làm phía sau">
+            <p class="trace-title">AI làm gì phía sau</p>
+            <ol class="trace-steps" id="demo-trace"></ol>
+            <p class="trace-note" id="demo-note"></p>
+            <button class="link-btn" type="button" data-replay="demo-chat">Xem lại tình huống này</button>
+          </aside>
         </div>
 
-        <!-- Row 4 -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 hover:bg-slate-900/40 transition-colors">
-          <div class="p-6 lg:border-r border-slate-800/80 text-slate-300 text-sm sm:text-base">
-            <strong class="text-white block mb-1.5">4. Mất khách ngoài giờ hành chính:</strong>
-            Khách hỏi lúc 11h đêm hoặc ngày nghỉ không ai tiếp, khách chạy sang đối thủ.
+        <div class="feature-grid">
+          <div class="feature">
+            <h3>Giao việc bằng lời</h3>
+            <p>Thêm hàng, sửa giá, xem doanh thu, lập phiếu nhập: nhắn cho AI như nhắn một nhân viên.</p>
           </div>
-          <div class="p-6 bg-emerald-950/10 text-slate-200 text-sm sm:text-base">
-            <strong class="text-emerald-400 block mb-1.5">🌙 Chốt đơn 24/7:</strong>
-            Sẵn sàng tư vấn, gửi ảnh sản phẩm và chốt đơn ngay cả khi cả công ty đang ngủ.
+          <div class="feature">
+            <h3>Quy trình theo cách của bạn</h3>
+            <p>Khiếu nại, đổi trả, hoàn tiền được xử lý theo đúng các bước và quy định công ty bạn đặt ra.</p>
+          </div>
+          <div class="feature">
+            <h3>Tự động hoặc thủ công</h3>
+            <p>Từng hội thoại có thể để AI trả lời hoặc để nhân viên trả lời với câu gợi ý AI soạn sẵn.</p>
+          </div>
+          <div class="feature">
+            <h3>Bàn giao cho người thật</h3>
+            <p>Gặp việc ngoài phạm vi, AI chuyển cho đúng nhân viên kèm tóm tắt để khách không phải kể lại.</p>
+          </div>
+          <div class="feature">
+            <h3>Nhớ từng khách hàng</h3>
+            <p>Lịch sử mua, sở thích, ghi chú riêng được lưu lại để lần sau tư vấn đúng người, đúng nhu cầu.</p>
+          </div>
+          <div class="feature">
+            <h3>Bạn vẫn nắm quyền</h3>
+            <p>Phân quyền nhân viên, đặt trần chi phí token mỗi tháng và xem lại mọi hội thoại trên dashboard.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =====================================================================
-         SECTION 5: LIVE SIMULATION WIDGET (MÔ PHỎNG CHAT ZALO THỰC TẾ)
-    ====================================================================== -->
-    <section id="zalo-simulation" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 mb-3">
-          Interactive Live Mockup
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
-          Xem Cách AI Agent Tự Kiểm Kho &amp; Lên Đơn Lúc 22:15 Đêm
-        </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Mô phỏng trực tiếp trên Zalo OA doanh nghiệp — Bạn có thể bấm nút phát lại hoặc tự gõ tin nhắn thử nghiệm bên dưới!
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        <!-- Left Column: iPhone Mockup -->
-        <div class="lg:col-span-5">
-          <div class="iphone-frame">
-            <div class="iphone-notch">
-              <div class="iphone-camera"></div>
-            </div>
-
-            <div class="zalo-screen">
-              <!-- Zalo Top Bar -->
-              <div class="zalo-header">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-9 h-9 rounded-full bg-white flex items-center justify-center font-extrabold text-blue-600 text-xs shadow">
-                    OA
-                  </div>
-                  <div>
-                    <div class="text-sm font-bold leading-tight flex items-center gap-1.5">
-                      <span>Pycom Smart Store</span>
-                      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                    </div>
-                    <div class="text-[11px] text-blue-100 opacity-90">AI Agent trực tuyến 24/7 • Phản hồi 2 giây</div>
-                  </div>
-                </div>
-                <button onclick="replayZaloConversation()" class="text-[11px] bg-white/20 hover:bg-white/30 px-2.5 py-1 rounded-lg font-semibold transition">
-                  ↻ Phát lại
-                </button>
-              </div>
-
-              <!-- Messages Container -->
-              <div class="zalo-messages" id="zalo-chat-body">
-                <!-- Message 1: Customer -->
-                <div class="zalo-bubble customer">
-                  Shop ơi, máy lọc nước mã A2 còn hàng ở kho Quận 7 không? Mai ship sáng được không shop?
-                  <span class="zalo-time text-right">22:15</span>
-                </div>
-
-                <!-- Message 2: AI Agent -->
-                <div class="zalo-bubble ai-agent">
-                  Dạ chào anh Hoàng! Em vừa kiểm kho Q7, mã A2 hiện còn <strong class="text-emerald-400">3 máy</strong> ạ. Bên em có thể giao từ 8h30 - 10h sáng mai cho anh. Anh kiểm tra lại địa chỉ nhận hàng là <code class="bg-slate-900 px-1.5 py-0.5 rounded text-cyan-300">123 Nguyễn Thị Thập</code> đúng không để em lên đơn giữ máy cho mình luôn nhé?
-                  <span class="zalo-time">22:15:02 • Đã kiểm kho qua MCP</span>
-                </div>
-
-                <!-- Message 3: Customer -->
-                <div class="zalo-bubble customer">
-                  Đúng rồi em, ship luôn nhé.
-                  <span class="zalo-time text-right">22:15:20</span>
-                </div>
-
-                <!-- Message 4: AI Agent -->
-                <div class="zalo-bubble ai-agent">
-                  Dạ em đã tạo đơn thành công mã <code class="bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold">#DH-8921</code> trên hệ thống và chuyển đơn sang kho Q7 chuẩn bị hàng sáng mai. Anh theo dõi lộ trình đơn tại đây nhé! Chúc anh buổi tối an lành.
-                  <span class="zalo-time">22:15:23 • Đã tạo vận đơn ERP</span>
-                </div>
-              </div>
-
-              <!-- Interactive Quick Input Bar -->
-              <form onsubmit="handleCustomZaloMessage(event)" class="p-2.5 bg-slate-900 border-t border-slate-800 flex items-center gap-2">
-                <input
-                  id="zalo-user-input"
-                  type="text"
-                  placeholder="Nhắn thử: Kiểm tra bảo hành / Báo giá sỉ..."
-                  class="flex-1 bg-slate-950 text-xs text-white px-3 py-2.5 rounded-xl border border-slate-700 focus:outline-none focus:border-cyan-400"
-                />
-                <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl transition">
-                  Gửi
-                </button>
-              </form>
-            </div>
-          </div>
+    <!-- ============================== SO SÁNH ============================== -->
+    <section class="section" id="so-sanh">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Trước và sau</p>
+          <h2>Vì sao phần mềm quản lý cũ đang làm chậm doanh nghiệp của bạn?</h2>
+          <p>ERP, CRM, phần mềm bán hàng đều ngồi chờ người nhập liệu. AI Agent thì tự làm phần nhập liệu đó.</p>
         </div>
 
-        <!-- Right Column: Annotations & Live System Log -->
-        <div class="lg:col-span-7 space-y-5">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-            <span>● SYSTEM TRACE: KHÔNG CẦN NHÂN VIÊN TRỰC CA ĐÊM</span>
+        <div class="compare">
+          <div class="compare-head">
+            <span>Phần mềm truyền thống</span>
+            <span>Khi có AI Agent</span>
           </div>
 
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
-            Điều gì vừa diễn ra phía sau màn hình Zalo trong 3 giây đó?
-          </h3>
-
-          <p class="text-slate-300 text-sm sm:text-base">
-            Khác hoàn toàn với các kịch bản chatbot chọn nút cứng nhắc, <strong class="text-white">Pycom AI Agent</strong> tự hiểu ngữ cảnh và thực thi 3 tác vụ hệ thống ngầm cùng lúc:
-          </p>
-
-          <!-- 3 Spec Callout Badges -->
-          <div class="space-y-4 pt-2">
-            <div class="surface-card p-5 border-l-4 border-l-emerald-500 flex items-start gap-4">
-              <span class="text-xl mt-0.5">🟢</span>
-              <div>
-                <h4 class="text-white font-bold text-base">AI tự gọi API kiểm tra tồn kho tức thì (MCP Tool Calling)</h4>
-                <p class="text-sm text-slate-400 mt-1">
-                  Agent tự động kích hoạt hàm <code class="text-cyan-300 font-mono text-xs">inventory.check(sku="A2", branch="Q7")</code> và trả về con số chính xác <strong class="text-slate-200">3 máy</strong> trong 400ms.
-                </p>
-              </div>
+          <div class="compare-row">
+            <div class="before">
+              <h3>Nhân viên làm thay việc của máy</h3>
+              <p>Khách nhắn Zalo, nhân sự copy, mở web gõ đơn, chụp màn hình gửi kế toán.</p>
             </div>
-
-            <div class="surface-card p-5 border-l-4 border-l-cyan-500 flex items-start gap-4">
-              <span class="text-xl mt-0.5">🟢</span>
-              <div>
-                <h4 class="text-white font-bold text-base">AI tự tra cứu lịch sử mua hàng của khách trong Database</h4>
-                <p class="text-sm text-slate-400 mt-1">
-                  Từ Zalo ID của khách, Agent nhận diện ngay <strong class="text-slate-200">Anh Hoàng</strong> và gợi ý sẵn địa chỉ giao hàng cũ <code class="text-cyan-300 font-mono text-xs">123 Nguyễn Thị Thập</code> để khách không phải gõ lại.
-                </p>
-              </div>
-            </div>
-
-            <div class="surface-card p-5 border-l-4 border-l-emerald-500 flex items-start gap-4">
-              <span class="text-xl mt-0.5">🟢</span>
-              <div>
-                <h4 class="text-white font-bold text-base">AI tự kích hoạt hệ thống tạo vận đơn mà không cần nhân viên gõ máy</h4>
-                <p class="text-sm text-slate-400 mt-1">
-                  Ngay khi khách chốt <em>"Đúng rồi em, ship luôn nhé"</em>, Agent ghi trực tiếp đơn <code class="text-emerald-400 font-mono text-xs">#DH-8921</code> vào ERP/POS và bắn thông báo xuất hàng cho kho Quận 7.
-                </p>
-              </div>
+            <div class="after">
+              <h3>Chu trình tự khép kín</h3>
+              <p>Khách chốt trên Zalo, AI tự kiểm kho qua API, tự tạo đơn, tự gửi bill về Zalo kế toán.</p>
             </div>
           </div>
 
-          <!-- Quick prompt buttons for visitor to test -->
-          <div class="pt-2">
-            <span class="text-xs text-slate-400 block mb-2">Bấm thử các câu hỏi hóc búa để xem AI trả lời trong khung điện thoại:</span>
-            <div class="flex flex-wrap gap-2">
-              <button onclick="sendPresetQuestion(' Đại lý MST 0316889921 muốn xin bảng công nợ tháng này?')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-cyan-300 border border-slate-700 transition">
-                + Tra công nợ đại lý qua MST
-              </button>
-              <button onclick="sendPresetQuestion('Thứ 7 tuần này lúc 14h bác sĩ Tuấn còn lịch trống khám răng không?')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-emerald-300 border border-slate-700 transition">
-                + Đặt lịch khám bác sĩ
-              </button>
-              <button onclick="sendPresetQuestion('Chính sách đổi trả máy lỗi trong 15 ngày đầu như thế nào?')" class="text-xs px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-sky-300 border border-slate-700 transition">
-                + Hỏi quy chế bảo hành RAG
-              </button>
+          <div class="compare-row">
+            <div class="before">
+              <h3>Tư vấn sai vì tài liệu tản mát</h3>
+              <p>Quy chế, bảng giá nằm rải rác trên Word, Excel, PDF nên nhân viên nhớ nhớ quên quên.</p>
+            </div>
+            <div class="after">
+              <h3>Một nguồn kiến thức duy nhất</h3>
+              <p>AI được nạp toàn bộ tài liệu doanh nghiệp và trả lời kèm trích dẫn từ văn bản gốc.</p>
+            </div>
+          </div>
+
+          <div class="compare-row">
+            <div class="before">
+              <h3>Chi phí phình theo quy mô</h3>
+              <p>Càng đông khách càng phải tuyển thêm người trực ca, tiền lương ăn dần vào lợi nhuận.</p>
+            </div>
+            <div class="after">
+              <h3>Thêm khách không thêm người</h3>
+              <p>Một hay một nghìn khách nhắn cùng lúc, AI vẫn xử lý ngay với chi phí token rất nhỏ cho mỗi lượt.</p>
+            </div>
+          </div>
+
+          <div class="compare-row">
+            <div class="before">
+              <h3>Mất khách ngoài giờ hành chính</h3>
+              <p>Khách hỏi lúc 11 giờ đêm hoặc ngày nghỉ, không ai tiếp, khách sang đối thủ.</p>
+            </div>
+            <div class="after">
+              <h3>Chốt đơn 24/7</h3>
+              <p>Tư vấn, gửi ảnh sản phẩm và lên đơn ngay cả khi cả công ty đang ngủ.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =====================================================================
-         SECTION 6: CÁC NGÀNH NGHỀ TRIỂN KHAI HIỆU QUẢ NHẤT (INDUSTRY USE CASES)
-    ====================================================================== -->
-    <section id="nganh-ung-dung" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 mb-3">
-          Industry Use Cases
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
-          Các Ngành Nghề Triển Khai Hiệu Quả Nhất
-        </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Chọn lĩnh vực hoạt động của doanh nghiệp bạn để xem cách Pycom AI Agent tự động hóa quy trình:
-        </p>
-      </div>
-
-      <!-- Interactive Tabs Navigation -->
-      <div class="flex flex-wrap justify-center gap-2.5 mb-8" id="industry-tabs">
-        <button onclick="selectIndustryTab(0)" class="industry-tab-btn active px-4 py-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-800 bg-slate-900/70 text-slate-300">
-          🛍️ 1. Bán lẻ &amp; Chuỗi (F&amp;B, Mỹ Phẩm, Thời Trang)
-        </button>
-        <button onclick="selectIndustryTab(1)" class="industry-tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-800 bg-slate-900/70 text-slate-300">
-          🏥 2. Phòng Khám, Nha Khoa &amp; Spa
-        </button>
-        <button onclick="selectIndustryTab(2)" class="industry-tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-800 bg-slate-900/70 text-slate-300">
-          🏭 3. Bán Buôn, Sản Xuất &amp; Phân Phối B2B
-        </button>
-        <button onclick="selectIndustryTab(3)" class="industry-tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-800 bg-slate-900/70 text-slate-300">
-          🎓 4. Giáo Dục &amp; Trung Tâm Đào Tạo
-        </button>
-        <button onclick="selectIndustryTab(4)" class="industry-tab-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-800 bg-slate-900/70 text-slate-300">
-          ⚖️ 5. Dịch Vụ, Kế Toán - Thuế, Pháp Lý, BĐS
-        </button>
-      </div>
-
-      <!-- Dynamic Tab Content Display -->
-      <div class="surface-card p-6 sm:p-10 border border-slate-800 shadow-2xl" id="industry-panel">
-        <!-- Populated by JS (Default Tab 0) -->
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         SECTION 7: CÔNG NGHỆ LÀM NÊN SỰ KHÁC BIỆT (DÀNH CHO ĐỘI NGŨ KỸ THUẬT & CTO)
-    ====================================================================== -->
-    <section id="giai-phap" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 mb-3">
-          For CTOs &amp; Engineering Teams
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
-          Bộ Khung Hạ Tầng Vận Hành Độc Lập &amp; Bảo Mật
-        </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Công nghệ lõi làm nên sự khác biệt giữa Pycom Enterprise Platform và các công cụ tạo chatbot thông thường.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Column 1 -->
-        <div class="surface-card p-7 flex flex-col justify-between relative overflow-hidden">
-          <div>
-            <div class="flex items-center justify-between mb-5">
-              <span class="px-3 py-1 rounded-md text-xs font-mono font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                Neo4j + Qdrant
-              </span>
-              <span class="text-2xl">🕸️</span>
-            </div>
-            <h3 class="text-xl font-extrabold text-white mb-3">
-              1. Knowledge &amp; GraphRAG
-            </h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Không chỉ tìm kiếm từ khóa phẳng. AI hiểu mối quan hệ đa tầng giữa sản phẩm, khách hàng, chính sách giá và quy trình nội bộ thông qua đồ thị tri thức <code class="text-cyan-300">Neo4j</code> kết hợp Vector Database <code class="text-cyan-300">Qdrant</code>.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 text-xs font-mono text-emerald-400">
-            ✓ Chống ảo giác (Zero Hallucination)
-          </div>
+    <!-- ============================== NGÀNH ============================== -->
+    <section class="section section-alt" id="nganh">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Ngành ứng dụng</p>
+          <h2>Năm nhóm ngành triển khai hiệu quả nhất</h2>
         </div>
 
-        <!-- Column 2 -->
-        <div class="surface-card p-7 flex flex-col justify-between relative overflow-hidden border-cyan-500/40">
-          <div>
-            <div class="flex items-center justify-between mb-5">
-              <span class="px-3 py-1 rounded-md text-xs font-mono font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                MCP Platform
-              </span>
-              <span class="text-2xl">🔌</span>
-            </div>
-            <h3 class="text-xl font-extrabold text-white mb-3">
-              2. Model Context Protocol
-            </h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Giao thức kết nối mở chuẩn hóa, cho phép AI truy cập an toàn và thực thi lệnh trực tiếp vào Database SQL, ERP, CRM, Google Drive, hoặc bất kỳ REST API ngoài nào của doanh nghiệp.
-            </p>
+        <div class="industry">
+          <div class="industry-tabs" role="tablist" aria-label="Ngành nghề">
+            <button class="itab is-active" type="button" role="tab" aria-selected="true" aria-controls="ind-1" id="itab-1">Bán lẻ và chuỗi cửa hàng</button>
+            <button class="itab" type="button" role="tab" aria-selected="false" aria-controls="ind-2" id="itab-2">Phòng khám, nha khoa, spa</button>
+            <button class="itab" type="button" role="tab" aria-selected="false" aria-controls="ind-3" id="itab-3">Bán buôn, sản xuất, phân phối</button>
+            <button class="itab" type="button" role="tab" aria-selected="false" aria-controls="ind-4" id="itab-4">Giáo dục và đào tạo</button>
+            <button class="itab" type="button" role="tab" aria-selected="false" aria-controls="ind-5" id="itab-5">Dịch vụ, thuế, pháp lý, BĐS</button>
           </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 text-xs font-mono text-emerald-400">
-            ✓ Đọc/Ghi Database theo phân quyền RBAC
-          </div>
-        </div>
 
-        <!-- Column 3 -->
-        <div class="surface-card p-7 flex flex-col justify-between relative overflow-hidden">
-          <div>
-            <div class="flex items-center justify-between mb-5">
-              <span class="px-3 py-1 rounded-md text-xs font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                Multi-Tenant &amp; Circuit Breaker
-              </span>
-              <span class="text-2xl">🛡️</span>
+          <div class="industry-panels">
+            <div class="ipanel" id="ind-1" role="tabpanel" aria-labelledby="itab-1">
+              <h3>Bán lẻ và chuỗi cửa hàng (F&amp;B, mỹ phẩm, thời trang)</h3>
+              <dl>
+                <div><dt>AI thực thi</dt><dd>Trả lời công dụng, tồn kho, giá theo phân loại; tự tạo đơn và xin thông tin giao hàng ngay trên Zalo.</dd></div>
+                <div><dt>Kết quả</dt><dd>Giảm 90% thời gian phản hồi, tăng gấp đôi tỷ lệ chốt đơn ban đêm.</dd></div>
+              </dl>
             </div>
-            <h3 class="text-xl font-extrabold text-white mb-3">
-              3. Độc Lập &amp; Kiểm Soát Hạn Mức
-            </h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Hệ thống tách bạch dữ liệu từng khách hàng (Multi-tenant isolation), tích hợp bộ ngắt mạch (Circuit Breaker) và Rate Limiting chống tràn chi phí token trong mọi tình huống.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 text-xs font-mono text-emerald-400">
-            ✓ Bảo vệ ngân sách &amp; cách ly dữ liệu 100%
+            <div class="ipanel" id="ind-2" role="tabpanel" aria-labelledby="itab-2" hidden>
+              <h3>Phòng khám, nha khoa, thẩm mỹ viện và spa</h3>
+              <dl>
+                <div><dt>AI thực thi</dt><dd>Tư vấn quy trình điều trị từ tài liệu nội bộ; kiểm tra lịch trống của bác sĩ và tự đặt lịch; tự gửi Zalo nhắc khách trước ngày hẹn.</dd></div>
+                <div><dt>Kết quả</dt><dd>Hết trùng lịch, giảm mạnh tỷ lệ khách bỏ hẹn.</dd></div>
+              </dl>
+            </div>
+            <div class="ipanel" id="ind-3" role="tabpanel" aria-labelledby="itab-3" hidden>
+              <h3>Bán buôn, sản xuất và phân phối B2B</h3>
+              <dl>
+                <div><dt>AI thực thi</dt><dd>Đại lý nhắn mã số thuế qua Zalo, AI tự đối soát hóa đơn trên phần mềm kế toán và gửi sao kê công nợ trong 3 giây; báo giá đúng cấp chiết khấu.</dd></div>
+                <div><dt>Kết quả</dt><dd>Kế toán không còn bị hàng trăm cuộc gọi xin bảng công nợ mỗi ngày.</dd></div>
+              </dl>
+            </div>
+            <div class="ipanel" id="ind-4" role="tabpanel" aria-labelledby="itab-4" hidden>
+              <h3>Giáo dục, trường liên cấp và trung tâm đào tạo</h3>
+              <dl>
+                <div><dt>AI thực thi</dt><dd>Tư vấn biểu phí, lộ trình song ngữ, xe đưa đón theo sổ tay phụ huynh; tự thu thập thông tin và chấm điểm phụ huynh tiềm năng để chuyển cho tư vấn viên.</dd></div>
+                <div><dt>Kết quả</dt><dd>Tuyển sinh tự động 24/7, lọc được lead chất lượng mà không bỏ sót.</dd></div>
+              </dl>
+            </div>
+            <div class="ipanel" id="ind-5" role="tabpanel" aria-labelledby="itab-5" hidden>
+              <h3>Dịch vụ, kế toán thuế, pháp lý, bất động sản</h3>
+              <dl>
+                <div><dt>AI thực thi</dt><dd>Trợ lý nội bộ trả lời ngay câu hỏi về hợp đồng, thông tư thuế, bảng hàng, hoa hồng dự án kèm trích dẫn văn bản gốc.</dd></div>
+                <div><dt>Kết quả</dt><dd>Nhân viên mới làm đúng từ tuần đầu, không cần hỏi sếp.</dd></div>
+              </dl>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =====================================================================
-         SECTION 8: BẢNG GIÁ DỊCH VỤ MINH BẠCH (TRANSPARENT PRICING)
-    ====================================================================== -->
-    <section id="bang-gia" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 mb-3">
-          Transparent Pricing
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
-          Bảng Giá Dịch Vụ Minh Bạch
-        </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Chi phí đầu tư rõ ràng từng hạng mục, giúp doanh nghiệp cắt giảm ngay gánh nặng lương trực ca hàng tháng.
-        </p>
+    <!-- ============================== QUY TRÌNH ============================== -->
+    <section class="section" id="quy-trinh">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Quy trình</p>
+          <h2>Bốn bước, năm ngày làm việc</h2>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <span class="step-day">Ngày 1</span>
+            <h3>Tiếp nhận tài liệu</h3>
+            <p>Bạn gửi bảng giá, file Excel sản phẩm, quy định hiện có. Không cần chuẩn hóa trước.</p>
+          </li>
+          <li>
+            <span class="step-day">Ngày 2 và 3</span>
+            <h3>Nạp tri thức và cấu hình</h3>
+            <p>Kỹ sư nạp dữ liệu vào AI Agent, kết nối Zalo và hệ thống quản trị của bạn.</p>
+          </li>
+          <li>
+            <span class="step-day">Ngày 4</span>
+            <h3>Chạy thử nội bộ</h3>
+            <p>Cùng đội của bạn thử các câu hỏi hóc búa, chỉnh phản hồi cho đúng giọng doanh nghiệp.</p>
+          </li>
+          <li>
+            <span class="step-day">Ngày 5</span>
+            <h3>Bàn giao và vận hành</h3>
+            <p>Bật hệ thống chạy thật, cấp quyền xem dashboard thống kê và bắt đầu giảm tải cho nhân sự.</p>
+          </li>
+        </ol>
       </div>
+    </section>
 
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-        <!-- GÓI 1: CLOUD STANDARD -->
-        <div class="surface-card p-8 sm:p-10 border-2 border-emerald-500/60 relative flex flex-col justify-between shadow-[0_0_40px_rgba(16,185,129,0.12)]">
-          <div class="absolute -top-3.5 right-6 bg-gradient-to-r from-emerald-400 to-cyan-400 text-slate-950 text-xs font-extrabold uppercase tracking-wider px-4 py-1 rounded-full shadow">
-            Khuyên dùng cho SME &amp; Chuỗi Cửa Hàng
-          </div>
+    <!-- ============================== BẢNG GIÁ ============================== -->
+    <section class="section section-alt" id="bang-gia">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Bảng giá</p>
+          <h2>Giá công khai, token tính theo thực dùng</h2>
+          <p>Phí khởi tạo trả một lần. Chi phí token AI được thống kê chi tiết mỗi tháng và có trần ngân sách do bạn đặt.</p>
+        </div>
 
-          <div>
-            <h3 class="text-2xl font-extrabold text-white mb-1">GÓI 1: CLOUD STANDARD</h3>
-            <p class="text-sm text-slate-400 mb-6">Dành cho Cửa Hàng, Phòng Khám &amp; SME cần vận hành tự động nhanh chóng.</p>
-
-            <!-- Price Breakdown Box -->
-            <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-5 space-y-4 mb-7">
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-3 border-b border-slate-800/80">
-                <div>
-                  <span class="text-sm font-semibold text-white block">Phí Thuê Bao Duy Trì</span>
-                  <span class="text-xs text-slate-400">Bao gồm server, bảo trì, giám sát 24/7, backup dữ liệu</span>
-                </div>
-                <div class="text-2xl font-extrabold text-emerald-400 whitespace-nowrap">
-                  990.000 VNĐ <span class="text-xs text-slate-400 font-normal">/ tháng</span>
-                </div>
-              </div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 pb-3 border-b border-slate-800/80">
-                <div>
-                  <span class="text-sm font-semibold text-white block">Phí Khởi Tạo (Setup 1 lần)</span>
-                  <span class="text-xs text-slate-400">Nạp dữ liệu tài liệu RAG, cấu hình kết nối Zalo OA, thiết lập kịch bản</span>
-                </div>
-                <div class="text-lg font-extrabold text-white whitespace-nowrap">
-                  3.000.000 VNĐ
-                </div>
-              </div>
-
-              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                <div>
-                  <span class="text-sm font-semibold text-white block">Chi phí Token AI (OpenRouter)</span>
-                  <span class="text-xs text-slate-400">Tính theo thực tế sử dụng minh bạch từng xu</span>
-                </div>
-                <div class="text-sm font-bold text-cyan-300 whitespace-nowrap">
-                  ~300.000đ - 1.500.000đ / tháng
-                </div>
-              </div>
+        <div class="pricing">
+          <article class="card plan plan-featured">
+            <p class="plan-for">Cửa hàng, phòng khám, SME</p>
+            <h3>Cloud Standard</h3>
+            <div class="price">
+              <span class="price-main">990.000₫</span><span class="price-unit">/ tháng</span>
             </div>
+            <dl class="price-lines">
+              <div><dt>Khởi tạo một lần</dt><dd>3.000.000₫</dd></div>
+              <div><dt>Thuê bao duy trì</dt><dd>990.000₫ / tháng</dd></div>
+              <div><dt>Token AI</dt><dd>Theo thực dùng, thường 300.000₫ đến 1.500.000₫ / tháng</dd></div>
+            </dl>
+            <ul class="ticks">
+              <li>01 kênh Zalo OA tự động</li>
+              <li>Nạp tối đa 500 trang tài liệu nội bộ</li>
+              <li>Kết nối 01 database bán hàng hoặc Google Sheets</li>
+              <li>Server, bảo trì, giám sát 24/7, backup dữ liệu</li>
+              <li>Hỗ trợ kỹ thuật và tối ưu kịch bản định kỳ</li>
+            </ul>
+            <a class="btn btn-primary btn-block" href="#dang-ky" data-plan="Cloud Standard">Đăng ký gói Cloud Standard</a>
+          </article>
 
-            <!-- Features Included -->
-            <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Tính năng bao gồm:</div>
-            <ul class="space-y-3 text-sm text-slate-200 mb-8">
-              <li class="flex items-start gap-3">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span><strong>01 Kênh Zalo OA Bot</strong> tự động tư vấn &amp; chốt đơn 24/7</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Nạp tối đa <strong>500 trang tài liệu nội bộ</strong> (Word, Excel, PDF)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Kết nối <strong>01 Database bán hàng / Google Sheets</strong> qua chuẩn MCP</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-emerald-400 font-bold">✓</span>
-                <span>Hỗ trợ kỹ thuật và tối ưu kịch bản định kỳ</span>
-              </li>
+          <article class="card plan">
+            <p class="plan-for">Doanh nghiệp lớn và chuỗi</p>
+            <h3>Enterprise Dedicated</h3>
+            <div class="price">
+              <span class="price-main">Liên hệ</span><span class="price-unit">khảo sát và báo giá</span>
+            </div>
+            <dl class="price-lines">
+              <div><dt>Hạ tầng</dt><dd>Private Server hoặc On-Premise</dd></div>
+              <div><dt>Tri thức</dt><dd>Graph Database (Neo4j)</dd></div>
+              <div><dt>Cam kết</dt><dd>NDA và SLA 99,9%</dd></div>
+            </dl>
+            <ul class="ticks">
+              <li>Máy chủ độc lập cho riêng doanh nghiệp</li>
+              <li>Cấu trúc tri thức phức tạp, nhiều tầng quan hệ</li>
+              <li>Tùy biến kết nối ERP, SAP, Bravo, MISA</li>
+              <li>Kỹ sư hỗ trợ theo SLA</li>
+            </ul>
+            <a class="btn btn-ghost btn-block" href="#dang-ky" data-plan="Enterprise Dedicated">Đặt lịch khảo sát</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CÔNG NGHỆ ============================== -->
+    <section class="section" id="cong-nghe">
+      <div class="container">
+        <div class="section-head">
+          <p class="kicker">Dành cho đội kỹ thuật và CTO</p>
+          <h2>Hạ tầng vận hành độc lập và bảo mật</h2>
+        </div>
+
+        <div class="tech-grid">
+          <article class="card tech">
+            <p class="tags"><code>Neo4j</code><code>Qdrant</code></p>
+            <h3>Knowledge và GraphRAG</h3>
+            <p>Không chỉ tìm theo từ khóa. AI hiểu quan hệ nhiều tầng giữa sản phẩm, khách hàng, chính sách giá và quy trình nội bộ.</p>
+          </article>
+          <article class="card tech">
+            <p class="tags"><code>MCP</code><code>SQL</code><code>REST</code></p>
+            <h3>Model Context Protocol</h3>
+            <p>Giao thức kết nối mở, cho phép AI truy cập có kiểm soát vào database SQL, ERP, Google Drive và API bên ngoài.</p>
+          </article>
+          <article class="card tech">
+            <p class="tags"><code>Multi-tenant</code><code>Circuit breaker</code></p>
+            <h3>Tách dữ liệu và chặn tràn chi phí</h3>
+            <p>Dữ liệu từng khách hàng nằm ở vùng riêng. Bộ ngắt mạch tự dừng khi chi phí token chạm hạn mức bạn đặt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FAQ ============================== -->
+    <section class="section section-alt" id="faq">
+      <div class="container container-narrow">
+        <div class="section-head">
+          <p class="kicker">Câu hỏi thường gặp</p>
+          <h2>Những điều chủ doanh nghiệp hay hỏi trước khi làm</h2>
+        </div>
+
+        <div class="faq">
+          <details open>
+            <summary>AI có trả lời bậy hoặc báo sai giá cho khách không?</summary>
+            <p>AI chỉ được trả lời từ tài liệu và bảng giá bạn đã nạp, không tự suy đoán. Giá và tồn kho được đọc trực tiếp từ hệ thống của bạn tại thời điểm khách hỏi. Câu nào nằm ngoài tài liệu, AI nói rõ là chưa có thông tin và chuyển cho nhân viên.</p>
+          </details>
+          <details>
+            <summary>Chi phí token AI hàng tháng được theo dõi như thế nào?</summary>
+            <p>Dashboard thống kê từng lượt hỏi đáp và lượng token tiêu thụ. Mỗi tháng bạn nhận bảng sao kê chi tiết, và bạn đặt trước ngân sách tối đa để hệ thống tự dừng khi chạm trần.</p>
+          </details>
+          <details>
+            <summary>Công ty tôi dùng phần mềm quản lý riêng thì AI có kết nối được không?</summary>
+            <p>Được. Qua chuẩn MCP, AI kết nối với bất kỳ phần mềm nào có API hoặc cơ sở dữ liệu như MySQL, PostgreSQL, SQL Server, Google Sheets.</p>
+          </details>
+          <details>
+            <summary>Khách nhắn bằng giọng nói thì AI có hiểu không?</summary>
+            <p>Có. Hệ thống chuyển tin nhắn thoại sang văn bản, xử lý nghiệp vụ rồi phản hồi bằng văn bản hoặc âm thanh.</p>
+          </details>
+          <details>
+            <summary>Khi nào thì AI chuyển cho nhân viên?</summary>
+            <p>Khi khách khiếu nại, khi câu hỏi nằm ngoài tài liệu, hoặc theo các điều kiện bạn đặt trong quy trình. Nhân viên nhận được tóm tắt hội thoại và có thể chuyển hội thoại đó sang chế độ thủ công bất cứ lúc nào.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ĐĂNG KÝ ============================== -->
+    <section class="section" id="dang-ky">
+      <div class="container">
+        <div class="signup">
+          <div class="signup-copy">
+            <p class="kicker">Demo trên dữ liệu của bạn</p>
+            <h2>Sẵn sàng giao việc tay chân cho AI Agent ngay tuần này?</h2>
+            <p>Gửi ba thông tin bên cạnh. Chúng tôi dựng bản demo chạy trên chính sản phẩm và bảng giá của bạn để bạn tự nhắn thử.</p>
+            <ul class="ticks">
+              <li>Miễn phí, không ràng buộc</li>
+              <li>Liên hệ lại qua Zalo trong giờ làm việc</li>
+              <li>Demo chạy trên Zalo, bạn tự nhắn thử</li>
             </ul>
           </div>
 
-          <a href="#dang-ky-demo" onclick="prefillPackage('Gói 1: Cloud Standard (990k/tháng)')" class="btn-glow w-full py-4 rounded-xl text-center text-sm sm:text-base block">
-            Đăng Ký Triển Khai Gói Cloud Standard ➔
-          </a>
-        </div>
-
-        <!-- GÓI 2: ENTERPRISE DEDICATED -->
-        <div class="surface-card p-8 sm:p-10 border border-slate-800 flex flex-col justify-between">
-          <div>
-            <h3 class="text-2xl font-extrabold text-white mb-1">GÓI 2: ENTERPRISE DEDICATED</h3>
-            <p class="text-sm text-slate-400 mb-6">Dành cho Doanh Nghiệp Lớn &amp; Chuỗi cần hạ tầng riêng biệt và tích hợp ERP sâu.</p>
-
-            <!-- Price Breakdown Box -->
-            <div class="bg-slate-950/90 border border-slate-800 rounded-2xl p-6 mb-7 flex flex-col justify-center min-h-[178px]">
-              <span class="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-1">Mức đầu tư theo kiến trúc</span>
-              <div class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
-                Liên hệ khảo sát &amp; báo giá
-              </div>
-              <p class="text-xs sm:text-sm text-slate-400">
-                Đội ngũ Solution Architect của Pycom sẽ khảo sát trực tiếp hạ tầng dữ liệu, lưu lượng truy cập và quy trình ERP để thiết kế gói tối ưu nhất.
-              </p>
+          <form class="card signup-form" id="lead-form" novalidate>
+            <div class="field">
+              <label for="f-name">Họ và tên</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Trần Minh Hoàng" />
             </div>
-
-            <!-- Features Included -->
-            <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Tính năng bao gồm:</div>
-            <ul class="space-y-3 text-sm text-slate-200 mb-8">
-              <li class="flex items-start gap-3">
-                <span class="text-cyan-400 font-bold">✓</span>
-                <span>Triển khai máy chủ độc lập (<strong>Private Server / On-Premise</strong>)</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-cyan-400 font-bold">✓</span>
-                <span>Thiết lập <strong>Graph Database (Neo4j)</strong> cho cấu trúc tri thức phức tạp</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-cyan-400 font-bold">✓</span>
-                <span>Tùy biến kết nối chuyên sâu với hệ thống <strong>ERP, SAP, Bravo, Misa</strong></span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-cyan-400 font-bold">✓</span>
-                <span>Cam kết bảo mật chuẩn <strong>NDA &amp; Hỗ trợ kỹ sư SLA 99.9%</strong></span>
-              </li>
-            </ul>
-          </div>
-
-          <a href="#dang-ky-demo" onclick="prefillPackage('Gói 2: Enterprise Dedicated (On-Premise / ERP)')" class="btn-outline-glass w-full py-4 rounded-xl text-center font-bold text-sm sm:text-base block">
-            Đặt Lịch Khảo Sát &amp; Báo Giá Enterprise ➔
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         SECTION 9: QUY TRÌNH TRIỂN KHAI 4 BƯỚC THẦN TỐC
-    ====================================================================== -->
-    <section class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 mb-3">
-          Fast-Track Onboarding
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-3">
-          Quy Trình Triển Khai 4 Bước Thần Tốc
-        </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Từ lúc tiếp nhận tài liệu đến khi AI Agent chính thức vận hành tự động chỉ mất đúng 5 ngày làm việc.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <!-- Step 1 -->
-        <div class="surface-card p-6 relative">
-          <div class="flex items-center justify-between mb-4">
-            <span class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-extrabold flex items-center justify-center">
-              01
-            </span>
-            <span class="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md">
-              Ngày 1
-            </span>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Tiếp nhận tài liệu</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Bạn chỉ cần gửi file tài liệu bảng giá, file Excel sản phẩm hoặc quy định hiện có của doanh nghiệp.
-          </p>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="surface-card p-6 relative">
-          <div class="flex items-center justify-between mb-4">
-            <span class="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/40 text-cyan-400 font-extrabold flex items-center justify-center">
-              02
-            </span>
-            <span class="text-xs font-mono font-bold text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md">
-              Ngày 2 - 3
-            </span>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Nạp tri thức &amp; Cấu hình</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Đội ngũ kỹ sư nạp dữ liệu vào AI Agent, kết nối cổng Zalo OA và tích hợp hệ thống quản trị qua MCP.
-          </p>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="surface-card p-6 relative">
-          <div class="flex items-center justify-between mb-4">
-            <span class="w-10 h-10 rounded-xl bg-sky-500/20 border border-sky-500/40 text-sky-400 font-extrabold flex items-center justify-center">
-              03
-            </span>
-            <span class="text-xs font-mono font-bold text-sky-400 bg-sky-500/10 px-2.5 py-1 rounded-md">
-              Ngày 4
-            </span>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Chạy thử nghiệm nội bộ</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Cùng đội ngũ của bạn test các câu hỏi hóc búa, căn chỉnh phản hồi đúng giọng điệu thương hiệu doanh nghiệp.
-          </p>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="surface-card p-6 relative border-emerald-500/40">
-          <div class="flex items-center justify-between mb-4">
-            <span class="w-10 h-10 rounded-xl bg-emerald-500 text-slate-950 font-extrabold flex items-center justify-center">
-              04
-            </span>
-            <span class="text-xs font-mono font-bold text-emerald-300 bg-emerald-500/20 px-2.5 py-1 rounded-md">
-              Ngày 5
-            </span>
-          </div>
-          <h3 class="text-lg font-bold text-white mb-2">Bàn giao &amp; Vận hành</h3>
-          <p class="text-sm text-slate-400 leading-relaxed">
-            Kích hoạt hệ thống chạy tự động 24/7, cấp quyền xem dashboard thống kê và bắt đầu giảm tải nhân sự.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         SECTION 10: FAQ (CÂU HỎI THƯỜNG GẶP)
-    ====================================================================== -->
-    <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 mb-3">
-          FAQ
-        </span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Câu Hỏi Thường Gặp
-        </h2>
-      </div>
-
-      <div class="space-y-4">
-        <!-- FAQ 1 -->
-        <div class="surface-card faq-card open">
-          <button onclick="toggleFaqItem(this)" class="w-full p-6 text-left flex items-center justify-between gap-4">
-            <span class="text-base sm:text-lg font-bold text-white">
-              1. AI có trả lời bậy bạ hoặc báo sai giá cho khách không?
-            </span>
-            <span class="faq-icon w-8 h-8 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center font-bold transition-transform shrink-0">+</span>
-          </button>
-          <div class="faq-content" style="max-height: 220px;">
-            <div class="px-6 pb-6 pt-2 text-sm sm:text-base text-slate-300 border-t border-slate-800/60">
-              <strong class="text-emerald-400">Tuyệt đối không.</strong> Hệ thống được khóa chặt bằng công nghệ RAG và bộ lọc ngữ cảnh. AI chỉ được phép trích xuất thông tin từ tài liệu và bảng giá bạn nạp vào, không tự ý suy đoán lung tung.
+            <div class="field">
+              <label for="f-phone">Số điện thoại / Zalo</label>
+              <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0909 123 456" />
             </div>
-          </div>
-        </div>
-
-        <!-- FAQ 2 -->
-        <div class="surface-card faq-card">
-          <button onclick="toggleFaqItem(this)" class="w-full p-6 text-left flex items-center justify-between gap-4">
-            <span class="text-base sm:text-lg font-bold text-white">
-              2. Chi phí Token AI hàng tháng được theo dõi như thế nào?
-            </span>
-            <span class="faq-icon w-8 h-8 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center font-bold transition-transform shrink-0">+</span>
-          </button>
-          <div class="faq-content">
-            <div class="px-6 pb-6 pt-2 text-sm sm:text-base text-slate-300 border-t border-slate-800/60">
-              Hệ thống có <strong class="text-white">dashboard minh bạch từng xu</strong>. Mỗi tháng bạn nhận được bảng sao kê chi tiết số lượt hỏi đáp và lượng token tiêu thụ qua OpenRouter. Bạn luôn kiểm soát được ngân sách tối đa mỗi tháng.
+            <div class="field">
+              <label for="f-industry">Ngành nghề kinh doanh</label>
+              <input id="f-industry" name="industry" type="text" required placeholder="Bán lẻ, phòng khám, phân phối B2B..." />
             </div>
-          </div>
+            <input type="hidden" name="plan" id="f-plan" value="" />
+            <p class="plan-picked" id="plan-picked" hidden></p>
+            <button class="btn btn-primary btn-block" type="submit">Nhận demo trên dữ liệu của bạn <span aria-hidden="true">→</span></button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
-
-        <!-- FAQ 3 -->
-        <div class="surface-card faq-card">
-          <button onclick="toggleFaqItem(this)" class="w-full p-6 text-left flex items-center justify-between gap-4">
-            <span class="text-base sm:text-lg font-bold text-white">
-              3. Công ty tôi dùng phần mềm quản lý riêng thì AI có kết nối được không?
-            </span>
-            <span class="faq-icon w-8 h-8 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center font-bold transition-transform shrink-0">+</span>
-          </button>
-          <div class="faq-content">
-            <div class="px-6 pb-6 pt-2 text-sm sm:text-base text-slate-300 border-t border-slate-800/60">
-              <strong class="text-emerald-400">Được.</strong> Nhờ chuẩn kết nối <code class="text-cyan-300">MCP (Model Context Protocol)</code>, AI có thể cắm vào bất kỳ phần mềm nào có API hoặc cơ sở dữ liệu như MySQL, PostgreSQL, SQL Server hoặc Google Sheets.
-            </div>
-          </div>
-        </div>
-
-        <!-- FAQ 4 -->
-        <div class="surface-card faq-card">
-          <button onclick="toggleFaqItem(this)" class="w-full p-6 text-left flex items-center justify-between gap-4">
-            <span class="text-base sm:text-lg font-bold text-white">
-              4. Khách hàng của tôi nhắn bằng giọng nói (Voice message) AI có hiểu không?
-            </span>
-            <span class="faq-icon w-8 h-8 rounded-full bg-slate-800 text-cyan-400 flex items-center justify-center font-bold transition-transform shrink-0">+</span>
-          </button>
-          <div class="faq-content">
-            <div class="px-6 pb-6 pt-2 text-sm sm:text-base text-slate-300 border-t border-slate-800/60">
-              <strong class="text-emerald-400">Có.</strong> Hệ thống tự động chuyển đổi tin nhắn thoại sang văn bản, xử lý nghiệp vụ và phản hồi lại bằng văn bản hoặc âm thanh chuẩn tự nhiên.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =====================================================================
-         SECTION 11: CALL TO ACTION CUỐI TRANG & FORM ĐĂNG KÝ RÚT GỌN
-    ====================================================================== -->
-    <section id="dang-ky-demo" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      <div class="surface-card p-8 sm:p-12 lg:p-14 border border-cyan-500/40 relative overflow-hidden shadow-[0_0_60px_rgba(6,182,212,0.16)]">
-        <div class="max-w-2xl mx-auto text-center mb-10">
-          <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 mb-4">
-            Bắt Đầu Ngay Hôm Nay
-          </span>
-          <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
-            Sẵn sàng chuyển giao việc tay chân cho AI Agent ngay tuần này?
-          </h2>
-          <p class="text-slate-300 text-base sm:text-lg">
-            Đừng để đối thủ bỏ xa. Hãy bắt đầu với bản Demo chạy trực tiếp trên sản phẩm của chính bạn.
-          </p>
-        </div>
-
-        <!-- 3-Field Form from Spec -->
-        <form id="lead-capture-form" onsubmit="handleLeadSubmit(event)" class="max-w-xl mx-auto space-y-4">
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Họ và tên *</label>
-            <input
-              type="text"
-              required
-              placeholder="Nhập họ và tên của bạn (VD: Trần Minh Hoàng)"
-              class="w-full px-4 py-3.5 rounded-xl bg-slate-950/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400"
-            />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Số điện thoại / Zalo *</label>
-            <input
-              type="tel"
-              required
-              placeholder="Nhập số điện thoại Zalo nhận bản Demo (VD: 0909 123 456)"
-              class="w-full px-4 py-3.5 rounded-xl bg-slate-950/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400"
-            />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Ngành nghề kinh doanh *</label>
-            <input
-              id="industry-input"
-              type="text"
-              required
-              placeholder="VD: Bán lẻ & Chuỗi / Phòng khám Nha khoa / Phân phối B2B..."
-              class="w-full px-4 py-3.5 rounded-xl bg-slate-950/90 border border-slate-700 text-white text-sm focus:outline-none focus:border-cyan-400"
-            />
-          </div>
-
-          <div class="pt-2">
-            <button type="submit" class="w-full btn-glow py-4 rounded-xl text-base font-extrabold flex items-center justify-center gap-2">
-              <span>Nhận Demo Trực Tiếp Trên Dữ Liệu Của Bạn ➔</span>
-            </button>
-          </div>
-          <p class="text-center text-xs text-slate-400 pt-1">
-            🔒 Cam kết bảo mật NDA 100% tài liệu &amp; dữ liệu doanh nghiệp của bạn.
-          </p>
-        </form>
       </div>
     </section>
   </main>
 
-  <!-- =====================================================================
-       FOOTER
-  ====================================================================== -->
-  <footer class="border-t border-slate-800/80 bg-slate-950/90 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-      <!-- Brand Column -->
-      <div class="space-y-3">
-        <div class="flex items-center gap-3">
-          <div class="bg-white px-2.5 py-1 rounded-lg">
-            <img src="logo.png" alt="Pycom Logo" class="h-6 w-auto" />
-          </div>
-          <span class="text-white font-extrabold text-base">Pycom Enterprise Platform</span>
-        </div>
-        <p class="text-xs text-slate-400 leading-relaxed">
-          Nền tảng Agentic AI &amp; Tự Động Hóa Doanh Nghiệp thế hệ mới. Tích hợp sâu GraphRAG, Model Context Protocol (MCP) và Zalo OA.
-        </p>
-      </div>
-
-      <!-- Contact 1 -->
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
       <div>
-        <div class="text-xs font-bold uppercase tracking-wider text-white mb-3">Hotline Kỹ Thuật</div>
-        <a href="tel:0900000000" class="text-sm text-emerald-400 font-semibold hover:underline block">
-          📞 Liên hệ Hotline 24/7
+        <a class="brand" href="#top">
+          <span class="brand-chip"><img src="logo.png" alt="" width="64" height="36" /></span>
+          <span class="brand-text"><strong>Pycom Enterprise Platform</strong></span>
         </a>
-        <span class="text-xs text-slate-500">Hỗ trợ triển khai &amp; tư vấn kiến trúc</span>
+        <p class="footer-about">Dịch vụ AI Agent và tự động hóa doanh nghiệp: Zalo OA, GraphRAG và Model Context Protocol.</p>
       </div>
 
-      <!-- Contact 2 -->
-      <div>
-        <div class="text-xs font-bold uppercase tracking-wider text-white mb-3">Zalo Tư Vấn</div>
-        <a href="#zalo-simulation" class="text-sm text-cyan-400 font-semibold hover:underline block">
-          💬 Chat trực tiếp với Pycom AI
-        </a>
-        <span class="text-xs text-slate-500">Email: contact@pycom.vn</span>
+      <div data-contact-block="hotline" hidden>
+        <p class="footer-label">Hotline kỹ thuật</p>
+        <a data-contact="hotline" href="#dang-ky"></a>
       </div>
-
-      <!-- Contact 3 -->
-      <div>
-        <div class="text-xs font-bold uppercase tracking-wider text-white mb-3">Văn Phòng</div>
-        <p class="text-sm text-slate-300">TP. Hồ Chí Minh &amp; Remote Toàn Quốc</p>
-        <span class="text-xs text-slate-500">Triển khai Cloud &amp; On-Premise</span>
+      <div data-contact-block="zalo" hidden>
+        <p class="footer-label">Zalo tư vấn</p>
+        <a data-contact="zalo" href="#dang-ky">Nhắn Zalo cho Pycom AI</a>
+      </div>
+      <div data-contact-block="email" hidden>
+        <p class="footer-label">Email</p>
+        <a data-contact="email" href="#dang-ky"></a>
+      </div>
+      <div data-contact-block="office" hidden>
+        <p class="footer-label">Văn phòng</p>
+        <p data-contact="office"></p>
       </div>
     </div>
-
-    <div class="max-w-7xl mx-auto pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-      <div>© 2026 Pycom. All rights reserved.</div>
-      <div class="flex gap-6">
-        <a href="#giai-phap" class="hover:text-slate-300">Kiến trúc MCP &amp; RAG</a>
-        <a href="#bang-gia" class="hover:text-slate-300">Bảng giá</a>
-        <a href="#faq" class="hover:text-slate-300">Câu hỏi thường gặp</a>
-      </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Pycom. All rights reserved.</span>
+      <nav aria-label="Liên kết cuối trang">
+        <a href="#dich-vu">Dịch vụ</a>
+        <a href="#bang-gia">Bảng giá</a>
+        <a href="#faq">Câu hỏi thường gặp</a>
+      </nav>
     </div>
   </footer>
 

@@ -1,353 +1,438 @@
-// ============================================================================
-// 1. SECTION 5: INTERACTIVE ZALO MOCK CHAT WIDGET
-// ============================================================================
-const defaultZaloConversation = [
-  {
-    sender: "customer",
-    text: "Shop ơi, máy lọc nước mã A2 còn hàng ở kho Quận 7 không? Mai ship sáng được không shop?",
-    time: "22:15"
-  },
-  {
-    sender: "ai-agent",
-    text: `Dạ chào anh Hoàng! Em vừa kiểm kho Q7, mã A2 hiện còn <strong class="text-emerald-400">3 máy</strong> ạ. Bên em có thể giao từ 8h30 - 10h sáng mai cho anh. Anh kiểm tra lại địa chỉ nhận hàng là <code class="bg-slate-900 px-1.5 py-0.5 rounded text-cyan-300">123 Nguyễn Thị Thập</code> đúng không để em lên đơn giữ máy cho mình luôn nhé?`,
-    time: "22:15:02 • Đã kiểm kho qua MCP"
-  },
-  {
-    sender: "customer",
-    text: "Đúng rồi em, ship luôn nhé.",
-    time: "22:15:20"
-  },
-  {
-    sender: "ai-agent",
-    text: `Dạ em đã tạo đơn thành công mã <code class="bg-emerald-500/20 text-emerald-300 px-1.5 py-0.5 rounded font-bold">#DH-8921</code> trên hệ thống và chuyển đơn sang kho Q7 chuẩn bị hàng sáng mai. Anh theo dõi lộ trình đơn tại đây nhé! Chúc anh buổi tối an lành.`,
-    time: "22:15:23 • Đã tạo vận đơn ERP"
-  }
-];
+/* ==========================================================================
+   Pycom AI landing page
+   ========================================================================== */
 
-let replayTimeouts = [];
+/* --------------------------------------------------------------------------
+   CẤU HÌNH: điền các giá trị thật vào đây trước khi đưa trang lên mạng.
+   Mục nào để trống thì trang tự ẩn mục đó (hoặc trỏ nút về form đăng ký).
+   -------------------------------------------------------------------------- */
+const CONFIG = {
+  // Nơi nhận lead từ form (Formspree, Google Apps Script, webhook riêng...).
+  // Form gửi POST dạng FormData với các trường: name, phone, industry, plan, page.
+  LEAD_ENDPOINT: "",
+  // Link Zalo OA, ví dụ "https://zalo.me/0123456789".
+  ZALO_URL: "",
+  // Số hotline hiển thị ở footer, ví dụ "0909 123 456".
+  HOTLINE: "",
+  EMAIL: "",
+  OFFICE: "",
+};
 
-function renderZaloBubble(msg) {
-  const container = document.getElementById("zalo-chat-body");
-  if (!container) return;
-
-  const bubble = document.createElement("div");
-  bubble.className = `zalo-bubble ${msg.sender}`;
-  bubble.innerHTML = `
-    ${msg.text}
-    <span class="zalo-time ${msg.sender === "customer" ? "text-right" : ""}">${msg.time}</span>
-  `;
-  container.appendChild(bubble);
-  container.scrollTop = container.scrollHeight;
-}
-
-function replayZaloConversation() {
-  const container = document.getElementById("zalo-chat-body");
-  if (!container) return;
-
-  replayTimeouts.forEach((t) => clearTimeout(t));
-  replayTimeouts = [];
-  container.innerHTML = "";
-
-  defaultZaloConversation.forEach((msg, index) => {
-    const t = setTimeout(() => {
-      renderZaloBubble(msg);
-    }, index * 950);
-    replayTimeouts.push(t);
-  });
-}
-
-function getSimulatedAgentReply(userText) {
-  const lower = userText.toLowerCase();
-  if (lower.includes("công nợ") || lower.includes("mst")) {
-    return {
-      text: `Dạ em đã tra cứu phần mềm kế toán cho MST <code class="text-cyan-300">0316889921</code> (Đại lý Cấp 1). Tổng công nợ kỳ T11 hiện tại là <strong class="text-emerald-400">42.500.000đ</strong> (Hạn thanh toán: 15/11). Em vừa xuất file PDF sao kê chi tiết gửi đính kèm qua Zalo cho anh/chị rồi ạ!`,
-      meta: "Vừa xong • MCP Accounting API (2.1s)"
-    };
-  }
-  if (lower.includes("lịch") || lower.includes("bác sĩ") || lower.includes("khám")) {
-    return {
-      text: `Dạ em vừa kiểm tra lịch phòng khám: Thứ 7 tuần này lúc <strong>14:00</strong> Bác sĩ Tuấn vẫn còn <strong class="text-emerald-400">01 khung giờ trống</strong> ạ. Em đã giữ lịch hẹn mã <code class="text-cyan-300">#APT-409</code> cho mình và sẽ tự động nhắn Zalo nhắc hẹn trước 2 tiếng nhé!`,
-      meta: "Vừa xong • MCP Booking Engine (1.9s)"
-    };
-  }
-  if (lower.includes("bảo hành") || lower.includes("đổi trả") || lower.includes("lỗi")) {
-    return {
-      text: `Theo <strong class="text-cyan-300">Sổ tay Chính sách Bảo hành (Mục 3.1 - Trang 12)</strong>: Sản phẩm phát sinh lỗi kỹ thuật từ nhà sản xuất trong <strong>15 ngày đầu</strong> sẽ được <strong class="text-emerald-400">Đổi mới 1-1 miễn phí tận nơi</strong>. Anh/chị đọc giúp em SĐT mua hàng để em tạo phiếu thu hồi ngay nhé!`,
-      meta: "Vừa xong • GraphRAG Neo4j + Qdrant (1.5s)"
-    };
-  }
-  return {
-    text: `Dạ Pycom AI Agent đã tiếp nhận yêu cầu: <em>"${userText}"</em>. Hệ thống đã tự động tra cứu kho tri thức <strong>GraphRAG</strong> và kiểm tra <strong>Database qua MCP</strong> trong 2.1 giây — sẵn sàng lên đơn hoặc trích xuất báo cáo ngay trên Zalo mà không cần nhân sự gõ phím!`,
-    meta: "Vừa xong • Autonomous MCP Execution"
-  };
-}
-
-function sendPresetQuestion(questionText) {
-  const input = document.getElementById("zalo-user-input");
-  if (input) input.value = questionText.trim();
-  handleCustomZaloMessage(new Event("submit"));
-}
-
-function handleCustomZaloMessage(e) {
-  if (e && e.preventDefault) e.preventDefault();
-  const input = document.getElementById("zalo-user-input");
-  if (!input || !input.value.trim()) return;
-
-  const text = input.value.trim();
-  input.value = "";
-
-  const now = new Date();
-  const timeStr =
-    String(now.getHours()).padStart(2, "0") +
-    ":" +
-    String(now.getMinutes()).padStart(2, "0");
-
-  renderZaloBubble({
-    sender: "customer",
-    text: text,
-    time: timeStr
-  });
-
-  const reply = getSimulatedAgentReply(text);
-  setTimeout(() => {
-    renderZaloBubble({
-      sender: "ai-agent",
-      text: reply.text,
-      time: reply.meta
-    });
-  }, 650);
-}
-
-// ============================================================================
-// 2. SECTION 6: INDUSTRY USE CASES INTERACTIVE TABS
-// ============================================================================
-const industryUseCases = [
-  {
-    badge: "Tab 1 • Retail, F&B, Cosmetics & Fashion",
-    title: "Bán lẻ & Chuỗi Cửa Hàng (F&B, Mỹ Phẩm, Thời Trang)",
-    execution:
-      "Trả lời công dụng, tồn kho từng chi nhánh, giá theo phân loại size/màu; tự tạo đơn và xin thông tin giao hàng ngay trên Zalo.",
-    result:
-      "Giảm 90% thời gian phản hồi, tăng gấp đôi tỷ lệ chốt đơn ban đêm mà không cần thuê thêm nhân sự trực page.",
-    metrics: [
-      { value: "-90%", label: "Thời gian phản hồi khách" },
-      { value: "2X", label: "Tỷ lệ chốt đơn khung 22h - 6h sáng" }
+/* --------------------------------------------------------------------------
+   Kịch bản hội thoại mẫu cho phần "AI chat ra việc"
+   -------------------------------------------------------------------------- */
+const SCENARIOS = {
+  retail: {
+    avatar: "AI",
+    title: "Điện Máy Gia Đình",
+    subtitle: "AI Agent đang trả lời",
+    channel: "Zalo OA",
+    steps: [
+      ["Kiểm tồn kho Quận 7", "Gọi API kho: mã A2 còn 3 máy"],
+      ["Tra lịch sử mua hàng", "Lấy tên và địa chỉ giao gần nhất của khách"],
+      ["Tạo đơn và chuyển kho", "Ghi đơn vào hệ thống, báo kho Q7 chuẩn bị hàng"],
     ],
-    workflowSteps: [
-      "Khách gửi ảnh sản phẩm hoặc hỏi mẫu trên Zalo OA",
-      "AI tra cứu công dụng + kiểm tra tồn kho size/màu qua POS API (MCP)",
-      "AI tự áp mã voucher thành viên & tạo vận đơn giao hàng tức thì"
-    ]
-  },
-  {
-    badge: "Tab 2 • Healthcare, Dental Clinic & Spa",
-    title: "Phòng Khám, Nha Khoa, Thẩm Mỹ Viện & Spa",
-    execution:
-      "Tư vấn quy trình điều trị chuẩn xác từ tài liệu y khoa nội bộ; kiểm tra lịch trống của bác sĩ/kỹ thuật viên và tự book lịch; tự động gửi tin nhắn Zalo nhắc khách trước ngày hẹn.",
-    result:
-      "Không còn tình trạng trùng lịch hẹn, giảm tối đa tỷ lệ khách 'bỏ bom' hẹn (No-show) nhờ cơ chế nhắc lịch tự động.",
-    metrics: [
-      { value: "0%", label: "Tình trạng đặt trùng lịch bác sĩ" },
-      { value: "-65%", label: "Tỷ lệ khách quên/bỏ hẹn (No-show)" }
+    note: "Không nhân viên nào phải mở phần mềm để gõ đơn này.",
+    messages: [
+      { from: "user", time: "22:15", text: "Shop ơi, máy lọc nước mã A2 còn hàng ở kho Quận 7 không? Mai ship sáng được không shop?" },
+      { from: "ai", time: "22:15", done: [0, 1], text: "Dạ chào anh Hoàng! Em vừa kiểm kho Q7, mã A2 hiện còn <b>3 máy</b> ạ. Bên em giao được từ 8h30 đến 10h sáng mai. Địa chỉ nhận vẫn là <code>123 Nguyễn Thị Thập</code> đúng không anh, để em lên đơn giữ máy luôn?" },
+      { from: "user", time: "22:15", text: "Đúng rồi em, ship luôn nhé." },
+      { from: "ai", time: "22:15", done: [2], text: "Dạ em đã tạo đơn <code>#DH-8921</code> và chuyển sang kho Q7 chuẩn bị hàng sáng mai. Chúc anh buổi tối an lành ạ." },
     ],
-    workflowSteps: [
-      "Khách hỏi triệu chứng hoặc gói liệu trình trên Zalo",
-      "AI trích xuất đúng phác đồ tư vấn từ tài liệu Y khoa nội bộ (RAG)",
-      "AI kiểm tra slot trống của Bác sĩ qua HIS/CRM & đặt lịch + hẹn giờ nhắc"
-    ]
+    result: { label: "Kết quả trong hệ thống", text: "Đã tạo đơn #DH-8921 · chuyển kho Q7" },
   },
-  {
-    badge: "Tab 3 • Wholesale, Manufacturing & B2B Distribution",
-    title: "Bán Buôn (Wholesale), Sản Xuất & Phân Phối B2B",
-    execution:
-      "Đại lý chỉ cần nhắn Mã số thuế qua Zalo → AI tự đối soát hóa đơn trên phần mềm kế toán và gửi sao kê công nợ trong 3 giây; báo giá đúng cấp bậc chiết khấu đại lý.",
-    result:
-      "Kế toán không còn bị tra tấn bởi hàng trăm cuộc gọi đòi bảng công nợ và kiểm tra chiết khấu mỗi ngày.",
-    metrics: [
-      { value: "3 Giây", label: "Xuất & gửi sao kê công nợ tự động" },
-      { value: "100%", label: "Chính xác theo bậc chiết khấu đại lý" }
+
+  b2b: {
+    avatar: "AI",
+    title: "Phòng Kế Toán · Nhà phân phối",
+    subtitle: "AI Agent đang trả lời",
+    channel: "Zalo OA",
+    steps: [
+      ["Nhận diện đại lý", "Đối chiếu mã số thuế với danh sách đối tác"],
+      ["Đối soát hóa đơn", "Đọc 12 hóa đơn tháng 10 trên phần mềm kế toán"],
+      ["Xuất và gửi sao kê", "Tạo file PDF, gửi lại ngay trong hội thoại"],
     ],
-    workflowSteps: [
-      "Đại lý nhắn Mã số thuế hoặc mã đơn đặt hàng (PO) trên Zalo",
-      "AI truy vấn ERP/Misa/Bravo qua MCP kiểm tra hạn mức & bậc chiết khấu",
-      "AI xuất bảng đối chiếu công nợ PDF và lên đơn sỉ tự động"
-    ]
+    note: "Kế toán không phải dừng việc để tra công nợ cho từng đại lý.",
+    messages: [
+      { from: "user", time: "08:02", text: "Em ơi gửi anh sao kê công nợ tháng 10 nhé. MST 0301234567." },
+      { from: "ai", time: "08:02", done: [0, 1, 2], text: "Dạ em chào anh Tuấn. Em vừa đối soát <b>12 hóa đơn</b> tháng 10 của đại lý mình: tổng công nợ <b>184.500.000đ</b>, hạn thanh toán gần nhất là 20/11. Em gửi anh file chi tiết ạ.", attach: "file" },
+      { from: "user", time: "08:03", text: "Ok em. Lô hàng tháng này anh vẫn được chiết khấu cấp 1 chứ?" },
+      { from: "ai", time: "08:03", text: "Dạ đúng ạ, đại lý mình đang ở <b>cấp 1, chiết khấu 12%</b> theo chính sách quý 4. Anh cần em lên báo giá theo mức này không ạ?" },
+    ],
+    result: { label: "Kết quả trong hệ thống", text: "Đã gửi sao kê công nợ · 12 hóa đơn" },
   },
-  {
-    badge: "Tab 4 • Education, K-12 Schools & Training Centers",
-    title: "Giáo Dục, Trường Học Liên Cấp & Trung Tâm Đào Tạo",
-    execution:
-      "Tư vấn chính xác biểu phí, lộ trình song ngữ, tuyến xe đưa đón theo Sổ tay phụ huynh; tự động thu thập thông tin và chấm điểm phụ huynh tiềm năng (Lead Scoring) để chuyển sale chốt hẹn.",
-    result:
-      "Tuyển sinh tự động 24/7, sàng lọc lead chất lượng cao mà không bỏ sót bất kỳ câu hỏi nào của phụ huynh.",
-    metrics: [
-      { value: "24/7", label: "Tư vấn tuyển sinh & biểu phí chuẩn xác" },
-      { value: "+85%", label: "Tỷ lệ lọc Lead phụ huynh chất lượng cao" }
+
+  owner: {
+    avatar: "AI",
+    title: "Trợ lý vận hành",
+    subtitle: "Dành cho chủ doanh nghiệp",
+    channel: "Nội bộ",
+    steps: [
+      ["Truy vấn doanh thu", "Đọc dữ liệu bán hàng 7 ngày từ database"],
+      ["Đối chiếu tồn kho", "Phát hiện mã bán chạy sắp hết hàng"],
+      ["Lập phiếu đề xuất nhập", "Tạo phiếu, gửi bộ phận mua hàng duyệt"],
     ],
-    workflowSteps: [
-      "Phụ huynh hỏi học phí, ưu đãi nhập học hoặc lộ trình đào tạo",
-      "AI trả lời chuẩn 100% theo Sổ tay Phụ huynh & Quy chế tuyển sinh (RAG)",
-      "AI thu thập độ tuổi học sinh, chấm điểm Lead và đẩy thông báo cho Tư vấn viên"
-    ]
+    note: "Bạn giao việc bằng một câu nhắn, không cần tìm đúng màn hình trong phần mềm.",
+    messages: [
+      { from: "user", time: "07:30", text: "Tuần này bán được bao nhiêu rồi em?" },
+      { from: "ai", time: "07:30", done: [0, 1], text: "Dạ 7 ngày qua doanh thu đạt <b>312.400.000đ</b>, tăng 14% so với tuần trước. Bán chạy nhất là máy lọc nước A2 với 41 máy, kho Q7 chỉ còn 3 máy. Anh có muốn em lập phiếu đề xuất nhập thêm không ạ?", attach: "chart" },
+      { from: "user", time: "07:31", text: "Lập đi, nhập 30 máy." },
+      { from: "ai", time: "07:31", done: [2], text: "Dạ em đã lập phiếu <code>#PN-0312</code> đề xuất nhập 30 máy A2 và gửi bộ phận mua hàng duyệt ạ." },
+    ],
+    result: { label: "Kết quả trong hệ thống", text: "Đã lập phiếu nhập #PN-0312 · chờ duyệt" },
   },
-  {
-    badge: "Tab 5 • Accounting, Tax, Legal & Real Estate",
-    title: "Doanh Nghiệp Dịch Vụ, Kế Toán - Thuế, Pháp Lý, BĐS",
-    execution:
-      "Trợ lý nội bộ trả lời ngay lập tức các câu hỏi về hợp đồng, thông tư thuế, bảng hàng bất động sản, hoa hồng dự án kèm trích dẫn văn bản gốc rõ ràng.",
-    result:
-      "Nhân viên mới làm việc chuẩn xác ngay từ tuần đầu tiên, không cần liên tục làm phiền quản lý hay sếp.",
-    metrics: [
-      { value: "Tuần Đầu", label: "Nhân sự mới nắm bắt 100% nghiệp vụ" },
-      { value: "100%", label: "Câu trả lời có trích dẫn điều khoản gốc" }
+
+  handoff: {
+    avatar: "AI",
+    title: "Điện Máy Gia Đình",
+    subtitle: "AI Agent đang trả lời",
+    channel: "Zalo OA",
+    steps: [
+      ["Nhận ra khách khiếu nại", "Chuyển sang quy trình xử lý khiếu nại"],
+      ["Đối chiếu chính sách đổi trả", "Đơn #DH-8921 còn trong 7 ngày đổi mới"],
+      ["Bàn giao cho nhân viên", "Gửi kèm tóm tắt để khách không phải kể lại"],
     ],
-    workflowSteps: [
-      "Nhân viên sale/tư vấn hỏi điều khoản hợp đồng, thuế hoặc giỏ hàng BĐS",
-      "GraphRAG (Neo4j + Qdrant) đối chiếu hàng trăm thông tư, hợp đồng PDF",
-      "Trả về câu trả lời kèm số trang, điều khoản gốc và căn hộ còn trống"
-    ]
+    note: "AI không cố trả lời việc cần người thật quyết. Nó chuyển đúng người, đúng lúc.",
+    messages: [
+      { from: "user", time: "14:40", text: "Máy lọc mới lắp 2 hôm đã rò nước rồi, shop xử lý sao đây?" },
+      { from: "ai", time: "14:40", done: [0], text: "Dạ em rất xin lỗi anh về sự cố này. Anh cho em xin mã đơn hoặc số điện thoại đặt hàng để em kiểm tra ngay ạ." },
+      { from: "user", time: "14:41", text: "DH-8921" },
+      { from: "ai", time: "14:41", done: [1, 2], text: "Dạ đơn <code>#DH-8921</code> còn trong thời hạn <b>7 ngày đổi mới</b>. Em đã chuyển trường hợp của anh cho chị Hà bên chăm sóc khách hàng kèm đầy đủ thông tin, chị sẽ liên hệ anh để hẹn kỹ thuật qua kiểm tra ạ." },
+    ],
+    result: { label: "Chuyển cho người thật", text: "Đã bàn giao cho nhân viên CSKH · kèm tóm tắt", handoff: true },
+  },
+};
+
+const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* --------------------------------------------------------------------------
+   Trình phát hội thoại
+   -------------------------------------------------------------------------- */
+function el(tag, className, html) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (html !== undefined) node.innerHTML = html;
+  return node;
+}
+
+function attachmentHtml(kind) {
+  if (kind === "file") {
+    return '<div class="attach"><span class="attach-icon">PDF</span><span>SaoKe_CongNo_T10.pdf<small>12 hóa đơn · 184.500.000đ</small></span></div>';
   }
-];
-
-function selectIndustryTab(index) {
-  const buttons = document.querySelectorAll(".industry-tab-btn");
-  buttons.forEach((btn, i) => {
-    btn.classList.toggle("active", i === index);
-  });
-
-  const data = industryUseCases[index];
-  const panel = document.getElementById("industry-panel");
-  if (!panel || !data) return;
-
-  panel.innerHTML = `
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-      <!-- Left Info -->
-      <div class="lg:col-span-7 space-y-5">
-        <span class="inline-block px-3 py-1 rounded-md text-xs font-mono font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-          ${data.badge}
-        </span>
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-white leading-tight">
-          ${data.title}
-        </h3>
-
-        <div class="space-y-4 pt-1">
-          <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800">
-            <div class="text-xs font-extrabold uppercase tracking-wider text-cyan-400 mb-1">
-              ⚙️ Thực Thi Tự Động (Agent Execution)
-            </div>
-            <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
-              ${data.execution}
-            </p>
-          </div>
-
-          <div class="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30">
-            <div class="text-xs font-extrabold uppercase tracking-wider text-emerald-400 mb-1">
-              🏆 Kết Quả Thực Tế (Business Impact)
-            </div>
-            <p class="text-slate-200 text-sm sm:text-base leading-relaxed font-medium">
-              ${data.result}
-            </p>
-          </div>
-        </div>
-
-        <div class="pt-2">
-          <a href="#dang-ky-demo" onclick="prefillPackage('${data.title}')" class="btn-glow px-6 py-3 rounded-xl text-sm inline-flex items-center gap-2">
-            <span>Nhận Demo Ngành ${data.title.split("(")[0].trim()} ➔</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Right Workflow & Impact Metrics -->
-      <div class="lg:col-span-5 bg-slate-950/90 border border-slate-800 rounded-2xl p-6 space-y-6">
-        <div class="grid grid-cols-2 gap-4">
-          ${data.metrics
-            .map(
-              (m) => `
-            <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-center">
-              <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">${m.value}</div>
-              <div class="text-xs text-slate-400 mt-1">${m.label}</div>
-            </div>
-          `
-            )
-            .join("")}
-        </div>
-
-        <div>
-          <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
-            LUỒNG XỬ LÝ TỰ ĐỘNG (ZALO + RAG + MCP):
-          </div>
-          <div class="space-y-3">
-            ${data.workflowSteps
-              .map(
-                (step, idx) => `
-              <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-900/60 border border-slate-800/80 text-xs sm:text-sm text-slate-200">
-                <span class="w-6 h-6 rounded-full bg-cyan-500/20 text-cyan-300 font-bold flex items-center justify-center shrink-0">
-                  ${idx + 1}
-                </span>
-                <span>${step}</span>
-              </div>
-            `
-              )
-              .join("")}
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-// ============================================================================
-// 3. SECTION 10: SMOOTH FAQ ACCORDION
-// ============================================================================
-function toggleFaqItem(btn) {
-  const card = btn.closest(".faq-card");
-  const content = card.querySelector(".faq-content");
-  const isOpen = card.classList.contains("open");
-
-  document.querySelectorAll(".faq-card").forEach((c) => {
-    c.classList.remove("open");
-    const body = c.querySelector(".faq-content");
-    if (body) body.style.maxHeight = null;
-  });
-
-  if (!isOpen) {
-    card.classList.add("open");
-    content.style.maxHeight = content.scrollHeight + "px";
+  if (kind === "chart") {
+    const bars = [42, 55, 48, 63, 58, 74, 92];
+    return '<div class="mini-chart" role="img" aria-label="Biểu đồ doanh thu 7 ngày, tăng dần">' +
+      bars.map((h) => `<span style="height:${h}%"></span>`).join("") + "</div>";
   }
+  return "";
 }
 
-// ============================================================================
-// 4. SECTION 11: LEAD FORM PREFILL & SUBMISSION
-// ============================================================================
-function prefillPackage(text) {
-  const input = document.getElementById("industry-input");
-  if (input) {
-    input.value = text;
-    input.focus();
+function createPlayer(root, traceList, noteEl) {
+  let runId = 0;
+  let current = root.dataset.scenario || "retail";
+
+  const wait = (ms, id) =>
+    new Promise((resolve) => setTimeout(() => resolve(id === runId), REDUCED_MOTION ? 0 : ms));
+
+  function buildShell(sc) {
+    root.innerHTML = "";
+    const head = el("div", "chat-head");
+    head.append(
+      el("span", "chat-avatar", sc.avatar),
+      el("span", "chat-title", `<strong>${sc.title}</strong><span>${sc.subtitle}</span>`),
+      el("span", "chat-channel", sc.channel)
+    );
+    const body = el("div", "chat-body");
+    const foot = el("div", "chat-foot", '<span class="chat-foot-idle">AI đang xử lý hội thoại...</span>');
+    root.append(head, body, foot);
+
+    if (traceList) {
+      traceList.innerHTML = "";
+      sc.steps.forEach(([title, detail]) => {
+        traceList.append(el("li", "", `<strong>${title}</strong><span>${detail}</span>`));
+      });
+    }
+    if (noteEl) noteEl.textContent = sc.note;
+    return { body, foot };
   }
+
+  function addBubble(body, msg) {
+    const bubble = el(
+      "div",
+      `bubble ${msg.from === "user" ? "is-user" : "is-ai"}`,
+      `${msg.text}${attachmentHtml(msg.attach)}<time>${msg.time}</time>`
+    );
+    body.append(bubble);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function markSteps(indexes) {
+    if (!traceList || !indexes) return;
+    indexes.forEach((i) => traceList.children[i]?.classList.add("is-done"));
+  }
+
+  async function play(key) {
+    const sc = SCENARIOS[key];
+    if (!sc) return;
+    current = key;
+    const id = ++runId;
+    const { body, foot } = buildShell(sc);
+
+    for (const msg of sc.messages) {
+      if (msg.from === "ai") {
+        const typing = el("div", "bubble is-ai is-typing", "<i></i><i></i><i></i>");
+        body.append(typing);
+        body.scrollTop = body.scrollHeight;
+        const alive = await wait(1100, id);
+        typing.remove();
+        if (!alive) return;
+        markSteps(msg.done);
+      } else if (!(await wait(900, id))) {
+        return;
+      }
+      addBubble(body, msg);
+    }
+
+    if (!(await wait(700, id))) return;
+    foot.innerHTML = "";
+    foot.append(
+      el(
+        "div",
+        `result${sc.result.handoff ? " is-handoff" : ""}`,
+        `<span><small>${sc.result.label}</small>${sc.result.text}</span>`
+      )
+    );
+  }
+
+  return { play, replay: () => play(current) };
 }
 
-function handleLeadSubmit(e) {
-  e.preventDefault();
-  const form = document.getElementById("lead-capture-form");
-  if (!form) return;
-
-  form.innerHTML = `
-    <div class="p-8 rounded-2xl bg-slate-950/90 border border-emerald-500/50 text-center space-y-4">
-      <div class="w-14 h-14 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-2xl flex items-center justify-center mx-auto">
-        ✓
-      </div>
-      <h3 class="text-xl sm:text-2xl font-extrabold text-white">
-        Đăng Ký Nhận Bản Demo Thành Công!
-      </h3>
-      <p class="text-sm sm:text-base text-slate-300 max-w-md mx-auto">
-        Đội ngũ kỹ sư <strong>Pycom Enterprise Platform</strong> đã nhận thông tin và sẽ liên hệ qua Zalo của bạn trong vòng 15 phút để thiết lập bản Demo trực tiếp trên dữ liệu của bạn.
-      </p>
-    </div>
-  `;
-}
-
-// Initialize Industry Tab 0 on load
+/* --------------------------------------------------------------------------
+   Khởi tạo
+   -------------------------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", () => {
-  selectIndustryTab(0);
+  const players = {};
+
+  // Hero chat
+  const heroRoot = document.getElementById("hero-chat");
+  if (heroRoot) {
+    players["hero-chat"] = createPlayer(heroRoot);
+    players["hero-chat"].play("retail");
+  }
+
+  // Demo chat với các tab tình huống
+  const demoRoot = document.getElementById("demo-chat");
+  if (demoRoot) {
+    const demo = createPlayer(
+      demoRoot,
+      document.getElementById("demo-trace"),
+      document.getElementById("demo-note")
+    );
+    players["demo-chat"] = demo;
+    const tabs = document.querySelectorAll(".scenario-tabs .tab");
+    let started = false;
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        started = true;
+        tabs.forEach((t) => {
+          const active = t === tab;
+          t.classList.toggle("is-active", active);
+          t.setAttribute("aria-selected", String(active));
+        });
+        demo.play(tab.dataset.scenario);
+      });
+    });
+
+    // Dựng khung sẵn để phần này không trống trước khi phát
+    demoRoot.innerHTML = '<div class="chat-body"></div><div class="chat-foot"></div>';
+
+    // Chỉ bắt đầu phát khi người xem cuộn tới
+    const start = () => {
+      if (started) return;
+      started = true;
+      demo.play("retail");
+    };
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            start();
+            io.disconnect();
+          }
+        },
+        { threshold: 0.25 }
+      );
+      io.observe(demoRoot);
+    } else {
+      start();
+    }
+  }
+
+  document.querySelectorAll("[data-replay]").forEach((btn) => {
+    btn.addEventListener("click", () => players[btn.dataset.replay]?.replay());
+  });
+
+  // Tab ngành nghề
+  const itabs = document.querySelectorAll(".itab");
+  itabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      itabs.forEach((t) => {
+        const active = t === tab;
+        t.classList.toggle("is-active", active);
+        t.setAttribute("aria-selected", String(active));
+        document.getElementById(t.getAttribute("aria-controls")).hidden = !active;
+      });
+    });
+  });
+
+  // Menu mobile
+  const nav = document.getElementById("site-nav");
+  const toggle = document.querySelector(".nav-toggle");
+  if (nav && toggle) {
+    const setOpen = (open) => {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", String(open));
+    };
+    toggle.addEventListener("click", () => setOpen(!nav.classList.contains("is-open")));
+    nav.addEventListener("click", (e) => {
+      if (e.target.closest("a")) setOpen(false);
+    });
+  }
+
+  applyContactConfig();
+  initPlanButtons();
+  initLeadForm();
 });
+
+/* --------------------------------------------------------------------------
+   Thông tin liên hệ lấy từ CONFIG
+   -------------------------------------------------------------------------- */
+function applyContactConfig() {
+  const show = (name) => {
+    const block = document.querySelector(`[data-contact-block="${name}"]`);
+    if (block) block.hidden = false;
+  };
+
+  if (CONFIG.ZALO_URL) {
+    document.querySelectorAll('[data-contact="zalo"]').forEach((a) => {
+      a.href = CONFIG.ZALO_URL;
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+    show("zalo");
+  }
+  if (CONFIG.HOTLINE) {
+    document.querySelectorAll('[data-contact="hotline"]').forEach((a) => {
+      a.href = `tel:${CONFIG.HOTLINE.replace(/[^\d+]/g, "")}`;
+      a.textContent = CONFIG.HOTLINE;
+    });
+    show("hotline");
+  }
+  if (CONFIG.EMAIL) {
+    document.querySelectorAll('[data-contact="email"]').forEach((a) => {
+      a.href = `mailto:${CONFIG.EMAIL}`;
+      a.textContent = CONFIG.EMAIL;
+    });
+    show("email");
+  }
+  if (CONFIG.OFFICE) {
+    document.querySelectorAll('[data-contact="office"]').forEach((p) => {
+      p.textContent = CONFIG.OFFICE;
+    });
+    show("office");
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Nút chọn gói: ghi gói đã chọn vào form
+   -------------------------------------------------------------------------- */
+function initPlanButtons() {
+  const input = document.getElementById("f-plan");
+  const picked = document.getElementById("plan-picked");
+  document.querySelectorAll("[data-plan]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      if (!input || !picked) return;
+      input.value = btn.dataset.plan;
+      picked.textContent = `Gói quan tâm: ${btn.dataset.plan}`;
+      picked.hidden = false;
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   Form đăng ký: gửi lead thật, báo lỗi thật
+   -------------------------------------------------------------------------- */
+function initLeadForm() {
+  const form = document.getElementById("lead-form");
+  if (!form) return;
+  const status = document.getElementById("form-status");
+  const button = form.querySelector('button[type="submit"]');
+
+  const setStatus = (text, kind) => {
+    status.textContent = text;
+    status.className = `form-status${kind ? ` is-${kind}` : ""}`;
+  };
+
+  form.addEventListener("input", (e) => e.target.classList?.remove("is-invalid"));
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = form.elements.name;
+    const phone = form.elements.phone;
+    const industry = form.elements.industry;
+    const phoneDigits = phone.value.replace(/\D/g, "");
+
+    const invalid = [];
+    if (name.value.trim().length < 2) invalid.push(name);
+    if (phoneDigits.length < 9 || phoneDigits.length > 12) invalid.push(phone);
+    if (industry.value.trim().length < 2) invalid.push(industry);
+
+    [name, phone, industry].forEach((f) => f.classList.toggle("is-invalid", invalid.includes(f)));
+    if (invalid.length) {
+      setStatus(
+        invalid.includes(phone) && invalid.length === 1
+          ? "Số điện thoại chưa đúng, bạn kiểm tra lại giúp."
+          : "Bạn điền đủ ba thông tin giúp nhé.",
+        "error"
+      );
+      invalid[0].focus();
+      return;
+    }
+
+    if (!CONFIG.LEAD_ENDPOINT) {
+      // Chưa cấu hình nơi nhận: không giả vờ thành công.
+      console.warn("Form chưa có nơi nhận lead: điền CONFIG.LEAD_ENDPOINT trong script.js.");
+      setStatus("Form đăng ký đang tạm ngưng nhận thông tin. Bạn quay lại sau giúp nhé.", "error");
+      return;
+    }
+
+    const data = new FormData(form);
+    data.append("page", location.href);
+
+    button.disabled = true;
+    setStatus("Đang gửi...");
+
+    try {
+      const res = await fetch(CONFIG.LEAD_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      form.innerHTML =
+        '<div class="form-done"><h3>Đã nhận thông tin của bạn</h3>' +
+        "<p>Đội kỹ sư Pycom sẽ liên hệ qua Zalo trong giờ làm việc để dựng bản demo trên dữ liệu của bạn.</p></div>";
+    } catch (err) {
+      button.disabled = false;
+      setStatus(
+        CONFIG.ZALO_URL
+          ? "Gửi chưa được. Bạn thử lại hoặc nhắn Zalo cho chúng tôi."
+          : "Gửi chưa được. Bạn thử lại sau ít phút giúp nhé.",
+        "error"
+      );
+    }
+  });
+}
