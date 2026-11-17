@@ -7,9 +7,10 @@
    Mục nào để trống thì trang tự ẩn mục đó (hoặc trỏ nút về form đăng ký).
    -------------------------------------------------------------------------- */
 const CONFIG = {
-  // Nơi nhận lead từ form (Formspree, Google Apps Script, webhook riêng...).
-  // Form gửi POST dạng FormData với các trường: name, phone, industry, plan, page.
-  LEAD_ENDPOINT: "",
+  // Nơi nhận lead từ form: Google Apps Script gắn với Sheet "Pycom - lead".
+  // Form gửi POST với các trường: name, phone, industry, plan, page,
+  // và chờ phản hồi JSON {"ok": true}.
+  LEAD_ENDPOINT: "https://script.google.com/macros/s/AKfycbyDSVGwy1oGcYG4A1LZW9xYNoUMCNec5CIeO7Dte3Op1TbqClYqu2ac5JbP0HBEI4dU2Q/exec",
   // Link Zalo OA, ví dụ "https://zalo.me/0123456789".
   ZALO_URL: "",
   // Số hotline hiển thị ở footer, ví dụ "0909 123 456".
@@ -417,10 +418,12 @@ function initLeadForm() {
     try {
       const res = await fetch(CONFIG.LEAD_ENDPOINT, {
         method: "POST",
-        body: data,
-        headers: { Accept: "application/json" },
+        // Gửi dạng form thường để Google Apps Script đọc được qua e.parameter
+        body: new URLSearchParams(data),
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const result = await res.json();
+      if (!result.ok) throw new Error("Endpoint từ chối");
 
       form.innerHTML =
         '<div class="form-done"><h3>Đã nhận thông tin của bạn</h3>' +
